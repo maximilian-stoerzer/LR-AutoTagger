@@ -36,7 +36,14 @@ Lightroom Classic Plugin + Backend-Service fuer automatische Verschlagwortung ei
 
 ---
 
-## Architektur
+## Architektur (verbindlich)
+
+> **Verbindlich / nicht verhandelbar:** Die folgenden Abschnitte
+> (Schichtenmodell, Abhaengigkeitsregeln, ADRs) sind harte Vorgaben.
+> Aenderungen an Schichten, Abhaengigkeiten oder ADR-Entscheidungen
+> erfordern eine ausdrueckliche Diskussion mit dem User und das
+> Aktualisieren dieses Dokuments. Code, der gegen diese Regeln
+> verstoesst, wird vom CI-Job `quality` blockiert.
 
 ### Systemkontext
 
@@ -82,11 +89,44 @@ Repository Layer      app/db/          (PostgreSQL-Zugriff, Job-Persistenz)
 Externe Services      Ollama (HTTP), Nominatim (HTTP)
 ```
 
-**Abhaengigkeitsregeln (verbindlich):**
-- Abhaengigkeiten nur von oben nach unten
-- Kein Import von API-Layer in Service/Pipeline
-- Kein direkter DB-Zugriff ausserhalb des Repository-Layers
-- Externe Services (Ollama, Nominatim) werden ueber Clients im Pipeline-Layer angesprochen
+**Abhaengigkeitsregeln (verbindlich, nicht verhandelbar):**
+- Abhaengigkeiten nur von oben nach unten (API → Service → Pipeline → Repository → DB)
+- API-Layer importiert **nicht** direkt aus `app.db.repository` (Zugriff nur ueber `request.app.state.repo`)
+- Pipeline-, Service- und DB-Layer importieren **nicht** aus `app.api`
+- Repository-Layer importiert **nicht** aus `app.services` oder `app.pipeline`
+- Externe Services (Ollama, Nominatim) werden ausschliesslich ueber Clients im Pipeline-Layer angesprochen
+- Kein zirkulaerer Import zwischen Modulen
+- Diese Regeln werden vom CI-Job `quality` (`.github/workflows/ci.yml`) per grep-Check erzwungen
+
+**Weitere harte Architektur-Regeln (nicht verhandelbar):**
+- Alle API-Endpoints ausser `/api/v1/health` erfordern einen gueltigen `X-API-Key`
+- Alle DB-Queries verwenden parametrisierte Statements (kein f-string oder `%`-Interpolation)
+- Ollama-Requests laufen durch eine modul-globale `asyncio.Semaphore` (Shared-Service-Schutz)
+- Nominatim-Requests werden auf max. 1 req/s gedrosselt (oeffentliche OSM-Nutzungsbedingungen)
+- `image_keywords.image_id` ist Primary Key — Speichern erfolgt idempotent via `INSERT ... ON CONFLICT DO UPDATE`
+- Bereits verschlagwortete Bilder werden in Batch-Jobs als `skipped` gefiltert (Idempotenz)
+- Migrationen sind idempotent und werden beim Service-Start automatisch ausgefuehrt
+- Keine hardcoded Secrets im Code — alle Konfigurationen ueber `.env` / `app/config.py`
+
+### Architecture Decision Records (ADRs, verbindlich)
+
+Die folgenden Entscheidungen sind getroffen und gelten verbindlich.
+Volltext und Begruendung in `docs/tech.md` Abschnitt 5.
+
+| ID | Entscheidung | Status |
+|----|--------------|--------|
+| ADR-001 | PostgreSQL als Task-Queue (kein Redis/RabbitMQ) | akzeptiert |
+| ADR-002 | Batch-Modus ist Plugin-getrieben (Plugin pollt `/batch/next` und laedt einzeln hoch) | akzeptiert |
+| ADR-003 | API-Key-Auth via `X-API-Key` Header (kein OAuth/JWT) | akzeptiert |
+| ADR-004 | Ollama-Concurrency hart begrenzt durch `asyncio.Semaphore(OLLAMA_MAX_CONCURRENT)`, default 2 | akzeptiert |
+| ADR-005 | Nominatim wird auf 1 req/s gedrosselt (modul-globaler Lock) | akzeptiert |
+| ADR-006 | Eigene PostgreSQL-DB `lr_autotag` mit eigenem User (kein Schema-Sharing mit anderen Apps) | akzeptiert |
+| ADR-007 | Coverage-Gates: 80% Line, 70% Branch im CI; Ziel der kritischen Module ≥ 90% | akzeptiert |
+
+> **Aenderung von ADRs:** Wenn ein ADR ersetzt werden muss, wird der alte
+> Eintrag auf `superseded by ADR-XXX` gesetzt und ein neuer ADR mit
+> Begruendung der Aenderung in `docs/tech.md` ergaenzt. Niemals stillschweigend
+> umentscheiden.
 
 ---
 

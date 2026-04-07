@@ -58,50 +58,240 @@ Diese Regeln werden im CI durch grep-basierte Architektur-Checks
 
 ### 3.1 Interaktiver Modus (Einzelbild)
 
-```
-Plugin
-  │ POST /api/v1/analyze (file + GPS + image_id)
-  ▼
-KeywordPipeline.analyze_single
-  │ 1. resize_for_analysis (Pillow → max 1024px)
-  │ 2. Geocoder.reverse(lat, lon)        ← Nominatim (1 req/s throttle)
-  │ 3. OllamaClient.analyze_image(jpg)   ← Ollama (max 2 parallel)
-  │ 4. _combine_keywords (geo first, dedupe, max 25)
-  │ 5. Repository.save_image_keywords    ← PostgreSQL UPSERT
-  ▼
-Response: {keywords, geo_keywords, vision_keywords, location_name}
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Fotograf
+    participant LR as Lightroom Plugin
+    participant API as FastAPI Routes
+    participant Pipe as KeywordPipeline
+    participant Img as image_processor
+    participant Geo as Geocoder
+    participant Nom as Nominatim
+    participant Oll as OllamaClient
+    participant Llava as Ollama (LLaVA)
+    participant Repo as Repository
+    participant DB as PostgreSQL
+
+    User->>LR: Bild auswaehlen + "Auto-Tag"
+    LR->>LR: Export JPG-Vorschau (max 1024px)
+    LR->>API: POST /api/v1/analyze<br/>(file, gps_lat, gps_lon, image_id)
+    activate API
+    Note over API: API-Key-Middleware prueft<br/>X-API-Key Header
+
+    API->>Pipe: analyze_single(image_data, gps, image_id)
+    activate Pipe
+
+    Pipe->>Img: resize_for_analysis(image_data)
+    Img-->>Pipe: resized JPG bytes
+
+    alt GPS vorhanden
+        Pipe->>Geo: reverse(lat, lon)
+        Geo->>Geo: _throttle()  (>=1s seit letztem Call)
+        Geo->>Nom: GET /reverse?lat=&lon=&accept-language=de
+        Nom-->>Geo: {address, display_name}
+        Geo-->>Pipe: {geo_keywords, location_name}
+    else kein GPS
+        Note over Pipe: geo_keywords = []
+    end
+
+    Pipe->>Oll: analyze_image(resized)
+    activate Oll
+    Note over Oll: Semaphore (max 2 parallel)
+    Oll->>Llava: POST /api/generate<br/>(prompt + base64 image)
+    Llava-->>Oll: {response: "[\"Bruecke\", ...]"}
+    Oll->>Oll: _parse_keywords()
+    Oll-->>Pipe: vision_keywords
+    deactivate Oll
+
+    Pipe->>Pipe: _combine_keywords(vision, geo)<br/>(dedupe case-insensitive,<br/> geo first, max 25)
+
+    Pipe->>Repo: save_image_keywords(...)
+    Repo->>DB: INSERT ... ON CONFLICT DO UPDATE
+    DB-->>Repo: ok
+    Repo-->>Pipe: ok
+
+    Pipe-->>API: {keywords, geo_keywords,<br/> vision_keywords, location_name}
+    deactivate Pipe
+    API-->>LR: 200 OK + JSON
+    deactivate API
+
+    LR->>LR: Keywords in LR-Katalog schreiben
+    LR-->>User: Keywords sichtbar
 ```
 
 ### 3.2 Batch-Modus (Plugin-getrieben)
 
-```
-Plugin                                Backend
-  │  POST /batch/start                   │
-  │  {images: [...]}                     │
-  │ ────────────────────────────────────►│ Filter idempotent,
-  │                                      │ create batch_job + chunks
-  │ ◄──────────────── {job_id, ...}     │
-  │                                      │
-  │  GET /batch/next                     │
-  │ ────────────────────────────────────►│
-  │ ◄────────── {job_id, image_id}      │
-  │                                      │
-  │  POST /batch/image                   │
-  │  (file + image_id)                   │
-  │ ────────────────────────────────────►│ KeywordPipeline +
-  │                                      │ mark_image_done
-  │ ◄────────── {keywords, ...}         │
-  │                                      │
-  │  loop: GET /batch/next               │
-  │        POST /batch/image             │
-  │                                      │
-  │  GET /batch/status                   │
-  │ ────────────────────────────────────►│
-  │ ◄────────── {processed, total, ...} │
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Fotograf
+    participant LR as Lightroom Plugin
+    participant API as FastAPI Routes
+    participant JM as JobManager
+    participant Pipe as KeywordPipeline
+    participant Repo as Repository
+    participant DB as PostgreSQL
+
+    User->>LR: "Bibliothek verschlagworten"
+    LR->>LR: Sammle image_ids + GPS aus Katalog
+
+    %% --- Batch starten ---
+    LR->>API: POST /batch/start<br/>{images: [...]}
+    API->>JM: create_job(images)
+    activate JM
+    loop fuer jedes Bild
+        JM->>Repo: image_already_processed(id)
+        Repo->>DB: SELECT 1 FROM image_keywords
+        DB-->>Repo: exists?
+        Repo-->>JM: bool
+    end
+    Note over JM: skipped += already-processed
+    JM->>Repo: create_batch_job(total)
+    Repo->>DB: INSERT batch_jobs
+    JM->>Repo: create_chunks(batch_id, [50er-Bloecke])
+    Repo->>DB: INSERT chunks (status=processing)
+    JM->>Repo: store_batch_image_meta(...)
+    Repo->>DB: INSERT batch_images
+    JM-->>API: {id, status: running, skipped, total}
+    deactivate JM
+    API-->>LR: 200 OK + job_id
+
+    %% --- Verarbeitung Loop ---
+    loop solange Bilder pending
+        LR->>API: GET /batch/next
+        API->>JM: get_next_image_id()
+        JM->>Repo: get_active_batch_job()
+        Repo->>DB: SELECT WHERE status IN (running,paused)
+        DB-->>Repo: job
+        JM->>Repo: get_next_unprocessed_image(batch_id)
+        Repo->>DB: SELECT FROM batch_images<br/>WHERE status='pending' LIMIT 1
+        DB-->>Repo: image_id | NULL
+        JM-->>API: (job_id, image_id)
+        API-->>LR: {job_id, image_id}
+
+        alt image_id vorhanden
+            LR->>LR: Export JPG-Vorschau
+            LR->>API: POST /batch/image<br/>(file, image_id)
+            activate API
+            API->>Repo: get_active_batch_job()
+            API->>Repo: get_batch_image_meta(batch_id, image_id)
+            alt image_id gehoert nicht zu Batch
+                API-->>LR: 404 Not Found
+            else
+                API->>Pipe: analyze_single(...)
+                Note over Pipe: gleicher Flow wie 3.1
+                Pipe-->>API: keywords
+                API->>JM: mark_image_done(image_id)
+                JM->>Repo: increment_batch_progress(processed=1)
+                JM->>Repo: mark_chunk_image_done(...)
+                Repo->>DB: UPDATE batch_images SET status='done'
+                Repo->>DB: UPDATE chunks SET status='done'<br/>WENN alle Bilder im Chunk fertig
+                JM->>Repo: has_pending_chunks(batch_id)
+                alt keine pending chunks mehr
+                    JM->>Repo: update_batch_job_status('done')
+                    Note over JM: Batch komplett
+                end
+                API-->>LR: 200 OK + keywords
+            end
+            deactivate API
+            LR->>LR: Keywords in LR-Katalog schreiben
+        else image_id == NULL
+            Note over LR: Batch fertig, Loop verlassen
+        end
+
+        %% --- Optional: Status pollen ---
+        opt UI-Update
+            LR->>API: GET /batch/status
+            API-->>LR: {processed, total, skipped, failed}
+            LR-->>User: Fortschrittsanzeige
+        end
+    end
+
+    LR-->>User: "Fertig" / Statistik
 ```
 
-Wenn das Plugin pausieren, fortsetzen oder abbrechen will:
-`POST /batch/pause`, `/batch/resume`, `/batch/cancel`.
+### 3.3 Pause / Resume / Cancel
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User
+    participant LR as Lightroom Plugin
+    participant API as FastAPI Routes
+    participant JM as JobManager
+    participant Repo as Repository
+    participant DB as PostgreSQL
+
+    Note over LR: Batch laeuft, User klickt "Pause"
+    User->>LR: Pause
+    LR->>API: POST /batch/pause
+    API->>JM: pause()
+    JM->>Repo: get_active_batch_job()
+    Repo->>DB: SELECT...
+    DB-->>Repo: status=running
+    JM->>Repo: update_batch_job_status('paused')
+    Repo->>DB: UPDATE batch_jobs SET status='paused'
+    API-->>LR: {status: paused}
+
+    Note over LR: Naechster get_next-Call gibt (None,None)
+    LR->>API: GET /batch/next
+    API->>JM: get_next_image_id()
+    JM->>Repo: get_active_batch_job()
+    Repo-->>JM: status=paused
+    Note over JM: status != running -> None
+    JM-->>API: (None, None)
+    API-->>LR: {job_id: null, image_id: null}
+    Note over LR: Plugin wartet
+
+    User->>LR: Resume
+    LR->>API: POST /batch/resume
+    API->>JM: resume()
+    JM->>Repo: update_batch_job_status('running')
+    API-->>LR: {status: running}
+    Note over LR: Naechster get_next liefert wieder Bilder
+
+    %% Cancel
+    User->>LR: Cancel
+    LR->>API: POST /batch/cancel
+    API->>JM: cancel()
+    JM->>Repo: update_batch_job_status('cancelled')
+    Note over DB: Bisherige Keywords bleiben gespeichert<br/>(Idempotenz beim naechsten Lauf)
+    API-->>LR: {status: cancelled}
+```
+
+### 3.4 Fehlerfaelle (Ollama down, Geocoder Timeout)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant LR as Plugin
+    participant API as Routes
+    participant Pipe as KeywordPipeline
+    participant Geo as Geocoder
+    participant Nom as Nominatim
+    participant Oll as OllamaClient
+    participant Llava as Ollama
+
+    LR->>API: POST /analyze (mit GPS)
+    API->>Pipe: analyze_single(...)
+
+    %% Geocoder Fehler ist tolerant
+    Pipe->>Geo: reverse(lat, lon)
+    Geo->>Nom: GET /reverse
+    Nom--xGeo: TimeoutException
+    Geo-->>Pipe: None
+    Note over Pipe: geo_keywords = []<br/>(Pipeline laeuft weiter)
+
+    %% Ollama Fehler ist hart
+    Pipe->>Oll: analyze_image(jpg)
+    Oll->>Llava: POST /api/generate
+    Llava--xOll: ConnectionError / 500
+    Oll--xPipe: HTTPError raised
+    Pipe--xAPI: HTTPError raised
+    API--xLR: 500 Internal Server Error
+    Note over LR: Plugin zeigt Fehler an,<br/>User kann erneut versuchen
+```
 
 ---
 
@@ -331,5 +521,6 @@ GitHub Actions, Workflow: `.github/workflows/ci.yml`. Drei Jobs:
 | `TEST_SPEC.md` | Testspezifikation mit Testfaellen pro Modul |
 | `docs/installation.md` | Installation und Troubleshooting |
 | `docs/admin.md` | Admin-Setup, Plugin↔Backend-Konfiguration |
+| `docs/user-guide.md` | User Guide fuer Fotografen (nicht-technisch) |
 | `docs/tech.md` | Dieses Dokument |
 | `.github/workflows/ci.yml` | CI/CD-Pipeline |
