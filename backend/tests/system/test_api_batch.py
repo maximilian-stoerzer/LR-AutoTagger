@@ -3,8 +3,6 @@
 import io
 import json
 
-import pytest
-
 
 # S-BAT-01
 def test_batch_start(client, auth_headers):
@@ -58,9 +56,7 @@ def test_batch_status_no_job(client, auth_headers):
 
 # S-BAT-05
 def test_batch_next_returns_image_id(client, auth_headers, mock_repo):
-    mock_repo.get_active_batch_job.return_value = {
-        "id": "job-1", "status": "running"
-    }
+    mock_repo.get_active_batch_job.return_value = {"id": "job-1", "status": "running"}
     mock_repo.get_next_unprocessed_image.return_value = "img_0042"
 
     resp = client.get("/api/v1/batch/next", headers=auth_headers)
@@ -123,17 +119,13 @@ def test_batch_image_no_active_batch(client, auth_headers, sample_jpeg, mock_rep
 
 # S-BAT-08
 def test_batch_pause_resume(client, auth_headers, mock_repo):
-    mock_repo.get_active_batch_job.return_value = {
-        "id": "job-1", "status": "running"
-    }
+    mock_repo.get_active_batch_job.return_value = {"id": "job-1", "status": "running"}
 
     resp = client.post("/api/v1/batch/pause", headers=auth_headers)
     assert resp.status_code == 200
     assert resp.json()["status"] == "paused"
 
-    mock_repo.get_active_batch_job.return_value = {
-        "id": "job-1", "status": "paused"
-    }
+    mock_repo.get_active_batch_job.return_value = {"id": "job-1", "status": "paused"}
 
     resp = client.post("/api/v1/batch/resume", headers=auth_headers)
     assert resp.status_code == 200
@@ -142,9 +134,7 @@ def test_batch_pause_resume(client, auth_headers, mock_repo):
 
 # S-BAT-09
 def test_batch_cancel(client, auth_headers, mock_repo):
-    mock_repo.get_active_batch_job.return_value = {
-        "id": "job-1", "status": "running"
-    }
+    mock_repo.get_active_batch_job.return_value = {"id": "job-1", "status": "running"}
 
     resp = client.post("/api/v1/batch/cancel", headers=auth_headers)
     assert resp.status_code == 200

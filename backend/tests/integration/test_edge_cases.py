@@ -26,21 +26,24 @@ def _make_images(n: int) -> list[dict]:
 async def test_cascade_delete_removes_chunks_and_images(repo):
     job = await repo.create_batch_job(2)
     await repo.create_chunks(job["id"], [["c1_img1", "c1_img2"]])
-    await repo.store_batch_image_meta(job["id"], [
-        {"image_id": "c1_img1"},
-        {"image_id": "c1_img2"},
-    ])
+    await repo.store_batch_image_meta(
+        job["id"],
+        [
+            {"image_id": "c1_img1"},
+            {"image_id": "c1_img2"},
+        ],
+    )
 
     async with repo._pool.connection() as conn:
         await conn.execute("DELETE FROM batch_jobs WHERE id = %s", (job["id"],))
         await conn.commit()
 
-        chunks_left = await (await conn.execute(
-            "SELECT COUNT(*) FROM chunks WHERE batch_id = %s", (job["id"],)
-        )).fetchone()
-        images_left = await (await conn.execute(
-            "SELECT COUNT(*) FROM batch_images WHERE batch_id = %s", (job["id"],)
-        )).fetchone()
+        chunks_left = await (
+            await conn.execute("SELECT COUNT(*) FROM chunks WHERE batch_id = %s", (job["id"],))
+        ).fetchone()
+        images_left = await (
+            await conn.execute("SELECT COUNT(*) FROM batch_images WHERE batch_id = %s", (job["id"],))
+        ).fetchone()
 
     assert chunks_left[0] == 0
     assert images_left[0] == 0
@@ -55,7 +58,8 @@ async def test_unicode_image_id_roundtrip(repo):
         keywords=["Test"],
         geo_keywords=None,
         vision_keywords=["Test"],
-        gps_lat=None, gps_lon=None,
+        gps_lat=None,
+        gps_lon=None,
         location_name=None,
         model_used="llava:13b",
     )
@@ -75,7 +79,8 @@ async def test_path_like_image_id(repo):
         keywords=["Test"],
         geo_keywords=None,
         vision_keywords=["Test"],
-        gps_lat=None, gps_lon=None,
+        gps_lat=None,
+        gps_lon=None,
         location_name=None,
         model_used="llava:13b",
     )
@@ -129,15 +134,16 @@ async def test_idempotent_save_keeps_single_row(repo):
             keywords=["A"],
             geo_keywords=None,
             vision_keywords=["A"],
-            gps_lat=None, gps_lon=None,
+            gps_lat=None,
+            gps_lon=None,
             location_name=None,
             model_used="llava:13b",
         )
 
     async with repo._pool.connection() as conn:
-        row = await (await conn.execute(
-            "SELECT COUNT(*) FROM image_keywords WHERE image_id = %s", ("upsert_test",)
-        )).fetchone()
+        row = await (
+            await conn.execute("SELECT COUNT(*) FROM image_keywords WHERE image_id = %s", ("upsert_test",))
+        ).fetchone()
 
     assert row[0] == 1
 

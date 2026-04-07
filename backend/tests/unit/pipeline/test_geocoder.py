@@ -1,6 +1,5 @@
 """Unit tests for app.pipeline.geocoder — U-GEO-01 to U-GEO-10."""
 
-import asyncio
 import time
 from unittest.mock import AsyncMock, MagicMock, patch
 
@@ -21,9 +20,7 @@ def _mock_nominatim_response(data: dict, status: int = 200):
     mock_resp.json.return_value = data
     mock_resp.raise_for_status = MagicMock()
     if status >= 400:
-        mock_resp.raise_for_status.side_effect = httpx.HTTPStatusError(
-            "error", request=MagicMock(), response=mock_resp
-        )
+        mock_resp.raise_for_status.side_effect = httpx.HTTPStatusError("error", request=MagicMock(), response=mock_resp)
     return mock_resp
 
 
@@ -41,6 +38,7 @@ def _patch_httpx(mock_resp):
 
 def _reset_throttle():
     import app.pipeline.geocoder as mod
+
     mod._last_request_time = 0.0
 
 

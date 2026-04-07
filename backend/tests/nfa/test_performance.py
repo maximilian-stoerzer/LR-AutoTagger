@@ -1,9 +1,8 @@
 """NFA tests: Performance — P-THR-01 to P-THR-07, P-MEM-01."""
 
 import asyncio
-import io
 import time
-from unittest.mock import AsyncMock, patch, MagicMock
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
@@ -40,6 +39,7 @@ def test_batch_status_latency(client, auth_headers):
 async def test_ollama_semaphore_limits_concurrency(sample_jpeg):
     """Verify Ollama semaphore enforces OLLAMA_MAX_CONCURRENT."""
     import app.pipeline.ollama_client as mod
+
     mod._semaphore = None
 
     concurrent = 0
@@ -65,11 +65,13 @@ async def test_ollama_semaphore_limits_concurrency(sample_jpeg):
         MockClient.return_value = instance
 
         from app.pipeline.ollama_client import OllamaClient
+
         client = OllamaClient()
         tasks = [client.analyze_image(sample_jpeg) for _ in range(10)]
         await asyncio.gather(*tasks)
 
     from app.config import settings
+
     assert max_concurrent <= settings.ollama_max_concurrent
 
 
@@ -78,6 +80,7 @@ async def test_ollama_semaphore_limits_concurrency(sample_jpeg):
 async def test_geocoder_throttle_rate():
     """Verify Nominatim throttle enforces max 1 req/sec."""
     import app.pipeline.geocoder as mod
+
     mod._last_request_time = 0.0
 
     call_times = []
@@ -94,6 +97,7 @@ async def test_geocoder_throttle_rate():
         MockClient.return_value = instance
 
         from app.pipeline.geocoder import Geocoder
+
         geo = Geocoder()
 
         start = time.monotonic()
@@ -110,6 +114,7 @@ async def test_geocoder_throttle_rate():
 def test_image_processing_no_memory_leak(sample_jpeg):
     """Process many images and verify stable memory usage."""
     import tracemalloc
+
     from app.pipeline.image_processor import resize_for_analysis
 
     tracemalloc.start()

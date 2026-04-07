@@ -76,9 +76,7 @@ class Repository:
 
     async def image_already_processed(self, image_id: str) -> bool:
         async with self._pool.connection() as conn:
-            row = await (
-                await conn.execute("SELECT 1 FROM image_keywords WHERE image_id = %s", (image_id,))
-            ).fetchone()
+            row = await (await conn.execute("SELECT 1 FROM image_keywords WHERE image_id = %s", (image_id,))).fetchone()
             return row is not None
 
     async def save_image_keywords(
@@ -264,8 +262,7 @@ class Repository:
         async with self._pool.connection() as conn:
             row = await (
                 await conn.execute(
-                    "SELECT gps_lat, gps_lon FROM batch_images "
-                    "WHERE batch_id = %s AND image_id = %s",
+                    "SELECT gps_lat, gps_lon FROM batch_images WHERE batch_id = %s AND image_id = %s",
                     (batch_id, image_id),
                 )
             ).fetchone()

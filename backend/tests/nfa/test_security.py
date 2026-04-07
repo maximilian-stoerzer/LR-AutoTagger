@@ -90,7 +90,7 @@ def test_error_no_stacktrace(client, auth_headers):
     if resp.status_code == 500:
         body = resp.text
         assert "Traceback" not in body, "Stack trace leaked in error response"
-        assert "File \"/" not in body, "File paths leaked in error response"
+        assert 'File "/' not in body, "File paths leaked in error response"
 
 
 # SEC: Batch start with malicious JSON

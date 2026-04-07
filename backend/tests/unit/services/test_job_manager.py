@@ -11,15 +11,17 @@ from app.services.job_manager import JobManager
 def mock_repo():
     repo = AsyncMock()
     repo.image_already_processed = AsyncMock(return_value=False)
-    repo.create_batch_job = AsyncMock(return_value={
-        "id": "job-123",
-        "status": "running",
-        "total_images": 0,
-        "processed": 0,
-        "failed": 0,
-        "skipped": 0,
-        "created_at": "2026-01-01T00:00:00+00:00",
-    })
+    repo.create_batch_job = AsyncMock(
+        return_value={
+            "id": "job-123",
+            "status": "running",
+            "total_images": 0,
+            "processed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "created_at": "2026-01-01T00:00:00+00:00",
+        }
+    )
     repo.increment_batch_progress = AsyncMock()
     repo.create_chunks = AsyncMock()
     repo.store_batch_image_meta = AsyncMock()
@@ -104,9 +106,7 @@ async def test_51_images_two_chunks(manager, mock_repo):
 # U-JOB-06
 @pytest.mark.asyncio
 async def test_pause_when_running(manager, mock_repo):
-    mock_repo.get_active_batch_job = AsyncMock(return_value={
-        "id": "job-123", "status": "running"
-    })
+    mock_repo.get_active_batch_job = AsyncMock(return_value={"id": "job-123", "status": "running"})
     await manager.pause()
     mock_repo.update_batch_job_status.assert_called_with("job-123", "paused")
 
@@ -114,9 +114,7 @@ async def test_pause_when_running(manager, mock_repo):
 # U-JOB-07
 @pytest.mark.asyncio
 async def test_pause_when_not_running(manager, mock_repo):
-    mock_repo.get_active_batch_job = AsyncMock(return_value={
-        "id": "job-123", "status": "done"
-    })
+    mock_repo.get_active_batch_job = AsyncMock(return_value={"id": "job-123", "status": "done"})
     await manager.pause()
     mock_repo.update_batch_job_status.assert_not_called()
 
@@ -124,9 +122,7 @@ async def test_pause_when_not_running(manager, mock_repo):
 # U-JOB-08
 @pytest.mark.asyncio
 async def test_resume_when_paused(manager, mock_repo):
-    mock_repo.get_active_batch_job = AsyncMock(return_value={
-        "id": "job-123", "status": "paused"
-    })
+    mock_repo.get_active_batch_job = AsyncMock(return_value={"id": "job-123", "status": "paused"})
     await manager.resume()
     mock_repo.update_batch_job_status.assert_called_with("job-123", "running")
 
@@ -134,9 +130,7 @@ async def test_resume_when_paused(manager, mock_repo):
 # U-JOB-09
 @pytest.mark.asyncio
 async def test_cancel_when_running(manager, mock_repo):
-    mock_repo.get_active_batch_job = AsyncMock(return_value={
-        "id": "job-123", "status": "running"
-    })
+    mock_repo.get_active_batch_job = AsyncMock(return_value={"id": "job-123", "status": "running"})
     await manager.cancel()
     mock_repo.update_batch_job_status.assert_called_with("job-123", "cancelled")
 
@@ -144,9 +138,7 @@ async def test_cancel_when_running(manager, mock_repo):
 # U-JOB-10
 @pytest.mark.asyncio
 async def test_cancel_when_paused(manager, mock_repo):
-    mock_repo.get_active_batch_job = AsyncMock(return_value={
-        "id": "job-123", "status": "paused"
-    })
+    mock_repo.get_active_batch_job = AsyncMock(return_value={"id": "job-123", "status": "paused"})
     await manager.cancel()
     mock_repo.update_batch_job_status.assert_called_with("job-123", "cancelled")
 
@@ -163,9 +155,7 @@ async def test_get_next_image_no_active_job(manager, mock_repo):
 # U-JOB-12
 @pytest.mark.asyncio
 async def test_mark_image_done_completes_job(manager, mock_repo):
-    mock_repo.get_active_batch_job = AsyncMock(return_value={
-        "id": "job-123", "status": "running"
-    })
+    mock_repo.get_active_batch_job = AsyncMock(return_value={"id": "job-123", "status": "running"})
     mock_repo.get_batch_image_meta = AsyncMock(return_value={"gps_lat": None, "gps_lon": None})
     mock_repo.has_pending_chunks = AsyncMock(return_value=False)
 
@@ -194,9 +184,7 @@ async def test_mark_image_done_raises_without_active_job(manager, mock_repo):
 # U-JOB-15: mark_image_done raises if image is not part of batch
 @pytest.mark.asyncio
 async def test_mark_image_done_raises_for_unknown_image(manager, mock_repo):
-    mock_repo.get_active_batch_job = AsyncMock(return_value={
-        "id": "job-123", "status": "running"
-    })
+    mock_repo.get_active_batch_job = AsyncMock(return_value={"id": "job-123", "status": "running"})
     mock_repo.get_batch_image_meta = AsyncMock(return_value=None)
     with pytest.raises(LookupError, match="not part of active batch"):
         await manager.mark_image_done("rogue_img")
@@ -207,9 +195,7 @@ async def test_mark_image_done_raises_for_unknown_image(manager, mock_repo):
 # U-JOB-16: get_next_image_id returns (job_id, image_id) tuple
 @pytest.mark.asyncio
 async def test_get_next_image_id_returns_tuple(manager, mock_repo):
-    mock_repo.get_active_batch_job = AsyncMock(return_value={
-        "id": "job-xyz", "status": "running"
-    })
+    mock_repo.get_active_batch_job = AsyncMock(return_value={"id": "job-xyz", "status": "running"})
     mock_repo.get_next_unprocessed_image = AsyncMock(return_value="img_42")
 
     job_id, image_id = await manager.get_next_image_id()
@@ -220,9 +206,7 @@ async def test_get_next_image_id_returns_tuple(manager, mock_repo):
 # U-JOB-17: get_next_image_id when batch paused
 @pytest.mark.asyncio
 async def test_get_next_image_id_when_paused(manager, mock_repo):
-    mock_repo.get_active_batch_job = AsyncMock(return_value={
-        "id": "job-xyz", "status": "paused"
-    })
+    mock_repo.get_active_batch_job = AsyncMock(return_value={"id": "job-xyz", "status": "paused"})
     job_id, image_id = await manager.get_next_image_id()
     assert job_id is None
     assert image_id is None

@@ -14,10 +14,12 @@ def _make_pipeline(repo) -> KeywordPipeline:
     p.ollama = AsyncMock()
     p.ollama.analyze_image = AsyncMock(return_value=["Bruecke", "Fluss"])
     p.geocoder = AsyncMock()
-    p.geocoder.reverse = AsyncMock(return_value={
-        "geo_keywords": ["Heidelberg", "Deutschland"],
-        "location_name": "Heidelberg, Deutschland",
-    })
+    p.geocoder.reverse = AsyncMock(
+        return_value={
+            "geo_keywords": ["Heidelberg", "Deutschland"],
+            "location_name": "Heidelberg, Deutschland",
+        }
+    )
     return p
 
 

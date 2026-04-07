@@ -2,8 +2,6 @@
 
 import io
 
-import pytest
-
 
 # S-ANL-01
 def test_analyze_with_gps(client, auth_headers, sample_jpeg):

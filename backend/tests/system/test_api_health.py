@@ -2,8 +2,6 @@
 
 from unittest.mock import AsyncMock, patch
 
-import pytest
-
 
 # S-HLT-01
 def test_health_all_ok(client):

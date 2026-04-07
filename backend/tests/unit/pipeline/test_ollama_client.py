@@ -1,17 +1,17 @@
 """Unit tests for app.pipeline.ollama_client — U-OLL-01 to U-OLL-15."""
 
 import asyncio
-from unittest.mock import AsyncMock, patch, MagicMock
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import httpx
 import pytest
 
 from app.pipeline.ollama_client import OllamaClient
 
-
 # ---------------------------------------------------------------------------
 # Parse-logic tests (_parse_keywords is deterministic, no mocks needed)
 # ---------------------------------------------------------------------------
+
 
 @pytest.fixture
 def client():
@@ -35,6 +35,7 @@ def test_parse_json_in_markdown_codeblock(client):
 def test_parse_more_than_25_keywords_truncated(client):
     keywords = [f"keyword_{i}" for i in range(30)]
     import json
+
     raw = json.dumps(keywords)
     result = client._parse_keywords(raw)
     assert len(result) == 25
@@ -94,9 +95,7 @@ def _mock_ollama_response(keywords_json: str, status: int = 200):
     mock_resp.json.return_value = {"response": keywords_json}
     mock_resp.raise_for_status = MagicMock()
     if status >= 400:
-        mock_resp.raise_for_status.side_effect = httpx.HTTPStatusError(
-            "error", request=MagicMock(), response=mock_resp
-        )
+        mock_resp.raise_for_status.side_effect = httpx.HTTPStatusError("error", request=MagicMock(), response=mock_resp)
     return mock_resp
 
 
@@ -114,6 +113,7 @@ async def test_analyze_image_happy_path(client, sample_jpeg):
 
         # Reset semaphore for test isolation
         import app.pipeline.ollama_client as mod
+
         mod._semaphore = None
 
         result = await client.analyze_image(sample_jpeg)
@@ -131,6 +131,7 @@ async def test_analyze_image_timeout(client, sample_jpeg):
         MockClient.return_value = instance
 
         import app.pipeline.ollama_client as mod
+
         mod._semaphore = None
 
         with pytest.raises(httpx.TimeoutException):
@@ -150,6 +151,7 @@ async def test_analyze_image_http_500(client, sample_jpeg):
         MockClient.return_value = instance
 
         import app.pipeline.ollama_client as mod
+
         mod._semaphore = None
 
         with pytest.raises(httpx.HTTPStatusError):
@@ -167,6 +169,7 @@ async def test_analyze_image_connection_error(client, sample_jpeg):
         MockClient.return_value = instance
 
         import app.pipeline.ollama_client as mod
+
         mod._semaphore = None
 
         with pytest.raises(httpx.ConnectError):
@@ -207,6 +210,7 @@ async def test_health_check_negative(client):
 async def test_semaphore_limits_concurrency(sample_jpeg):
     """Verify that at most OLLAMA_MAX_CONCURRENT requests run in parallel."""
     import app.pipeline.ollama_client as mod
+
     mod._semaphore = None
 
     concurrent_count = 0

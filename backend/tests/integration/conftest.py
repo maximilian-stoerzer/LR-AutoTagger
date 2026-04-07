@@ -11,7 +11,6 @@ import pytest_asyncio
 
 from app.db.repository import Repository
 
-
 TEST_DB_URL = os.environ.get("TEST_DATABASE_URL", "")
 skip_no_db = pytest.mark.skipif(not TEST_DB_URL, reason="TEST_DATABASE_URL not set")
 
@@ -24,6 +23,7 @@ async def repo():
 
     # Temporarily override settings
     from app.config import settings
+
     original = settings.database_url
     settings.database_url = TEST_DB_URL
 

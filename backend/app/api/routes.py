@@ -1,9 +1,10 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Request, UploadFile, File, Form
+from fastapi import APIRouter, File, Form, Request, UploadFile
 from fastapi.responses import JSONResponse
 
 from app.pipeline.keyword_pipeline import KeywordPipeline
+from app.pipeline.ollama_client import OllamaClient
 from app.services.job_manager import JobManager
 
 router = APIRouter()
@@ -20,8 +21,6 @@ def _repo(request: Request):
 async def health(request: Request):
     repo = _repo(request)
     db_ok = await repo.ping()
-
-    from app.pipeline.ollama_client import OllamaClient
 
     ollama = OllamaClient()
     ollama_ok = await ollama.health()

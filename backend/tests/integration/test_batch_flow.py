@@ -1,10 +1,7 @@
 """Integration tests for Batch flow with real DB — I-BAT-01 to I-BAT-05."""
 
-from unittest.mock import AsyncMock, patch
-
 import pytest
 
-from app.pipeline.keyword_pipeline import KeywordPipeline
 from app.services.job_manager import JobManager
 
 pytestmark = pytest.mark.integration
@@ -42,7 +39,8 @@ async def test_idempotency_skips_tagged(repo):
             keywords=["Existing"],
             geo_keywords=None,
             vision_keywords=["Existing"],
-            gps_lat=None, gps_lon=None,
+            gps_lat=None,
+            gps_lon=None,
             location_name=None,
             model_used="llava:13b",
         )

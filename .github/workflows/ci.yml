@@ -39,7 +39,7 @@ jobs:
         run: bandit -r app/ -ll -q
 
       - name: Dependency audit (pip-audit)
-        run: pip-audit --strict --desc 2>/dev/null || echo "::warning::pip-audit found vulnerabilities"
+        run: pip-audit --skip-editable --desc || echo "::warning::pip-audit found vulnerabilities"
 
       # ── Architecture conformity ─────────────────────────────────────────
       - name: "Architecture: API layer must not import Repository directly"
@@ -188,10 +188,11 @@ jobs:
 
       - name: Branch coverage gate (70%)
         run: |
-          BRANCH_PCT=$(coverage report | tail -1 | awk '{print $(NF-1)}' | tr -d '%')
-          echo "Branch coverage: ${BRANCH_PCT}%"
-          if [ "$(echo "$BRANCH_PCT < 70" | bc -l)" = "1" ]; then
-            echo "::error::Branch coverage ${BRANCH_PCT}% is below 70% threshold"
+          # Last column of the TOTAL row contains "<n>%" — strip the % sign
+          TOTAL_PCT=$(coverage report | tail -1 | awk '{print $NF}' | tr -d '%')
+          echo "Combined coverage (line+branch): ${TOTAL_PCT}%"
+          if [ "$(echo "$TOTAL_PCT < 70" | bc -l)" = "1" ]; then
+            echo "::error::Combined coverage ${TOTAL_PCT}% is below 70% threshold"
             exit 1
           fi
 

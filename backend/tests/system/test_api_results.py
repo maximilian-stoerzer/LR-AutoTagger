@@ -1,7 +1,5 @@
 """System tests for GET /api/v1/results/{image_id} — S-RES-01 to S-RES-03."""
 
-import pytest
-
 
 # S-RES-01
 def test_results_existing_image(client, auth_headers, mock_repo):

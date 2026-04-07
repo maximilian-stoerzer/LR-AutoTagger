@@ -28,6 +28,7 @@ def call_next():
 @pytest.mark.asyncio
 async def test_valid_api_key(call_next):
     from app.config import settings
+
     request = _make_request("/api/v1/analyze", api_key=settings.api_key)
 
     response = await api_key_middleware(request, call_next)

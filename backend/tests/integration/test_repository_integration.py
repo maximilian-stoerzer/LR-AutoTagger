@@ -98,10 +98,13 @@ async def test_get_next_unprocessed_image(repo):
 async def test_mark_chunk_image_done_completes_chunk(repo):
     job = await repo.create_batch_job(2)
     await repo.create_chunks(job["id"], [["img_1", "img_2"]])
-    await repo.store_batch_image_meta(job["id"], [
-        {"image_id": "img_1"},
-        {"image_id": "img_2"},
-    ])
+    await repo.store_batch_image_meta(
+        job["id"],
+        [
+            {"image_id": "img_1"},
+            {"image_id": "img_2"},
+        ],
+    )
 
     await repo.mark_chunk_image_done(job["id"], "img_1")
     # Chunk not yet complete
