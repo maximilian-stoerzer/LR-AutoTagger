@@ -30,3 +30,7 @@ Thumbs.db
 
 # Claude
 .claude/settings.local.json
+
+# Build & release artifacts
+build/
+release/
