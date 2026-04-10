@@ -12,9 +12,17 @@ logger = logging.getLogger(__name__)
 
 VISION_PROMPT = (
     "Analysiere dieses Foto und gib deutsche Schlagworte zurueck.\n"
-    "Kategorien: Objekte, Szene, Umgebung, Tageszeit, Jahreszeit, Wetter.\n"
+    "Kategorien:\n"
+    "- Objekte: frei waehlbar\n"
+    "- Szene: frei waehlbar\n"
+    "- Umgebung: frei waehlbar\n"
+    "- Tageszeit: Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht\n"
+    "- Jahreszeit: Fruehling, Sommer, Herbst, Winter\n"
+    "- Wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst\n"
+    "- Stimmung: Friedlich, Dramatisch, Melancholisch, Froehlich, Mystisch, Romantisch, "
+    "Bedrohlich, Einsam, Lebhaft, Vertraeumt, Nostalgisch, Majestaetisch\n"
+    "Fuer Tageszeit, Jahreszeit, Wetter und Stimmung NUR Werte aus der jeweiligen Liste verwenden.\n"
     "Format: JSON-Array mit maximal {max_keywords} Keywords.\n"
-    "Nur sachliche/technische Begriffe, keine Stimmungsbeschreibungen.\n"
     "Antworte NUR mit dem JSON-Array, kein weiterer Text."
 )
 

@@ -172,9 +172,18 @@ Volltext und Begruendung in `docs/tech.md` Abschnitt 5.
 ### Vision-Prompt
 ```
 Analysiere dieses Foto und gib deutsche Schlagworte zurueck.
-Kategorien: Objekte, Szene, Umgebung, Tageszeit, Jahreszeit, Wetter.
+Kategorien:
+- Objekte: frei waehlbar
+- Szene: frei waehlbar
+- Umgebung: frei waehlbar
+- Tageszeit: Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht
+- Jahreszeit: Fruehling, Sommer, Herbst, Winter
+- Wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+- Stimmung: Friedlich, Dramatisch, Melancholisch, Froehlich, Mystisch, Romantisch,
+  Bedrohlich, Einsam, Lebhaft, Vertraeumt, Nostalgisch, Majestaetisch
+Fuer Tageszeit, Jahreszeit, Wetter und Stimmung NUR Werte aus der jeweiligen Liste verwenden.
 Format: JSON-Array mit maximal 25 Keywords.
-Nur sachliche/technische Begriffe, keine Stimmungsbeschreibungen.
+Antworte NUR mit dem JSON-Array, kein weiterer Text.
 ```
 
 ---
