@@ -564,6 +564,34 @@ TEST_DATABASE_URL=postgresql://localhost/lr_autotag_test \
 @pytest.mark.slow          # > 5s
 ```
 
+### 7.6 Vision-Benchmark (opt-in)
+
+`tests/nfa/test_vision_benchmark.py` fuehrt den echten Produktions-
+Prompt gegen eine laufende Ollama-Instanz auf fuenf kuratierten
+Wikimedia-Commons-Testbildern aus (siehe
+`tests/nfa/fixtures/benchmark_images/SOURCES.md`). Der Test verifiziert,
+dass der Parser fuer jedes Bild mindestens drei Keywords extrahiert —
+das ist die Regressionsgrenze fuer Format-Bugs wie den
+`dict vs. array` Fehler in llava:7b.
+
+Per Default ist der Benchmark **deaktiviert**, weil er eine echte
+Ollama-Instanz und (auf CPU) zweistellige Minuten Laufzeit braucht.
+Aktivierung:
+
+```bash
+# Nur das in .env gesetzte OLLAMA_MODEL
+RUN_VISION_BENCHMARK=1 .venv/bin/pytest tests/nfa/test_vision_benchmark.py -s
+
+# Mehrere Modelle vergleichen
+RUN_VISION_BENCHMARK=1 BENCHMARK_MODELS=llava:7b,llava:13b \
+  .venv/bin/pytest tests/nfa/test_vision_benchmark.py -s
+```
+
+`-s` ist wichtig, damit die per-Bild Timings und geparste Keywords
+waehrend des Laufs angezeigt werden — sonst sind sie nur bei Fehlern
+sichtbar. Ohne `RUN_VISION_BENCHMARK=1` gibt ein Aufruf des Tests
+`SKIPPED` fuer alle Parameterkombinationen aus.
+
 ---
 
 ## 8. CI/CD-Pipeline
