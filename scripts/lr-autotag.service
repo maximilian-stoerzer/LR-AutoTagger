@@ -1,15 +1,25 @@
 [Unit]
 Description=LR-AutoTag Backend
 After=network.target postgresql.service
+Wants=postgresql.service
+# Ollama is a shared service and may run on a different host — no hard dep.
 
 [Service]
 Type=exec
 User=lr-autotag
+Group=lr-autotag
 WorkingDirectory=/opt/lr-autotag
 EnvironmentFile=/opt/lr-autotag/.env
 ExecStart=/opt/lr-autotag/venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
 Restart=on-failure
 RestartSec=5
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/lr-autotag
 
 [Install]
 WantedBy=multi-user.target
