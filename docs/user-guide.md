@@ -53,14 +53,28 @@ Wenn etwas davon fehlt, frag deinen Admin oder schau in `docs/installation.md`.
 
 ### 3.2 Beispiel-Settings
 
+**Sektion „Verbindung":**
+
 | Feld | Wert eintragen | Bedeutung |
 |---|---|---|
-| **Backend URL** | `http://192.168.1.20:8000` | Adresse des Servers im Heimnetz |
+| **Backend URL** | `http://192.168.1.20:8001` | Adresse des Servers im Heimnetz (Port siehe Admin) |
 | **API Key** | `7f3aXkP9...EinLangerSchluessel` | Vom Admin erhalten |
-| **Connection Timeout** | `30` | Sekunden, die das Plugin auf eine Antwort wartet |
-| **Vorschau-Qualitaet** | `JPEG 85` | Kompromiss aus Datenmenge und Qualitaet |
-| **Vorschau-Groesse** | `1024 px` | Lange Seite des hochgeladenen Bildes |
-| **Batch-Upload-Groesse** | `50` | Wie viele Bilder pro Block hochgeladen werden |
+
+**Sektion „Einstellungen":**
+
+| Feld | Wert | Bedeutung |
+|---|---|---|
+| **Timeout (Sek.)** | `600` | Sekunden, die das Plugin auf eine Antwort wartet. Auf CPU-only Servern (ohne GPU) **mindestens 600** setzen. |
+| **Vorschaugroesse (px)** | `1024` | Lange Seite des hochgeladenen JPG |
+
+**Sektion „Analyse-Optionen" (optional, nur für Feinsteuerung):**
+
+| Feld | Wert | Bedeutung |
+|---|---|---|
+| **Ollama-Modell** | (leer lassen) | Wenn leer, nutzt das Backend sein Standard-Modell. Mit `Modelle laden` kannst du die auf dem Server verfügbaren Modelle anzeigen und z.B. `llava:7b` eintragen. |
+| **Tageslicht-Fallback** | `Backend-Default verwenden` | Steuert, was passiert, wenn ein Foto **keine GPS-Daten** hat: `BAYERN` (Regensburg) oder `MUNICH` als Rückfall, oder `NONE` um dann kein Tageslicht-Keyword zu setzen. |
+
+> 💡 **Tipp:** Die Analyse-Optionen sind pro Plugin-Instanz. Du überschreibst damit nur für deine Anfragen die Backend-Defaults — andere Nutzer oder der Server selbst werden nicht beeinflusst.
 
 > 💡 **Tipp:** Klicke nach dem Eintragen auf **"Verbindung testen"** —
 > wenn alles passt, siehst du einen gruenen Haken.
@@ -145,24 +159,51 @@ Fuer die Erstverschlagwortung deines kompletten Archivs (10.000 oder
 
 ### 6.1 Welche Keywords bekomme ich?
 
-**Beispiel 1 — Landschaftsfoto mit GPS:**
-> Heidelberg, Baden-Wuerttemberg, Deutschland, Altstadt, Bruecke, Fluss,
-> Wasser, Stein, Daemmerung, Wolken, Sonnenuntergang, Architektur,
-> Stadt, Herbst
+Pro Bild bekommst du bis zu **30 Keywords**, zusammengestellt aus diesen Kategorien:
 
-**Beispiel 2 — Portraet ohne GPS:**
-> Person, Portrait, Frau, Lachen, Innenraum, Kunstlicht, Tageslicht,
-> Fenster, Hintergrund-unscharf
+| Kategorie | Herkunft | Beispielwerte |
+|---|---|---|
+| **Ort** (Ortsname, Stadt, Region, Land) | GPS → OpenStreetMap Reverse Geocoding | Heidelberg, Baden-Württemberg, Deutschland |
+| **Objekte** (max. 5) | Vision-Modell (LLaVA) | Brücke, Fluss, Person, Auto |
+| **Szene** (max. 2) | Vision-Modell | Altstadt, Strand, Wald |
+| **Umgebung** (max. 2) | Vision-Modell | Stadt, Natur, Innenraum |
+| **Tageszeit** | Vision-Modell | Morgengrauen, Mittag, Abend, Nacht |
+| **Jahreszeit** | Vision-Modell | Frühling, Sommer, Herbst, Winter |
+| **Wetter** | Vision-Modell | Sonnig, Bewölkt, Nebel, Regen |
+| **Stimmung** | Vision-Modell | Friedlich, Dramatisch, Melancholisch, Mystisch |
+| **Lichtsituation** (max. 3) | Vision-Modell | Gegenlicht, Seitenlicht, Weiches Licht, Silhouette |
+| **Perspektive** (genau 1) | Vision-Modell | Normalperspektive, Froschperspektive, Vogelperspektive |
+| **Technik** (max. 2) | Vision-Modell | Makro, Bokeh, Langzeitbelichtung, Schwarzweiss |
+| **Brennweite** | EXIF (FocalLengthIn35mmFilm) | Weitwinkel, Normalbrennweite, Teleobjektiv |
+| **Tageslichtphase** | EXIF-Zeit + GPS (Sonnenstand) | Goldene Stunde, Blaue Stunde, Tageslicht, Nacht |
 
-**Beispiel 3 — Tierfoto mit GPS:**
-> Bayern, Deutschland, Allgaeu, Tier, Kuh, Wiese, Gras, Berg, Alpen,
-> Sommer, Tag, klare-Sicht
+**Beispiel 1 — Landschaftsfoto mit GPS, am Abend mit Weitwinkel:**
+> Heidelberg, Baden-Württemberg, Deutschland, Altstadt, Brücke, Fluss,
+> Wasser, Stein, Stadt, Herbst, Abend, Bewölkt, Dramatisch,
+> **Gegenlicht**, **Hell-Dunkel**, **Normalperspektive**, **Weitwinkel**,
+> **Goldene Stunde**
+
+**Beispiel 2 — Portrait drinnen, ohne GPS:**
+> Person, Portrait, Frau, Lachen, Innenraum, Tag, Fröhlich,
+> **Kunstlicht**, **Weiches Licht**, **Normalperspektive**, **Bokeh**,
+> **Normalbrennweite**
+
+**Beispiel 3 — Blume als Makro, draußen in der Wiese:**
+> Blüte, Blume, Insekt, Wiese, Gras, Natur, Tag, Sommer, Sonnig,
+> Friedlich, **Seitenlicht**, **Weiches Licht**, **Froschperspektive**,
+> **Makro**, **Bokeh**, **Teleobjektiv**, **Tageslicht**
+
+> 💡 **Tipp:** Die Tageslichtphase (Goldene/Blaue Stunde) wird aus der
+> **EXIF-Aufnahmezeit und GPS** berechnet — nicht aus dem Bildinhalt.
+> Das ist präziser als jede Bilderkennung, funktioniert aber nur, wenn
+> dein Foto diese Daten enthält. Falls GPS fehlt, springt der in den
+> Plugin-Einstellungen gewählte **Tageslicht-Fallback** (Standard:
+> Bayern) ein.
 
 ### 6.2 Was bekomme ich NICHT
 - **Personennamen** ("Maria", "Hund Bello") — das System erkennt nur
   generische Inhalte
-- **Stimmungen** ("traurig", "romantisch") — das Plugin ist bewusst sachlich
-- **Marken/Modelle** ("Kanon EOS R5") — wird nicht aus EXIF gelesen,
+- **Marken/Modelle** ("Canon EOS R5") — wird nicht aus EXIF gelesen,
   da Lightroom das eh schon hat
 - **Englische Begriffe** — alle Keywords sind deutsch
 

@@ -42,7 +42,37 @@ OLLAMA_MODEL=llava:13b
 API_KEY=<32-byte random string>
 ```
 
-Weitere Defaults siehe `docs/installation.md` Abschnitt 2.4.
+Weitere Parameter, die typischerweise angefasst werden:
+
+```bash
+# Wie lange der Backend auf eine Ollama-Antwort wartet. Auf CPU-only
+# Systemen unbedingt hochsetzen — siehe Abschnitt 6.1.
+OLLAMA_TIMEOUT=600
+
+# Max. parallele Ollama-Requests. Ollama ist meist Shared Service —
+# zwei gleichzeitige Requests sind in der Regel ausreichend, lassen aber
+# Platz fuer andere Clients.
+OLLAMA_MAX_CONCURRENT=2
+
+# Hartes Cap fuer Keywords pro Bild. 30 ist der Default seit Einfuehrung
+# der Kategorien Lichtsituation / Perspektive / Technik / Brennweite /
+# Tageslichtphase.
+MAX_KEYWORDS=30
+
+# Fallback-Ort fuer die Sonnenstand-basierte Tageslichtphase (Goldene
+# Stunde, Blaue Stunde, Nacht, Tageslicht), wenn ein Foto keine GPS-
+# Daten hat. Zulaessige Werte:
+#   BAYERN = Regensburg (49.0134 N, 12.1016 E) — Default
+#   MUNICH = Muenchen (48.1374 N, 11.5754 E)
+#   NONE   = kein Fallback, Tageslichtphasen-Keyword entfaellt
+# Ungueltige Werte (z.B. BERLIN) werden beim per-Request-Override mit
+# HTTP 400 abgewiesen.
+SUN_CALC_DEFAULT_LOCATION=BAYERN
+```
+
+Weitere Defaults siehe `docs/installation.md` Abschnitt 2.4 und die
+vollstaendige Keyword-Kategorien-Uebersicht in `docs/tech.md` Abschnitt
+3.5.
 
 ### 2.2 Netzwerk
 
@@ -87,18 +117,33 @@ Bei `degraded` siehe `installation.md` Abschnitt 4.
 
 ## 3. Plugin-seitig: Was muss eingestellt sein
 
-> **Geplante UI-Felder im Plugin-Settings-Dialog**
+Im Lightroom-Plugin unter **Datei → Zusatzmodul-Manager → LR-AutoTag**
+gibt es drei Sektionen.
+
+**Sektion „Verbindung" — zwingend:**
 
 | Feld | Pflicht | Beispiel | Erlaeuterung |
 |---|---|---|---|
-| Backend URL | ja | `http://192.168.1.20:8000` | Vollstaendige URL inkl. Schema und Port, ohne `/api/v1` |
+| Backend URL | ja | `http://192.168.1.20:8001` | Vollstaendige URL inkl. Schema und Port, ohne `/api/v1` |
 | API Key | ja | `7f3...XYZ` | Wert aus `backend/.env` `API_KEY` |
-| Connection Timeout | nein | `30` (Sekunden) | HTTP-Timeout fuer Plugin-Requests |
-| Batch Chunk Size | nein | `50` | Wieviel Bilder das Plugin pro Aufruf hochlaedt |
-| Preview Quality | nein | `JPEG 85` | Qualitaet der hochgeladenen JPG-Vorschauen |
-| Max. Vorschau-Groesse | nein | `1024` | Lange Seite des Vorschaubilds in Pixeln |
 
-Diese Werte werden im Plugin lokal in den LR-Settings persistiert.
+**Sektion „Einstellungen":**
+
+| Feld | Pflicht | Default | Erlaeuterung |
+|---|---|---|---|
+| Timeout (Sek.) | nein | `30` | HTTP-Timeout fuer Plugin-Requests. **Auf CPU-only Servern mindestens 600 setzen**, sonst bricht das Plugin ab, bevor die Ollama-Antwort da ist. |
+| Vorschaugroesse (px) | nein | `1024` | Lange Seite des Vorschaubilds in Pixeln |
+
+**Sektion „Analyse-Optionen" — optionale per-Plugin Overrides:**
+
+| Feld | Pflicht | Beispiel | Erlaeuterung |
+|---|---|---|---|
+| Ollama-Modell | nein | leer (= Backend-Default) oder `llava:7b` | Ueberschreibt `OLLAMA_MODEL` nur fuer Requests dieses Plugin-Users. Der Button „Modelle laden" fragt `/api/v1/models` an und zeigt die auf dem Server installierten Modelle. |
+| Tageslicht-Fallback | nein | `Backend-Default verwenden` | Ueberschreibt `SUN_CALC_DEFAULT_LOCATION` (BAYERN / MUNICH / NONE) nur fuer Requests dieses Plugin-Users. Ungueltige Werte werden vom Backend mit HTTP 400 abgewiesen. |
+
+Diese Werte werden im Plugin lokal in den LR-Settings persistiert und
+auf jeder `/analyze`- und `/batch/image`-Anfrage als Form-Felder
+mitgeschickt. Wenn leer, greift der Backend-Default aus `.env`.
 
 ---
 
@@ -212,7 +257,39 @@ Wenn Ollama auch von einer anderen App genutzt wird und blockiert:
 
 ---
 
-## 6. Sicherheit
+## 6. Performance-Hinweise
+
+### 6.1 CPU-only Betrieb (kein GPU)
+
+Wenn Ollama auf CPU laeuft (z.B. waehrend die GPU wegen Hardware-Problemen
+gesperrt ist), braucht eine Einzel-Inferenz mit LLaVA 13B und dem
+vollen Prompt leicht 60–120 Sekunden — abhaengig davon, wie viele
+vCPUs der VM zugewiesen sind. Konsequenzen:
+
+- **`OLLAMA_TIMEOUT` in `backend/.env` auf mindestens `600` setzen** —
+  der Default `120` ist fuer CPU-Betrieb zu kurz und fuehrt zu
+  `httpx.ReadTimeout`
+- **Plugin-Timeout ebenfalls hochsetzen** (Default 30 s → mindestens
+  600 s), sonst bricht das Plugin ab, bevor das Backend antwortet
+- **vCPU-Zuweisung pruefen**: in `lscpu` sollte `CPU(s)` die
+  zugewiesene Anzahl zeigen. Zeigt es `1`, obwohl der Host mehr hat,
+  muss der Host-Admin die VM erweitern (`virsh setvcpus <vm> <n>`).
+
+Ein Perspektivwechsel auf ein kleineres Modell wie `llava:7b` halbiert
+die Inferenzzeit grob. Ueber die Plugin-Sektion „Analyse-Optionen"
+kann das per Plugin-User (ohne Backend-Restart) getestet werden, siehe
+Abschnitt 3.
+
+### 6.2 GPU-Betrieb
+
+Mit LLaVA 13B auf einer Nvidia P40 (24 GB VRAM) rechnet die Pipeline
+etwa **5–10 Bilder/Minute** — einige Sekunden pro Bild. In dem Regime
+ist das Backend in der Regel I/O-gebunden (Nominatim, Plugin-Upload)
+statt CPU-gebunden.
+
+---
+
+## 7. Sicherheit
 
 | Risiko | Gegenmassnahme |
 |---|---|

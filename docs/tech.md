@@ -299,6 +299,97 @@ sequenceDiagram
 
 ---
 
+## 3.5 Keyword-Kategorien und Ableitungsquellen
+
+Pro Bild liefert die Pipeline bis zu `MAX_KEYWORDS` (Default: 30)
+deduplizierte, deutsche Schlagworte. Sie stammen aus **drei getrennten
+Quellen**, die unterschiedlich zustande kommen — das ist beim Debugging
+und bei Prompt-Tuning wichtig.
+
+### 3.5.1 Vision-basierte Kategorien (Ollama/LLaVA)
+
+Werden vom Vision-Modell aus dem Bildinhalt extrahiert. Der Prompt
+(`app/pipeline/ollama_client.py`) verlangt ein reines JSON-Array und
+beschränkt die meisten Kategorien auf kontrollierte Whitelists, um
+Halluzinationen zu unterbinden.
+
+| Kategorie | Auswahl | Werte |
+|---|---|---|
+| **Objekte** | frei, max. 5 | beliebige deutsche Substantive |
+| **Szene** | frei, max. 2 | beliebige Szenebeschreibungen |
+| **Umgebung** | frei, max. 2 | beliebige Umgebungsbeschreibungen |
+| **Tageszeit** | Whitelist, 1 Wert | Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht |
+| **Jahreszeit** | Whitelist, 1 Wert | Fruehling, Sommer, Herbst, Winter |
+| **Wetter** | Whitelist, 1–2 Werte | Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst |
+| **Stimmung** | Whitelist, 1–2 Werte | Friedlich, Dramatisch, Melancholisch, Froehlich, Mystisch, Romantisch, Bedrohlich, Einsam, Lebhaft, Vertraeumt, Nostalgisch, Majestaetisch |
+| **Lichtsituation** | Whitelist, 1–3 Werte | Frontlicht, Seitenlicht, Gegenlicht, Kantenlicht, Oberlicht, Natuerliches Licht, Kunstlicht, Mischlicht, Hartes Licht, Weiches Licht, Diffuses Licht, High-Key, Low-Key, Hell-Dunkel, Silhouette, Lichtstrahlen |
+| **Perspektive** | Whitelist, genau 1 | Normalperspektive, Aufsicht, Vogelperspektive, Draufsicht, Untersicht, Froschperspektive, Schraegsicht |
+| **Technik** | Whitelist, 0–2 Werte | Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Schwarzweiss, Infrarot |
+
+> **Hintergrund zu den Whitelists:** Lichtsituation, Perspektive und
+> Technik folgen etablierter Foto-/Filmterminologie (Drei-Punkt-
+> Beleuchtung, DE-Wikipedia "Kameraperspektive", PhotoPills). „Goldene
+> Stunde" und „Blaue Stunde" stehen bewusst **nicht** in der Whitelist —
+> LLaVA kann warmes Innenraumlicht nicht zuverlaessig von echtem Sonnenstand
+> unterscheiden, das wird deshalb in 3.5.3 berechnet.
+
+### 3.5.2 EXIF-basierte Kategorien (kein Ollama)
+
+Werden in `app/pipeline/focal_length_classifier.py` aus dem EXIF-Header
+der Originalbytes gelesen (vor dem Resize, der EXIF zerstoert).
+
+| Kategorie | Quelle | Ableitung |
+|---|---|---|
+| **Brennweite** | EXIF `FocalLengthIn35mmFilm` (oder `FocalLength` + Sensor-Geometrie) | `< 24 mm` → Superweitwinkel, `< 35 mm` → Weitwinkel, `< 70 mm` → Normalbrennweite, `≤ 200 mm` → Teleobjektiv, `> 200 mm` → Supertele |
+
+Fehlt die Brennweite im EXIF, entfaellt das Keyword.
+
+### 3.5.3 Zeit-/GPS-basierte Kategorien (astral)
+
+Berechnet in `app/pipeline/sun_calculator.py` aus Zeit + Ort. Zeit kommt
+aus EXIF `DateTimeOriginal`, der Zeitzonenanker bevorzugt aus EXIF
+`OffsetTimeOriginal`, sonst Europe/Berlin als Default. GPS aus den
+Plugin-Parametern oder EXIF.
+
+| Kategorie | Ableitung |
+|---|---|
+| **Tageslichtphase** | Sonnen-Elevation via `astral.sun.elevation(observer, when)` → ≥ +6° = Tageslicht, −4° bis +6° = Goldene Stunde, −6° bis −4° = Blaue Stunde, < −6° = Nacht |
+| **Ort** (Ortsname, Stadt, Region, Land) | GPS → Nominatim `/reverse?accept-language=de` → `geo_keywords` aus `address.{suburb, village, city, county, state, country}` |
+
+**Fallback-Verhalten** bei fehlendem GPS:
+- `SUN_CALC_DEFAULT_LOCATION=BAYERN` → Regensburg (49.0134° N, 12.1016° E)
+- `SUN_CALC_DEFAULT_LOCATION=MUNICH` → München (48.1374° N, 11.5754° E)
+- `SUN_CALC_DEFAULT_LOCATION=NONE` → kein Tageslichtphasen-Keyword
+
+Fehlt die Aufnahmezeit, entfaellt die Tageslichtphase in jedem Fall —
+fuer „wann wurde das Foto gemacht" gibt es keinen sinnvollen Default.
+
+### 3.5.4 Kombinationslogik
+
+`_combine_keywords()` in `keyword_pipeline.py` mergt in dieser
+Prioritaetsreihenfolge, case-insensitive dedupliziert:
+
+1. **Geo-Keywords** (hoechstes Vertrauen — exakter Ortsname)
+2. **Derived-Keywords** (EXIF + Sonnenstand, exakt berechnet)
+3. **Vision-Keywords** (Modell-Interpretation)
+
+Danach Cap auf `settings.max_keywords` (Default 30).
+
+### 3.5.5 Per-Request Overrides
+
+Plugin und andere API-Clients koennen pro `/analyze` oder
+`/batch/image` Request zwei Form-Felder setzen, die die
+Backend-Defaults fuer genau diesen Request ueberschreiben:
+
+- `ollama_model` — z.B. `llava:7b` statt des konfigurierten Standards
+- `sun_calc_location` — `BAYERN` / `MUNICH` / `NONE`
+
+Unbekannte `sun_calc_location`-Werte werden von der Route mit
+**HTTP 400** abgewiesen. Unbekannte Modelle fuehren zum Ollama-Fehler
+zur Laufzeit und landen als `500` beim Client.
+
+---
+
 ## 4. Datenmodell
 
 ### 4.1 Tabellen
