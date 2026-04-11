@@ -13,15 +13,23 @@ logger = logging.getLogger(__name__)
 VISION_PROMPT = (
     "Analysiere dieses Foto und gib deutsche Schlagworte zurueck.\n"
     "Kategorien:\n"
-    "- Objekte: frei waehlbar\n"
-    "- Szene: frei waehlbar\n"
-    "- Umgebung: frei waehlbar\n"
+    "- Objekte: frei waehlbar, MAXIMAL 5\n"
+    "- Szene: frei waehlbar, max 2\n"
+    "- Umgebung: frei waehlbar, max 2\n"
     "- Tageszeit: Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht\n"
     "- Jahreszeit: Fruehling, Sommer, Herbst, Winter\n"
     "- Wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst\n"
     "- Stimmung: Friedlich, Dramatisch, Melancholisch, Froehlich, Mystisch, Romantisch, "
     "Bedrohlich, Einsam, Lebhaft, Vertraeumt, Nostalgisch, Majestaetisch\n"
-    "Fuer Tageszeit, Jahreszeit, Wetter und Stimmung NUR Werte aus der jeweiligen Liste verwenden.\n"
+    "- Lichtsituation (max 3): Frontlicht, Seitenlicht, Gegenlicht, Kantenlicht, Oberlicht, "
+    "Natuerliches Licht, Kunstlicht, Mischlicht, Hartes Licht, Weiches Licht, Diffuses Licht, "
+    "High-Key, Low-Key, Hell-Dunkel, Silhouette, Lichtstrahlen\n"
+    "- Perspektive (genau 1): Normalperspektive, Aufsicht, Vogelperspektive, Draufsicht, "
+    "Untersicht, Froschperspektive, Schraegsicht\n"
+    "- Technik (max 2): Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, "
+    "Schwarzweiss, Infrarot\n"
+    "Fuer alle Whitelist-Kategorien (Tageszeit, Jahreszeit, Wetter, Stimmung, "
+    "Lichtsituation, Perspektive, Technik) NUR Werte aus der jeweiligen Liste verwenden.\n"
     "Format: JSON-Array mit maximal {max_keywords} Keywords.\n"
     "Antworte NUR mit dem JSON-Array, kein weiterer Text."
 )
@@ -51,12 +59,25 @@ class OllamaClient:
         except Exception:
             return False
 
-    async def analyze_image(self, image_data: bytes) -> list[str]:
+    async def list_models(self) -> list[str]:
+        """Return model names available on the Ollama server, alphabetically."""
+        try:
+            async with httpx.AsyncClient() as client:
+                resp = await client.get(f"{self.base_url}/api/tags", timeout=5)
+                resp.raise_for_status()
+                data = resp.json()
+        except Exception as e:
+            logger.warning("Failed to fetch Ollama model list: %s", e)
+            return []
+        names = [m.get("name") for m in data.get("models", []) if m.get("name")]
+        return sorted(names)
+
+    async def analyze_image(self, image_data: bytes, model: str | None = None) -> list[str]:
         b64_image = base64.b64encode(image_data).decode("utf-8")
         prompt = VISION_PROMPT.format(max_keywords=settings.max_keywords)
 
         payload = {
-            "model": self.model,
+            "model": model or self.model,
             "prompt": prompt,
             "images": [b64_image],
             "stream": False,

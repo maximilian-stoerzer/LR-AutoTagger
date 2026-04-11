@@ -114,14 +114,16 @@ async def test_case_insensitive_dedup(pipeline, mock_repo, sample_jpeg):
 
 # U-KWP-05
 @pytest.mark.asyncio
-async def test_combined_keywords_capped_at_25(pipeline, mock_repo, sample_jpeg):
+async def test_combined_keywords_capped_at_max(pipeline, mock_repo, sample_jpeg):
+    from app.config import settings
+
     with patch("app.pipeline.keyword_pipeline.resize_for_analysis", return_value=b"resized"):
         pipeline.ollama = AsyncMock()
-        pipeline.ollama.analyze_image = AsyncMock(return_value=[f"vision_{i}" for i in range(20)])
+        pipeline.ollama.analyze_image = AsyncMock(return_value=[f"vision_{i}" for i in range(25)])
         pipeline.geocoder = AsyncMock()
         pipeline.geocoder.reverse = AsyncMock(
             return_value={
-                "geo_keywords": [f"geo_{i}" for i in range(20)],
+                "geo_keywords": [f"geo_{i}" for i in range(25)],
                 "location_name": "Test",
             }
         )
@@ -129,7 +131,7 @@ async def test_combined_keywords_capped_at_25(pipeline, mock_repo, sample_jpeg):
 
         result = await pipeline.analyze_single(sample_jpeg, gps_lat=1.0, gps_lon=1.0)
 
-        assert len(result["keywords"]) <= 25
+        assert len(result["keywords"]) <= settings.max_keywords
 
 
 # U-KWP-06

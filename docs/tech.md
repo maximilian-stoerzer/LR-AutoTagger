@@ -75,13 +75,15 @@ sequenceDiagram
 
     User->>LR: Bild auswaehlen + "Auto-Tag"
     LR->>LR: Export JPG-Vorschau (max 1024px)
-    LR->>API: POST /api/v1/analyze<br/>(file, gps_lat, gps_lon, image_id)
+    LR->>API: POST /api/v1/analyze<br/>(file, gps_lat, gps_lon, image_id,<br/>ollama_model?, sun_calc_location?)
     activate API
     Note over API: API-Key-Middleware prueft<br/>X-API-Key Header
 
-    API->>Pipe: analyze_single(image_data, gps, image_id)
+    API->>Pipe: analyze_single(image_data, gps, image_id,<br/>ollama_model, sun_calc_location)
     activate Pipe
 
+    Pipe->>Pipe: exif_extractor.extract(raw bytes)<br/>(datetime, GPS, focal_length_35mm)
+    Note over Pipe: GPS-Fallback: Parameter -> EXIF
     Pipe->>Img: resize_for_analysis(image_data)
     Img-->>Pipe: resized JPG bytes
 
@@ -95,7 +97,7 @@ sequenceDiagram
         Note over Pipe: geo_keywords = []
     end
 
-    Pipe->>Oll: analyze_image(resized)
+    Pipe->>Oll: analyze_image(resized, model override?)
     activate Oll
     Note over Oll: Semaphore (max 2 parallel)
     Oll->>Llava: POST /api/generate<br/>(prompt + base64 image)
@@ -104,7 +106,9 @@ sequenceDiagram
     Oll-->>Pipe: vision_keywords
     deactivate Oll
 
-    Pipe->>Pipe: _combine_keywords(vision, geo)<br/>(dedupe case-insensitive,<br/> geo first, max 25)
+    Pipe->>Pipe: focal_length_classifier.classify(f35)<br/>(Brennweiten-Keyword)
+    Pipe->>Pipe: sun_calculator.classify(time, gps)<br/>(Tageslichtphase via astral)
+    Pipe->>Pipe: _combine_keywords(vision, geo, derived)<br/>(dedupe case-insensitive,<br/> geo > derived > vision, max 30)
 
     Pipe->>Repo: save_image_keywords(...)
     Repo->>DB: INSERT ... ON CONFLICT DO UPDATE

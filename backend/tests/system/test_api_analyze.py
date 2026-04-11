@@ -1,4 +1,4 @@
-"""System tests for POST /api/v1/analyze — S-ANL-01 to S-ANL-06."""
+"""System tests for POST /api/v1/analyze — S-ANL-01 to S-ANL-08."""
 
 import io
 
@@ -60,3 +60,26 @@ def test_analyze_response_format(client, auth_headers, sample_jpeg):
     assert "vision_keywords" in data
     assert "location_name" in data
     assert isinstance(data["keywords"], list)
+
+
+# S-ANL-07
+def test_analyze_rejects_invalid_sun_calc_location(client, auth_headers, sample_jpeg):
+    resp = client.post(
+        "/api/v1/analyze",
+        headers=auth_headers,
+        files={"file": ("test.jpg", io.BytesIO(sample_jpeg), "image/jpeg")},
+        data={"sun_calc_location": "BERLIN"},
+    )
+    assert resp.status_code == 400
+    assert "sun_calc_location" in resp.json()["detail"]
+
+
+# S-ANL-08
+def test_analyze_accepts_valid_sun_calc_location(client, auth_headers, sample_jpeg):
+    resp = client.post(
+        "/api/v1/analyze",
+        headers=auth_headers,
+        files={"file": ("test.jpg", io.BytesIO(sample_jpeg), "image/jpeg")},
+        data={"sun_calc_location": "MUNICH"},
+    )
+    assert resp.status_code == 200

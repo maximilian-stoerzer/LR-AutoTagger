@@ -1,10 +1,11 @@
 from typing import Annotated
 
-from fastapi import APIRouter, File, Form, Request, UploadFile
+from fastapi import APIRouter, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import JSONResponse
 
 from app.pipeline.keyword_pipeline import KeywordPipeline
 from app.pipeline.ollama_client import OllamaClient
+from app.pipeline.sun_calculator import VALID_LOCATIONS as SUN_CALC_VALID_LOCATIONS
 from app.services.job_manager import JobManager
 
 router = APIRouter()
@@ -12,6 +13,17 @@ router = APIRouter()
 
 def _repo(request: Request):
     return request.app.state.repo
+
+
+def _validate_sun_calc_location(value: str | None) -> str | None:
+    if value is None:
+        return None
+    if value not in SUN_CALC_VALID_LOCATIONS:
+        raise HTTPException(
+            status_code=400,
+            detail=f"sun_calc_location must be one of {sorted(SUN_CALC_VALID_LOCATIONS)}",
+        )
+    return value
 
 
 # --- Health ---
@@ -32,6 +44,18 @@ async def health(request: Request):
     }
 
 
+# --- Models ---
+
+
+@router.get("/models")
+async def models():
+    """List installed Ollama models (used by the plugin to populate the
+    model picker in its settings dialog)."""
+    ollama = OllamaClient()
+    names = await ollama.list_models()
+    return {"models": names}
+
+
 # --- Single Image Analysis ---
 
 
@@ -42,7 +66,10 @@ async def analyze(
     gps_lat: float | None = Form(None),
     gps_lon: float | None = Form(None),
     image_id: str | None = Form(None),
+    ollama_model: str | None = Form(None),
+    sun_calc_location: str | None = Form(None),
 ):
+    sun_calc_location = _validate_sun_calc_location(sun_calc_location)
     repo = _repo(request)
     image_data = await file.read()
 
@@ -52,6 +79,8 @@ async def analyze(
         gps_lat=gps_lat,
         gps_lon=gps_lon,
         image_id=image_id,
+        ollama_model=ollama_model,
+        sun_calc_location=sun_calc_location,
     )
     return result
 
@@ -99,8 +128,11 @@ async def batch_image(
     file: UploadFile = File(...),
     gps_lat: float | None = Form(None),
     gps_lon: float | None = Form(None),
+    ollama_model: str | None = Form(None),
+    sun_calc_location: str | None = Form(None),
 ):
     """Plugin uploads a single image for the active batch job. Backend processes it immediately."""
+    sun_calc_location = _validate_sun_calc_location(sun_calc_location)
     repo = _repo(request)
     manager = JobManager(repo)
 
@@ -123,6 +155,8 @@ async def batch_image(
         gps_lat=gps_lat,
         gps_lon=gps_lon,
         image_id=image_id,
+        ollama_model=ollama_model,
+        sun_calc_location=sun_calc_location,
     )
 
     # Update batch progress (raises if validation regresses, but we already checked above)

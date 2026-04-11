@@ -100,6 +100,58 @@ def sample_jpeg_with_exif_rotation() -> bytes:
     return buf.getvalue()
 
 
+def _make_jpeg_with_exif(
+    focal_35mm: int | None = None,
+    datetime_original: str | None = None,
+    offset_time_original: str | None = None,
+    gps_lat: float | None = None,
+    gps_lon: float | None = None,
+) -> bytes:
+    """Build a small JPEG with the requested EXIF fields populated.
+
+    Helper for EXIF-extractor and pipeline tests — writes ExifIFD
+    (DateTimeOriginal, FocalLengthIn35mmFilm, OffsetTimeOriginal) and the
+    GPS IFD. GPS coordinates are stored as DMS rationals via
+    ``IFDRational`` because Pillow's TIFF writer otherwise chokes on raw
+    nested tuples.
+    """
+    from PIL import ExifTags
+    from PIL.TiffImagePlugin import IFDRational
+
+    def _to_dms(v: float) -> tuple[IFDRational, IFDRational, IFDRational]:
+        deg = int(abs(v))
+        m_full = (abs(v) - deg) * 60
+        minute = int(m_full)
+        sec = (m_full - minute) * 60
+        return (IFDRational(deg, 1), IFDRational(minute, 1), IFDRational(sec))
+
+    img = Image.new("RGB", (64, 48), (100, 100, 100))
+    exif = img.getexif()
+    exif_ifd = exif.get_ifd(0x8769)  # ExifOffset → ExifIFD
+    if focal_35mm is not None:
+        exif_ifd[ExifTags.Base.FocalLengthIn35mmFilm.value] = focal_35mm
+    if datetime_original is not None:
+        exif_ifd[ExifTags.Base.DateTimeOriginal.value] = datetime_original
+    if offset_time_original is not None:
+        exif_ifd[ExifTags.Base.OffsetTimeOriginal.value] = offset_time_original
+    if gps_lat is not None and gps_lon is not None:
+        gps = exif.get_ifd(ExifTags.IFD.GPSInfo)
+        gps[1] = "N" if gps_lat >= 0 else "S"
+        gps[2] = _to_dms(gps_lat)
+        gps[3] = "E" if gps_lon >= 0 else "W"
+        gps[4] = _to_dms(gps_lon)
+
+    buf = io.BytesIO()
+    img.save(buf, format="JPEG", quality=85, exif=exif)
+    return buf.getvalue()
+
+
+@pytest.fixture
+def jpeg_factory():
+    """Factory fixture so tests can construct JPEGs with custom EXIF."""
+    return _make_jpeg_with_exif
+
+
 @pytest.fixture
 def corrupt_image() -> bytes:
     """Random bytes that are not a valid image."""

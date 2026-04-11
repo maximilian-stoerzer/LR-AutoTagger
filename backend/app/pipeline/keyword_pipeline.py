@@ -1,7 +1,9 @@
+import asyncio
 import logging
 
 from app.config import settings
 from app.db.repository import Repository
+from app.pipeline import exif_extractor, focal_length_classifier, sun_calculator
 from app.pipeline.geocoder import Geocoder
 from app.pipeline.image_processor import resize_for_analysis
 from app.pipeline.ollama_client import OllamaClient
@@ -21,30 +23,73 @@ class KeywordPipeline:
         gps_lat: float | None = None,
         gps_lon: float | None = None,
         image_id: str | None = None,
+        ollama_model: str | None = None,
+        sun_calc_location: str | None = None,
     ) -> dict:
-        """Full pipeline for a single image: resize → geocode → vision → combine."""
+        """Full pipeline for a single image: EXIF → resize → (geocode ∥ vision) →
+        focal length → sun phase → combine.
 
-        # 1. Resize
+        ``ollama_model`` overrides the configured Ollama model for this one
+        request; ``sun_calc_location`` overrides the SUN_CALC_DEFAULT_LOCATION
+        for this one request (accepts BAYERN, MUNICH, NONE).
+        """
+
+        # Extract EXIF from the ORIGINAL bytes before resize re-encodes the
+        # image and strips the EXIF block.
+        exif = exif_extractor.extract(image_data)
+
+        # GPS fallback order: explicit parameter → EXIF.
+        if gps_lat is None or gps_lon is None:
+            gps_lat = exif.gps_lat
+            gps_lon = exif.gps_lon
+
         resized = resize_for_analysis(image_data)
 
-        # 2. Reverse Geocoding (if GPS available)
-        geo_result = None
+        # Geocoding and vision are fully independent — one hits Nominatim,
+        # the other hits Ollama. Run them in parallel; vision is the
+        # multi-second bottleneck so we save the geocode round-trip entirely.
+        geo_task = (
+            self.geocoder.reverse(gps_lat, gps_lon)
+            if gps_lat is not None and gps_lon is not None
+            else None
+        )
+        vision_task = self.ollama.analyze_image(resized, model=ollama_model)
+
+        if geo_task is not None:
+            geo_result, vision_keywords = await asyncio.gather(
+                geo_task, vision_task, return_exceptions=True
+            )
+            if isinstance(geo_result, BaseException):
+                logger.warning("Reverse geocoding failed: %s", geo_result)
+                geo_result = None
+            if isinstance(vision_keywords, BaseException):
+                raise vision_keywords
+        else:
+            geo_result = None
+            vision_keywords = await vision_task
+
         geo_keywords: list[str] = []
         location_name = None
+        if geo_result:
+            geo_keywords = geo_result.get("geo_keywords", [])
+            location_name = geo_result.get("location_name")
 
-        if gps_lat is not None and gps_lon is not None:
-            geo_result = await self.geocoder.reverse(gps_lat, gps_lon)
-            if geo_result:
-                geo_keywords = geo_result.get("geo_keywords", [])
-                location_name = geo_result.get("location_name")
+        # Derived keywords: cheap local computations (EXIF metadata).
+        derived_keywords: list[str] = []
+        focal_kw = focal_length_classifier.classify(exif.focal_length_35mm)
+        if focal_kw:
+            derived_keywords.append(focal_kw)
+        sun_kw = sun_calculator.classify(
+            exif.datetime_original,
+            gps_lat,
+            gps_lon,
+            default_location=sun_calc_location or settings.sun_calc_default_location,
+        )
+        if sun_kw:
+            derived_keywords.append(sun_kw)
 
-        # 3. Vision Analysis
-        vision_keywords = await self.ollama.analyze_image(resized)
+        keywords = self._combine_keywords(vision_keywords, geo_keywords, derived_keywords)
 
-        # 4. Combine & deduplicate
-        keywords = self._combine_keywords(vision_keywords, geo_keywords)
-
-        # 5. Persist if image_id provided
         if image_id:
             await self.repo.save_image_keywords(
                 image_id=image_id,
@@ -54,7 +99,7 @@ class KeywordPipeline:
                 gps_lat=gps_lat,
                 gps_lon=gps_lon,
                 location_name=location_name,
-                model_used=settings.ollama_model,
+                model_used=ollama_model or settings.ollama_model,
             )
 
         return {
@@ -62,26 +107,30 @@ class KeywordPipeline:
             "keywords": keywords,
             "geo_keywords": geo_keywords,
             "vision_keywords": vision_keywords,
+            "derived_keywords": derived_keywords,
             "location_name": location_name,
         }
 
-    def _combine_keywords(self, vision: list[str], geo: list[str]) -> list[str]:
-        """Merge vision and geo keywords, deduplicate case-insensitively."""
+    def _combine_keywords(
+        self,
+        vision: list[str],
+        geo: list[str],
+        derived: list[str],
+    ) -> list[str]:
+        """Merge vision, geo and derived keywords, deduplicate case-insensitively.
+
+        Order: geo (high confidence, location) → derived (EXIF + sun, exact) →
+        vision (bulk of the content). Deduplication keeps the first
+        occurrence, so earlier sources win when spellings collide.
+        """
         seen: set[str] = set()
         result: list[str] = []
 
-        # Geo keywords first (high confidence)
-        for kw in geo:
-            key = kw.lower().strip()
-            if key and key not in seen:
-                seen.add(key)
-                result.append(kw.strip())
-
-        # Then vision keywords
-        for kw in vision:
-            key = kw.lower().strip()
-            if key and key not in seen:
-                seen.add(key)
-                result.append(kw.strip())
+        for source in (geo, derived, vision):
+            for kw in source:
+                key = kw.lower().strip()
+                if key and key not in seen:
+                    seen.add(key)
+                    result.append(kw.strip())
 
         return result[: settings.max_keywords]

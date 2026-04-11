@@ -32,13 +32,15 @@ def test_parse_json_in_markdown_codeblock(client):
 
 
 # U-OLL-03
-def test_parse_more_than_25_keywords_truncated(client):
-    keywords = [f"keyword_{i}" for i in range(30)]
+def test_parse_more_than_max_keywords_truncated(client):
+    from app.config import settings
+
+    keywords = [f"keyword_{i}" for i in range(settings.max_keywords + 10)]
     import json
 
     raw = json.dumps(keywords)
     result = client._parse_keywords(raw)
-    assert len(result) == 25
+    assert len(result) == settings.max_keywords
 
 
 # U-OLL-04

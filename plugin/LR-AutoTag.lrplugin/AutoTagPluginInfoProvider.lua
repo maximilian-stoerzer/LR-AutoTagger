@@ -24,8 +24,11 @@ function InfoProvider.sectionsForTopOfDialog(f, properties)
     if not prefs.apiKey then prefs.apiKey = "" end
     if not prefs.connectionTimeout then prefs.connectionTimeout = 30 end
     if not prefs.previewSize then prefs.previewSize = 1024 end
+    if not prefs.ollamaModel then prefs.ollamaModel = "" end
+    if not prefs.sunCalcLocation then prefs.sunCalcLocation = "" end
+    -- Cache for model list; fetched on demand. Empty string = "use backend default".
+    if not prefs.ollamaModelList then prefs.ollamaModelList = "" end
 
-    -- Observable property for connection test result
     local bind = LrView.bind
 
     return {
@@ -155,6 +158,90 @@ function InfoProvider.sectionsForTopOfDialog(f, properties)
                 },
                 f:static_text {
                     title = "Maximale lange Seite der JPG-Vorschau für den Upload.",
+                    text_color = LrColor(0.5, 0.5, 0.5),
+                },
+            },
+        },
+
+        {
+            title = "LR-AutoTag — Analyse-Optionen",
+            synopsis = (prefs.ollamaModel ~= "" and prefs.ollamaModel or "Modell: Backend-Default")
+                .. "  ·  "
+                .. "Fallback: " .. (prefs.sunCalcLocation ~= "" and prefs.sunCalcLocation or "Backend-Default"),
+
+            f:row {
+                spacing = f:control_spacing(),
+                f:static_text {
+                    title = "Ollama-Modell:",
+                    alignment = "right",
+                    width = LrView.share "label_width",
+                },
+                f:combo_box {
+                    value = bind { key = "ollamaModel", object = prefs },
+                    items = {}, -- filled on demand via "Modelle laden"
+                    width_in_chars = 30,
+                    tooltip = "Leer lassen, um das im Backend konfigurierte Standard-Modell zu verwenden. "
+                        .. "Sonst muss es ein auf dem Ollama-Server verfügbares Vision-Modell sein "
+                        .. "(z.B. llava:13b, llava:7b).",
+                },
+                f:push_button {
+                    title = "Modelle laden",
+                    action = function()
+                        LrTasks.startAsyncTask(function()
+                            log("[settings] Modelle laden")
+                            local data, err = apiClient.listModels()
+                            if err then
+                                logErr("[settings] Modelle laden fehlgeschlagen: %s", err)
+                                LrDialogs.message("Fehler", "Modelle konnten nicht abgerufen werden:\n" .. err, "critical")
+                                return
+                            end
+                            local list = (data and data.models) or {}
+                            if #list == 0 then
+                                LrDialogs.message("Keine Modelle", "Der Ollama-Server hat keine Modelle gemeldet.", "warning")
+                                return
+                            end
+                            prefs.ollamaModelList = table.concat(list, ",")
+                            LrDialogs.message(
+                                "Modelle geladen",
+                                "Verfügbare Modelle (" .. #list .. "):\n\n" .. table.concat(list, "\n")
+                                    .. "\n\nBitte gewünschtes Modell in das Feld eintragen (leer = Backend-Default).",
+                                "info"
+                            )
+                        end)
+                    end,
+                },
+            },
+
+            f:row {
+                spacing = f:control_spacing(),
+                f:static_text {
+                    title = "Tageslicht-Fallback:",
+                    alignment = "right",
+                    width = LrView.share "label_width",
+                },
+                f:popup_menu {
+                    value = bind { key = "sunCalcLocation", object = prefs },
+                    items = {
+                        { title = "Backend-Default verwenden", value = "" },
+                        { title = "BAYERN (Regensburg) — Standard", value = "BAYERN" },
+                        { title = "MUNICH (München)", value = "MUNICH" },
+                        { title = "NONE (kein Fallback ohne GPS)", value = "NONE" },
+                    },
+                    width_in_chars = 30,
+                    tooltip = "Wenn ein Foto keine GPS-Daten hat, wird für die Sonnenstand-Berechnung "
+                        .. "(Goldene/Blaue Stunde etc.) diese Fallback-Position benutzt. "
+                        .. "NONE liefert dann gar kein Tageslicht-Keyword.",
+                },
+            },
+
+            f:row {
+                spacing = f:control_spacing(),
+                f:static_text {
+                    title = "",
+                    width = LrView.share "label_width",
+                },
+                f:static_text {
+                    title = "Diese Optionen überschreiben die Backend-Defaults nur für Anfragen dieses Plugins.",
                     text_color = LrColor(0.5, 0.5, 0.5),
                 },
             },

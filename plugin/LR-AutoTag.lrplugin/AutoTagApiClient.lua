@@ -193,9 +193,27 @@ local function getPrefs()
         url = prefs.backendUrl or "",
         apiKey = prefs.apiKey or "",
         timeout = prefs.connectionTimeout or 30,
+        ollamaModel = prefs.ollamaModel or "",
+        sunCalcLocation = prefs.sunCalcLocation or "",
     }
-    logDebug("getPrefs: url=%s, timeout=%d, apiKey=%s", cfg.url, cfg.timeout, cfg.apiKey ~= "" and "(set)" or "(empty)")
+    logDebug("getPrefs: url=%s, timeout=%d, apiKey=%s, model=%s, location=%s",
+        cfg.url, cfg.timeout,
+        cfg.apiKey ~= "" and "(set)" or "(empty)",
+        cfg.ollamaModel ~= "" and cfg.ollamaModel or "(backend default)",
+        cfg.sunCalcLocation ~= "" and cfg.sunCalcLocation or "(backend default)")
     return cfg
+end
+
+-- Inject optional per-request overrides (model, sun-calc location) into the
+-- multipart form fields so the backend uses them instead of its .env defaults.
+local function addOverrideFields(fields, prefs)
+    if prefs.ollamaModel and prefs.ollamaModel ~= "" then
+        fields.ollama_model = prefs.ollamaModel
+    end
+    if prefs.sunCalcLocation and prefs.sunCalcLocation ~= "" then
+        fields.sun_calc_location = prefs.sunCalcLocation
+    end
+    return fields
 end
 
 local function apiUrl(path)
@@ -265,18 +283,18 @@ end
 
 function ApiClient.analyzeImage(filePath, imageId, gpsLat, gpsLon)
     log("[analyze] imageId=%s, gpsLat=%s, gpsLon=%s, file=%s", tostring(imageId), tostring(gpsLat), tostring(gpsLon), tostring(filePath))
-    local fields = {
+    local prefs = getPrefs()
+    local fields = addOverrideFields({
         image_id = imageId,
         gps_lat = gpsLat,
         gps_lon = gpsLon,
-    }
+    }, prefs)
     local files = {
         { name = "file", filename = "preview.jpg", path = filePath },
     }
     local reqBody, contentType = multipart.build(fields, files)
     logDebug("[analyze] Multipart body size=%d bytes", #reqBody)
 
-    local prefs = getPrefs()
     local hdrs = {
         { field = "X-API-Key", value = prefs.apiKey },
         { field = "Content-Type", value = contentType },
@@ -304,18 +322,18 @@ end
 
 function ApiClient.batchImage(filePath, imageId, gpsLat, gpsLon)
     log("[batch/image] imageId=%s, gpsLat=%s, gpsLon=%s, file=%s", tostring(imageId), tostring(gpsLat), tostring(gpsLon), tostring(filePath))
-    local fields = {
+    local prefs = getPrefs()
+    local fields = addOverrideFields({
         image_id = imageId,
         gps_lat = gpsLat,
         gps_lon = gpsLon,
-    }
+    }, prefs)
     local files = {
         { name = "file", filename = "preview.jpg", path = filePath },
     }
     local reqBody, contentType = multipart.build(fields, files)
     logDebug("[batch/image] Multipart body size=%d bytes", #reqBody)
 
-    local prefs = getPrefs()
     local hdrs = {
         { field = "X-API-Key", value = prefs.apiKey },
         { field = "Content-Type", value = contentType },
@@ -347,6 +365,12 @@ function ApiClient.batchCancel()
     logWarn("[batch/cancel] Cancel requested")
     local body, headers = LrHttp.post(apiUrl("/batch/cancel"), "", jsonHeaders(), "POST", getPrefs().timeout)
     return handleResponse(body, headers, "batch/cancel")
+end
+
+function ApiClient.listModels()
+    log("[models] GET %s", apiUrl("/models"))
+    local body, headers = LrHttp.get(apiUrl("/models"), authHeaders())
+    return handleResponse(body, headers, "models")
 end
 
 return ApiClient
