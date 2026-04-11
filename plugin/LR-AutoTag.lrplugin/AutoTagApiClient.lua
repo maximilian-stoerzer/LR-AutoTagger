@@ -1,7 +1,15 @@
 local LrHttp = import "LrHttp"
 local LrPrefs = import "LrPrefs"
+local LrLogger = import "LrLogger"
 
 local multipart = require "AutoTagMultipart"
+
+local logger = LrLogger("LR-AutoTag")
+logger:enable("logfile")
+local log = logger:quickf("info")
+local logWarn = logger:quickf("warn")
+local logErr = logger:quickf("error")
+local logDebug = logger:quickf("debug")
 
 local ApiClient = {}
 
@@ -181,11 +189,13 @@ end
 
 local function getPrefs()
     local prefs = LrPrefs.prefsForPlugin()
-    return {
+    local cfg = {
         url = prefs.backendUrl or "",
         apiKey = prefs.apiKey or "",
         timeout = prefs.connectionTimeout or 30,
     }
+    logDebug("getPrefs: url=%s, timeout=%d, apiKey=%s", cfg.url, cfg.timeout, cfg.apiKey ~= "" and "(set)" or "(empty)")
+    return cfg
 end
 
 local function apiUrl(path)
@@ -209,22 +219,33 @@ local function jsonHeaders()
     }
 end
 
-local function handleResponse(body, headers)
+local function handleResponse(body, headers, context)
+    context = context or "unknown"
     if not body then
+        logErr("[%s] Keine Antwort vom Backend (body=nil)", context)
         return nil, "Keine Antwort vom Backend"
     end
 
     local status = headers and headers.status
-    local data = JSON.decode(body)
+    logDebug("[%s] Response status=%s, body length=%d", context, tostring(status), #body)
+    logDebug("[%s] Response body: %s", context, #body <= 2000 and body or body:sub(1, 2000) .. "...(truncated)")
+
+    local ok, data = pcall(JSON.decode, body)
+    if not ok then
+        logErr("[%s] JSON decode failed: %s", context, tostring(data))
+        return nil, "JSON-Parsing fehlgeschlagen: " .. tostring(data)
+    end
 
     if status and status >= 400 then
         local msg = "HTTP " .. tostring(status)
         if data and data.detail then
             msg = msg .. ": " .. tostring(data.detail)
         end
+        logErr("[%s] HTTP error: %s", context, msg)
         return nil, msg
     end
 
+    log("[%s] Request erfolgreich (status=%s)", context, tostring(status))
     return data, nil
 end
 
@@ -235,13 +256,15 @@ end
 function ApiClient.checkHealth()
     local prefs = getPrefs()
     local url = prefs.url:gsub("/$", "") .. "/api/v1/health"
+    log("[health] GET %s", url)
     local body, headers = LrHttp.get(url, {
         { field = "X-API-Key", value = prefs.apiKey },
     })
-    return handleResponse(body, headers)
+    return handleResponse(body, headers, "health")
 end
 
 function ApiClient.analyzeImage(filePath, imageId, gpsLat, gpsLon)
+    log("[analyze] imageId=%s, gpsLat=%s, gpsLon=%s, file=%s", tostring(imageId), tostring(gpsLat), tostring(gpsLon), tostring(filePath))
     local fields = {
         image_id = imageId,
         gps_lat = gpsLat,
@@ -251,6 +274,7 @@ function ApiClient.analyzeImage(filePath, imageId, gpsLat, gpsLon)
         { name = "file", filename = "preview.jpg", path = filePath },
     }
     local reqBody, contentType = multipart.build(fields, files)
+    logDebug("[analyze] Multipart body size=%d bytes", #reqBody)
 
     local prefs = getPrefs()
     local hdrs = {
@@ -258,22 +282,28 @@ function ApiClient.analyzeImage(filePath, imageId, gpsLat, gpsLon)
         { field = "Content-Type", value = contentType },
     }
 
-    local body, headers = LrHttp.post(apiUrl("/analyze"), reqBody, hdrs, "POST", prefs.timeout)
-    return handleResponse(body, headers)
+    local url = apiUrl("/analyze")
+    log("[analyze] POST %s (timeout=%d)", url, prefs.timeout)
+    local body, headers = LrHttp.post(url, reqBody, hdrs, "POST", prefs.timeout)
+    return handleResponse(body, headers, "analyze")
 end
 
 function ApiClient.batchStart(images)
+    log("[batch/start] Starte Batch mit %d Bildern", #images)
     local payload = jsonEncode({ images = images })
+    logDebug("[batch/start] Payload size=%d bytes", #payload)
     local body, headers = LrHttp.post(apiUrl("/batch/start"), payload, jsonHeaders(), "POST", getPrefs().timeout)
-    return handleResponse(body, headers)
+    return handleResponse(body, headers, "batch/start")
 end
 
 function ApiClient.batchNext()
+    logDebug("[batch/next] GET %s", apiUrl("/batch/next"))
     local body, headers = LrHttp.get(apiUrl("/batch/next"), authHeaders())
-    return handleResponse(body, headers)
+    return handleResponse(body, headers, "batch/next")
 end
 
 function ApiClient.batchImage(filePath, imageId, gpsLat, gpsLon)
+    log("[batch/image] imageId=%s, gpsLat=%s, gpsLon=%s, file=%s", tostring(imageId), tostring(gpsLat), tostring(gpsLon), tostring(filePath))
     local fields = {
         image_id = imageId,
         gps_lat = gpsLat,
@@ -283,6 +313,7 @@ function ApiClient.batchImage(filePath, imageId, gpsLat, gpsLon)
         { name = "file", filename = "preview.jpg", path = filePath },
     }
     local reqBody, contentType = multipart.build(fields, files)
+    logDebug("[batch/image] Multipart body size=%d bytes", #reqBody)
 
     local prefs = getPrefs()
     local hdrs = {
@@ -291,27 +322,31 @@ function ApiClient.batchImage(filePath, imageId, gpsLat, gpsLon)
     }
 
     local body, headers = LrHttp.post(apiUrl("/batch/image"), reqBody, hdrs, "POST", prefs.timeout)
-    return handleResponse(body, headers)
+    return handleResponse(body, headers, "batch/image")
 end
 
 function ApiClient.batchStatus()
+    logDebug("[batch/status] GET %s", apiUrl("/batch/status"))
     local body, headers = LrHttp.get(apiUrl("/batch/status"), authHeaders())
-    return handleResponse(body, headers)
+    return handleResponse(body, headers, "batch/status")
 end
 
 function ApiClient.batchPause()
+    log("[batch/pause] Pause requested")
     local body, headers = LrHttp.post(apiUrl("/batch/pause"), "", jsonHeaders(), "POST", getPrefs().timeout)
-    return handleResponse(body, headers)
+    return handleResponse(body, headers, "batch/pause")
 end
 
 function ApiClient.batchResume()
+    log("[batch/resume] Resume requested")
     local body, headers = LrHttp.post(apiUrl("/batch/resume"), "", jsonHeaders(), "POST", getPrefs().timeout)
-    return handleResponse(body, headers)
+    return handleResponse(body, headers, "batch/resume")
 end
 
 function ApiClient.batchCancel()
+    logWarn("[batch/cancel] Cancel requested")
     local body, headers = LrHttp.post(apiUrl("/batch/cancel"), "", jsonHeaders(), "POST", getPrefs().timeout)
-    return handleResponse(body, headers)
+    return handleResponse(body, headers, "batch/cancel")
 end
 
 return ApiClient

@@ -7,8 +7,16 @@ local LrPrefs = import "LrPrefs"
 local LrPathUtils = import "LrPathUtils"
 local LrFileUtils = import "LrFileUtils"
 local LrExportSession = import "LrExportSession"
+local LrLogger = import "LrLogger"
 
 local apiClient = require "AutoTagApiClient"
+
+local logger = LrLogger("LR-AutoTag")
+logger:enable("logfile")
+local log = logger:quickf("info")
+local logWarn = logger:quickf("warn")
+local logErr = logger:quickf("error")
+local logDebug = logger:quickf("debug")
 
 -- ──────────────────────────────────────────────
 -- Helper: export a single photo as JPEG preview
@@ -17,6 +25,7 @@ local apiClient = require "AutoTagApiClient"
 local function exportPreview(photo, tempDir)
     local prefs = LrPrefs.prefsForPlugin()
     local maxSide = prefs.previewSize or 1024
+    logDebug("[batch/export] maxSide=%d, tempDir=%s", maxSide, tostring(tempDir))
 
     local exportSettings = {
         LR_export_destinationType = "specificFolder",
@@ -41,10 +50,14 @@ local function exportPreview(photo, tempDir)
     for _, rendition in session:renditions() do
         local success, path = rendition:waitForRender()
         if success then
+            log("[batch/export] Preview exportiert: %s", tostring(path))
             return path
+        else
+            logErr("[batch/export] Render fehlgeschlagen: %s", tostring(path))
         end
     end
 
+    logErr("[batch/export] Kein Rendition-Ergebnis")
     return nil
 end
 
@@ -53,13 +66,20 @@ end
 -- ──────────────────────────────────────────────
 
 local function writeKeywords(catalog, photo, keywords)
-    if not keywords or #keywords == 0 then return end
+    if not keywords or #keywords == 0 then
+        logWarn("[batch/keywords] Keine Keywords zum Schreiben")
+        return
+    end
 
+    log("[batch/keywords] Schreibe %d Keywords: %s", #keywords, table.concat(keywords, ", "))
     catalog:withWriteAccessDo("LR-AutoTag Keywords", function()
         for _, kw in ipairs(keywords) do
             local keyword = catalog:createKeyword(kw, {}, true, nil, true)
             if keyword then
                 photo:addKeyword(keyword)
+                logDebug("[batch/keywords] Keyword hinzugefuegt: %s", kw)
+            else
+                logWarn("[batch/keywords] createKeyword lieferte nil fuer: %s", kw)
             end
         end
     end)
@@ -101,10 +121,13 @@ end
 
 LrTasks.startAsyncTask(function()
     LrFunctionContext.callWithContext("AutoTagBatch", function(context)
+        log("[batch] ====== Batch-Modus gestartet ======")
         local catalog = LrApplication.activeCatalog()
         local allPhotos = catalog:getAllPhotos()
+        log("[batch] Bilder im Katalog: %d", allPhotos and #allPhotos or 0)
 
         if not allPhotos or #allPhotos == 0 then
+            logWarn("[batch] Katalog leer, Abbruch")
             LrDialogs.message(
                 "Keine Bilder im Katalog",
                 "Der Katalog enthält keine Bilder.",
@@ -122,7 +145,10 @@ LrTasks.startAsyncTask(function()
             "Starten",
             "Abbrechen"
         )
-        if answer == "cancel" then return end
+        if answer == "cancel" then
+            log("[batch] Benutzer hat Batch abgebrochen")
+            return
+        end
 
         local progress = LrProgressScope {
             title = "LR-AutoTag: Batch-Verschlagwortung",
@@ -144,18 +170,21 @@ LrTasks.startAsyncTask(function()
             end
             images[#images + 1] = entry
         end
+        log("[batch] Image-Liste erstellt: %d Eintraege", #images)
 
         -- Start batch on backend
         progress:setCaption("Batch wird gestartet...")
         local batchResult, err = apiClient.batchStart(images)
         if err then
             progress:done()
+            logErr("[batch] Batch-Start fehlgeschlagen: %s", err)
             LrDialogs.message("Batch-Start fehlgeschlagen", err, "critical")
             return
         end
 
         local totalImages = batchResult.total_images or #images
         local skipped = batchResult.skipped or 0
+        log("[batch] Backend meldet: total=%d, skipped=%d", totalImages, skipped)
 
         -- Polling loop
         local tempDir = LrPathUtils.getStandardFilePath("temp")
@@ -168,9 +197,11 @@ LrTasks.startAsyncTask(function()
             .. (skipped > 0 and (" (" .. skipped .. " übersprungen)") or "")
         )
 
-        while true do
+        local running = true
+        while running do
             -- Check for cancellation
             if progress:isCanceled() then
+                logWarn("[batch] Abbruch durch Benutzer")
                 apiClient.batchCancel()
                 break
             end
@@ -179,75 +210,76 @@ LrTasks.startAsyncTask(function()
             local nextResult, nextErr = apiClient.batchNext()
             if nextErr then
                 failed = failed + 1
-                -- Brief pause before retry
+                logErr("[batch] batchNext Fehler: %s (pause 2s)", nextErr)
                 LrTasks.sleep(2)
-                goto continue
+            elseif not nextResult or not nextResult.image_id then
+                log("[batch] Keine weiteren Bilder vom Backend")
+                running = false
+            else
+                local imageId = nextResult.image_id
+                local photo = photoIndex[imageId]
+                log("[batch] ---- Verarbeite imageId=%s ----", tostring(imageId))
+
+                if not photo then
+                    failed = failed + 1
+                    logErr("[batch] Foto mit UUID %s nicht im Katalog gefunden", tostring(imageId))
+                else
+                    -- Export preview
+                    local previewPath = exportPreview(photo, tempDir)
+                    if not previewPath then
+                        failed = failed + 1
+                        logErr("[batch] Export fehlgeschlagen fuer %s", tostring(imageId))
+                    else
+                        -- Read GPS for upload
+                        local gps = photo:getRawMetadata("gps")
+                        local gpsLat = gps and gps.latitude or nil
+                        local gpsLon = gps and gps.longitude or nil
+                        logDebug("[batch] GPS lat=%s, lon=%s", tostring(gpsLat), tostring(gpsLon))
+
+                        -- Upload and analyze
+                        local result, uploadErr = apiClient.batchImage(previewPath, imageId, gpsLat, gpsLon)
+
+                        -- Clean up temp file
+                        if LrFileUtils.exists(previewPath) then
+                            LrFileUtils.delete(previewPath)
+                        end
+
+                        if uploadErr then
+                            failed = failed + 1
+                            logErr("[batch] Upload/Analyse fehlgeschlagen fuer %s: %s", tostring(imageId), uploadErr)
+                        else
+                            -- Write keywords
+                            if result and result.keywords then
+                                log("[batch] %s: %d Keywords erhalten", tostring(imageId), #result.keywords)
+                                writeKeywords(catalog, photo, result.keywords)
+                            else
+                                logWarn("[batch] %s: Kein keywords-Feld in Antwort", tostring(imageId))
+                            end
+
+                            processed = processed + 1
+                        end
+                    end
+                end
+
+                -- Update progress
+                local done = processed + failed + skipped
+                progress:setPortionComplete(done, totalImages)
+
+                local elapsed = os.time() - startTime
+                local rate = elapsed > 0 and (processed / elapsed) or 0
+                local remaining = rate > 0 and ((totalImages - done) / rate) or 0
+
+                progress:setCaption(
+                    done .. " von " .. totalImages .. " Bildern"
+                    .. " — Restdauer: " .. formatDuration(remaining)
+                )
             end
-
-            -- No more images?
-            if not nextResult or not nextResult.image_id then
-                break
-            end
-
-            local imageId = nextResult.image_id
-            local photo = photoIndex[imageId]
-
-            if not photo then
-                failed = failed + 1
-                goto continue
-            end
-
-            -- Export preview
-            local previewPath = exportPreview(photo, tempDir)
-            if not previewPath then
-                failed = failed + 1
-                goto continue
-            end
-
-            -- Read GPS for upload
-            local gps = photo:getRawMetadata("gps")
-            local gpsLat = gps and gps.latitude or nil
-            local gpsLon = gps and gps.longitude or nil
-
-            -- Upload and analyze
-            local result, uploadErr = apiClient.batchImage(previewPath, imageId, gpsLat, gpsLon)
-
-            -- Clean up temp file
-            if LrFileUtils.exists(previewPath) then
-                LrFileUtils.delete(previewPath)
-            end
-
-            if uploadErr then
-                failed = failed + 1
-                goto continue
-            end
-
-            -- Write keywords
-            if result and result.keywords then
-                writeKeywords(catalog, photo, result.keywords)
-            end
-
-            processed = processed + 1
-
-            -- Update progress
-            local done = processed + failed + skipped
-            progress:setPortionComplete(done, totalImages)
-
-            local elapsed = os.time() - startTime
-            local rate = elapsed > 0 and (processed / elapsed) or 0
-            local remaining = rate > 0 and ((totalImages - done) / rate) or 0
-
-            progress:setCaption(
-                done .. " von " .. totalImages .. " Bildern"
-                .. " — Restdauer: " .. formatDuration(remaining)
-            )
-
-            ::continue::
         end
 
         progress:done()
 
         -- Summary dialog
+        log("[batch] ====== Batch fertig: %d verarbeitet, %d uebersprungen, %d fehlgeschlagen ======", processed, skipped, failed)
         local msg = processed .. " Bilder verschlagwortet."
         if skipped > 0 then
             msg = msg .. "\n" .. skipped .. " übersprungen (hatten bereits Keywords)."

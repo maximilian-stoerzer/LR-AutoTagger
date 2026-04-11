@@ -7,8 +7,16 @@ local LrPrefs = import "LrPrefs"
 local LrPathUtils = import "LrPathUtils"
 local LrFileUtils = import "LrFileUtils"
 local LrExportSession = import "LrExportSession"
+local LrLogger = import "LrLogger"
 
 local apiClient = require "AutoTagApiClient"
+
+local logger = LrLogger("LR-AutoTag")
+logger:enable("logfile")
+local log = logger:quickf("info")
+local logWarn = logger:quickf("warn")
+local logErr = logger:quickf("error")
+local logDebug = logger:quickf("debug")
 
 -- ──────────────────────────────────────────────
 -- Helper: export a single photo as JPEG preview
@@ -17,6 +25,7 @@ local apiClient = require "AutoTagApiClient"
 local function exportPreview(photo, tempDir)
     local prefs = LrPrefs.prefsForPlugin()
     local maxSide = prefs.previewSize or 1024
+    logDebug("[interactive/export] maxSide=%d, tempDir=%s", maxSide, tostring(tempDir))
 
     local exportSettings = {
         LR_export_destinationType = "specificFolder",
@@ -43,10 +52,14 @@ local function exportPreview(photo, tempDir)
     for _, rendition in session:renditions() do
         local success, path = rendition:waitForRender()
         if success then
+            log("[interactive/export] Preview exportiert: %s", tostring(path))
             return path
+        else
+            logErr("[interactive/export] Render fehlgeschlagen: %s", tostring(path))
         end
     end
 
+    logErr("[interactive/export] Kein Rendition-Ergebnis")
     return nil
 end
 
@@ -55,13 +68,20 @@ end
 -- ──────────────────────────────────────────────
 
 local function writeKeywords(catalog, photo, keywords)
-    if not keywords or #keywords == 0 then return end
+    if not keywords or #keywords == 0 then
+        logWarn("[interactive/keywords] Keine Keywords zum Schreiben")
+        return
+    end
 
+    log("[interactive/keywords] Schreibe %d Keywords: %s", #keywords, table.concat(keywords, ", "))
     catalog:withWriteAccessDo("LR-AutoTag Keywords", function()
         for _, kw in ipairs(keywords) do
             local keyword = catalog:createKeyword(kw, {}, true, nil, true)
             if keyword then
                 photo:addKeyword(keyword)
+                logDebug("[interactive/keywords] Keyword hinzugefuegt: %s", kw)
+            else
+                logWarn("[interactive/keywords] createKeyword lieferte nil fuer: %s", kw)
             end
         end
     end)
@@ -73,10 +93,13 @@ end
 
 LrTasks.startAsyncTask(function()
     LrFunctionContext.callWithContext("AutoTagInteractive", function(context)
+        log("[interactive] ====== Interaktiver Modus gestartet ======")
         local catalog = LrApplication.activeCatalog()
         local photos = catalog:getTargetPhotos()
+        log("[interactive] Ausgewaehlte Bilder: %d", photos and #photos or 0)
 
         if not photos or #photos == 0 then
+            logWarn("[interactive] Keine Bilder ausgewaehlt, Abbruch")
             LrDialogs.message(
                 "Keine Bilder ausgewählt",
                 "Bitte wähle mindestens ein Bild in der Bibliothek aus.",
@@ -107,53 +130,60 @@ LrTasks.startAsyncTask(function()
         local errors = {}
 
         for i, photo in ipairs(photos) do
-            if progress:isCanceled() then break end
+            if progress:isCanceled() then
+                logWarn("[interactive] Abbruch durch Benutzer bei Bild %d/%d", i, #photos)
+                break
+            end
 
             progress:setPortionComplete(i - 1, #photos)
             progress:setCaption("Bild " .. i .. " von " .. #photos)
+
+            log("[interactive] ---- Bild %d/%d ----", i, #photos)
 
             -- Export preview
             local previewPath = exportPreview(photo, tempDir)
             if not previewPath then
                 failed = failed + 1
                 errors[#errors + 1] = "Bild " .. i .. ": Export fehlgeschlagen"
-                goto continue
+                logErr("[interactive] Bild %d: Export fehlgeschlagen", i)
+            else
+                -- Read GPS
+                local gps = photo:getRawMetadata("gps")
+                local gpsLat = gps and gps.latitude or nil
+                local gpsLon = gps and gps.longitude or nil
+                logDebug("[interactive] Bild %d: GPS lat=%s, lon=%s", i, tostring(gpsLat), tostring(gpsLon))
+
+                -- Image ID (catalog UUID)
+                local imageId = photo:getRawMetadata("uuid")
+                log("[interactive] Bild %d: uuid=%s, preview=%s", i, tostring(imageId), tostring(previewPath))
+
+                -- Call API
+                local result, err = apiClient.analyzeImage(previewPath, imageId, gpsLat, gpsLon)
+
+                -- Clean up temp file
+                if LrFileUtils.exists(previewPath) then
+                    LrFileUtils.delete(previewPath)
+                    logDebug("[interactive] Temp-Datei geloescht: %s", previewPath)
+                end
+
+                if err then
+                    failed = failed + 1
+                    errors[#errors + 1] = "Bild " .. i .. ": " .. err
+                    logErr("[interactive] Bild %d: API-Fehler: %s", i, err)
+                elseif result and result.keywords then
+                    log("[interactive] Bild %d: %d Keywords erhalten", i, #result.keywords)
+                    writeKeywords(catalog, photo, result.keywords)
+                    processed = processed + 1
+                else
+                    logWarn("[interactive] Bild %d: Kein keywords-Feld in der Antwort", i)
+                end
             end
-
-            -- Read GPS
-            local gps = photo:getRawMetadata("gps")
-            local gpsLat = gps and gps.latitude or nil
-            local gpsLon = gps and gps.longitude or nil
-
-            -- Image ID (catalog UUID)
-            local imageId = photo:getRawMetadata("uuid")
-
-            -- Call API
-            local result, err = apiClient.analyzeImage(previewPath, imageId, gpsLat, gpsLon)
-
-            -- Clean up temp file
-            if LrFileUtils.exists(previewPath) then
-                LrFileUtils.delete(previewPath)
-            end
-
-            if err then
-                failed = failed + 1
-                errors[#errors + 1] = "Bild " .. i .. ": " .. err
-                goto continue
-            end
-
-            -- Write keywords back to catalog
-            if result and result.keywords then
-                writeKeywords(catalog, photo, result.keywords)
-                processed = processed + 1
-            end
-
-            ::continue::
         end
 
         progress:done()
 
         -- Summary
+        log("[interactive] ====== Fertig: %d verarbeitet, %d fehlgeschlagen ======", processed, failed)
         local msg = processed .. " Bilder verschlagwortet."
         if failed > 0 then
             msg = msg .. "\n" .. failed .. " fehlgeschlagen."

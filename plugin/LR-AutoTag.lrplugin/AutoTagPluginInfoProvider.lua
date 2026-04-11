@@ -4,6 +4,13 @@ local LrDialogs = import "LrDialogs"
 local LrTasks = import "LrTasks"
 local LrFunctionContext = import "LrFunctionContext"
 local LrBinding = import "LrBinding"
+local LrColor = import "LrColor"
+local LrLogger = import "LrLogger"
+
+local logger = LrLogger("LR-AutoTag")
+logger:enable("logfile")
+local log = logger:quickf("info")
+local logErr = logger:quickf("error")
 
 local apiClient = require "AutoTagApiClient"
 
@@ -60,8 +67,10 @@ function InfoProvider.sectionsForTopOfDialog(f, properties)
                     title = "Verbindung testen",
                     action = function()
                         LrTasks.startAsyncTask(function()
+                            log("[settings] Verbindungstest gestartet")
                             local data, err = apiClient.checkHealth()
                             if err then
+                                logErr("[settings] Verbindungstest fehlgeschlagen: %s", err)
                                 LrDialogs.message(
                                     "Verbindungstest fehlgeschlagen",
                                     err,
@@ -71,6 +80,7 @@ function InfoProvider.sectionsForTopOfDialog(f, properties)
                                 local dbStatus = data.database or "unbekannt"
                                 local ollamaStatus = data.ollama or "unbekannt"
                                 if data.status == "ok" then
+                                    log("[settings] Verbindungstest OK: db=%s, ollama=%s", dbStatus, ollamaStatus)
                                     LrDialogs.message(
                                         "Verbindung erfolgreich",
                                         "Backend erreichbar — alle Dienste OK\n"
@@ -107,7 +117,7 @@ function InfoProvider.sectionsForTopOfDialog(f, properties)
                 f:slider {
                     value = bind { key = "connectionTimeout", object = prefs },
                     min = 10,
-                    max = 300,
+                    max = 900,
                     integral = true,
                     width = 200,
                 },

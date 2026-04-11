@@ -1,5 +1,12 @@
 local LrFileUtils = import "LrFileUtils"
 local LrMath = import "LrMath"
+local LrLogger = import "LrLogger"
+
+local logger = LrLogger("LR-AutoTag")
+logger:enable("logfile")
+local log = logger:quickf("info")
+local logDebug = logger:quickf("debug")
+local logErr = logger:quickf("error")
 
 local AutoTagMultipart = {}
 
@@ -19,6 +26,7 @@ end
 -- @return body string, contentType string
 function AutoTagMultipart.build(fields, files)
     local boundary = generateBoundary()
+    logDebug("[multipart] boundary=%s, fields=%d, files=%d", boundary, fields and #fields or 0, files and #files or 0)
     local parts = {}
 
     -- Form fields
@@ -36,6 +44,7 @@ function AutoTagMultipart.build(fields, files)
     -- File parts
     if files then
         for _, file in ipairs(files) do
+            log("[multipart] Lese Datei: %s (%s)", file.path, file.filename)
             local fileData = LrFileUtils.readFile(file.path)
             parts[#parts + 1] = "--" .. boundary .. "\r\n"
                 .. "Content-Disposition: form-data; name=\"" .. file.name .. "\"; filename=\"" .. file.filename .. "\"\r\n"
@@ -50,6 +59,7 @@ function AutoTagMultipart.build(fields, files)
 
     local body = table.concat(parts)
     local contentType = "multipart/form-data; boundary=" .. boundary
+    logDebug("[multipart] Body erstellt: %d bytes, contentType=%s", #body, contentType)
 
     return body, contentType
 end
