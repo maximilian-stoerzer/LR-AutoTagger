@@ -85,6 +85,68 @@ def test_parse_json_array_embedded_in_text(client):
     assert result == ["Baum", "Wiese"]
 
 
+# U-OLL-16 — LLaVA 7b reliably returns this shape despite prompt asking for a flat array.
+def test_parse_json_object_with_category_keys(client):
+    raw = (
+        '{"Objekte": ["Stadt", "Haus"], "Szene": ["Morgen"], "Umgebung": ["Gebirge"], '
+        '"Tageszeit": ["Morgengrauen"], "Jahreszeit": ["Sommer"], "Wetter": ["Sonnig"], '
+        '"Stimmung": ["Friedlich", "Mystisch"], "Lichtsituation": ["Frontlicht"], '
+        '"Perspektive": ["Normalperspektive"]}'
+    )
+    result = client._parse_keywords(raw)
+    assert "Stadt" in result
+    assert "Haus" in result
+    assert "Morgengrauen" in result
+    assert "Friedlich" in result
+    assert "Mystisch" in result
+    assert "Normalperspektive" in result
+    assert len(result) == 11
+
+
+# U-OLL-17 — Real llava:7b response captured in the benchmark run.
+def test_parse_json_object_in_markdown_codeblock(client):
+    raw = (
+        " ```json\n"
+        "{\n"
+        '  "Objekte": ["Stadt", "Haus"],\n'
+        '  "Szene": ["Morgen"],\n'
+        '  "Umgebung": ["Gebirge"],\n'
+        '  "Tageszeit": ["Morgengrauen"],\n'
+        '  "Jahreszeit": ["Sommer"],\n'
+        '  "Wetter": ["Sonnig"],\n'
+        '  "Stimmung": ["Friedlich", "Mystisch"],\n'
+        '  "Lichtsituation": ["Frontlicht"],\n'
+        '  "Perspektive": ["Normalperspektive"]\n'
+        "}\n"
+        "``` "
+    )
+    result = client._parse_keywords(raw)
+    assert "Stadt" in result
+    assert "Normalperspektive" in result
+    assert len(result) == 11
+
+
+# U-OLL-18 — Dict with scalar values (single-string categories), not lists.
+def test_parse_json_object_with_scalar_values(client):
+    raw = '{"Objekte": "Baum", "Szene": "Wald"}'
+    result = client._parse_keywords(raw)
+    assert result == ["Baum", "Wald"]
+
+
+# U-OLL-19 — Dict embedded in prose with leading/trailing text.
+def test_parse_json_object_embedded_in_text(client):
+    raw = 'Hier: {"Objekte": ["Brot", "Kaese"], "Umgebung": ["Kueche"]} und mehr'
+    result = client._parse_keywords(raw)
+    assert result == ["Brot", "Kaese", "Kueche"]
+
+
+# U-OLL-20 — Object order is preserved (Python dict preserves insertion order).
+def test_parse_json_object_preserves_key_order(client):
+    raw = '{"Erste": ["A", "B"], "Zweite": ["C"], "Dritte": ["D"]}'
+    result = client._parse_keywords(raw)
+    assert result == ["A", "B", "C", "D"]
+
+
 # ---------------------------------------------------------------------------
 # HTTP interaction tests (mocked)
 # ---------------------------------------------------------------------------

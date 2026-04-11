@@ -99,31 +99,71 @@ class OllamaClient:
         return self._parse_keywords(raw_response)
 
     def _parse_keywords(self, raw: str) -> list[str]:
-        # Try to extract JSON array from response
-        # LLaVA sometimes wraps in markdown code blocks
+        """Parse the raw Ollama response into a flat list of keywords.
+
+        The prompt asks for a plain JSON array but LLaVA variants
+        (especially llava:7b) reliably disobey and return a JSON object
+        keyed by category name whose values are lists. Both shapes are
+        accepted and flattened; non-JSON prose falls back to comma-split.
+        """
         cleaned = raw.strip()
         cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned)
         cleaned = re.sub(r"\s*```$", "", cleaned)
         cleaned = cleaned.strip()
 
-        try:
-            keywords = json.loads(cleaned)
-            if isinstance(keywords, list):
-                return [str(k).strip() for k in keywords if str(k).strip()][: settings.max_keywords]
-        except json.JSONDecodeError:
-            pass
+        parsed = self._try_json(cleaned)
+        if parsed is not None:
+            return self._flatten_json_keywords(parsed)[: settings.max_keywords]
 
-        # Fallback: try to find array in text
-        match = re.search(r"\[.*?\]", cleaned, re.DOTALL)
-        if match:
-            try:
-                keywords = json.loads(match.group())
-                if isinstance(keywords, list):
-                    return [str(k).strip() for k in keywords if str(k).strip()][: settings.max_keywords]
-            except json.JSONDecodeError:
-                pass
+        # Fallback: locate an embedded JSON object or array in prose.
+        # Greedy matches first so we don't stop at the first inner "]" when
+        # the model wraps a dict around several category arrays.
+        for pattern in (r"\{[\s\S]*\}", r"\[[\s\S]*\]"):
+            match = re.search(pattern, cleaned)
+            if match:
+                parsed = self._try_json(match.group())
+                if parsed is not None:
+                    return self._flatten_json_keywords(parsed)[: settings.max_keywords]
 
-        # Last resort: split comma-separated text
         logger.warning("Could not parse JSON from Ollama response, falling back to text split")
         parts = [p.strip().strip('"').strip("'") for p in cleaned.split(",")]
         return [p for p in parts if p and len(p) < 50][: settings.max_keywords]
+
+    @staticmethod
+    def _try_json(s: str):
+        try:
+            return json.loads(s)
+        except json.JSONDecodeError:
+            return None
+
+    @staticmethod
+    def _flatten_json_keywords(value) -> list[str]:
+        """Recursively flatten any mix of list/dict/scalar into an ordered
+        list of non-empty string keywords. Preserves first-seen order and
+        leaves deduplication to the downstream combinator."""
+        result: list[str] = []
+
+        def add(item) -> None:
+            if item is None:
+                return
+            if isinstance(item, str):
+                s = item.strip()
+                if s:
+                    result.append(s)
+                return
+            if isinstance(item, dict):
+                for v in item.values():
+                    add(v)
+                return
+            if isinstance(item, (list, tuple)):
+                for x in item:
+                    add(x)
+                return
+            # numbers and bools get stringified — preserves the original
+            # parser's behaviour on ["Foo", 42] style mixed arrays.
+            s = str(item).strip()
+            if s:
+                result.append(s)
+
+        add(value)
+        return result
