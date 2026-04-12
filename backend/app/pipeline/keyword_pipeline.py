@@ -3,7 +3,7 @@ import logging
 
 from app.config import settings
 from app.db.repository import Repository
-from app.pipeline import exif_extractor, focal_length_classifier, sun_calculator
+from app.pipeline import exif_extractor, focal_length_classifier, keyword_normalizer, sun_calculator
 from app.pipeline.geocoder import Geocoder
 from app.pipeline.image_processor import resize_for_analysis
 from app.pipeline.ollama_client import OllamaClient
@@ -67,6 +67,11 @@ class KeywordPipeline:
         else:
             geo_result = None
             vision_keywords = await vision_task
+
+        # Normalize English keywords to German whitelist values before
+        # combining. Zero-cost dict lookup — fixes models that answer
+        # in English despite the German prompt (e.g. llava-llama3).
+        vision_keywords = keyword_normalizer.normalize(vision_keywords)
 
         geo_keywords: list[str] = []
         location_name = None

@@ -484,19 +484,27 @@ def main():
         lines.append(f"_{gt.get('description', '')}_")
         lines.append("")
         for model in MODELS:
+            if model in SKIP_MODELS:
+                lines.append(f"**{model}** — _übersprungen (SKIP\\_MODELS)_")
+                lines.append("")
+                continue
             r = all_results.get(model, {}).get("images", {}).get(img.name, {})
+            if not r:
+                continue
             kws = r.get("keywords", [])
             t = r.get("elapsed_sec")
             err = r.get("error")
             sc = r.get("score", {})
             if err:
                 lines.append(f"**{model}** — ERROR: `{err[:80]}`")
-            else:
+            elif t is not None:
                 lines.append(
                     f"**{model}** ({t:.0f}s, {len(kws)} kws, "
                     f"score {sc.get('score',0)}/{sc.get('max_score',0)}):"
                 )
                 lines.append(f"  {', '.join(kws)}")
+            else:
+                lines.append(f"**{model}** (keine Daten)")
             lines.append("")
 
     lines += [
