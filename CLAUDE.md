@@ -167,24 +167,38 @@ Volltext und Begruendung in `docs/tech.md` Abschnitt 5.
 2. **Reverse Geocoding:** GPS → Ort, Stadt, Bundesland, Land (Nominatim/OpenStreetMap)
 3. **Vision-Analyse:** Bild an Ollama/LLaVA mit strukturiertem Prompt → JSON-Array deutscher Keywords
 4. **Kombinator:** Vision-Keywords + Geo-Keywords zusammenfuehren, Duplikate entfernen, normalisieren
-5. **Ergebnis:** Max. 25 Keywords pro Bild, sachlich/technisch, deutsch
+5. **Ergebnis:** Max. 30 Keywords pro Bild, sachlich/technisch, deutsch
 
-### Vision-Prompt
+### Vision-Prompt (V2, mit Chain-of-Thought)
+
+Der Prompt wird dynamisch zusammengebaut (`app/pipeline/ollama_client.py`).
+Kanonische Version im Code, hier der kompakte Ueberblick:
+
 ```
 Analysiere dieses Foto und gib deutsche Schlagworte zurueck.
+
+Bevor du antwortest, ueberlege kurz:
+- Woher kommt das Hauptlicht?
+- Aus welchem Winkel wurde fotografiert?
+- Ist das Bild schwarzweiss? Gibt es Bokeh, Langzeitbelichtung?
+- Welche Stimmung vermittelt das Bild?
+
 Kategorien:
-- Objekte: frei waehlbar
-- Szene: frei waehlbar
-- Umgebung: frei waehlbar
-- Tageszeit: Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht
-- Jahreszeit: Fruehling, Sommer, Herbst, Winter
-- Wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
-- Stimmung: Friedlich, Dramatisch, Melancholisch, Froehlich, Mystisch, Romantisch,
-  Bedrohlich, Einsam, Lebhaft, Vertraeumt, Nostalgisch, Majestaetisch
-Fuer Tageszeit, Jahreszeit, Wetter und Stimmung NUR Werte aus der jeweiligen Liste verwenden.
-Format: JSON-Array mit maximal 25 Keywords.
-Antworte NUR mit dem JSON-Array, kein weiterer Text.
+- Objekte: frei, MAXIMAL 5
+- Szene: frei, max 2
+- Umgebung: frei, max 2
+- Tageszeit: [Whitelist, 1 Wert]
+- Jahreszeit: [Whitelist, 1 Wert]
+- Wetter: [Whitelist, 1-2 Werte]
+- Stimmung: [Whitelist, 1-2 Werte, Dramaturgie-zuerst-Reihenfolge]
+- Lichtsituation: [Whitelist, 0-3 Werte, leer wenn unauffaellig]
+- Perspektive: [Whitelist, 1 Wert, Normalperspektive nur als Fallback]
+- Technik: [Whitelist, 0-2 Werte, leer wenn nichts erkennbar]
+
+Regeln: Nur Whitelist-Werte, JSON-Array, max 30 Keywords.
 ```
+
+Vollstaendige Whitelist-Inhalte: siehe `docs/tech.md` Abschnitt 3.5.1.
 
 ---
 

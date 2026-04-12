@@ -147,6 +147,34 @@ def test_parse_json_object_preserves_key_order(client):
     assert result == ["A", "B", "C", "D"]
 
 
+# U-OLL-21 — CoT preamble before JSON (expected with the new prompt).
+def test_parse_cot_preamble_then_json_array(client):
+    raw = (
+        "Das Licht kommt von der Seite, die Kamera steht auf Augenhoehe.\n"
+        '["Baum", "Wald", "Herbst", "Seitenlicht", "Normalperspektive"]'
+    )
+    result = client._parse_keywords(raw)
+    assert "Baum" in result
+    assert "Seitenlicht" in result
+    assert len(result) == 5
+
+
+# U-OLL-22 — CoT preamble before JSON object.
+def test_parse_cot_preamble_then_json_object(client):
+    raw = (
+        "Das Hauptlicht kommt von hinten (Gegenlicht). "
+        "Das Bild wurde von unten aufgenommen.\n"
+        "```json\n"
+        '{"Objekte": ["Baum"], "Lichtsituation": ["Gegenlicht"], '
+        '"Perspektive": ["Froschperspektive"]}\n'
+        "```"
+    )
+    result = client._parse_keywords(raw)
+    assert "Baum" in result
+    assert "Gegenlicht" in result
+    assert "Froschperspektive" in result
+
+
 # ---------------------------------------------------------------------------
 # HTTP interaction tests (mocked)
 # ---------------------------------------------------------------------------

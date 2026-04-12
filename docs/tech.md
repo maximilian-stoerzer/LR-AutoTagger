@@ -321,17 +321,22 @@ Halluzinationen zu unterbinden.
 | **Tageszeit** | Whitelist, 1 Wert | Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht |
 | **Jahreszeit** | Whitelist, 1 Wert | Fruehling, Sommer, Herbst, Winter |
 | **Wetter** | Whitelist, 1–2 Werte | Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst |
-| **Stimmung** | Whitelist, 1–2 Werte | Friedlich, Dramatisch, Melancholisch, Froehlich, Mystisch, Romantisch, Bedrohlich, Einsam, Lebhaft, Vertraeumt, Nostalgisch, Majestaetisch |
-| **Lichtsituation** | Whitelist, 1–3 Werte | Frontlicht, Seitenlicht, Gegenlicht, Kantenlicht, Oberlicht, Natuerliches Licht, Kunstlicht, Mischlicht, Hartes Licht, Weiches Licht, Diffuses Licht, High-Key, Low-Key, Hell-Dunkel, Silhouette, Lichtstrahlen |
-| **Perspektive** | Whitelist, genau 1 | Normalperspektive, Aufsicht, Vogelperspektive, Draufsicht, Untersicht, Froschperspektive, Schraegsicht |
-| **Technik** | Whitelist, 0–2 Werte | Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Schwarzweiss, Infrarot |
+| **Stimmung** | Whitelist, 1–2 Werte | Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt, Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich |
+| **Lichtsituation** | Whitelist, **0–3** Werte (leer wenn unauffaellig) | Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht, Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key, Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht |
+| **Perspektive** | Whitelist, genau 1 (Normalperspektive nur bei klarer Augenhoehe) | Froschperspektive, Vogelperspektive, Draufsicht, Aufsicht, Untersicht, Schraegsicht, Normalperspektive |
+| **Technik** | Whitelist, **0–2** Werte (leer wenn nichts erkennbar) | Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot |
 
-> **Hintergrund zu den Whitelists:** Lichtsituation, Perspektive und
-> Technik folgen etablierter Foto-/Filmterminologie (Drei-Punkt-
-> Beleuchtung, DE-Wikipedia "Kameraperspektive", PhotoPills). „Goldene
-> Stunde" und „Blaue Stunde" stehen bewusst **nicht** in der Whitelist —
-> LLaVA kann warmes Innenraumlicht nicht zuverlaessig von echtem Sonnenstand
-> unterscheiden, das wird deshalb in 3.5.3 berechnet.
+> **Prompt-Strategie:** Der Prompt nutzt eine Chain-of-Thought-Vorstufe,
+> die das Modell zwingt, vor der JSON-Ausgabe ueber Lichtrichtung,
+> Kamerawinkel, Technik und Stimmung nachzudenken. Die Reihenfolge der
+> Whitelist-Werte ist bewusst so gewaehlt, dass die spezifischen /
+> informativen Werte (Gegenlicht, Froschperspektive, Schwarzweiss)
+> **vor** den generischen Defaults (Frontlicht, Normalperspektive)
+> stehen — LLMs neigen dazu, den ersten Listenwert bei Unsicherheit zu
+> bevorzugen (Anchor-Bias). Lichtsituation und Technik erlauben
+> explizit 0 Werte, damit das Modell nicht zu Halluzinationen
+> gezwungen wird. Goldene/Blaue Stunde fehlt bewusst — wird in 3.5.3
+> aus dem Sonnenstand berechnet.
 
 ### 3.5.2 EXIF-basierte Kategorien (kein Ollama)
 
