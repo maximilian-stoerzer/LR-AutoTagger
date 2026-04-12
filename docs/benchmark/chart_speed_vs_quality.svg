@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .axis { stroke: #333; stroke-width: 1.5; }
+      .grid { stroke: #e0e0e0; stroke-width: 0.5; }
+      .label { font-size: 12px; fill: #333; }
+      .title { font-size: 16px; fill: #111; font-weight: bold; }
+      .subtitle { font-size: 11px; fill: #666; }
+      .dot-best { fill: #2563eb; }
+      .dot-good { fill: #059669; }
+      .dot-mid { fill: #d97706; }
+      .dot-bad { fill: #dc2626; }
+      .annotation { font-size: 10px; fill: #555; }
+      .model-label { font-size: 11px; font-weight: 600; }
+      .zone-best { fill: #dbeafe; opacity: 0.4; }
+      .zone-ok { fill: #fef3c7; opacity: 0.3; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Vision-Modelle: Qualitaet vs. Geschwindigkeit</text>
+  <text x="400" y="48" text-anchor="middle" class="subtitle">Score (%) vs. Inferenzzeit (s/Bild) — 12 vCPUs, CPU-only, V2 Prompt</text>
+
+  <!-- Chart area: x=80..750, y=70..430 -->
+  <!-- X axis: 0..1400s, Y axis: 0..80% -->
+
+  <!-- Ideal zone (top-left) -->
+  <rect x="80" y="70" width="250" height="150" class="zone-best" rx="8"/>
+  <text x="95" y="88" class="annotation" fill="#1e40af" opacity="0.7">Idealbereich</text>
+
+  <!-- Grid lines Y -->
+  <line x1="80" y1="115" x2="750" y2="115" class="grid"/><!-- 70% -->
+  <line x1="80" y1="160" x2="750" y2="160" class="grid"/><!-- 60% -->
+  <line x1="80" y1="205" x2="750" y2="205" class="grid"/><!-- 50% -->
+  <line x1="80" y1="250" x2="750" y2="250" class="grid"/><!-- 40% -->
+  <line x1="80" y1="295" x2="750" y2="295" class="grid"/><!-- 30% -->
+  <line x1="80" y1="340" x2="750" y2="340" class="grid"/><!-- 20% -->
+  <line x1="80" y1="385" x2="750" y2="385" class="grid"/><!-- 10% -->
+
+  <!-- Grid lines X -->
+  <line x1="176" y1="70" x2="176" y2="430" class="grid"/><!-- 200s -->
+  <line x1="272" y1="70" x2="272" y2="430" class="grid"/><!-- 400s -->
+  <line x1="368" y1="70" x2="368" y2="430" class="grid"/><!-- 600s -->
+  <line x1="464" y1="70" x2="464" y2="430" class="grid"/><!-- 800s -->
+  <line x1="560" y1="70" x2="560" y2="430" class="grid"/><!-- 1000s -->
+  <line x1="656" y1="70" x2="656" y2="430" class="grid"/><!-- 1200s -->
+
+  <!-- Axes -->
+  <line x1="80" y1="430" x2="750" y2="430" class="axis"/>
+  <line x1="80" y1="70" x2="80" y2="430" class="axis"/>
+
+  <!-- X axis labels -->
+  <text x="80" y="450" text-anchor="middle" class="label">0</text>
+  <text x="176" y="450" text-anchor="middle" class="label">200</text>
+  <text x="272" y="450" text-anchor="middle" class="label">400</text>
+  <text x="368" y="450" text-anchor="middle" class="label">600</text>
+  <text x="464" y="450" text-anchor="middle" class="label">800</text>
+  <text x="560" y="450" text-anchor="middle" class="label">1000</text>
+  <text x="656" y="450" text-anchor="middle" class="label">1200</text>
+  <text x="750" y="450" text-anchor="middle" class="label">1400</text>
+  <text x="415" y="475" text-anchor="middle" class="label" font-weight="600">Sekunden pro Bild →</text>
+
+  <!-- Y axis labels -->
+  <text x="72" y="434" text-anchor="end" class="label">0%</text>
+  <text x="72" y="389" text-anchor="end" class="label">10%</text>
+  <text x="72" y="344" text-anchor="end" class="label">20%</text>
+  <text x="72" y="299" text-anchor="end" class="label">30%</text>
+  <text x="72" y="254" text-anchor="end" class="label">40%</text>
+  <text x="72" y="209" text-anchor="end" class="label">50%</text>
+  <text x="72" y="164" text-anchor="end" class="label">60%</text>
+  <text x="72" y="119" text-anchor="end" class="label">70%</text>
+  <text x="72" y="74" text-anchor="end" class="label">80%</text>
+  <text x="30" y="250" text-anchor="middle" class="label" font-weight="600" transform="rotate(-90 30 250)">← Score (%)</text>
+
+  <!-- Data points -->
+  <!-- x = 80 + (time/1400)*670, y = 430 - (score/80)*360 -->
+
+  <!-- BakLLaVA: 247s, 18% -->
+  <circle cx="198" cy="349" r="7" class="dot-bad"/>
+  <text x="198" y="369" text-anchor="middle" class="model-label" fill="#dc2626">BakLLaVA</text>
+  <text x="198" y="381" text-anchor="middle" class="annotation">247s, 18%</text>
+
+  <!-- LLaVA-Phi3: 279s, 55% -->
+  <circle cx="214" cy="183" r="7" class="dot-good"/>
+  <text x="214" y="175" text-anchor="middle" class="model-label" fill="#059669">LLaVA-Phi3</text>
+  <text x="214" y="163" text-anchor="middle" class="annotation">279s, 55%</text>
+
+  <!-- LLaVA 7B: 287s, 55% -->
+  <circle cx="217" cy="183" r="7" class="dot-good"/>
+  <text x="250" y="200" text-anchor="start" class="model-label" fill="#059669">LLaVA 7B</text>
+  <text x="250" y="212" text-anchor="start" class="annotation">287s, 55%</text>
+
+  <!-- Gemma3 4B: 372s, 50% -->
+  <circle cx="258" cy="205" r="7" class="dot-mid"/>
+  <text x="275" y="225" text-anchor="start" class="model-label" fill="#d97706">Gemma3 4B</text>
+  <text x="275" y="237" text-anchor="start" class="annotation">372s, 50%</text>
+
+  <!-- LLaVA 13B: 440s, 68% — STAR -->
+  <polygon points="291,97 295,108 307,108 297,115 301,127 291,119 281,127 285,115 275,108 287,108" fill="#2563eb" stroke="#1e40af" stroke-width="1"/>
+  <text x="313" y="105" text-anchor="start" class="model-label" fill="#2563eb" font-size="13px">★ LLaVA 13B</text>
+  <text x="313" y="119" text-anchor="start" class="annotation" fill="#2563eb" font-weight="600">440s, 68% — EMPFEHLUNG</text>
+
+  <!-- LLaVA-Llama3: 527s, 24% -->
+  <circle cx="332" cy="322" r="7" class="dot-bad"/>
+  <text x="332" y="340" text-anchor="middle" class="model-label" fill="#dc2626">LLaVA-Llama3</text>
+  <text x="332" y="352" text-anchor="middle" class="annotation">527s, 24% (engl.)</text>
+
+  <!-- Llama 3.2 Vision: 937s, 68% -->
+  <circle cx="528" cy="124" r="7" class="dot-good"/>
+  <text x="528" y="116" text-anchor="middle" class="model-label" fill="#059669">Llama 3.2 Vision</text>
+  <text x="528" y="143" text-anchor="middle" class="annotation">937s, 68%</text>
+
+  <!-- MiniCPM-V: 1300s, 68% -->
+  <circle cx="702" cy="124" r="7" class="dot-mid"/>
+  <text x="702" y="116" text-anchor="middle" class="model-label" fill="#d97706">MiniCPM-V</text>
+  <text x="702" y="143" text-anchor="middle" class="annotation">1300s, 68%</text>
+
+  <!-- Legend -->
+  <rect x="560" y="360" width="180" height="60" fill="white" stroke="#ccc" rx="4"/>
+  <circle cx="575" cy="375" r="5" class="dot-best"/>
+  <text x="585" y="379" class="annotation">Empfehlung</text>
+  <circle cx="575" cy="392" r="5" class="dot-good"/>
+  <text x="585" y="396" class="annotation">Brauchbar</text>
+  <circle cx="575" cy="409" r="5" class="dot-bad"/>
+  <text x="585" y="413" class="annotation">Nicht empfohlen</text>
+  <circle cx="665" cy="375" r="5" class="dot-mid"/>
+  <text x="675" y="379" class="annotation">Eingeschraenkt</text>
+</svg>

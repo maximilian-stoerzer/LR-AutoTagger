@@ -1,0 +1,60 @@
+{
+  "system": {
+    "hostname": "sma-prod",
+    "os": "Linux-6.12.74+deb13+1-amd64-x86_64-with-glibc2.41",
+    "cpu_model": "QEMU Virtual CPU version 2.5+",
+    "cpu_count": 12,
+    "ram_gb": 14.5,
+    "python": "3.13.5",
+    "ollama_base_url": "http://localhost:11434",
+    "timeout_s": 1800,
+    "timestamp_utc": "2026-04-12T07:39:44.432113+00:00"
+  },
+  "model": "moondream",
+  "prompt": "Analysiere dieses Foto und gib deutsche Schlagworte zurueck.\n\nBevor du antwortest, ueberlege kurz:\n- Woher kommt das Hauptlicht im Bild? (von vorne, von der Seite, von hinten, von oben?)\n- Aus welchem Winkel wurde das Foto aufgenommen? (von unten, von oben, Augenhoehe, Makro?)\n- Ist das Bild schwarzweiss? Gibt es Bokeh, Langzeitbelichtung oder andere Techniken?\n- Welche Stimmung vermittelt das Bild? Ist es friedlich, dramatisch, melancholisch?\n\nKategorien:\n- Objekte: frei waehlbar, MAXIMAL 5\n- Szene: frei waehlbar, max 2\n- Umgebung: frei waehlbar, max 2\n- Tageszeit: Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht\n- Jahreszeit: Fruehling, Sommer, Herbst, Winter\n- Wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst\n- Stimmung (1-2 Werte): Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt, Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich\n- Lichtsituation (0-3 Werte, NUR wenn im Bild erkennbar — leer lassen wenn unauffaellig): Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht, Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key, Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht\n- Perspektive (genau 1 Wert — Normalperspektive NUR wenn Kamera klar auf Augenhoehe und horizontal steht, sonst den spezifischen Winkel waehlen): Froschperspektive, Vogelperspektive, Draufsicht, Aufsicht, Untersicht, Schraegsicht, Normalperspektive\n- Technik (0-2 Werte, NUR bei offensichtlichem Merkmal — leer lassen wenn nichts): Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot\n\nRegeln:\n- Fuer alle Whitelist-Kategorien NUR Werte aus der jeweiligen Liste verwenden.\n- Format: JSON-Array mit maximal 30 Keywords.\n- Antworte NUR mit dem JSON-Array, kein weiterer Text.",
+  "images": {
+    "01_sunset.jpg": {
+      "elapsed_sec": 160.41,
+      "raw_response": "\n [\n  \"Frei waehlbar\", \"Maximale\", \"Frei waehlbar\", \"Frei waehlbar\", \"Frei waehlbar\", ... , \"Frei waehlbar\", \"Frei waehlbar\", \"Frei waehlbar\", \"Frei waehlbar\"\n ]",
+      "keywords": [
+        "[\n  \"Frei waehlbar",
+        "Maximale",
+        "Frei waehlbar",
+        "Frei waehlbar",
+        "Frei waehlbar",
+        "...",
+        "Frei waehlbar",
+        "Frei waehlbar",
+        "Frei waehlbar",
+        "Frei waehlbar\"\n ]"
+      ],
+      "keyword_count": 10,
+      "timings": {
+        "total_duration_ms": 160381.4,
+        "load_duration_ms": 75.5,
+        "prompt_eval_count": 1478,
+        "prompt_eval_ms": 114917.4,
+        "eval_count": 78,
+        "eval_ms": 14799.0
+      },
+      "score": {
+        "has_Gegenlicht": false,
+        "has_Abend": false,
+        "not_Morgengrauen": true,
+        "perspective=Normalperspektive": false,
+        "total_keywords": 10,
+        "score": 1,
+        "max_score": 4
+      }
+    },
+    "02_macro.jpg": {
+      "error": "timed out",
+      "elapsed_sec": 1800.12,
+      "score": {
+        "score": 0,
+        "max_score": 0,
+        "total_keywords": 0
+      }
+    }
+  }
+}

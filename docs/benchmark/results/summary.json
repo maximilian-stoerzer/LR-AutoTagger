@@ -1,0 +1,386 @@
+{
+  "system": {
+    "hostname": "sma-prod",
+    "os": "Linux-6.12.74+deb13+1-amd64-x86_64-with-glibc2.41",
+    "cpu_model": "QEMU Virtual CPU version 2.5+",
+    "cpu_count": 12,
+    "ram_gb": 14.5,
+    "python": "3.13.5",
+    "ollama_base_url": "http://localhost:11434",
+    "timeout_s": 1800,
+    "timestamp_utc": "2026-04-12T08:26:44.262642+00:00"
+  },
+  "models": [
+    "moondream",
+    "llava-phi3",
+    "gemma3:4b",
+    "llava:7b",
+    "bakllava",
+    "llava-llama3",
+    "minicpm-v",
+    "llama3.2-vision",
+    "llava:13b"
+  ],
+  "rows": [
+    {
+      "model": "llava-phi3",
+      "image": "01_sunset.jpg",
+      "elapsed_sec": 280.49,
+      "keyword_count": 15,
+      "score": 1,
+      "max_score": 4,
+      "error": null
+    },
+    {
+      "model": "llava-phi3",
+      "image": "02_macro.jpg",
+      "elapsed_sec": 264.93,
+      "keyword_count": 9,
+      "score": 1,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava-phi3",
+      "image": "03_night_city.jpg",
+      "elapsed_sec": 296.89,
+      "keyword_count": 20,
+      "score": 3,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava-phi3",
+      "image": "04_portrait_bw.jpg",
+      "elapsed_sec": 290.87,
+      "keyword_count": 17,
+      "score": 4,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava-phi3",
+      "image": "05_forest_autumn.jpg",
+      "elapsed_sec": 262.84,
+      "keyword_count": 12,
+      "score": 3,
+      "max_score": 3,
+      "error": null
+    },
+    {
+      "model": "gemma3:4b",
+      "image": "01_sunset.jpg",
+      "elapsed_sec": 375.22,
+      "keyword_count": 10,
+      "score": 2,
+      "max_score": 4,
+      "error": null
+    },
+    {
+      "model": "gemma3:4b",
+      "image": "02_macro.jpg",
+      "elapsed_sec": 363.56,
+      "keyword_count": 11,
+      "score": 1,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "gemma3:4b",
+      "image": "03_night_city.jpg",
+      "elapsed_sec": 386.07,
+      "keyword_count": 13,
+      "score": 3,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "gemma3:4b",
+      "image": "04_portrait_bw.jpg",
+      "elapsed_sec": 370.33,
+      "keyword_count": 13,
+      "score": 2,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "gemma3:4b",
+      "image": "05_forest_autumn.jpg",
+      "elapsed_sec": 365.98,
+      "keyword_count": 10,
+      "score": 3,
+      "max_score": 3,
+      "error": null
+    },
+    {
+      "model": "llava:7b",
+      "image": "01_sunset.jpg",
+      "elapsed_sec": 305.74,
+      "keyword_count": 11,
+      "score": 2,
+      "max_score": 4,
+      "error": null
+    },
+    {
+      "model": "llava:7b",
+      "image": "02_macro.jpg",
+      "elapsed_sec": 279.24,
+      "keyword_count": 9,
+      "score": 1,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava:7b",
+      "image": "03_night_city.jpg",
+      "elapsed_sec": 279.39,
+      "keyword_count": 9,
+      "score": 3,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava:7b",
+      "image": "04_portrait_bw.jpg",
+      "elapsed_sec": 287.82,
+      "keyword_count": 13,
+      "score": 3,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava:7b",
+      "image": "05_forest_autumn.jpg",
+      "elapsed_sec": 284.06,
+      "keyword_count": 11,
+      "score": 3,
+      "max_score": 3,
+      "error": null
+    },
+    {
+      "model": "bakllava",
+      "image": "01_sunset.jpg",
+      "elapsed_sec": 255.41,
+      "keyword_count": 2,
+      "score": 1,
+      "max_score": 4,
+      "error": null
+    },
+    {
+      "model": "bakllava",
+      "image": "02_macro.jpg",
+      "elapsed_sec": 255.87,
+      "keyword_count": 4,
+      "score": 1,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "bakllava",
+      "image": "03_night_city.jpg",
+      "elapsed_sec": 240.03,
+      "keyword_count": 1,
+      "score": 1,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "bakllava",
+      "image": "04_portrait_bw.jpg",
+      "elapsed_sec": 241.08,
+      "keyword_count": 0,
+      "score": 1,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "bakllava",
+      "image": "05_forest_autumn.jpg",
+      "elapsed_sec": 241.03,
+      "keyword_count": 2,
+      "score": 0,
+      "max_score": 3,
+      "error": null
+    },
+    {
+      "model": "llava-llama3",
+      "image": "01_sunset.jpg",
+      "elapsed_sec": 514.42,
+      "keyword_count": 30,
+      "score": 3,
+      "max_score": 4,
+      "error": null
+    },
+    {
+      "model": "llava-llama3",
+      "image": "02_macro.jpg",
+      "elapsed_sec": 1800.1,
+      "keyword_count": 0,
+      "score": 0,
+      "max_score": 0,
+      "error": "timed out"
+    },
+    {
+      "model": "llava-llama3",
+      "image": "03_night_city.jpg",
+      "elapsed_sec": 488.19,
+      "keyword_count": 30,
+      "score": 1,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava-llama3",
+      "image": "04_portrait_bw.jpg",
+      "elapsed_sec": 457.92,
+      "keyword_count": 30,
+      "score": 0,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava-llama3",
+      "image": "05_forest_autumn.jpg",
+      "elapsed_sec": 646.61,
+      "keyword_count": 30,
+      "score": 0,
+      "max_score": 3,
+      "error": null
+    },
+    {
+      "model": "minicpm-v",
+      "image": "01_sunset.jpg",
+      "elapsed_sec": 867.97,
+      "keyword_count": 15,
+      "score": 2,
+      "max_score": 4,
+      "error": null
+    },
+    {
+      "model": "minicpm-v",
+      "image": "02_macro.jpg",
+      "elapsed_sec": 1406.62,
+      "keyword_count": 13,
+      "score": 4,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "minicpm-v",
+      "image": "03_night_city.jpg",
+      "elapsed_sec": 1431.46,
+      "keyword_count": 15,
+      "score": 2,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "minicpm-v",
+      "image": "04_portrait_bw.jpg",
+      "elapsed_sec": 1416.7,
+      "keyword_count": 14,
+      "score": 5,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "minicpm-v",
+      "image": "05_forest_autumn.jpg",
+      "elapsed_sec": 1378.47,
+      "keyword_count": 5,
+      "score": 2,
+      "max_score": 3,
+      "error": null
+    },
+    {
+      "model": "llama3.2-vision",
+      "image": "01_sunset.jpg",
+      "elapsed_sec": 923.56,
+      "keyword_count": 20,
+      "score": 4,
+      "max_score": 4,
+      "error": null
+    },
+    {
+      "model": "llama3.2-vision",
+      "image": "02_macro.jpg",
+      "elapsed_sec": 905.81,
+      "keyword_count": 14,
+      "score": 3,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llama3.2-vision",
+      "image": "03_night_city.jpg",
+      "elapsed_sec": 951.12,
+      "keyword_count": 16,
+      "score": 1,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llama3.2-vision",
+      "image": "04_portrait_bw.jpg",
+      "elapsed_sec": 945.54,
+      "keyword_count": 14,
+      "score": 4,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llama3.2-vision",
+      "image": "05_forest_autumn.jpg",
+      "elapsed_sec": 957.49,
+      "keyword_count": 20,
+      "score": 3,
+      "max_score": 3,
+      "error": null
+    },
+    {
+      "model": "llava:13b",
+      "image": "01_sunset.jpg",
+      "elapsed_sec": 450.06,
+      "keyword_count": 13,
+      "score": 2,
+      "max_score": 4,
+      "error": null
+    },
+    {
+      "model": "llava:13b",
+      "image": "02_macro.jpg",
+      "elapsed_sec": 436.99,
+      "keyword_count": 13,
+      "score": 2,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava:13b",
+      "image": "03_night_city.jpg",
+      "elapsed_sec": 445.56,
+      "keyword_count": 14,
+      "score": 3,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava:13b",
+      "image": "04_portrait_bw.jpg",
+      "elapsed_sec": 421.7,
+      "keyword_count": 12,
+      "score": 5,
+      "max_score": 5,
+      "error": null
+    },
+    {
+      "model": "llava:13b",
+      "image": "05_forest_autumn.jpg",
+      "elapsed_sec": 445.01,
+      "keyword_count": 13,
+      "score": 3,
+      "max_score": 3,
+      "error": null
+    }
+  ]
+}

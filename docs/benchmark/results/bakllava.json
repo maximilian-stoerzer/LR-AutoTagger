@@ -1,0 +1,147 @@
+{
+  "system": {
+    "hostname": "sma-prod",
+    "os": "Linux-6.12.74+deb13+1-amd64-x86_64-with-glibc2.41",
+    "cpu_model": "QEMU Virtual CPU version 2.5+",
+    "cpu_count": 12,
+    "ram_gb": 14.5,
+    "python": "3.13.5",
+    "ollama_base_url": "http://localhost:11434",
+    "timeout_s": 1800,
+    "timestamp_utc": "2026-04-12T08:26:44.262642+00:00"
+  },
+  "model": "bakllava",
+  "prompt": "Analysiere dieses Foto und gib deutsche Schlagworte zurueck.\n\nBevor du antwortest, ueberlege kurz:\n- Woher kommt das Hauptlicht im Bild? (von vorne, von der Seite, von hinten, von oben?)\n- Aus welchem Winkel wurde das Foto aufgenommen? (von unten, von oben, Augenhoehe, Makro?)\n- Ist das Bild schwarzweiss? Gibt es Bokeh, Langzeitbelichtung oder andere Techniken?\n- Welche Stimmung vermittelt das Bild? Ist es friedlich, dramatisch, melancholisch?\n\nKategorien:\n- Objekte: frei waehlbar, MAXIMAL 5\n- Szene: frei waehlbar, max 2\n- Umgebung: frei waehlbar, max 2\n- Tageszeit: Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht\n- Jahreszeit: Fruehling, Sommer, Herbst, Winter\n- Wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst\n- Stimmung (1-2 Werte): Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt, Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich\n- Lichtsituation (0-3 Werte, NUR wenn im Bild erkennbar — leer lassen wenn unauffaellig): Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht, Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key, Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht\n- Perspektive (genau 1 Wert — Normalperspektive NUR wenn Kamera klar auf Augenhoehe und horizontal steht, sonst den spezifischen Winkel waehlen): Froschperspektive, Vogelperspektive, Draufsicht, Aufsicht, Untersicht, Schraegsicht, Normalperspektive\n- Technik (0-2 Werte, NUR bei offensichtlichem Merkmal — leer lassen wenn nichts): Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot\n\nRegeln:\n- Fuer alle Whitelist-Kategorien NUR Werte aus der jeweiligen Liste verwenden.\n- Format: JSON-Array mit maximal 30 Keywords.\n- Antworte NUR mit dem JSON-Array, kein weiterer Text.",
+  "images": {
+    "01_sunset.jpg": {
+      "elapsed_sec": 255.41,
+      "raw_response": "100% original, no manipulation",
+      "keywords": [
+        "100% original",
+        "no manipulation"
+      ],
+      "keyword_count": 2,
+      "timings": {
+        "total_duration_ms": 255406.2,
+        "load_duration_ms": 12965.9,
+        "prompt_eval_count": 1286,
+        "prompt_eval_ms": 177261.6,
+        "eval_count": 10,
+        "eval_ms": 2472.0
+      },
+      "score": {
+        "has_Gegenlicht": false,
+        "has_Abend": false,
+        "not_Morgengrauen": true,
+        "perspective=Normalperspektive": false,
+        "total_keywords": 2,
+        "score": 1,
+        "max_score": 4
+      }
+    },
+    "02_macro.jpg": {
+      "elapsed_sec": 255.87,
+      "raw_response": "1. Beispiel: [0.26, 0.78, 0.45, 0.9]",
+      "keywords": [
+        "0.26",
+        "0.78",
+        "0.45",
+        "0.9"
+      ],
+      "keyword_count": 4,
+      "timings": {
+        "total_duration_ms": 255865.1,
+        "load_duration_ms": 42.1,
+        "prompt_eval_count": 1286,
+        "prompt_eval_ms": 177478.5,
+        "eval_count": 30,
+        "eval_ms": 16261.1
+      },
+      "score": {
+        "has_Biene": false,
+        "has_Makro": false,
+        "not_Regen": true,
+        "perspective=Froschperspektive": false,
+        "technik_Makro": false,
+        "total_keywords": 4,
+        "score": 1,
+        "max_score": 5
+      }
+    },
+    "03_night_city.jpg": {
+      "elapsed_sec": 240.03,
+      "raw_response": "1234567890",
+      "keywords": [
+        "1234567890"
+      ],
+      "keyword_count": 1,
+      "timings": {
+        "total_duration_ms": 240031.3,
+        "load_duration_ms": 34.0,
+        "prompt_eval_count": 1286,
+        "prompt_eval_ms": 174692.8,
+        "eval_count": 11,
+        "eval_ms": 2822.2
+      },
+      "score": {
+        "has_Nacht": false,
+        "has_Kunstlicht": false,
+        "not_Morgengrauen": true,
+        "perspective=Normalperspektive": false,
+        "technik_Langzeitbelichtung": false,
+        "total_keywords": 1,
+        "score": 1,
+        "max_score": 5
+      }
+    },
+    "04_portrait_bw.jpg": {
+      "elapsed_sec": 241.08,
+      "raw_response": "\nGerman caption for the black and white photo of an old man in a chair.",
+      "keywords": [],
+      "keyword_count": 0,
+      "timings": {
+        "total_duration_ms": 241072.6,
+        "load_duration_ms": 37.6,
+        "prompt_eval_count": 1286,
+        "prompt_eval_ms": 173976.3,
+        "eval_count": 20,
+        "eval_ms": 4949.5
+      },
+      "score": {
+        "has_Mann": false,
+        "has_Schwarzweiss": false,
+        "not_Regen": true,
+        "perspective=Normalperspektive": false,
+        "technik_Schwarzweiss": false,
+        "total_keywords": 0,
+        "score": 1,
+        "max_score": 5
+      }
+    },
+    "05_forest_autumn.jpg": {
+      "elapsed_sec": 241.03,
+      "raw_response": "100% original, no manipulation",
+      "keywords": [
+        "100% original",
+        "no manipulation"
+      ],
+      "keyword_count": 2,
+      "timings": {
+        "total_duration_ms": 241029.7,
+        "load_duration_ms": 63.0,
+        "prompt_eval_count": 1286,
+        "prompt_eval_ms": 176287.6,
+        "eval_count": 10,
+        "eval_ms": 2436.3
+      },
+      "score": {
+        "has_Wald": false,
+        "has_Herbst": false,
+        "perspective=Normalperspektive": false,
+        "total_keywords": 2,
+        "score": 0,
+        "max_score": 3
+      }
+    }
+  }
+}

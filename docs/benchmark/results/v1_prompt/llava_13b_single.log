@@ -1,0 +1,17 @@
+Start: 23:29:39  image=02_macro.jpg (204 KB)
+Done:  23:40:03  elapsed=623.7s
+Raw response (329 chars):
+ ```json
+{
+  "Objekte": ["Blume", "Bienen"],
+  "Szene": ["Natur", "Gärten"],
+  "Umgebung": ["Freiland", "Garten"],
+  "Tageszeit": ["Mittag"],
+  "Jahreszeit": ["Frühling"],
+  "Wetter": ["Sonnig"],
+  "Stimmung": ["Friedlich"],
+  "Lichtsituation": ["Frontlicht"],
+  "Perspektive": ["Normalperspektive"],
+  "Technik": ["Makro"]
+}
+```

@@ -1,0 +1,96 @@
+System: 12 vCPUs, 14.5 GB RAM, QEMU Virtual CPU version 2.5+
+Models: 9
+Images: 5
+Timeout: 1800s per request
+Total runs: 45
+
+[1/9] moondream — SKIPPED (in SKIP_MODELS)
+
+============================================================
+[2/9] llava-phi3
+============================================================
+  [1/5] 01_sunset.jpg (234 KB) ...   280.5s  15 kws  score 1/4  [Wohnhaus, Gebäude, Baum, Telefonkabel, Dorf, Stadt...]
+  [2/5] 02_macro.jpg (204 KB) ...   264.9s   9 kws  score 1/5  [Hase, Blume, Melancholisch, Wald, Vormittag, Frühling...]
+  [3/5] 03_night_city.jpg (94 KB) ...   296.9s  20 kws  score 3/5  [Burj Khalifa, Empire State Building, One World Trade Center, Chrysler Building, MetLife Building, Cityscape...]
+  [4/5] 04_portrait_bw.jpg (274 KB) ...   290.9s  17 kws  score 4/5  [CD, Lounge Chair, Café, Geschäft, Straße, Telefonkartenautomat...]
+  [5/5] 05_forest_autumn.jpg (402 KB) ...   262.8s  12 kws  score 3/3  [Baum, Baum, Baum, Wald, Grasland, Morgen...]
+  -> Saved llava-phi3.json
+
+============================================================
+[3/9] gemma3:4b
+============================================================
+  [1/5] 01_sunset.jpg (234 KB) ...   375.2s  10 kws  score 2/4  [Horizont, Meer, Sonnenuntergang, Nachmittag, Sonnig, Friedlich...]
+  [2/5] 02_macro.jpg (204 KB) ...   363.6s  11 kws  score 1/5  [Blume, Blütenblatt, Farbe, Natur, Blatt, Szene...]
+  [3/5] 03_night_city.jpg (94 KB) ...   386.1s  13 kws  score 3/5  [Dunkelheit, Meer, Nacht, Abend, Stille, Melancholisch...]
+  [4/5] 04_portrait_bw.jpg (274 KB) ...   370.3s  13 kws  score 2/5  [Dunkelheit, Melancholie, Einsamkeit, Nebel, Tageslicht, Langsame...]
+  [5/5] 05_forest_autumn.jpg (402 KB) ...   366.0s  10 kws  score 3/3  [Herbst, Wald, Lichtung, Dämmerung, Friedlich, Melancholisch...]
+  -> Saved gemma3_4b.json
+
+============================================================
+[4/9] llava:7b
+============================================================
+  [1/5] 01_sunset.jpg (234 KB) ...   305.7s  11 kws  score 2/4  [Haus, Baum, Stadt, Gebirge, Morgen, Sommer...]
+  [2/5] 02_macro.jpg (204 KB) ...   279.2s   9 kws  score 1/5  [Biene, Blumen, Blumen, Morgen, Sommer, Regen...]
+  [3/5] 03_night_city.jpg (94 KB) ...   279.4s   9 kws  score 3/5  [Stadt, Nacht, See, Abend, Herbst, Bedeckt...]
+  [4/5] 04_portrait_bw.jpg (274 KB) ...   287.8s  13 kws  score 3/5  [Mann, Sitzbank, Gesellschaft, Kaffeestube, Café, Stadt...]
+  [5/5] 05_forest_autumn.jpg (402 KB) ...   284.1s  11 kws  score 3/3  [Baum, Weg, Naturlandschaft, Wald, Morgen, Herbst...]
+  -> Saved llava_7b.json
+
+============================================================
+[5/9] bakllava
+============================================================
+  [1/5] 01_sunset.jpg (234 KB) ...   255.4s   2 kws  score 1/4  [100% original, no manipulation]
+  [2/5] 02_macro.jpg (204 KB) ...   255.9s   4 kws  score 1/5  [0.26, 0.78, 0.45, 0.9]
+  [3/5] 03_night_city.jpg (94 KB) ...   240.0s   1 kws  score 1/5  [1234567890]
+  [4/5] 04_portrait_bw.jpg (274 KB) ...   241.1s   0 kws  score 1/5  []
+  [5/5] 05_forest_autumn.jpg (402 KB) ...   241.0s   2 kws  score 0/3  [100% original, no manipulation]
+  -> Saved bakllava.json
+
+============================================================
+[6/9] llava-llama3
+============================================================
+  [1/5] 01_sunset.jpg (234 KB) ...   514.4s  30 kws  score 3/4  [Stadt, Berge, Wald, Morgen, Nacht, Abend...]
+  [2/5] 02_macro.jpg (204 KB) ...  ERROR (1800s): timed out
+  [3/5] 03_night_city.jpg (94 KB) ...   488.2s  30 kws  score 1/5  [Skyline, Buildings, Cityscape, Nighttime, Urban, Dusk...]
+  [4/5] 04_portrait_bw.jpg (274 KB) ...   457.9s  30 kws  score 0/5  [Boxen, Stuhl, Zimmer, Museum, Zimmer, Museum...]
+  [5/5] 05_forest_autumn.jpg (402 KB) ...   646.6s  30 kws  score 0/3  [Aufruhr, Bewegung, Drohung, Einsamkeit, Frustration, Geduld...]
+  -> Saved llava-llama3.json
+
+============================================================
+[7/9] minicpm-v
+============================================================
+  [1/5] 01_sunset.jpg (234 KB) ...   868.0s  15 kws  score 2/4  [Haus, Berg, Pflanzen, Stadtansicht, Waldgebiet, Morgendurchbruch...]
+  [2/5] 02_macro.jpg (204 KB) ...  1406.6s  13 kws  score 4/5  [Bienen, Blumen, Natur, Wald, Morgendurchbruch, Frühling...]
+  [3/5] 03_night_city.jpg (94 KB) ...  1431.5s  15 kws  score 2/5  [Städtelandschaft, Hochhäuser, Nachtlicht, Fliegerstrecke, Cityscape, Urbane Umgebung...]
+  [4/5] 04_portrait_bw.jpg (274 KB) ...  1416.7s  14 kws  score 5/5  [Mann, Zeitzeiger, Sitzplatz, Straßencafé, Stadtstraße, Öffentliches Raum...]
+  [5/5] 05_forest_autumn.jpg (402 KB) ...  1378.5s   5 kws  score 2/3  [Wald, Bäume, Straße, Sonnenuntergang, Herbst]
+  -> Saved minicpm-v.json
+
+============================================================
+[8/9] llama3.2-vision
+============================================================
+  [1/5] 01_sunset.jpg (234 KB) ...   923.6s  20 kws  score 4/4  [Haeuser, Baeume, Weg, Stadt, Landschaft, Berg...]
+  [2/5] 02_macro.jpg (204 KB) ...   905.8s  14 kws  score 3/5  [Bee, Flower, Nature, Daytime, Green, Nature...]
+  [3/5] 03_night_city.jpg (94 KB) ...   951.1s  16 kws  score 1/5  [Skyline, Stadt, Wolkenkratzer, Stadt, Stadtlandschaft, Stadt...]
+  [4/5] 04_portrait_bw.jpg (274 KB) ...   945.5s  14 kws  score 4/5  [Menschen, Sitzbank, Hintergrund, Menschen, Sitzbank, Hintergrund...]
+  [5/5] 05_forest_autumn.jpg (402 KB) ...   957.5s  20 kws  score 3/3  [Bäume, Weg, Morgen, Natur, Wald, Nacht...]
+  -> Saved llama3.2-vision.json
+
+============================================================
+[9/9] llava:13b
+============================================================
+  [1/5] 01_sunset.jpg (234 KB) ...   450.1s  13 kws  score 2/4  [Häuser, Berg, Dorf, Berge, Natur, Gebirge...]
+  [2/5] 02_macro.jpg (204 KB) ...   437.0s  13 kws  score 2/5  [Blüten, Bienen, Natur, Gärtnern, Freiland, Garten...]
+  [3/5] 03_night_city.jpg (94 KB) ...   445.6s  14 kws  score 3/5  [Stadt, Hochhauses, Nacht, Dunkelheit, Wasser, Fluss...]
+  [4/5] 04_portrait_bw.jpg (274 KB) ...   421.7s  12 kws  score 5/5  [Mann, Stuhl, Restaurant, Bar, Innenraum, Abend...]
+  [5/5] 05_forest_autumn.jpg (402 KB) ...   445.0s  13 kws  score 3/3  [Baum, Straße, Wald, Morgengrauen, Natur, Einzelne Bäume...]
+  -> Saved llava_13b.json
+
+Traceback (most recent call last):
+  File "/home/maximilian/projects/LR-AutoTagger/docs/benchmark/run_benchmark.py", line 548, in <module>
+    main()
+    ~~~~^^
+  File "/home/maximilian/projects/LR-AutoTagger/docs/benchmark/run_benchmark.py", line 496, in main
+    f"**{model}** ({t:.0f}s, {len(kws)} kws, "
+                   ^^^^^^^
+TypeError: unsupported format string passed to NoneType.__format__

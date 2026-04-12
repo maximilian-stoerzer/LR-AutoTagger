@@ -1,0 +1,14 @@
+{
+  "image": "02_macro.jpg",
+  "model": "llava:13b",
+  "elapsed_sec": 623.66,
+  "raw": " ```json\n{\n  \"Objekte\": [\"Blume\", \"Bienen\"],\n  \"Szene\": [\"Natur\", \"Gärten\"],\n  \"Umgebung\": [\"Freiland\", \"Garten\"],\n  \"Tageszeit\": [\"Mittag\"],\n  \"Jahreszeit\": [\"Frühling\"],\n  \"Wetter\": [\"Sonnig\"],\n  \"Stimmung\": [\"Friedlich\"],\n  \"Lichtsituation\": [\"Frontlicht\"],\n  \"Perspektive\": [\"Normalperspektive\"],\n  \"Technik\": [\"Makro\"]\n}\n```",
+  "timings_ns": {
+    "total_duration": 623639897808,
+    "load_duration": 23755719830,
+    "prompt_eval_count": 1030,
+    "prompt_eval_duration": 436990887351,
+    "eval_count": 143,
+    "eval_duration": 96232973453
+  }
+}

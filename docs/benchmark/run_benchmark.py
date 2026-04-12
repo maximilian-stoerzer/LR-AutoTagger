@@ -39,16 +39,21 @@ OLLAMA_BASE = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 TIMEOUT = int(os.getenv("BENCHMARK_TIMEOUT", "1800"))
 
 MODELS = [
-    "moondream",
-    "llava-phi3",
-    "gemma3:4b",
-    "llava:7b",
-    "bakllava",
-    "llava-llama3",
-    "minicpm-v",
-    "llama3.2-vision",
-    "llava:13b",
+    "moondream",       # 1.4B — included for completeness; expect timeouts
+    "llava-phi3",      # 3.8B
+    "gemma3:4b",       # 4B
+    "llava:7b",        # 7B
+    "bakllava",        # 7B (Mistral base)
+    "llava-llama3",    # 8B
+    "minicpm-v",       # 8B
+    "llama3.2-vision", # 11B
+    "llava:13b",       # 13B
 ]
+
+# Models to skip entirely (checkpoint kept but no new inference).
+# Moondream can't handle the V2 CoT prompt — generates garbage or
+# hits the 1800s timeout on every image.
+SKIP_MODELS: set[str] = {"moondream"}
 
 PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 IMG_DIR = PROJECT_ROOT / "backend" / "tests" / "nfa" / "fixtures" / "benchmark_images"
@@ -319,6 +324,11 @@ def main():
     summary_rows: list[dict] = []
 
     for mi, model in enumerate(MODELS, 1):
+        if model in SKIP_MODELS:
+            print(f"[{mi}/{len(MODELS)}] {model} — SKIPPED (in SKIP_MODELS)")
+            print()
+            continue
+
         print(f"{'='*60}")
         print(f"[{mi}/{len(MODELS)}] {model}")
         print(f"{'='*60}")

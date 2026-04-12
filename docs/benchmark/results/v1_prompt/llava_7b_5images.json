@@ -1,0 +1,101 @@
+{
+  "01_sunset.jpg": {
+    "llava:7b": {
+      "elapsed_sec": 382.71,
+      "raw": " ```json\n{\n  \"Objekte\": [\"Stadt\", \"Haus\"],\n  \"Szene\": [\"Morgen\"],\n  \"Umgebung\": [\"Gebirge\"],\n  \"Tageszeit\": [\"Morgengrauen\"],\n  \"Jahreszeit\": [\"Sommer\"],\n  \"Wetter\": [\"Sonnig\"],\n  \"Stimmung\": [\"Friedlich\", \"Mystisch\"],\n  \"Lichtsituation\": [\"Frontlicht\"],\n  \"Perspektive\": [\"Normalperspektive\"]\n}\n``` ",
+      "keywords": [
+        "Stadt",
+        "Haus"
+      ],
+      "keyword_count": 2,
+      "timings_ns": {
+        "total_duration_ns": 382690611132,
+        "load_duration_ns": 9458353359,
+        "prompt_eval_count": 1045,
+        "prompt_eval_duration_ns": 248345079535,
+        "eval_count": 136,
+        "eval_duration_ns": 62188193028
+      }
+    },
+    "llava:13b": {
+      "error": "timed out",
+      "elapsed_sec": null
+    }
+  },
+  "02_macro.jpg": {
+    "llava:7b": {
+      "elapsed_sec": 364.53,
+      "raw": " ```json\n{\n  \"Objekte\": [\"Biene\", \"Blumen\"],\n  \"Szene\": [\"Garten\"],\n  \"Umgebung\": [\"Natur\"],\n  \"Tageszeit\": [\"Morgen\"],\n  \"Jahreszeit\": [\"Fruehling\"],\n  \"Wetter\": [\"Regen\"],\n  \"Stimmung\": [\"Froehlich\", \"Lebhaft\"],\n  \"Lichtsituation\": [\"Frontlicht\"],\n  \"Perspektive\": [\"Normalperspektive\"]\n}\n``` ",
+      "keywords": [
+        "Biene",
+        "Blumen"
+      ],
+      "keyword_count": 2,
+      "timings_ns": {
+        "total_duration_ns": 364525843671,
+        "load_duration_ns": 36332635,
+        "prompt_eval_count": 1045,
+        "prompt_eval_duration_ns": 250243553621,
+        "eval_count": 133,
+        "eval_duration_ns": 51341301866
+      }
+    }
+  },
+  "03_night_city.jpg": {
+    "llava:7b": {
+      "elapsed_sec": 361.03,
+      "raw": " ```json\n{\n  \"Objekte\": [\"Stadt\", \"Skyline\"],\n  \"Szene\": [\"Nacht\"],\n  \"Umgebung\": [\"Wasser\"],\n  \"Tageszeit\": [\"Morgengrauen\"],\n  \"Jahreszeit\": [\"Herbst\"],\n  \"Wetter\": [\"Bedeckt\"],\n  \"Stimmung\": [\"Froehlich\", \"Mystisch\"],\n  \"Lichtsituation\": [\"Frontlicht\"],\n  \"Perspektive\": [\"Normalperspektive\"]\n}\n``` ",
+      "keywords": [
+        "Stadt",
+        "Skyline"
+      ],
+      "keyword_count": 2,
+      "timings_ns": {
+        "total_duration_ns": 361025215008,
+        "load_duration_ns": 35865352,
+        "prompt_eval_count": 1045,
+        "prompt_eval_duration_ns": 246943290682,
+        "eval_count": 135,
+        "eval_duration_ns": 52106769761
+      }
+    }
+  },
+  "04_portrait_bw.jpg": {
+    "llava:7b": {
+      "elapsed_sec": 362.3,
+      "raw": " ```json\n{\n  \"Objekte\": [\"Mann\", \"Sitzbank\"],\n  \"Szene\": [\"Kaffeehaus\", \"Gesellschaft\"],\n  \"Umgebung\": [\"Stadt\", \"Café\"],\n  \"Tageszeit\": [\"Abend\"],\n  \"Jahreszeit\": [\"Herbst\"],\n  \"Wetter\": [\"Regen\"],\n  \"Stimmung\": [\"Melancholisch\"],\n  \"Lichtsituation\": [\"Frontlicht\"],\n  \"Perspektive\": [\"Normalperspektive\"]\n}\n``` ",
+      "keywords": [
+        "Mann",
+        "Sitzbank"
+      ],
+      "keyword_count": 2,
+      "timings_ns": {
+        "total_duration_ns": 362293882969,
+        "load_duration_ns": 39122446,
+        "prompt_eval_count": 1045,
+        "prompt_eval_duration_ns": 246255912815,
+        "eval_count": 138,
+        "eval_duration_ns": 53617385737
+      }
+    }
+  },
+  "05_forest_autumn.jpg": {
+    "llava:7b": {
+      "elapsed_sec": 364.88,
+      "raw": " ```json\n{\n  \"Objekte\": [\"Wald\", \"Pfade\"],\n  \"Szene\": [\"Morgengrauen\"],\n  \"Umgebung\": [\"Natur\"],\n  \"Tageszeit\": [\"Morgengrauen\"],\n  \"Jahreszeit\": [\"Herbst\"],\n  \"Wetter\": [\"Bedeckt\"],\n  \"Stimmung\": [\"Friedlich\", \"Mystisch\"],\n  \"Lichtsituation\": [\"Frontlicht\"],\n  \"Perspektive\": [\"Normalperspektive\"]\n}\n``` ",
+      "keywords": [
+        "Wald",
+        "Pfade"
+      ],
+      "keyword_count": 2,
+      "timings_ns": {
+        "total_duration_ns": 364879247393,
+        "load_duration_ns": 38863558,
+        "prompt_eval_count": 1045,
+        "prompt_eval_duration_ns": 247120131262,
+        "eval_count": 137,
+        "eval_duration_ns": 55107543942
+      }
+    }
+  }
+}
