@@ -239,10 +239,8 @@ def get_technik_vetos(exif: ExifMetadata, pixels: PixelAnalysis) -> set[str]:
         vetos.add("Langzeitbelichtung")
     if should_veto_makro(exif):
         vetos.add("Makro")
-    if pixels.is_bw:
-        # Already added deterministically — don't ask the model too.
-        vetos.add("Schwarzweiss")
-    elif not pixels.is_bw and pixels.mean_saturation is not None:
-        # Colour image — model shouldn't tag it as B&W.
-        vetos.add("Schwarzweiss")
+    # Schwarzweiss is always handled outside the model: if B&W it's added
+    # deterministically by derive_keywords(); if colour (or analysis failed)
+    # we don't want the model hallucinating it. So veto unconditionally.
+    vetos.add("Schwarzweiss")
     return vetos

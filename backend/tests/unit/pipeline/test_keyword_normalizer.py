@@ -88,3 +88,36 @@ def test_real_llama32_vision_output():
     assert "Natur" in result
     assert "Tag" in result
     assert "Gruen" in result
+
+
+def test_whitelist_values_match_prompt_builder():
+    """Ensure normalizer target values for controlled categories stay in
+    sync with the canonical whitelists in prompt_builder."""
+    from app.pipeline.keyword_normalizer import _WHITELIST_MAP
+    from app.pipeline.prompt_builder import (
+        JAHRESZEIT_VALUES,
+        LICHTSITUATION_VALUES,
+        PERSPEKTIVE_VALUES,
+        STIMMUNG_VALUES,
+        TAGESZEIT_VALUES,
+        TECHNIK_VALUES,
+        WETTER_VALUES,
+    )
+
+    all_whitelist = set()
+    for wl in (
+        TAGESZEIT_VALUES,
+        JAHRESZEIT_VALUES,
+        WETTER_VALUES,
+        STIMMUNG_VALUES,
+        LICHTSITUATION_VALUES,
+        PERSPEKTIVE_VALUES,
+        TECHNIK_VALUES,
+    ):
+        all_whitelist.update(wl)
+
+    mismatches = []
+    for en, de in _WHITELIST_MAP.items():
+        if de not in all_whitelist:
+            mismatches.append(f"{en!r} → {de!r}")
+    assert not mismatches, "Normalizer targets not in prompt_builder whitelists:\n" + "\n".join(mismatches)

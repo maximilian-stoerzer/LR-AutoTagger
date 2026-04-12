@@ -219,7 +219,16 @@ def extract(image_data: bytes) -> ExifMetadata:
     f_number = _to_float(sub.get(_EXIF_NAME_TO_TAG.get("FNumber")))
     exposure_time = _to_float(sub.get(_EXIF_NAME_TO_TAG.get("ExposureTime")))
     iso_raw = sub.get(_EXIF_NAME_TO_TAG.get("ISOSpeedRatings"))
-    iso = int(iso_raw) if iso_raw is not None else None
+    # Some cameras (Nikon, Sony) store ISO as a tuple e.g. (100, 0).
+    if isinstance(iso_raw, (tuple, list)):
+        iso = int(iso_raw[0]) if iso_raw else None
+    elif iso_raw is not None:
+        try:
+            iso = int(iso_raw)
+        except (TypeError, ValueError):
+            iso = None
+    else:
+        iso = None
 
     # Flash: tag 0x9209, bit 0 indicates whether flash fired.
     flash_raw = sub.get(_EXIF_NAME_TO_TAG.get("Flash"))
