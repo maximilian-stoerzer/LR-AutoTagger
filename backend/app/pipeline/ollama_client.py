@@ -83,9 +83,9 @@ class OllamaClient:
         names = [m.get("name") for m in data.get("models", []) if m.get("name")]
         return sorted(names)
 
-    async def analyze_image(self, image_data: bytes, model: str | None = None) -> list[str]:
+    async def analyze_image(self, image_data: bytes, model: str | None = None, prompt: str | None = None) -> list[str]:
         b64_image = base64.b64encode(image_data).decode("utf-8")
-        prompt = VISION_PROMPT.format(max_keywords=settings.max_keywords)
+        prompt = prompt or VISION_PROMPT.format(max_keywords=settings.max_keywords)
 
         payload = {
             "model": model or self.model,

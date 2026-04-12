@@ -28,6 +28,10 @@ class ExifMetadata:
     gps_lat: float | None = None
     gps_lon: float | None = None
     focal_length_35mm: float | None = None  # 35mm equivalent in mm
+    f_number: float | None = None           # aperture (e.g. 2.8, 5.6, 13)
+    exposure_time: float | None = None      # seconds (e.g. 0.001 = 1/1000, 2.0 = 2s)
+    iso: int | None = None                  # ISO speed (e.g. 100, 3200)
+    flash_fired: bool | None = None         # True if flash was used
 
 
 # Pre-compute reverse lookups so we don't rebuild them on every call.
@@ -211,9 +215,23 @@ def extract(image_data: bytes) -> ExifMetadata:
         logger.warning("EXIF focal length parsing failed: %s", e, exc_info=True)
         focal_length_35mm = None
 
+    # Exposure triangle fields — all in the Exif sub-IFD.
+    f_number = _to_float(sub.get(_EXIF_NAME_TO_TAG.get("FNumber")))
+    exposure_time = _to_float(sub.get(_EXIF_NAME_TO_TAG.get("ExposureTime")))
+    iso_raw = sub.get(_EXIF_NAME_TO_TAG.get("ISOSpeedRatings"))
+    iso = int(iso_raw) if iso_raw is not None else None
+
+    # Flash: tag 0x9209, bit 0 indicates whether flash fired.
+    flash_raw = sub.get(_EXIF_NAME_TO_TAG.get("Flash"))
+    flash_fired = bool(int(flash_raw) & 1) if flash_raw is not None else None
+
     return ExifMetadata(
         datetime_original=datetime_original,
         gps_lat=gps_lat,
         gps_lon=gps_lon,
         focal_length_35mm=focal_length_35mm,
+        f_number=f_number,
+        exposure_time=exposure_time,
+        iso=iso,
+        flash_fired=flash_fired,
     )

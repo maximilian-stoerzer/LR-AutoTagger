@@ -3,7 +3,14 @@ import logging
 
 from app.config import settings
 from app.db.repository import Repository
-from app.pipeline import exif_extractor, focal_length_classifier, keyword_normalizer, sun_calculator
+from app.pipeline import (
+    exif_classifier,
+    exif_extractor,
+    keyword_normalizer,
+    pixel_analyzer,
+    prompt_builder,
+    sun_calculator,
+)
 from app.pipeline.geocoder import Geocoder
 from app.pipeline.image_processor import resize_for_analysis
 from app.pipeline.ollama_client import OllamaClient
@@ -26,34 +33,55 @@ class KeywordPipeline:
         ollama_model: str | None = None,
         sun_calc_location: str | None = None,
     ) -> dict:
-        """Full pipeline for a single image: EXIF → resize → (geocode ∥ vision) →
-        focal length → sun phase → combine.
+        """Full pipeline: EXIF → Pixel → Prompt-Build → (Geo ∥ Vision) →
+        Normalize → EXIF-Veto → Combine.
 
-        ``ollama_model`` overrides the configured Ollama model for this one
-        request; ``sun_calc_location`` overrides the SUN_CALC_DEFAULT_LOCATION
-        for this one request (accepts BAYERN, MUNICH, NONE).
+        Categories that EXIF/pixels already answer are NOT sent to the
+        vision model. The prompt is shorter, the model has less room to
+        hallucinate, and deterministic values are always correct.
         """
 
-        # Extract EXIF from the ORIGINAL bytes before resize re-encodes the
-        # image and strips the EXIF block.
-        exif = exif_extractor.extract(image_data)
+        # ── Phase 1: deterministic analysis (before Ollama) ──────────
 
-        # GPS fallback order: explicit parameter → EXIF.
+        exif = exif_extractor.extract(image_data)
+        pixels = pixel_analyzer.analyze(image_data)
+
+        # GPS fallback: parameter → EXIF.
         if gps_lat is None or gps_lon is None:
             gps_lat = exif.gps_lat
             gps_lon = exif.gps_lon
 
+        # EXIF-derived keywords (deterministic, always correct).
+        derived_keywords = exif_classifier.derive_keywords(exif, pixels)
+
+        # Tageszeit from sun elevation (deterministic).
+        loc = sun_calc_location or settings.sun_calc_default_location
+        time_of_day = exif_classifier.classify_time_of_day(
+            exif.datetime_original, gps_lat, gps_lon, default_location=loc,
+        )
+        if time_of_day:
+            derived_keywords.append(time_of_day)
+
+        # Tageslichtphase (Goldene/Blaue Stunde) from sun calculator.
+        sun_kw = sun_calculator.classify(
+            exif.datetime_original, gps_lat, gps_lon, default_location=loc,
+        )
+        if sun_kw:
+            derived_keywords.append(sun_kw)
+
+        # Build the dynamic prompt — shorter when EXIF provides answers.
+        prompt = prompt_builder.build(exif, pixels)
+
+        # ── Phase 2: async I/O (Ollama + Geocoding in parallel) ──────
+
         resized = resize_for_analysis(image_data)
 
-        # Geocoding and vision are fully independent — one hits Nominatim,
-        # the other hits Ollama. Run them in parallel; vision is the
-        # multi-second bottleneck so we save the geocode round-trip entirely.
         geo_task = (
             self.geocoder.reverse(gps_lat, gps_lon)
             if gps_lat is not None and gps_lon is not None
             else None
         )
-        vision_task = self.ollama.analyze_image(resized, model=ollama_model)
+        vision_task = self.ollama.analyze_image(resized, model=ollama_model, prompt=prompt)
 
         if geo_task is not None:
             geo_result, vision_keywords = await asyncio.gather(
@@ -68,10 +96,15 @@ class KeywordPipeline:
             geo_result = None
             vision_keywords = await vision_task
 
-        # Normalize English keywords to German whitelist values before
-        # combining. Zero-cost dict lookup — fixes models that answer
-        # in English despite the German prompt (e.g. llava-llama3).
+        # ── Phase 3: post-processing ─────────────────────────────────
+
+        # EN→DE normalization (fixes models that answer in English).
         vision_keywords = keyword_normalizer.normalize(vision_keywords)
+
+        # EXIF-based vetos: remove vision keywords that EXIF data rules out.
+        technik_vetos = exif_classifier.get_technik_vetos(exif, pixels)
+        if technik_vetos:
+            vision_keywords = [kw for kw in vision_keywords if kw not in technik_vetos]
 
         geo_keywords: list[str] = []
         location_name = None
@@ -79,19 +112,7 @@ class KeywordPipeline:
             geo_keywords = geo_result.get("geo_keywords", [])
             location_name = geo_result.get("location_name")
 
-        # Derived keywords: cheap local computations (EXIF metadata).
-        derived_keywords: list[str] = []
-        focal_kw = focal_length_classifier.classify(exif.focal_length_35mm)
-        if focal_kw:
-            derived_keywords.append(focal_kw)
-        sun_kw = sun_calculator.classify(
-            exif.datetime_original,
-            gps_lat,
-            gps_lon,
-            default_location=sun_calc_location or settings.sun_calc_default_location,
-        )
-        if sun_kw:
-            derived_keywords.append(sun_kw)
+        # ── Phase 4: combine ─────────────────────────────────────────
 
         keywords = self._combine_keywords(vision_keywords, geo_keywords, derived_keywords)
 
@@ -125,8 +146,7 @@ class KeywordPipeline:
         """Merge vision, geo and derived keywords, deduplicate case-insensitively.
 
         Order: geo (high confidence, location) → derived (EXIF + sun, exact) →
-        vision (bulk of the content). Deduplication keeps the first
-        occurrence, so earlier sources win when spellings collide.
+        vision (bulk of the content).
         """
         seen: set[str] = set()
         result: list[str] = []
