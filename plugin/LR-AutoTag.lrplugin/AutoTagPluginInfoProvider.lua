@@ -8,7 +8,7 @@ local LrColor = import "LrColor"
 local LrLogger = import "LrLogger"
 
 local logger = LrLogger("LR-AutoTag")
-logger:enable("logfile")
+logger:enable("print")
 local log = logger:quickf("info")
 local logErr = logger:quickf("error")
 

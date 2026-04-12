@@ -5,7 +5,7 @@ local LrLogger = import "LrLogger"
 local multipart = require "AutoTagMultipart"
 
 local logger = LrLogger("LR-AutoTag")
-logger:enable("logfile")
+logger:enable("print")
 local log = logger:quickf("info")
 local logWarn = logger:quickf("warn")
 local logErr = logger:quickf("error")
@@ -248,19 +248,28 @@ local function handleResponse(body, headers, context)
     logDebug("[%s] Response status=%s, body length=%d", context, tostring(status), #body)
     logDebug("[%s] Response body: %s", context, #body <= 2000 and body or body:sub(1, 2000) .. "...(truncated)")
 
+    -- Check for HTTP errors before JSON parsing
+    if status and status >= 400 then
+        -- Try JSON first for structured error detail
+        local ok, data = pcall(JSON.decode, body)
+        local msg = "HTTP " .. tostring(status)
+        if ok and data and data.detail then
+            msg = msg .. ": " .. tostring(data.detail)
+        else
+            -- Plain-text error (e.g. "Internal Server Error")
+            local trimmed = body:match("^%s*(.-)%s*$") or body
+            if #trimmed > 0 and #trimmed <= 500 then
+                msg = msg .. ": " .. trimmed
+            end
+        end
+        logErr("[%s] HTTP error: %s", context, msg)
+        return nil, msg
+    end
+
     local ok, data = pcall(JSON.decode, body)
     if not ok then
         logErr("[%s] JSON decode failed: %s", context, tostring(data))
         return nil, "JSON-Parsing fehlgeschlagen: " .. tostring(data)
-    end
-
-    if status and status >= 400 then
-        local msg = "HTTP " .. tostring(status)
-        if data and data.detail then
-            msg = msg .. ": " .. tostring(data.detail)
-        end
-        logErr("[%s] HTTP error: %s", context, msg)
-        return nil, msg
     end
 
     log("[%s] Request erfolgreich (status=%s)", context, tostring(status))

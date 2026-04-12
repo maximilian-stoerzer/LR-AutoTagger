@@ -3,7 +3,7 @@ local LrMath = import "LrMath"
 local LrLogger = import "LrLogger"
 
 local logger = LrLogger("LR-AutoTag")
-logger:enable("logfile")
+logger:enable("print")
 local log = logger:quickf("info")
 local logDebug = logger:quickf("debug")
 local logErr = logger:quickf("error")

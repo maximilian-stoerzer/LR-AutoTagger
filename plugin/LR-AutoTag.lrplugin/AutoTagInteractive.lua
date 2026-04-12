@@ -12,7 +12,7 @@ local LrLogger = import "LrLogger"
 local apiClient = require "AutoTagApiClient"
 
 local logger = LrLogger("LR-AutoTag")
-logger:enable("logfile")
+logger:enable("print")
 local log = logger:quickf("info")
 local logWarn = logger:quickf("warn")
 local logErr = logger:quickf("error")
