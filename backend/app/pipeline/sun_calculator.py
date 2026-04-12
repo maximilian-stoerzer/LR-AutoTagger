@@ -15,6 +15,7 @@ If the default-location config is "NONE", images without GPS yield None
 instead of falling back. Missing timestamps always yield None because
 there is no sensible default for "when was this photo taken".
 """
+
 from __future__ import annotations
 
 import datetime as dt
@@ -29,8 +30,8 @@ logger = logging.getLogger(__name__)
 # Bavarian fallback locations. Regensburg sits near the geographic centre
 # of Bavaria and is the default; Munich is offered as an alternative.
 _FALLBACK_LOCATIONS: dict[str, tuple[float, float]] = {
-    "BAYERN": (49.0134, 12.1016),   # Regensburg
-    "MUNICH": (48.1374, 11.5754),   # München
+    "BAYERN": (49.0134, 12.1016),  # Regensburg
+    "MUNICH": (48.1374, 11.5754),  # München
 }
 
 VALID_LOCATIONS: frozenset[str] = frozenset({"BAYERN", "MUNICH", "NONE"})
@@ -76,9 +77,7 @@ def classify(
     if when.tzinfo is None:
         when = when.replace(tzinfo=_DEFAULT_NAIVE_TZ)
 
-    location = LocationInfo(
-        name="photo", region="", timezone="UTC", latitude=lat, longitude=lon
-    )
+    location = LocationInfo(name="photo", region="", timezone="UTC", latitude=lat, longitude=lon)
     try:
         sun_elev = elevation(location.observer, when)
     except Exception as e:

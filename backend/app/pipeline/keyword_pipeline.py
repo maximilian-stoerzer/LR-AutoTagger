@@ -57,14 +57,20 @@ class KeywordPipeline:
         # Tageszeit from sun elevation (deterministic).
         loc = sun_calc_location or settings.sun_calc_default_location
         time_of_day = exif_classifier.classify_time_of_day(
-            exif.datetime_original, gps_lat, gps_lon, default_location=loc,
+            exif.datetime_original,
+            gps_lat,
+            gps_lon,
+            default_location=loc,
         )
         if time_of_day:
             derived_keywords.append(time_of_day)
 
         # Tageslichtphase (Goldene/Blaue Stunde) from sun calculator.
         sun_kw = sun_calculator.classify(
-            exif.datetime_original, gps_lat, gps_lon, default_location=loc,
+            exif.datetime_original,
+            gps_lat,
+            gps_lon,
+            default_location=loc,
         )
         if sun_kw:
             derived_keywords.append(sun_kw)
@@ -76,17 +82,11 @@ class KeywordPipeline:
 
         resized = resize_for_analysis(image_data)
 
-        geo_task = (
-            self.geocoder.reverse(gps_lat, gps_lon)
-            if gps_lat is not None and gps_lon is not None
-            else None
-        )
+        geo_task = self.geocoder.reverse(gps_lat, gps_lon) if gps_lat is not None and gps_lon is not None else None
         vision_task = self.ollama.analyze_image(resized, model=ollama_model, prompt=prompt)
 
         if geo_task is not None:
-            geo_result, vision_keywords = await asyncio.gather(
-                geo_task, vision_task, return_exceptions=True
-            )
+            geo_result, vision_keywords = await asyncio.gather(geo_task, vision_task, return_exceptions=True)
             if isinstance(geo_result, BaseException):
                 logger.warning("Reverse geocoding failed: %s", geo_result)
                 geo_result = None

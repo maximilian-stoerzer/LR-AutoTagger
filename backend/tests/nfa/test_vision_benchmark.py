@@ -25,6 +25,7 @@ Run it explicitly:
 The ``-s`` flag lets pytest show the per-image timings + keyword output
 live; without it the benchmark numbers are only visible on failure.
 """
+
 import asyncio
 import os
 import pathlib

@@ -7,6 +7,7 @@ Taxonomy follows the common photography convention:
   70-200 mm → Teleobjektiv    (portrait + mid-tele)
   > 200 mm  → Supertele       (wildlife, sports)
 """
+
 from __future__ import annotations
 
 

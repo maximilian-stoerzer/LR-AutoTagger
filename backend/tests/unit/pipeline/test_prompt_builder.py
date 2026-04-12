@@ -104,7 +104,7 @@ def test_all_technik_vetoed_removes_category():
     # Schwarzweiss vetoed (color)
     # Remaining: Bewegungsunschaerfe, Infrarot — should still be in prompt
     # The "- Technik" category line (not the CoT hint line).
-    technik_lines = [l for l in prompt.split("\n") if l.startswith("- Technik")]
+    technik_lines = [line for line in prompt.split("\n") if line.startswith("- Technik")]
     assert len(technik_lines) == 1
     assert "Bewegungsunschaerfe" in technik_lines[0]
     assert "Infrarot" in technik_lines[0]

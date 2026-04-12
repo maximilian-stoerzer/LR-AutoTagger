@@ -19,23 +19,38 @@ from app.pipeline.exif_classifier import (
 from app.pipeline.exif_extractor import ExifMetadata
 from app.pipeline.pixel_analyzer import PixelAnalysis
 
-
 # --- Focal length (migrated from test_focal_length_classifier) ---
 
-@pytest.mark.parametrize("focal,expected", [
-    (10, "Superweitwinkel"), (24, "Weitwinkel"), (50, "Normalbrennweite"),
-    (135, "Teleobjektiv"), (400, "Supertele"), (None, None), (0, None),
-])
+
+@pytest.mark.parametrize(
+    "focal,expected",
+    [
+        (10, "Superweitwinkel"),
+        (24, "Weitwinkel"),
+        (50, "Normalbrennweite"),
+        (135, "Teleobjektiv"),
+        (400, "Supertele"),
+        (None, None),
+        (0, None),
+    ],
+)
 def test_classify_focal_length(focal, expected):
     assert classify_focal_length(focal) == expected
 
 
 # --- Season ---
 
-@pytest.mark.parametrize("month,expected", [
-    (1, "Winter"), (3, "Fruehling"), (6, "Sommer"),
-    (9, "Herbst"), (12, "Winter"),
-])
+
+@pytest.mark.parametrize(
+    "month,expected",
+    [
+        (1, "Winter"),
+        (3, "Fruehling"),
+        (6, "Sommer"),
+        (9, "Herbst"),
+        (12, "Winter"),
+    ],
+)
 def test_classify_season(month, expected):
     when = dt.datetime(2024, month, 15, 12, 0)
     assert classify_season(when) == expected
@@ -46,6 +61,7 @@ def test_classify_season_none():
 
 
 # --- Time of day ---
+
 
 def test_time_of_day_noon():
     noon = dt.datetime(2024, 6, 21, 12, 0, tzinfo=dt.timezone.utc)
@@ -70,6 +86,7 @@ def test_time_of_day_midnight():
 
 
 # --- Technik vetos ---
+
 
 def test_veto_bokeh_high_fnumber():
     exif = ExifMetadata(f_number=13.0, focal_length_35mm=32.0)
@@ -128,6 +145,7 @@ def test_no_kunstlicht_no_flash():
 
 # --- derive_keywords ---
 
+
 def test_derive_keywords_full_exif():
     exif = ExifMetadata(
         datetime_original=dt.datetime(2024, 3, 2, 14, 30),
@@ -161,6 +179,7 @@ def test_derive_keywords_long_exposure_flash():
 
 
 # --- get_technik_vetos ---
+
 
 def test_vetos_for_landscape_setup():
     """f/13 at 21mm (APS-C ~32mm equiv) → veto Bokeh + Makro."""

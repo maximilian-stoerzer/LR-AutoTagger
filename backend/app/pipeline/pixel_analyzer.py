@@ -4,6 +4,7 @@ Currently: black-and-white detection via HSV saturation. Runs on the
 original image bytes before resize — cheap (one Pillow convert + numpy
 mean) and deterministic.
 """
+
 from __future__ import annotations
 
 import io
@@ -40,6 +41,7 @@ def analyze(image_data: bytes) -> PixelAnalysis:
             s_channel = hsv.split()[1]
             # Use Pillow's built-in stat to avoid a numpy dependency.
             from PIL import ImageStat
+
             stat = ImageStat.Stat(s_channel)
             mean_s = stat.mean[0]  # 0-255 scale
 

@@ -5,6 +5,7 @@ from the prompt entirely — the model has fewer things to juggle and
 less room to hallucinate. Technik whitelist values that EXIF rules out
 (e.g. Bokeh at f/13) are removed so the model can't pick them.
 """
+
 from __future__ import annotations
 
 from app.config import settings
@@ -17,32 +18,76 @@ from app.pipeline.pixel_analyzer import PixelAnalysis
 # ---------------------------------------------------------------------------
 
 TAGESZEIT_VALUES = [
-    "Morgengrauen", "Morgen", "Vormittag", "Mittag",
-    "Nachmittag", "Abend", "Daemmerung", "Nacht",
+    "Morgengrauen",
+    "Morgen",
+    "Vormittag",
+    "Mittag",
+    "Nachmittag",
+    "Abend",
+    "Daemmerung",
+    "Nacht",
 ]
 JAHRESZEIT_VALUES = ["Fruehling", "Sommer", "Herbst", "Winter"]
 WETTER_VALUES = [
-    "Sonnig", "Bewoelkt", "Bedeckt", "Regen", "Schnee",
-    "Nebel", "Gewitter", "Wind", "Sturm", "Dunst",
+    "Sonnig",
+    "Bewoelkt",
+    "Bedeckt",
+    "Regen",
+    "Schnee",
+    "Nebel",
+    "Gewitter",
+    "Wind",
+    "Sturm",
+    "Dunst",
 ]
 STIMMUNG_VALUES = [
-    "Dramatisch", "Melancholisch", "Mystisch", "Bedrohlich", "Einsam",
-    "Vertraeumt", "Nostalgisch", "Majestaetisch", "Romantisch",
-    "Lebhaft", "Froehlich", "Friedlich",
+    "Dramatisch",
+    "Melancholisch",
+    "Mystisch",
+    "Bedrohlich",
+    "Einsam",
+    "Vertraeumt",
+    "Nostalgisch",
+    "Majestaetisch",
+    "Romantisch",
+    "Lebhaft",
+    "Froehlich",
+    "Friedlich",
 ]
 LICHTSITUATION_VALUES = [
-    "Gegenlicht", "Seitenlicht", "Hartes Licht", "Weiches Licht",
-    "Diffuses Licht", "Hell-Dunkel", "Silhouette", "Lichtstrahlen",
-    "High-Key", "Low-Key", "Kantenlicht", "Oberlicht", "Mischlicht",
-    "Kunstlicht", "Natuerliches Licht", "Frontlicht",
+    "Gegenlicht",
+    "Seitenlicht",
+    "Hartes Licht",
+    "Weiches Licht",
+    "Diffuses Licht",
+    "Hell-Dunkel",
+    "Silhouette",
+    "Lichtstrahlen",
+    "High-Key",
+    "Low-Key",
+    "Kantenlicht",
+    "Oberlicht",
+    "Mischlicht",
+    "Kunstlicht",
+    "Natuerliches Licht",
+    "Frontlicht",
 ]
 PERSPEKTIVE_VALUES = [
-    "Froschperspektive", "Vogelperspektive", "Draufsicht", "Aufsicht",
-    "Untersicht", "Schraegsicht", "Normalperspektive",
+    "Froschperspektive",
+    "Vogelperspektive",
+    "Draufsicht",
+    "Aufsicht",
+    "Untersicht",
+    "Schraegsicht",
+    "Normalperspektive",
 ]
 TECHNIK_VALUES = [
-    "Schwarzweiss", "Makro", "Bokeh",
-    "Langzeitbelichtung", "Bewegungsunschaerfe", "Infrarot",
+    "Schwarzweiss",
+    "Makro",
+    "Bokeh",
+    "Langzeitbelichtung",
+    "Bewegungsunschaerfe",
+    "Infrarot",
 ]
 
 
@@ -62,13 +107,8 @@ def build(exif: ExifMetadata, pixels: PixelAnalysis) -> str:
         "- Aus welchem Winkel wurde fotografiert? (von unten, von oben, Augenhoehe?)",
     ]
     if available_technik:
-        lines.append(
-            "- Gibt es sichtbare fotografische Techniken? ("
-            + ", ".join(available_technik) + "?)"
-        )
-    lines.append(
-        "- Welche Stimmung vermittelt das Bild? Ist es friedlich, dramatisch, melancholisch?"
-    )
+        lines.append("- Gibt es sichtbare fotografische Techniken? (" + ", ".join(available_technik) + "?)")
+    lines.append("- Welche Stimmung vermittelt das Bild? Ist es friedlich, dramatisch, melancholisch?")
     lines.append("")
     lines.append("Kategorien:")
 
@@ -79,14 +119,8 @@ def build(exif: ExifMetadata, pixels: PixelAnalysis) -> str:
 
     # --- Conditional: only if EXIF can't answer ---
     if not has_datetime:
-        lines.append(
-            "- Tageszeit: waehle den wahrscheinlichsten Wert aus: "
-            + ", ".join(TAGESZEIT_VALUES)
-        )
-        lines.append(
-            "- Jahreszeit: waehle den wahrscheinlichsten Wert aus: "
-            + ", ".join(JAHRESZEIT_VALUES)
-        )
+        lines.append("- Tageszeit: waehle den wahrscheinlichsten Wert aus: " + ", ".join(TAGESZEIT_VALUES))
+        lines.append("- Jahreszeit: waehle den wahrscheinlichsten Wert aus: " + ", ".join(JAHRESZEIT_VALUES))
 
     # --- Always from the model (can't derive from EXIF) ---
     lines.append(
@@ -94,19 +128,14 @@ def build(exif: ExifMetadata, pixels: PixelAnalysis) -> str:
         + ", ".join(WETTER_VALUES)
         + ". Nur einen zweiten wenn eindeutig erkennbar."
     )
-    lines.append(
-        "- Stimmung (1-2 Werte, den dominantesten zuerst): "
-        + ", ".join(STIMMUNG_VALUES)
-    )
+    lines.append("- Stimmung (1-2 Werte, den dominantesten zuerst): " + ", ".join(STIMMUNG_VALUES))
     lines.append(
         "- Lichtsituation (0-3 Werte, NUR wenn im Bild OFFENSICHTLICH erkennbar "
-        "— im Zweifel LEER lassen): "
-        + ", ".join(LICHTSITUATION_VALUES)
+        "— im Zweifel LEER lassen): " + ", ".join(LICHTSITUATION_VALUES)
     )
     lines.append(
         "- Perspektive (genau 1 Wert — Normalperspektive NUR wenn Kamera klar "
-        "auf Augenhoehe und horizontal steht, sonst den spezifischen Winkel): "
-        + ", ".join(PERSPEKTIVE_VALUES)
+        "auf Augenhoehe und horizontal steht, sonst den spezifischen Winkel): " + ", ".join(PERSPEKTIVE_VALUES)
     )
 
     # --- Technik: only values that EXIF hasn't ruled out ---

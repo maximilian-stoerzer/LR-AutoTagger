@@ -8,6 +8,7 @@ categories the model doesn't need to guess.
 
 Replaces the earlier single-purpose focal_length_classifier.py.
 """
+
 from __future__ import annotations
 
 import datetime as dt
@@ -22,6 +23,7 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 # Focal length → Brennweite (unchanged logic from focal_length_classifier)
 # ---------------------------------------------------------------------------
+
 
 def classify_focal_length(focal_35mm: float | None) -> str | None:
     if focal_35mm is None or focal_35mm <= 0:
@@ -42,10 +44,18 @@ def classify_focal_length(focal_35mm: float | None) -> str | None:
 # ---------------------------------------------------------------------------
 
 _MONTH_TO_SEASON = {
-    1: "Winter", 2: "Winter", 3: "Fruehling",
-    4: "Fruehling", 5: "Fruehling", 6: "Sommer",
-    7: "Sommer", 8: "Sommer", 9: "Herbst",
-    10: "Herbst", 11: "Herbst", 12: "Winter",
+    1: "Winter",
+    2: "Winter",
+    3: "Fruehling",
+    4: "Fruehling",
+    5: "Fruehling",
+    6: "Sommer",
+    7: "Sommer",
+    8: "Sommer",
+    9: "Herbst",
+    10: "Herbst",
+    11: "Herbst",
+    12: "Winter",
 }
 
 
@@ -58,6 +68,7 @@ def classify_season(when: dt.datetime | None) -> str | None:
 # ---------------------------------------------------------------------------
 # Tageszeit from sun elevation (via astral) — latitude-aware, not just hour
 # ---------------------------------------------------------------------------
+
 
 def classify_time_of_day(
     when: dt.datetime | None,
@@ -75,9 +86,10 @@ def classify_time_of_day(
         return None
 
     # Try sun-elevation-based classification first.
-    from app.pipeline.sun_calculator import _resolve_fallback, _DEFAULT_NAIVE_TZ
     from astral import LocationInfo
     from astral.sun import elevation
+
+    from app.pipeline.sun_calculator import _DEFAULT_NAIVE_TZ, _resolve_fallback
 
     lat, lon = gps_lat, gps_lon
     if lat is None or lon is None:
@@ -106,6 +118,7 @@ def classify_time_of_day(
         # setting. Simple heuristic: compare to solar noon.
         try:
             from astral.sun import noon as solar_noon
+
             sn = solar_noon(loc.observer, aware)
             if aware < sn:
                 return "Morgen" if elev < 10 else "Vormittag"
@@ -143,6 +156,7 @@ def _classify_time_by_hour(when: dt.datetime) -> str:
 # ---------------------------------------------------------------------------
 # Technik vetos + adds from exposure triangle
 # ---------------------------------------------------------------------------
+
 
 def should_veto_bokeh(exif: ExifMetadata) -> bool:
     """Reject Bokeh if the aperture is too narrow for shallow DOF."""
@@ -182,6 +196,7 @@ def should_add_kunstlicht(exif: ExifMetadata) -> bool:
 # ---------------------------------------------------------------------------
 # Convenience: collect all EXIF-derived keywords in one call
 # ---------------------------------------------------------------------------
+
 
 def derive_keywords(exif: ExifMetadata, pixels: PixelAnalysis) -> list[str]:
     """Return all deterministically derivable keywords."""

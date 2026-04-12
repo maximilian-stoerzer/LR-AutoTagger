@@ -74,7 +74,7 @@ def test_real_llava_llama3_output():
     raw = ["Skyline", "Buildings", "Cityscape", "Nighttime", "Urban", "Dusk"]
     result = normalize(raw)
     assert "Skyline" in result  # pass-through (accepted German loan word)
-    assert "Nacht" in result    # Nighttime → Nacht
+    assert "Nacht" in result  # Nighttime → Nacht
     assert "Daemmerung" in result  # Dusk → Daemmerung
     assert "Staedtisch" in result  # Urban → Staedtisch
 

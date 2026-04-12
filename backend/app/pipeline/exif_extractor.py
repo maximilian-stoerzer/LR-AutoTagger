@@ -4,6 +4,7 @@ Reads EXIF fields that later pipeline stages (focal length classifier,
 sun calculator) need. Extraction happens on the original bytes because
 the resize step re-encodes the image and drops EXIF.
 """
+
 from __future__ import annotations
 
 import datetime as dt
@@ -28,10 +29,10 @@ class ExifMetadata:
     gps_lat: float | None = None
     gps_lon: float | None = None
     focal_length_35mm: float | None = None  # 35mm equivalent in mm
-    f_number: float | None = None           # aperture (e.g. 2.8, 5.6, 13)
-    exposure_time: float | None = None      # seconds (e.g. 0.001 = 1/1000, 2.0 = 2s)
-    iso: int | None = None                  # ISO speed (e.g. 100, 3200)
-    flash_fired: bool | None = None         # True if flash was used
+    f_number: float | None = None  # aperture (e.g. 2.8, 5.6, 13)
+    exposure_time: float | None = None  # seconds (e.g. 0.001 = 1/1000, 2.0 = 2s)
+    iso: int | None = None  # ISO speed (e.g. 100, 3200)
+    flash_fired: bool | None = None  # True if flash was used
 
 
 # Pre-compute reverse lookups so we don't rebuild them on every call.
@@ -197,8 +198,7 @@ def extract(image_data: bytes) -> ExifMetadata:
     )
     if datetime_original is not None:
         offset = _parse_offset_time(
-            sub.get(_EXIF_NAME_TO_TAG.get("OffsetTimeOriginal"))
-            or sub.get(_EXIF_NAME_TO_TAG.get("OffsetTime"))
+            sub.get(_EXIF_NAME_TO_TAG.get("OffsetTimeOriginal")) or sub.get(_EXIF_NAME_TO_TAG.get("OffsetTime"))
         )
         if offset is not None:
             datetime_original = datetime_original.replace(tzinfo=offset)
