@@ -164,6 +164,28 @@ def _focal_length_35mm(exif: Image.Exif) -> float | None:
     return focal * crop_factor
 
 
+def _parse_iso(raw) -> int | None:
+    """Parse ISOSpeedRatings — some cameras store it as a tuple e.g. (100, 0)."""
+    if raw is None:
+        return None
+    if isinstance(raw, (tuple, list)):
+        return int(raw[0]) if raw else None
+    try:
+        return int(raw)
+    except (TypeError, ValueError):
+        return None
+
+
+def _parse_flash(raw) -> bool | None:
+    """Parse Flash tag — bit 0 indicates whether flash fired."""
+    if raw is None:
+        return None
+    try:
+        return bool(int(raw) & 1)
+    except (TypeError, ValueError):
+        return None
+
+
 def extract(image_data: bytes) -> ExifMetadata:
     """Parse the EXIF block of a JPEG/TIFF byte stream.
 
@@ -218,21 +240,8 @@ def extract(image_data: bytes) -> ExifMetadata:
     # Exposure triangle fields — all in the Exif sub-IFD.
     f_number = _to_float(sub.get(_EXIF_NAME_TO_TAG.get("FNumber")))
     exposure_time = _to_float(sub.get(_EXIF_NAME_TO_TAG.get("ExposureTime")))
-    iso_raw = sub.get(_EXIF_NAME_TO_TAG.get("ISOSpeedRatings"))
-    # Some cameras (Nikon, Sony) store ISO as a tuple e.g. (100, 0).
-    if isinstance(iso_raw, (tuple, list)):
-        iso = int(iso_raw[0]) if iso_raw else None
-    elif iso_raw is not None:
-        try:
-            iso = int(iso_raw)
-        except (TypeError, ValueError):
-            iso = None
-    else:
-        iso = None
-
-    # Flash: tag 0x9209, bit 0 indicates whether flash fired.
-    flash_raw = sub.get(_EXIF_NAME_TO_TAG.get("Flash"))
-    flash_fired = bool(int(flash_raw) & 1) if flash_raw is not None else None
+    iso = _parse_iso(sub.get(_EXIF_NAME_TO_TAG.get("ISOSpeedRatings")))
+    flash_fired = _parse_flash(sub.get(_EXIF_NAME_TO_TAG.get("Flash")))
 
     return ExifMetadata(
         datetime_original=datetime_original,
