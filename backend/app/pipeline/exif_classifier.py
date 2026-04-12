@@ -85,10 +85,6 @@ def classify_time_of_day(
     if when is None:
         return None
 
-    # Try sun-elevation-based classification first.
-    from astral import LocationInfo
-    from astral.sun import elevation
-
     from app.pipeline.sun_calculator import _DEFAULT_NAIVE_TZ, _resolve_fallback
 
     lat, lon = gps_lat, gps_lon
@@ -99,38 +95,50 @@ def classify_time_of_day(
         lat, lon = fallback
 
     aware = when if when.tzinfo else when.replace(tzinfo=_DEFAULT_NAIVE_TZ)
-    loc = LocationInfo(name="photo", region="", timezone="UTC", latitude=lat, longitude=lon)
-
-    try:
-        elev = elevation(loc.observer, aware)
-    except Exception:
+    elev = _get_sun_elevation(lat, lon, aware)
+    if elev is None:
         return _classify_time_by_hour(when)
 
-    # Sun elevation → time of day.
-    # Below horizon:
+    return _classify_time_by_elevation(elev, lat, lon, aware)
+
+
+def _get_sun_elevation(lat: float, lon: float, aware: dt.datetime) -> float | None:
+    from astral import LocationInfo
+    from astral.sun import elevation
+
+    loc = LocationInfo(name="photo", region="", timezone="UTC", latitude=lat, longitude=lon)
+    try:
+        return elevation(loc.observer, aware)
+    except Exception:
+        return None
+
+
+def _classify_time_by_elevation(elev: float, lat: float, lon: float, aware: dt.datetime) -> str:
+    """Map sun elevation to a Tageszeit category."""
     if elev < -6:
         return "Nacht"
     if elev < 0:
         return "Daemmerung"
-    # Low sun (within ~1h of sunrise/sunset):
     if elev < 15:
-        # Distinguish morning from evening by checking if sun is rising or
-        # setting. Simple heuristic: compare to solar noon.
-        try:
-            from astral.sun import noon as solar_noon
-
-            sn = solar_noon(loc.observer, aware)
-            if aware < sn:
-                return "Morgen" if elev < 10 else "Vormittag"
-            else:
-                return "Abend"
-        except Exception:
-            return "Morgen"
-    # High sun:
+        return _morning_or_evening(lat, lon, aware, elev)
     if elev > 50:
         return "Mittag"
-    # Mid elevation — use hour as tiebreaker.
-    return _classify_time_by_hour(when)
+    return _classify_time_by_hour(aware)
+
+
+def _morning_or_evening(lat: float, lon: float, aware: dt.datetime, elev: float) -> str:
+    """Low sun — distinguish morning from evening via solar noon."""
+    from astral import LocationInfo
+    from astral.sun import noon as solar_noon
+
+    loc = LocationInfo(name="photo", region="", timezone="UTC", latitude=lat, longitude=lon)
+    try:
+        sn = solar_noon(loc.observer, aware)
+        if aware < sn:
+            return "Morgen" if elev < 10 else "Vormittag"
+        return "Abend"
+    except Exception:
+        return "Morgen"
 
 
 def _classify_time_by_hour(when: dt.datetime) -> str:
