@@ -17,6 +17,22 @@ from app.pipeline.ollama_client import OllamaClient
 
 logger = logging.getLogger(__name__)
 
+# Directional sunlight keywords — vetoed by diffuse weather or night.
+_DIRECTIONAL_LIGHT = {"Hartes Licht", "Gegenlicht", "Seitenlicht", "Frontlicht", "Lichtstrahlen"}
+
+# Mutually exclusive keyword pairs (first-in-list wins).
+_EXCLUSIVE_PAIRS: list[tuple[str, str]] = [
+    # Lichtsituation
+    ("Hartes Licht", "Weiches Licht"),
+    ("Hartes Licht", "Diffuses Licht"),
+    ("High-Key", "Low-Key"),
+    ("Silhouette", "Frontlicht"),
+    ("Silhouette", "High-Key"),
+    # Wetter
+    ("Sonnig", "Bedeckt"),
+    ("Sonnig", "Nebel"),
+]
+
 
 class KeywordPipeline:
     def __init__(self, repo: Repository):
@@ -106,6 +122,12 @@ class KeywordPipeline:
         if technik_vetos:
             vision_keywords = [kw for kw in vision_keywords if kw not in technik_vetos]
 
+        # Cross-category and intra-category vetos: remove keywords that
+        # contradict each other (weather vs light, mutually exclusive pairs).
+        consistency_vetos = self._get_consistency_vetos(vision_keywords, derived_keywords)
+        if consistency_vetos:
+            vision_keywords = [kw for kw in vision_keywords if kw not in consistency_vetos]
+
         geo_keywords: list[str] = []
         location_name = None
         if geo_result:
@@ -136,6 +158,34 @@ class KeywordPipeline:
             "derived_keywords": derived_keywords,
             "location_name": location_name,
         }
+
+    @staticmethod
+    def _get_consistency_vetos(vision_kw: list[str], derived_kw: list[str]) -> set[str]:
+        """Return keywords that contradict other recognised keywords.
+
+        Covers three kinds of contradiction:
+        1. Cross-category: weather/time rules out certain light values.
+        2. Intra-category: mutually exclusive pairs (first-in-list wins).
+        """
+        all_kw = {kw.lower() for kw in vision_kw} | {kw.lower() for kw in derived_kw}
+        position = {kw.lower(): i for i, kw in enumerate(vision_kw)}
+        vetos: set[str] = set()
+
+        # Diffuse weather / night rule out directional sunlight.
+        diffuse_weather = {"bedeckt", "nebel", "regen", "schnee"}
+        if all_kw & diffuse_weather:
+            vetos.update(_DIRECTIONAL_LIGHT)
+        if "nacht" in all_kw and "kunstlicht" not in all_kw:
+            vetos.update(_DIRECTIONAL_LIGHT)
+
+        # Mutually exclusive pairs — keep whichever LLaVA listed first.
+        for a, b in _EXCLUSIVE_PAIRS:
+            if a.lower() in all_kw and b.lower() in all_kw:
+                idx_a = position.get(a.lower(), len(vision_kw))
+                idx_b = position.get(b.lower(), len(vision_kw))
+                vetos.add(b if idx_a <= idx_b else a)
+
+        return vetos
 
     def _combine_keywords(
         self,

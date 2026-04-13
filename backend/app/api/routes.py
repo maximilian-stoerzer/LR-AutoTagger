@@ -3,6 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import JSONResponse
 
+from app.config import settings
 from app.pipeline.keyword_pipeline import KeywordPipeline
 from app.pipeline.ollama_client import OllamaClient
 from app.pipeline.sun_calculator import VALID_LOCATIONS as SUN_CALC_VALID_LOCATIONS
@@ -53,7 +54,7 @@ async def models():
     model picker in its settings dialog)."""
     ollama = OllamaClient()
     names = await ollama.list_models()
-    return {"models": names}
+    return {"models": names, "default": settings.ollama_model}
 
 
 # --- Single Image Analysis ---

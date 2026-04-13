@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "llava:13b"
     ollama_max_concurrent: int = 2
-    ollama_timeout: int = 120
+    ollama_timeout: int = 180
 
     # API Security
     api_key: str = "change-me-to-a-random-secret"

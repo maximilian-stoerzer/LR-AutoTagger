@@ -29,6 +29,15 @@ function InfoProvider.sectionsForTopOfDialog(f, properties)
     -- Cache for model list; fetched on demand. Empty string = "use backend default".
     if not prefs.ollamaModelList then prefs.ollamaModelList = "" end
 
+    -- Populate observable model items from cached comma-separated string.
+    local modelItems = {}
+    if prefs.ollamaModelList ~= "" then
+        for m in string.gmatch(prefs.ollamaModelList, "[^,]+") do
+            table.insert(modelItems, m)
+        end
+    end
+    properties.modelItems = modelItems
+
     local bind = LrView.bind
 
     return {
@@ -178,7 +187,7 @@ function InfoProvider.sectionsForTopOfDialog(f, properties)
                 },
                 f:combo_box {
                     value = bind { key = "ollamaModel", object = prefs },
-                    items = {}, -- filled on demand via "Modelle laden"
+                    items = bind { key = "modelItems", bind_to_object = properties },
                     width_in_chars = 30,
                     tooltip = "Leer lassen, um das im Backend konfigurierte Standard-Modell zu verwenden. "
                         .. "Sonst muss es ein auf dem Ollama-Server verfügbares Vision-Modell sein "
@@ -201,10 +210,17 @@ function InfoProvider.sectionsForTopOfDialog(f, properties)
                                 return
                             end
                             prefs.ollamaModelList = table.concat(list, ",")
+                            properties.modelItems = list
+                            -- Pre-select the backend default when user hasn't chosen yet.
+                            local backendDefault = data.default or ""
+                            if prefs.ollamaModel == "" and backendDefault ~= "" then
+                                prefs.ollamaModel = backendDefault
+                            end
+                            log("[settings] %d Modelle in Dropdown geladen (default: %s)", #list, backendDefault)
                             LrDialogs.message(
                                 "Modelle geladen",
                                 "Verfügbare Modelle (" .. #list .. "):\n\n" .. table.concat(list, "\n")
-                                    .. "\n\nBitte gewünschtes Modell in das Feld eintragen (leer = Backend-Default).",
+                                    .. "\n\nBackend-Default: " .. (backendDefault ~= "" and backendDefault or "keiner"),
                                 "info"
                             )
                         end)

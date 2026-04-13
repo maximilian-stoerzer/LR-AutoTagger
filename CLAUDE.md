@@ -257,6 +257,7 @@ Vollstaendige Whitelist-Inhalte: siehe `docs/tech.md` Abschnitt 3.5.1.
 - **DB-Client:** psycopg (async)
 - **Sprache im Code:** Englisch (Variablen, Funktionen, Kommentare)
 - **Keywords/UI:** Deutsch
+- **Pre-Commit (verbindlich):** Vor jedem Commit `/simplify` ausfuehren — Code-Review auf Reuse, Qualitaet und Effizienz
 
 ---
 
