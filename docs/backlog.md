@@ -4,21 +4,21 @@ Offene Aufgaben und geplante Verbesserungen.
 
 ---
 
-## Offen
+## Erledigt
 
-### Groessere Vision-Modelle evaluieren
+### ✅ Groessere Vision-Modelle evaluieren (erledigt 2026-04-15)
 
-**Voraussetzung:** P40 GPU Thermo-Problem geloest, Ollama wieder mit GPU-Zugriff.
+GPU-Benchmark durchgefuehrt nach Loesung des P40-Thermo-Problems. Getestet:
+`llava:34b` (Yi-Basis), `gemma3:27b`, `gemma4:26b`, `gemma4:31b-it-q4_K_M`.
 
-Benchmark mit zwei groesseren Modellen durchfuehren, die auf die P40 (24 GB VRAM) passen:
+**Ergebnis:** Kein Modell schlaegt `llava:13b`.
 
-| Modell | Parameter | VRAM (Q4) | Erwartung |
+| Modell | Score | Zeit | Urteil |
 |---|---|---|---|
-| LLaVA 34B (Yi-34B Basis) | 34B | ~20 GB | Bessere Lichtsituation/Perspektive-Erkennung |
-| Gemma 3 27B (Google) | 27B | ~16 GB | Neueres Modell, potenziell bessere Bildanalyse |
+| **llava:13b** (Baseline) | 77 % | **15,8 s** | bleibt Empfehlung |
+| gemma4:31b-it-q4_K_M | 77 % | 146,7 s | gleich gut, 9× langsamer |
+| gemma3:27b | 73 % | 24,5 s | schlechter |
+| gemma4:26b | 64 % | 255 s | Deadlock-Outlier |
+| **llava:34b** | **45 %** | **69,9 s** | deutlich schlechter, 3× langsamer |
 
-**Vorgehen:**
-- Bestehenden Benchmark (`docs/benchmark/run_benchmark.py`) mit beiden Modellen ausfuehren
-- Ergebnisse gegen LLaVA 13B vergleichen (aktuell 68% Qualitaet, ~440s/Bild auf CPU)
-- Auf GPU erwartete Inferenzzeit: 15-30s/Bild (vs. 6-12s fuer LLaVA 13B)
-- Fokus auf Schwachstellen des 13B: Lichtsituation, Perspektive, Technik-Erkennung
+Details: `docs/benchmark/article.md` Kapitel 7.

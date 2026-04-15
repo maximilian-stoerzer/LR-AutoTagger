@@ -4,18 +4,17 @@
     "os": "Linux-6.12.74+deb13+1-amd64-x86_64-with-glibc2.41",
     "cpu_model": "QEMU Virtual CPU version 2.5+",
     "cpu_count": 12,
-    "ram_gb": 21.2,
-    "gpu": "Tesla P40",
+    "ram_gb": 14.5,
     "python": "3.13.5",
     "ollama_base_url": "http://localhost:11434",
     "timeout_s": 1800,
-    "timestamp_utc": "2026-04-15T20:34:08.642482+00:00"
+    "timestamp_utc": "2026-04-12T08:26:44.262642+00:00"
   },
   "model": "llava:13b",
   "prompt": "Analysiere dieses Foto und gib deutsche Schlagworte zurueck.\n\nBevor du antwortest, ueberlege kurz:\n- Woher kommt das Hauptlicht im Bild? (von vorne, von der Seite, von hinten, von oben?)\n- Aus welchem Winkel wurde das Foto aufgenommen? (von unten, von oben, Augenhoehe, Makro?)\n- Ist das Bild schwarzweiss? Gibt es Bokeh, Langzeitbelichtung oder andere Techniken?\n- Welche Stimmung vermittelt das Bild? Ist es friedlich, dramatisch, melancholisch?\n\nKategorien:\n- Objekte: frei waehlbar, MAXIMAL 5\n- Szene: frei waehlbar, max 2\n- Umgebung: frei waehlbar, max 2\n- Tageszeit: Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht\n- Jahreszeit: Fruehling, Sommer, Herbst, Winter\n- Wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst\n- Stimmung (1-2 Werte): Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt, Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich\n- Lichtsituation (0-3 Werte, NUR wenn im Bild erkennbar — leer lassen wenn unauffaellig): Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht, Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key, Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht\n- Perspektive (genau 1 Wert — Normalperspektive NUR wenn Kamera klar auf Augenhoehe und horizontal steht, sonst den spezifischen Winkel waehlen): Froschperspektive, Vogelperspektive, Draufsicht, Aufsicht, Untersicht, Schraegsicht, Normalperspektive\n- Technik (0-2 Werte, NUR bei offensichtlichem Merkmal — leer lassen wenn nichts): Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot\n\nRegeln:\n- Fuer alle Whitelist-Kategorien NUR Werte aus der jeweiligen Liste verwenden.\n- Format: JSON-Array mit maximal 30 Keywords.\n- Antworte NUR mit dem JSON-Array, kein weiterer Text.",
   "images": {
     "01_sunset.jpg": {
-      "elapsed_sec": 40.38,
+      "elapsed_sec": 450.06,
       "raw_response": " ```json\n{\n  \"Objekte\": [\"Häuser\", \"Berg\"],\n  \"Szene\": [\"Dorf\", \"Berge\"],\n  \"Umgebung\": [\"Natur\", \"Gebirge\"],\n  \"Tageszeit\": \"Mittag\",\n  \"Jahreszeit\": \"Früling\",\n  \"Wetter\": \"Sonnig\",\n  \"Stimmung\": \"Friedlich\",\n  \"Lichtsituation\": \"Hartes Licht\",\n  \"Perspektive\": \"Normalperspektive\",\n  \"Technik\": \"Bokeh\"\n}\n```",
       "keywords": [
         "Häuser",
@@ -34,12 +33,12 @@
       ],
       "keyword_count": 13,
       "timings": {
-        "total_duration_ms": 40377.8,
-        "load_duration_ms": 31899.4,
+        "total_duration_ms": 450052.5,
+        "load_duration_ms": 26045.9,
         "prompt_eval_count": 1252,
-        "prompt_eval_ms": 2414.1,
+        "prompt_eval_ms": 296372.0,
         "eval_count": 147,
-        "eval_ms": 5824.6
+        "eval_ms": 62266.5
       },
       "score": {
         "has_Gegenlicht": false,
@@ -52,61 +51,55 @@
       }
     },
     "02_macro.jpg": {
-      "elapsed_sec": 12.39,
-      "raw_response": " ```json\n{\n  \"Objekte\": [\n    \"Blume\",\n    \"Bienen\"\n  ],\n  \"Szene\": [\n    \"Natur\",\n    \"Gärten\"\n  ],\n  \"Umgebung\": [\n    \"Freiland\",\n    \"Garten\"\n  ],\n  \"Tageszeit\": [\n    \"Mittag\",\n    \"Vormittag\"\n  ],\n  \"Jahreszeit\": [\n    \"Frühling\"\n  ],\n  \"Wetter\": [\n    \"Sonnig\",\n    \"Bedeckt\"\n  ],\n  \"Stimmung\": [\n    \"Friedlich\"\n  ],\n  \"Lichtsituation\": [\n    \"Hartes Licht\",\n    \"Normalperspektive\"\n  ],\n  \"Perspektive\": [\n    \"Normalperspektive\"\n  ],\n  \"Technik\": [\n    \"Makro\",\n    \"Bokeh\"\n  ]\n}\n```",
+      "elapsed_sec": 436.99,
+      "raw_response": " ```json\n{\n  \"Objekte\": [\n    \"Blüten\",\n    \"Bienen\"\n  ],\n  \"Szene\": [\n    \"Natur\",\n    \"Gärtnern\"\n  ],\n  \"Umgebung\": [\n    \"Freiland\",\n    \"Garten\"\n  ],\n  \"Tageszeit\": \"Mittag\",\n  \"Jahreszeit\": \"Frühling\",\n  \"Wetter\": \"Sonnig\",\n  \"Stimmung\": \"Friedlich\",\n  \"Lichtsituation\": [\n    \"Hartes Licht\",\n    \"Oberlicht\"\n  ],\n  \"Perspektive\": \"Normalperspektive\",\n  \"Technik\": []\n}\n```",
       "keywords": [
-        "Blume",
+        "Blüten",
         "Bienen",
         "Natur",
-        "Gärten",
+        "Gärtnern",
         "Freiland",
         "Garten",
         "Mittag",
-        "Vormittag",
         "Frühling",
         "Sonnig",
-        "Bedeckt",
         "Friedlich",
         "Hartes Licht",
-        "Normalperspektive",
-        "Normalperspektive",
-        "Makro",
-        "Bokeh"
+        "Oberlicht",
+        "Normalperspektive"
       ],
-      "keyword_count": 17,
+      "keyword_count": 13,
       "timings": {
-        "total_duration_ms": 12390.9,
-        "load_duration_ms": 38.2,
+        "total_duration_ms": 436983.5,
+        "load_duration_ms": 40.8,
         "prompt_eval_count": 1252,
-        "prompt_eval_ms": 2366.9,
-        "eval_count": 244,
-        "eval_ms": 9704.2
+        "prompt_eval_ms": 294981.2,
+        "eval_count": 181,
+        "eval_ms": 76975.7
       },
       "score": {
         "has_Biene": true,
-        "has_Makro": true,
+        "has_Makro": false,
         "not_Regen": true,
         "perspective=Froschperspektive": false,
-        "technik_Makro": true,
-        "total_keywords": 17,
-        "score": 4,
+        "technik_Makro": false,
+        "total_keywords": 13,
+        "score": 2,
         "max_score": 5
       }
     },
     "03_night_city.jpg": {
-      "elapsed_sec": 9.09,
-      "raw_response": " ```json\n{\n  \"Objekte\": [\"Stadt\", \"Hochhaus\", \"Turm\", \"Nacht\"],\n  \"Szene\": [\"Abend\", \"Dunkelheit\"],\n  \"Umgebung\": [\"Wasser\", \"Horizont\"],\n  \"Tageszeit\": [\"Nacht\"],\n  \"Jahreszeit\": [\"Herbst\"],\n  \"Wetter\": [\"Bedeckt\"],\n  \"Stimmung\": [\"Melancholisch\"],\n  \"Lichtsituation\": [\"Hartes Licht\", \"Oberlicht\"],\n  \"Perspektive\": [\"Normalperspektive\"],\n  \"Technik\": [\"Schwarzweiss\"]\n}\n```",
+      "elapsed_sec": 445.56,
+      "raw_response": " ```json\n{\n  \"Objekte\": [\"Stadt\", \"Hochhauses\"],\n  \"Szene\": [\"Nacht\", \"Dunkelheit\"],\n  \"Umgebung\": [\"Wasser\", \"Fluss\"],\n  \"Tageszeit\": \"Nacht\",\n  \"Jahreszeit\": \"Winter\",\n  \"Wetter\": \"Bedeckt\",\n  \"Stimmung\": \"Melancholisch\",\n  \"Lichtsituation\": [\"Hartes Licht\", \"Oberlicht\"],\n  \"Perspektive\": \"Normalperspektive\",\n  \"Technik\": [\"Schwarzweiss\"]\n}\n```",
       "keywords": [
         "Stadt",
-        "Hochhaus",
-        "Turm",
+        "Hochhauses",
         "Nacht",
-        "Abend",
         "Dunkelheit",
         "Wasser",
-        "Horizont",
+        "Fluss",
         "Nacht",
-        "Herbst",
+        "Winter",
         "Bedeckt",
         "Melancholisch",
         "Hartes Licht",
@@ -114,14 +107,14 @@
         "Normalperspektive",
         "Schwarzweiss"
       ],
-      "keyword_count": 16,
+      "keyword_count": 14,
       "timings": {
-        "total_duration_ms": 9089.6,
-        "load_duration_ms": 42.7,
+        "total_duration_ms": 445548.2,
+        "load_duration_ms": 36.7,
         "prompt_eval_count": 1252,
-        "prompt_eval_ms": 2360.4,
-        "eval_count": 163,
-        "eval_ms": 6462.6
+        "prompt_eval_ms": 295659.3,
+        "eval_count": 156,
+        "eval_ms": 85385.2
       },
       "score": {
         "has_Nacht": true,
@@ -129,22 +122,59 @@
         "not_Morgengrauen": true,
         "perspective=Normalperspektive": true,
         "technik_Langzeitbelichtung": false,
-        "total_keywords": 16,
+        "total_keywords": 14,
         "score": 3,
         "max_score": 5
       }
     },
     "04_portrait_bw.jpg": {
-      "elapsed_sec": 8.59,
-      "raw_response": " ```json\n{\n  \"Objekte\": [\"Mann\", \"Stuhl\"],\n  \"Szene\": [\"Raum\", \"Gespräch\"],\n  \"Umgebung\": [\"Laden\", \"Strasse\"],\n  \"Tageszeit\": \"Abend\",\n  \"Jahreszeit\": \"Herbst\",\n  \"Wetter\": \"Bedeckt\",\n  \"Stimmung\": \"Melancholisch\",\n  \"Lichtsituation\": \"Hartes Licht\",\n  \"Perspektive\": \"Normalperspektive\",\n  \"Technik\": \"Schwarzweiss\"\n}\n```",
+      "elapsed_sec": 421.7,
+      "raw_response": " ```json\n{\n  \"Objekte\": [\"Mann\", \"Stuhl\"],\n  \"Szene\": [\"Restaurant\", \"Bar\"],\n  \"Umgebung\": [\"Innenraum\"],\n  \"Tageszeit\": \"Abend\",\n  \"Jahreszeit\": \"Winter\",\n  \"Wetter\": \"Bedeckt\",\n  \"Stimmung\": \"Melancholisch\",\n  \"Lichtsituation\": \"Hartes Licht\",\n  \"Perspektive\": \"Normalperspektive\",\n  \"Technik\": \"Schwarzweiss\"\n}\n```",
       "keywords": [
         "Mann",
         "Stuhl",
-        "Raum",
-        "Gespräch",
-        "Laden",
-        "Strasse",
+        "Restaurant",
+        "Bar",
+        "Innenraum",
         "Abend",
+        "Winter",
+        "Bedeckt",
+        "Melancholisch",
+        "Hartes Licht",
+        "Normalperspektive",
+        "Schwarzweiss"
+      ],
+      "keyword_count": 12,
+      "timings": {
+        "total_duration_ms": 421692.2,
+        "load_duration_ms": 40.1,
+        "prompt_eval_count": 1252,
+        "prompt_eval_ms": 294655.4,
+        "eval_count": 145,
+        "eval_ms": 61652.4
+      },
+      "score": {
+        "has_Mann": true,
+        "has_Schwarzweiss": true,
+        "not_Regen": true,
+        "perspective=Normalperspektive": true,
+        "technik_Schwarzweiss": true,
+        "total_keywords": 12,
+        "score": 5,
+        "max_score": 5
+      }
+    },
+    "05_forest_autumn.jpg": {
+      "elapsed_sec": 445.01,
+      "raw_response": " ```json\n{\n  \"Objekte\": [\"Baum\", \"Straße\"],\n  \"Szene\": [\"Wald\", \"Morgengrauen\"],\n  \"Umgebung\": [\"Natur\", \"Einzelne Bäume\"],\n  \"Tageszeit\": \"Morgengrauen\",\n  \"Jahreszeit\": \"Herbst\",\n  \"Wetter\": \"Bedeckt\",\n  \"Stimmung\": \"Melancholisch\",\n  \"Lichtsituation\": \"Hartes Licht\",\n  \"Perspektive\": \"Normalperspektive\",\n  \"Technik\": \"Schwarzweiss\"\n}\n```",
+      "keywords": [
+        "Baum",
+        "Straße",
+        "Wald",
+        "Morgengrauen",
+        "Natur",
+        "Einzelne Bäume",
+        "Morgengrauen",
         "Herbst",
         "Bedeckt",
         "Melancholisch",
@@ -154,50 +184,12 @@
       ],
       "keyword_count": 13,
       "timings": {
-        "total_duration_ms": 8591.4,
-        "load_duration_ms": 38.6,
+        "total_duration_ms": 445001.8,
+        "load_duration_ms": 42.2,
         "prompt_eval_count": 1252,
-        "prompt_eval_ms": 2369.8,
-        "eval_count": 150,
-        "eval_ms": 5943.6
-      },
-      "score": {
-        "has_Mann": true,
-        "has_Schwarzweiss": true,
-        "not_Regen": true,
-        "perspective=Normalperspektive": true,
-        "technik_Schwarzweiss": true,
-        "total_keywords": 13,
-        "score": 5,
-        "max_score": 5
-      }
-    },
-    "05_forest_autumn.jpg": {
-      "elapsed_sec": 8.58,
-      "raw_response": " ```json\n{\n  \"Objekte\": [\"Baum\", \"Straße\"],\n  \"Szene\": [\"Wald\", \"Park\"],\n  \"Umgebung\": [\"Natur\", \"Landeinheit\"],\n  \"Tageszeit\": \"Morgengrauen\",\n  \"Jahreszeit\": \"Herbst\",\n  \"Wetter\": \"Bedeckt\",\n  \"Stimmung\": \"Einsam\",\n  \"Lichtsituation\": \"Hartes Licht\",\n  \"Perspektive\": \"Draufsicht\",\n  \"Technik\": \"Normalperspektive\"\n}\n```",
-      "keywords": [
-        "Baum",
-        "Straße",
-        "Wald",
-        "Park",
-        "Natur",
-        "Landeinheit",
-        "Morgengrauen",
-        "Herbst",
-        "Bedeckt",
-        "Einsam",
-        "Hartes Licht",
-        "Draufsicht",
-        "Normalperspektive"
-      ],
-      "keyword_count": 13,
-      "timings": {
-        "total_duration_ms": 8577.9,
-        "load_duration_ms": 40.1,
-        "prompt_eval_count": 1252,
-        "prompt_eval_ms": 2362.5,
-        "eval_count": 150,
-        "eval_ms": 5941.5
+        "prompt_eval_ms": 295163.2,
+        "eval_count": 159,
+        "eval_ms": 84747.7
       },
       "score": {
         "has_Wald": true,

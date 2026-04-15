@@ -53,7 +53,12 @@ MODELS = [
     "minicpm-v",       # 8B
     "llama3.2-vision", # 11B
     "llava:13b",       # 13B
+    "gemma3:27b",      # 27B — GPU-only
+    "llava:34b",       # 34B (Yi-34B base) — GPU-only
 ]
+
+if (_models_override := os.getenv("BENCHMARK_MODELS", "").strip()):
+    MODELS = [m.strip() for m in _models_override.split(",") if m.strip()]
 
 # Models to skip entirely (checkpoint kept but no new inference).
 # Moondream can't handle the V2 CoT prompt — generates garbage or
@@ -162,12 +167,20 @@ def system_info() -> dict:
         ).split(":", 1)[1].strip()
     except Exception:
         cpu_model = platform.processor() or "unknown"
+    try:
+        gpu_name = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=name", "--format=csv,noheader"],
+            text=True, timeout=5, stderr=subprocess.DEVNULL,
+        ).strip().splitlines()[0] or None
+    except (subprocess.SubprocessError, FileNotFoundError, IndexError):
+        gpu_name = None
     return {
         "hostname": platform.node(),
         "os": platform.platform(),
         "cpu_model": cpu_model,
         "cpu_count": cpus,
         "ram_gb": mem_gb,
+        "gpu": gpu_name,
         "python": platform.python_version(),
         "ollama_base_url": OLLAMA_BASE,
         "timeout_s": TIMEOUT,
@@ -465,7 +478,8 @@ def main():
         "",
         f"**Datum:** {sysinfo['timestamp_utc'][:10]}",
         f"**System:** {sysinfo['cpu_count']} vCPUs ({sysinfo['cpu_model']}), "
-        f"{sysinfo['ram_gb']} GB RAM, CPU-only (keine GPU)",
+        f"{sysinfo['ram_gb']} GB RAM, "
+        f"GPU: {sysinfo.get('gpu') or 'keine (CPU-only)'}",
         f"**Prompt:** V2 mit Chain-of-Thought (siehe `backend/app/pipeline/ollama_client.py`)",
         f"**Timeout:** {TIMEOUT}s pro Request",
         f"**Bilder:** {len(images)} Wikimedia-Commons-Testbilder "
@@ -484,6 +498,8 @@ def main():
         "moondream": "1.4B", "llava-phi3": "3.8B", "gemma3:4b": "4B",
         "llava:7b": "7B", "bakllava": "7B", "llava-llama3": "8B",
         "minicpm-v": "8B", "llama3.2-vision": "11B", "llava:13b": "13B",
+        "gemma3:27b": "27B", "gemma4:26b": "26B",
+        "llava:34b": "34B", "gemma4:31b-it-q4_K_M": "31B",
     }
     for model in MODELS:
         row = [f"`{model}`", param_map.get(model, "?")]
