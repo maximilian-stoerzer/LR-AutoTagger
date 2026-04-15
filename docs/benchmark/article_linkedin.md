@@ -1,5 +1,15 @@
 # Wie findet man 1 Foto unter 100.000 ohne Keyword? — Wie ich meine Fotobibliothek mit lokaler KI retten will
 
+> 🔄 **HINWEIS FÜR DIE AKTUALISIERUNG DES LIVE-ARTIKELS (Stand 2026-04-15)**
+>
+> Diese Datei ist die **aktualisierte Fassung** nach dem GPU-Nachtest. Alle Stellen, die sich gegenüber dem bereits veröffentlichten LinkedIn-Artikel geändert haben, sind mit `🔄 UPDATE` markiert (vorher / nachher). Zusätzlich gibt es zwei neue Abschnitte ganz am Ende:
+> 1. *„Nachtrag: Die GPU läuft — und sie überrascht"*  (GPU-Benchmark-Ergebnis)
+> 2. *„Warum größer nicht automatisch besser ist"*  (Einordnung — Antwort auf die offensichtlichste Rückfrage)
+>
+> Pragmatische Empfehlung: den bestehenden LinkedIn-Post nicht komplett neu schreiben, sondern die markierten Stellen editieren und die beiden Nachträge als zusätzlichen Abschnitt anhängen. Den LinkedIn-Algorithmus freut ein substanzielles Update deutlich mehr als einen neuen Post ohne Kontext.
+
+---
+
 Ich fotografiere seit über 20 Jahren. Was als Hobby mit einer kleinen Kompaktkamera begann, wurde über die Jahre zur ernsthaften Leidenschaft — Reisen, Landschaften, Street, Makro, Portraits. Irgendwann stand die Zahl im Lightroom-Katalog bei 100.000 Bildern. Ja, ich habe tatsächlich noch alle.
 
 Und ich finde nichts.
@@ -91,10 +101,21 @@ Spannend war auch, was *nicht* funktioniert hat. BakLLaVA, obwohl technisch verw
 
 Die Benchmark-Ergebnisse zeigen aber auch eine Erkenntnis, die ich lieber nicht gehabt hätte: **Auf CPU ist Batch-Verschlagwortung nicht praxistauglich.** LLaVA 13B braucht auf meiner VM rund 7 Minuten pro Bild. Bei 100.000 Bildern wäre das über ein Jahr Rechenzeit.
 
-| Szenario | Zeit pro Bild | 100.000 Bilder |
-|---|---|---|
-| CPU-only (12 vCPUs) | ~440 s | ~1,4 Jahre |
-| GPU (Nvidia P40, erwartet) | ~6–12 s | **7–14 Tage** |
+> 🔄 **UPDATE — diese Tabelle im Live-Artikel ersetzen (geschätzte GPU-Zeit wurde gemessen):**
+>
+> **VORHER:**
+>
+> | Szenario | Zeit pro Bild | 100.000 Bilder |
+> |---|---|---|
+> | CPU-only (12 vCPUs) | ~440 s | ~1,4 Jahre |
+> | GPU (Nvidia P40, erwartet) | ~6–12 s | **7–14 Tage** |
+>
+> **NACHHER:**
+>
+> | Szenario | Zeit pro Bild | Durchsatz | 100.000 Bilder |
+> |---|---|---|---|
+> | CPU-only (12 vCPUs) | ~440 s | ~8 Bilder/Std | ~1,4 Jahre |
+> | **GPU (Nvidia P40, gemessen)** | **15,8 s** | **~228 Bilder/Std** | **~18 Tage** |
 
 Eine GPU verwandelt das System von einem Experiment in ein Produktionswerkzeug. Die Nvidia P40 gibt es gebraucht ab ca. 275 Euro — im Vergleich zu den kommerziellen Plugins also kein Schnäppchen --- aber dafür kann man damit noch viele andere tolle Experimente machen!
 
@@ -102,13 +123,76 @@ Eine GPU verwandelt das System von einem Experiment in ein Produktionswerkzeug. 
 
 Was ich an diesem Projekt am meisten schätze: die Mischung aus konkretem Nutzen und Experimentierspaß. Claude Code macht es möglich, ein Projekt wie dieses — Lightroom-Plugin, Backend-API, Bildanalyse-Pipeline, Benchmark-Framework — in einem Wochenende von der Idee zum lauffähigen System zu bringen. Nicht perfekt, aber funktional.
 
-Der nächste Schritt ist klar: Server im Keller aufrüsten. Sobald meine GPU-Karte wieder läuft teste ich auch noch zwei größere Modelle, die auf CPU leider gar nicht laufen — LLaVA-Next (34B) und InternVL2 (26B). Wenn die auf einer GPU dieselbe Qualitätssteigerung bringen wie der Sprung von 7B auf 13B, wird es richtig spannend.
-
-Bis dahin tagge ich meine Bilder zumindest im interaktiven Modus — einzeln, bei Bedarf, mit LLaVA 13B auf CPU. Immerhin: die Nadel im Heuhaufen wird langsam sichtbar.
+> 🔄 **UPDATE — den folgenden Absatz im Live-Artikel ersetzen (Ausblick auf 34B/26B ist überholt):**
+>
+> **VORHER:**
+>
+> > Der nächste Schritt ist klar: Server im Keller aufrüsten. Sobald meine GPU-Karte wieder läuft teste ich auch noch zwei größere Modelle, die auf CPU leider gar nicht laufen — LLaVA-Next (34B) und InternVL2 (26B). Wenn die auf einer GPU dieselbe Qualitätssteigerung bringen wie der Sprung von 7B auf 13B, wird es richtig spannend.
+> >
+> > Bis dahin tagge ich meine Bilder zumindest im interaktiven Modus — einzeln, bei Bedarf, mit LLaVA 13B auf CPU. Immerhin: die Nadel im Heuhaufen wird langsam sichtbar.
+>
+> **NACHHER:**
+>
+> > Inzwischen läuft die P40 wieder (aktive Kühlung, 250 W Power-Cap) und ich habe den kompletten Benchmark auf GPU wiederholt — inklusive vier zusätzlicher größerer Modelle. Das Ergebnis ist überraschend nüchtern: LLaVA 13B bleibt die Empfehlung. Details dazu im Nachtrag unten.
+> >
+> > Der Batch-Lauf über meine 100.000 Bilder ist gestartet. Die Nadel im Heuhaufen wird langsam sichtbar.
 
 ---
 
 *Die Testbilder stammen von Wikimedia Commons unter Creative-Commons-Lizenzen. Der vollständige technische Benchmark mit Rohdaten und Methodik ist als Open-Source-Dokumentation verfügbar. API-Preise sind Schätzwerte basierend auf den offiziellen Preislisten von OpenAI, Anthropic und Google (Stand April 2026).*
+
+---
+
+> 🆕 **NEU FÜR DEN LIVE-ARTIKEL — ab hier beide Nachträge anhängen:**
+
+## Nachtrag (15.04.2026): Die GPU läuft — und sie überrascht
+
+Das Thermo-Problem der Tesla P40 ist gelöst (aktive Kühlung, Power-Cap auf 250 W angehoben, Max-Temperatur im Benchmark: 61 °C), Ollama nutzt die GPU wieder voll. Ich habe den kompletten Benchmark wiederholt — und gleich **vier größere Modelle** ergänzt, die auf CPU gar nicht erst getestet werden konnten:
+
+- `llava:34b` (Yi-34B als Basis)
+- `gemma3:27b` (Google, dichte 27B)
+- `gemma4:26b` (Google Gemma 4, Mixture-of-Experts mit 4B aktiven Parametern)
+- `gemma4:31b-it-q4_K_M` (Google Gemma 4, Q4-Quantisierung)
+
+**Die Top 3 auf GPU:**
+
+| Rang | Modell | Score | Ø Zeit/Bild |
+|---|---|---|---|
+| 🥇 | **LLaVA 13B** | 77 % | **15,8 s** |
+| 🥈 | Gemma 4 31B (Q4) | 77 % | 146,7 s *(9× langsamer, gleicher Score)* |
+| 🥉 | Gemma 3 27B | 73 % | 24,5 s |
+
+![Benchmark-Ergebnisse GPU](table_benchmark_results.png)
+
+Die Überraschung: das 34B-Modell (LLaVA-Next auf Yi-Basis) landet nur bei **45 % Score** — schlechter als ein 7B-Modell und dreimal langsamer als LLaVA 13B. Gemma 4 26B (die MoE-Variante mit nur 4 Mrd. aktiven Parametern) deadlockte bei einem der fünf Testbilder 17 Minuten lang und landet trotz 26 Mrd. Gesamtparametern ebenfalls unter der 13B-Baseline.
+
+**Aktualisierte Quali-vs-Zeit-Übersicht:**
+
+![Qualität vs. Geschwindigkeit (GPU)](chart_speed_vs_quality.png)
+
+**Der GPU-Speedup ist dafür beeindruckend:**
+
+![CPU vs. GPU](table_cpu_vs_gpu.png)
+
+Für LLaVA 13B heißt das konkret: **~228 Bilder pro Stunde**, also etwa **18 Tage für die komplette 100.000-Bibliothek**. Nicht die 7–14 Tage, die ich optimistisch geschätzt hatte, aber die Größenordnung stimmt — und vor allem: Produktionsbetrieb ist überhaupt erst möglich.
+
+## Warum größer nicht automatisch besser ist
+
+Die offensichtliche Rückfrage zu den Ergebnissen oben: **„Warum schneidet ein 34B-Modell schlechter ab als ein 13B-Modell? Das ist doch kontraintuitiv."**
+
+Die Beobachtung ist nicht nur plausibel, sondern im Rückblick sogar erwartbar. Vier Gründe, die hier zusammenspielen:
+
+**1. Der Vision-Encoder ist der Flaschenhals, nicht der Sprachteil.** Ein Vision-Language-Model besteht aus zwei Teilen: einem Vision-Encoder (meist ein CLIP-Derivat), der das Bild in einen Feature-Vektor überführt, und einem Sprachmodell, das aus diesen Features Text generiert. In vielen LLaVA-Varianten ist der Vision-Encoder **identisch** oder sehr ähnlich — egal ob 7B, 13B oder 34B. Mehr Sprachmodell-Parameter bringen also nichts, wenn das Bild vorher schon auf dieselbe Feature-Repräsentation reduziert wird.
+
+**2. Trainingsdaten-Dominanz schlägt Parameterzahl.** LLaVA 34B basiert auf Yi-34B, einem Modell mit starkem chinesisch-englischem Trainingsmix. Deutsche Ausgaben sind nicht die Stärke. LLaVA 13B basiert auf Vicuna, das deutlich mehr westliche Trainingsdaten gesehen hat. Für einen deutschsprachigen Prompt mit deutscher Pflicht-Ausgabe ist das ein harter Nachteil, den selbst die 2,6-fache Parameterzahl nicht ausgleicht.
+
+**3. Constrained Generation ist eine eigene Disziplin.** Mein Prompt ist strukturiert: JSON-Ausgabe, zehn Kategorien, kontrollierte Vokabulare. Größere Modelle haben stärkere Priors („was würde ein Mensch wahrscheinlich antworten?") und weichen häufiger von engen Vorgaben ab. Kleinere Modelle folgen Anweisungen oft strikter — einfach weil sie weniger eigene Ideen haben. Das passt zu dem, was man aus anderen Benchmarks kennt: bei strukturierter Ausgabe führt „bigger is better" nicht zuverlässig zum Ziel.
+
+**4. MoE-Modelle haben keinen Qualitätsvorteil per Parameter.** Gemma 4 26B A4B hat 26 Mrd. Gesamtparameter, aber nur 4 Mrd. sind pro Token aktiv. Der Vorteil von Mixture-of-Experts liegt in der **Inferenz-Effizienz**, nicht in einer höheren Qualität als dichte Modelle vergleichbarer aktiver Größe. Gegen ein dichtes 13B-Modell konkurriert eine A4B-Variante rechnerisch eher mit 4B-Modellen — und genau dort landet der Score.
+
+**Einschränkung:** Mein Testset umfasst fünf Bilder. Statistisch ist das kaum belastbar, qualitativ für meinen Anwendungsfall (Keywords für deutsche Fotobibliothek) aber klar genug. Wer die Modelle für andere Aufgaben testet — englische Bildbeschreibungen, OCR, VQA-Benchmarks — bekommt vermutlich andere Ranglisten.
+
+**Die Erkenntnis für Praktiker:** Skalierungsgesetze gelten für breite Benchmarks (MMLU, HumanEval usw.) — nicht automatisch für eng umrissene Produktionsaufgaben. Für jede konkrete Pipeline muss man selbst messen. Und manchmal ist das „kleinere" Modell schlicht das besser abgestimmte.
 
 ---
 

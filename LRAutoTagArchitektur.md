@@ -387,9 +387,6 @@ Plugin holt Ergebnisse und schreibt Keywords in LR-Katalog
 | Ollama-Shared-Service wird überlastet | Mittel | Mittel | Rate-Limiting, Tageszeit-Steuerung |
 | LR Plugin API-Einschränkungen | Niedrig | Hoch | Frühzeitig LR SDK Capabilities prüfen (Sprint 3 vorgezogen) |
 | 100k Bilder Batch dauert zu lange | Niedrig | Niedrig | Parallelität erhöhen, oder kleinere Vision-Modelle testen |
-| P40 thermisch instabil (Sprint 5 blockiert) | Hoch | Mittel | Kühlung/Gehäuselüftung optimieren, ggf. Austausch; Sprint 5 nicht ohne stabile GPU starten |
-| InternVL2 26B nicht in Ollama-Library, nur Community-GGUF | Mittel | Niedrig | Verfügbarkeit prüfen, ggf. eigenes Modelfile bauen oder Modell aus Benchmark streichen |
-| VM-RAM (14,5 GB) reicht nicht für 26B+-Modelle (insb. MoE) | Hoch | Mittel | Aufrüstung auf ≥32 GB als harte Vorbedingung für erweiterten Modellbenchmark |
 
 ---
 
