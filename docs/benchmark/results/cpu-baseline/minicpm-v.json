@@ -1,0 +1,201 @@
+{
+  "system": {
+    "hostname": "sma-prod",
+    "os": "Linux-6.12.74+deb13+1-amd64-x86_64-with-glibc2.41",
+    "cpu_model": "QEMU Virtual CPU version 2.5+",
+    "cpu_count": 12,
+    "ram_gb": 14.5,
+    "python": "3.13.5",
+    "ollama_base_url": "http://localhost:11434",
+    "timeout_s": 1800,
+    "timestamp_utc": "2026-04-12T08:26:44.262642+00:00"
+  },
+  "model": "minicpm-v",
+  "prompt": "Analysiere dieses Foto und gib deutsche Schlagworte zurueck.\n\nBevor du antwortest, ueberlege kurz:\n- Woher kommt das Hauptlicht im Bild? (von vorne, von der Seite, von hinten, von oben?)\n- Aus welchem Winkel wurde das Foto aufgenommen? (von unten, von oben, Augenhoehe, Makro?)\n- Ist das Bild schwarzweiss? Gibt es Bokeh, Langzeitbelichtung oder andere Techniken?\n- Welche Stimmung vermittelt das Bild? Ist es friedlich, dramatisch, melancholisch?\n\nKategorien:\n- Objekte: frei waehlbar, MAXIMAL 5\n- Szene: frei waehlbar, max 2\n- Umgebung: frei waehlbar, max 2\n- Tageszeit: Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht\n- Jahreszeit: Fruehling, Sommer, Herbst, Winter\n- Wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst\n- Stimmung (1-2 Werte): Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt, Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich\n- Lichtsituation (0-3 Werte, NUR wenn im Bild erkennbar — leer lassen wenn unauffaellig): Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht, Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key, Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht\n- Perspektive (genau 1 Wert — Normalperspektive NUR wenn Kamera klar auf Augenhoehe und horizontal steht, sonst den spezifischen Winkel waehlen): Froschperspektive, Vogelperspektive, Draufsicht, Aufsicht, Untersicht, Schraegsicht, Normalperspektive\n- Technik (0-2 Werte, NUR bei offensichtlichem Merkmal — leer lassen wenn nichts): Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot\n\nRegeln:\n- Fuer alle Whitelist-Kategorien NUR Werte aus der jeweiligen Liste verwenden.\n- Format: JSON-Array mit maximal 30 Keywords.\n- Antworte NUR mit dem JSON-Array, kein weiterer Text.",
+  "images": {
+    "01_sunset.jpg": {
+      "elapsed_sec": 867.97,
+      "raw_response": "{\n    \"Objekte\": [\n        \"Haus\",\n        \"Berg\",\n        \"Pflanzen\"\n    ],\n    \"Szene\": [\n        \"Stadtansicht\"\n    ],\n    \"Umgebung\": [\n        \"Waldgebiet\"\n    ],\n    \"Tageszeit\": [\n        \"Morgendurchbruch\"\n    ],\n    \"Jahreszeit\": [\n        \"Sommer\",\n        \"Herbst\"\n    ],\n    \"Wetter\": [\n        \"Sonnig\"\n    ],\n    \"Stimmung\": [\n        \"Dramatisch\",\n        \"Friedlich\"\n    ],\n    \"Lichtsituation\": [\n        \"Weiches Licht\",\n        \"Natürliches Licht\"\n    ],\n    \"Perspektive\": [\n        \"Normalperspektive\"\n    ],\n    \"Technik\": [\n        \"Schwarzweiss\"\n    ]\n}",
+      "keywords": [
+        "Haus",
+        "Berg",
+        "Pflanzen",
+        "Stadtansicht",
+        "Waldgebiet",
+        "Morgendurchbruch",
+        "Sommer",
+        "Herbst",
+        "Sonnig",
+        "Dramatisch",
+        "Friedlich",
+        "Weiches Licht",
+        "Natürliches Licht",
+        "Normalperspektive",
+        "Schwarzweiss"
+      ],
+      "keyword_count": 15,
+      "timings": {
+        "total_duration_ms": 867960.6,
+        "load_duration_ms": 15305.0,
+        "prompt_eval_count": 873,
+        "prompt_eval_ms": 97156.3,
+        "eval_count": 186,
+        "eval_ms": 44041.9
+      },
+      "score": {
+        "has_Gegenlicht": false,
+        "has_Abend": false,
+        "not_Morgengrauen": true,
+        "perspective=Normalperspektive": true,
+        "total_keywords": 15,
+        "score": 2,
+        "max_score": 4
+      }
+    },
+    "02_macro.jpg": {
+      "elapsed_sec": 1406.62,
+      "raw_response": "{\n    \"Objekte\": [\n        \"Bienen\",\n        \"Blumen\"\n    ],\n    \"Szene\": [\n        \"Natur\"\n    ],\n    \"Umgebung\": [\n        \"Wald\"\n    ],\n    \"Tageszeit\": [\n        \"Morgendurchbruch\"\n    ],\n    \"Jahreszeit\": [\n        \"Frühling\"\n    ],\n    \"Wetter\": [\n        \"Sonnig\",\n        \"Bedeckt\"\n    ],\n    \"Stimmung\": [\n        \"Friedlich\"\n    ],\n    \"Lichtsituation\": [\n        \"Weiches Licht\",\n        \"Diffuses Licht\"\n    ],\n    \"Perspektive\": [\n        \"Normalperspektive\"\n    ],\n    \"Technik\": [\n        \"Makro\"\n    ]\n}",
+      "keywords": [
+        "Bienen",
+        "Blumen",
+        "Natur",
+        "Wald",
+        "Morgendurchbruch",
+        "Frühling",
+        "Sonnig",
+        "Bedeckt",
+        "Friedlich",
+        "Weiches Licht",
+        "Diffuses Licht",
+        "Normalperspektive",
+        "Makro"
+      ],
+      "keyword_count": 13,
+      "timings": {
+        "total_duration_ms": 1406617.3,
+        "load_duration_ms": 208.9,
+        "prompt_eval_count": 1072,
+        "prompt_eval_ms": 118977.3,
+        "eval_count": 169,
+        "eval_ms": 51332.6
+      },
+      "score": {
+        "has_Biene": true,
+        "has_Makro": true,
+        "not_Regen": true,
+        "perspective=Froschperspektive": false,
+        "technik_Makro": true,
+        "total_keywords": 13,
+        "score": 4,
+        "max_score": 5
+      }
+    },
+    "03_night_city.jpg": {
+      "elapsed_sec": 1431.46,
+      "raw_response": "{\n    \"Objekte\": [\n        \"Städtelandschaft\",\n        \"Hochhäuser\",\n        \"Nachtlicht\",\n        \"Fliegerstrecke\"\n    ],\n    \"Szene\": [\n        \"Cityscape\"\n    ],\n    \"Umgebung\": [\n        \"Urbane Umgebung\"\n    ],\n    \"Tageszeit\": [\n        \"Morgengrauen\"\n    ],\n    \"Jahreszeit\": [\n        \"Sommer\"\n    ],\n    \"Wetter\": [\n        \"Bedeckt\"\n    ],\n    \"Stimmung\": [\n        \"Dramatisch\",\n        \"Melancholisch\"\n    ],\n    \"Lichtsituation\": [\n        \"Hartes Licht\",\n        \"Silhouette\"\n    ],\n    \"Perspektive\": [\n        \"Normalperspektive\"\n    ],\n    \"Technik\": [\n        \"Bokeh\"\n    ]\n}",
+      "keywords": [
+        "Städtelandschaft",
+        "Hochhäuser",
+        "Nachtlicht",
+        "Fliegerstrecke",
+        "Cityscape",
+        "Urbane Umgebung",
+        "Morgengrauen",
+        "Sommer",
+        "Bedeckt",
+        "Dramatisch",
+        "Melancholisch",
+        "Hartes Licht",
+        "Silhouette",
+        "Normalperspektive",
+        "Bokeh"
+      ],
+      "keyword_count": 15,
+      "timings": {
+        "total_duration_ms": 1431450.2,
+        "load_duration_ms": 208.2,
+        "prompt_eval_count": 1072,
+        "prompt_eval_ms": 120383.4,
+        "eval_count": 188,
+        "eval_ms": 44886.3
+      },
+      "score": {
+        "has_Nacht": true,
+        "has_Kunstlicht": false,
+        "not_Morgengrauen": false,
+        "perspective=Normalperspektive": true,
+        "technik_Langzeitbelichtung": false,
+        "total_keywords": 15,
+        "score": 2,
+        "max_score": 5
+      }
+    },
+    "04_portrait_bw.jpg": {
+      "elapsed_sec": 1416.7,
+      "raw_response": "{\n    \"Objekte\": [\n        \"Mann\",\n        \"Zeitzeiger\",\n        \"Sitzplatz\"\n    ],\n    \"Szene\": [\n        \"Straßencafé\"\n    ],\n    \"Umgebung\": [\n        \"Stadtstraße\",\n        \"Öffentliches Raum\"\n    ],\n    \"Tageszeit\": [\n        \"Nachmittag\"\n    ],\n    \"Jahreszeit\": [\n        \"Herbst\"\n    ],\n    \"Wetter\": [\n        \"Bedeckt\"\n    ],\n    \"Stimmung\": [\n        \"Melancholisch\",\n        \"Nostalgisch\"\n    ],\n    \"Lichtsituation\": [\n        \"Weiches Licht\"\n    ],\n    \"Perspektive\": [\n        \"Normalperspektive\"\n    ],\n    \"Technik\": [\n        \"Schwarzweiss\"\n    ]\n}",
+      "keywords": [
+        "Mann",
+        "Zeitzeiger",
+        "Sitzplatz",
+        "Straßencafé",
+        "Stadtstraße",
+        "Öffentliches Raum",
+        "Nachmittag",
+        "Herbst",
+        "Bedeckt",
+        "Melancholisch",
+        "Nostalgisch",
+        "Weiches Licht",
+        "Normalperspektive",
+        "Schwarzweiss"
+      ],
+      "keyword_count": 14,
+      "timings": {
+        "total_duration_ms": 1416689.7,
+        "load_duration_ms": 206.8,
+        "prompt_eval_count": 1072,
+        "prompt_eval_ms": 123608.9,
+        "eval_count": 181,
+        "eval_ms": 42752.1
+      },
+      "score": {
+        "has_Mann": true,
+        "has_Schwarzweiss": true,
+        "not_Regen": true,
+        "perspective=Normalperspektive": true,
+        "technik_Schwarzweiss": true,
+        "total_keywords": 14,
+        "score": 5,
+        "max_score": 5
+      }
+    },
+    "05_forest_autumn.jpg": {
+      "elapsed_sec": 1378.47,
+      "raw_response": "```\n[\"Wald\", \"Bäume\", \"Straße\", \"Sonnenuntergang\", \"Herbst\"]\n```",
+      "keywords": [
+        "Wald",
+        "Bäume",
+        "Straße",
+        "Sonnenuntergang",
+        "Herbst"
+      ],
+      "keyword_count": 5,
+      "timings": {
+        "total_duration_ms": 1378467.1,
+        "load_duration_ms": 212.2,
+        "prompt_eval_count": 1072,
+        "prompt_eval_ms": 121658.7,
+        "eval_count": 27,
+        "eval_ms": 6099.0
+      },
+      "score": {
+        "has_Wald": true,
+        "has_Herbst": true,
+        "perspective=Normalperspektive": false,
+        "total_keywords": 5,
+        "score": 2,
+        "max_score": 3
+      }
+    }
+  }
+}

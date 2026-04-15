@@ -4,19 +4,18 @@
     "os": "Linux-6.12.74+deb13+1-amd64-x86_64-with-glibc2.41",
     "cpu_model": "QEMU Virtual CPU version 2.5+",
     "cpu_count": 12,
-    "ram_gb": 21.2,
-    "gpu": "Tesla P40",
+    "ram_gb": 14.5,
     "python": "3.13.5",
     "ollama_base_url": "http://localhost:11434",
     "timeout_s": 1800,
-    "timestamp_utc": "2026-04-15T20:34:08.642482+00:00"
+    "timestamp_utc": "2026-04-12T08:26:44.262642+00:00"
   },
   "model": "llama3.2-vision",
   "prompt": "Analysiere dieses Foto und gib deutsche Schlagworte zurueck.\n\nBevor du antwortest, ueberlege kurz:\n- Woher kommt das Hauptlicht im Bild? (von vorne, von der Seite, von hinten, von oben?)\n- Aus welchem Winkel wurde das Foto aufgenommen? (von unten, von oben, Augenhoehe, Makro?)\n- Ist das Bild schwarzweiss? Gibt es Bokeh, Langzeitbelichtung oder andere Techniken?\n- Welche Stimmung vermittelt das Bild? Ist es friedlich, dramatisch, melancholisch?\n\nKategorien:\n- Objekte: frei waehlbar, MAXIMAL 5\n- Szene: frei waehlbar, max 2\n- Umgebung: frei waehlbar, max 2\n- Tageszeit: Morgengrauen, Morgen, Vormittag, Mittag, Nachmittag, Abend, Daemmerung, Nacht\n- Jahreszeit: Fruehling, Sommer, Herbst, Winter\n- Wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst\n- Stimmung (1-2 Werte): Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt, Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich\n- Lichtsituation (0-3 Werte, NUR wenn im Bild erkennbar — leer lassen wenn unauffaellig): Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht, Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key, Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht\n- Perspektive (genau 1 Wert — Normalperspektive NUR wenn Kamera klar auf Augenhoehe und horizontal steht, sonst den spezifischen Winkel waehlen): Froschperspektive, Vogelperspektive, Draufsicht, Aufsicht, Untersicht, Schraegsicht, Normalperspektive\n- Technik (0-2 Werte, NUR bei offensichtlichem Merkmal — leer lassen wenn nichts): Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot\n\nRegeln:\n- Fuer alle Whitelist-Kategorien NUR Werte aus der jeweiligen Liste verwenden.\n- Format: JSON-Array mit maximal 30 Keywords.\n- Antworte NUR mit dem JSON-Array, kein weiterer Text.",
   "images": {
     "01_sunset.jpg": {
-      "elapsed_sec": 44.5,
-      "raw_response": "{\"Objekte\": [\"Haeuser\", \"Baeume\", \"Weg\"], \"Szene\": [\"Stadt\", \"Landschaft\"], \"Umgebung\": [\"Berg\", \"Wald\"], \"Tageszeit\": [\"Morgen\", \"Abend\"], \"Jahreszeit\": [\"Sommer\", \"Herbst\"], \"Wetter\": [\"Sonnig\", \"Bewoelt\"], \"Stimmung\": [\"Friedlich\", \"Romantisch\"], \"Lichtsituation\": [\"Gegenlicht\", \"Weiches Licht\"], \"Perspektive\": [\"Draufsicht\"], \"Technik\": [\"Natuerliches Licht\"]}",
+      "elapsed_sec": 923.56,
+      "raw_response": "{\"Objekte\": [\"Haeuser\", \"Baeume\", \"Weg\"], \"Szene\": [\"Stadt\", \"Landschaft\"], \"Umgebung\": [\"Berg\", \"Wald\"], \"Tageszeit\": [\"Morgen\", \"Abend\"], \"Jahreszeit\": [\"Sommer\", \"Herbst\"], \"Wetter\": [\"Sonnig\", \"Bewoelt\"], \"Stimmung\": [\"Friedlich\", \"Romantisch\"], \"Lichtsituation\": [\"Gegenlicht\", \"Weiches Licht\"], \"Perspektive\": \"Normalperspektive\", \"Technik\": [\"Natuerliches Licht\", \"Mischlicht\"]}",
       "keywords": [
         "Haeuser",
         "Baeume",
@@ -35,52 +34,56 @@
         "Romantisch",
         "Gegenlicht",
         "Weiches Licht",
-        "Draufsicht",
-        "Natuerliches Licht"
+        "Normalperspektive",
+        "Natuerliches Licht",
+        "Mischlicht"
       ],
-      "keyword_count": 19,
+      "keyword_count": 20,
       "timings": {
-        "total_duration_ms": 44498.9,
-        "load_duration_ms": 31388.0,
+        "total_duration_ms": 923557.8,
+        "load_duration_ms": 23998.1,
         "prompt_eval_count": 608,
-        "prompt_eval_ms": 1214.9,
-        "eval_count": 139,
-        "eval_ms": 6055.8
+        "prompt_eval_ms": 161776.0,
+        "eval_count": 144,
+        "eval_ms": 69071.8
       },
       "score": {
         "has_Gegenlicht": true,
         "has_Abend": true,
         "not_Morgengrauen": true,
-        "perspective=Normalperspektive": false,
-        "total_keywords": 19,
-        "score": 3,
+        "perspective=Normalperspektive": true,
+        "total_keywords": 20,
+        "score": 4,
         "max_score": 4
       }
     },
     "02_macro.jpg": {
-      "elapsed_sec": 11.3,
-      "raw_response": "{\"Objekte\": [\"Bee\", \"Flower\"], \"Szene\": [\"Nature\"], \"Umgebung\": [\"Green\"], \"Tageszeit\": [\"Day\"], \"Jahreszeit\": [\"Summer\"], \"Wetter\": [\"Sunny\"], \"Stimmung\": [\"Friedlich\"], \"Lichtsituation\": [\"Diffuses Licht\"], \"Perspektive\": [\"Normalperspektive\"], \"Technik\": [\"Makro\"]}",
+      "elapsed_sec": 905.81,
+      "raw_response": "{\"Objekte\": [\"Bee\", \"Flower\"], \"Szene\": [\"Nature\", \"Daytime\"], \"Umgebung\": [\"Green\", \"Nature\"], \"Tageszeit\": [\"Daytime\"], \"Jahreszeit\": [\"Summer\"], \"Wetter\": [\"Sunny\"], \"Stimmung\": [\"Froehlich\", \"Romantisch\"], \"Lichtsituation\": [\"Diffuses Licht\"], \"Perspektive\": [\"Normalperspektive\"], \"Technik\": [\"Makro\"]}",
       "keywords": [
         "Bee",
         "Flower",
         "Nature",
+        "Daytime",
         "Green",
-        "Day",
+        "Nature",
+        "Daytime",
         "Summer",
         "Sunny",
-        "Friedlich",
+        "Froehlich",
+        "Romantisch",
         "Diffuses Licht",
         "Normalperspektive",
         "Makro"
       ],
-      "keyword_count": 11,
+      "keyword_count": 14,
       "timings": {
-        "total_duration_ms": 11297.9,
-        "load_duration_ms": 292.4,
+        "total_duration_ms": 905801.8,
+        "load_duration_ms": 441.6,
         "prompt_eval_count": 608,
-        "prompt_eval_ms": 1242.9,
-        "eval_count": 93,
-        "eval_ms": 4030.9
+        "prompt_eval_ms": 165543.5,
+        "eval_count": 107,
+        "eval_ms": 47284.0
       },
       "score": {
         "has_Biene": false,
@@ -88,14 +91,14 @@
         "not_Regen": true,
         "perspective=Froschperspektive": false,
         "technik_Makro": true,
-        "total_keywords": 11,
+        "total_keywords": 14,
         "score": 3,
         "max_score": 5
       }
     },
     "03_night_city.jpg": {
-      "elapsed_sec": 13.99,
-      "raw_response": "{\"Objekte\": [\"Skyline\", \"Stadt\", \"Wolkenkratzer\"], \"Szene\": [\"Stadt\", \"Stadtlandschaft\"], \"Umgebung\": [\"Stadt\", \"Stadtlandschaft\"], \"Tageszeit\": [\"Abend\", \"Dämmerung\"], \"Jahreszeit\": [\"Herbst\", \"Winter\"], \"Wetter\": [\"Bewölkung\", \"Nebel\"], \"Stimmung\": [\"Dramatisch\", \"Melancholisch\"], \"Lichtsituation\": [\"Gegenlicht\", \"Hartes Licht\"], \"Perspektive\": [\"Vogelperspektive\"], \"Technik\": [\"Schwarz-Weiss\", \"Langzeitbelichtung\"]}",
+      "elapsed_sec": 951.12,
+      "raw_response": "```json\n{\n  \"Objekte\": [\"Skyline\", \"Stadt\", \"Wolkenkratzer\"],\n  \"Szene\": [\"Stadt\", \"Stadtlandschaft\"],\n  \"Umgebung\": [\"Stadt\", \"Stadtlandschaft\"],\n  \"Tageszeit\": [\"Abend\"],\n  \"Jahreszeit\": [\"Herbst\"],\n  \"Wetter\": [\"Bewoelkt\"],\n  \"Stimmung\": [\"Majestaetisch\", \"Nostalgisch\"],\n  \"Lichtsituation\": [\"Gegenlicht\", \"Hartes Licht\"],\n  \"Perspektive\": [\"Vogelperspektive\"],\n  \"Technik\": [\"Naturlicht\"]\n}\n```",
       "keywords": [
         "Skyline",
         "Stadt",
@@ -105,42 +108,38 @@
         "Stadt",
         "Stadtlandschaft",
         "Abend",
-        "Dämmerung",
         "Herbst",
-        "Winter",
-        "Bewölkung",
-        "Nebel",
-        "Dramatisch",
-        "Melancholisch",
+        "Bewoelkt",
+        "Majestaetisch",
+        "Nostalgisch",
         "Gegenlicht",
         "Hartes Licht",
         "Vogelperspektive",
-        "Schwarz-Weiss",
-        "Langzeitbelichtung"
+        "Naturlicht"
       ],
-      "keyword_count": 20,
+      "keyword_count": 16,
       "timings": {
-        "total_duration_ms": 13989.3,
-        "load_duration_ms": 268.0,
+        "total_duration_ms": 951111.9,
+        "load_duration_ms": 550.9,
         "prompt_eval_count": 608,
-        "prompt_eval_ms": 1244.4,
-        "eval_count": 156,
-        "eval_ms": 6783.3
+        "prompt_eval_ms": 165267.9,
+        "eval_count": 151,
+        "eval_ms": 67821.7
       },
       "score": {
         "has_Nacht": false,
         "has_Kunstlicht": false,
         "not_Morgengrauen": true,
         "perspective=Normalperspektive": false,
-        "technik_Langzeitbelichtung": true,
-        "total_keywords": 20,
-        "score": 2,
+        "technik_Langzeitbelichtung": false,
+        "total_keywords": 16,
+        "score": 1,
         "max_score": 5
       }
     },
     "04_portrait_bw.jpg": {
-      "elapsed_sec": 13.43,
-      "raw_response": "```json\n{\n  \"Objekte\": [\"Menschen\", \"Sitzbank\", \"Hintergrund\"],\n  \"Szene\": [\"Menschen\", \"Sitzbank\"],\n  \"Umgebung\": [\"Hintergrund\"],\n  \"Tageszeit\": [\"Morgen\"],\n  \"Jahreszeit\": [\"Sommer\"],\n  \"Wetter\": [\"Sonnig\"],\n  \"Stimmung\": [\"Melancholisch\", \"Einsam\"],\n  \"Lichtsituation\": [\"Hartes Licht\", \"Weiches Licht\"],\n  \"Perspektive\": [\"Normalperspektive\"],\n  \"Technik\": [\"Schwarzweiss\"]\n}\n```",
+      "elapsed_sec": 945.54,
+      "raw_response": "```json\n{\n  \"Objekte\": [\"Menschen\", \"Sitzbank\", \"Hintergrund\"],\n  \"Szene\": [\"Menschen\", \"Sitzbank\"],\n  \"Umgebung\": [\"Hintergrund\"],\n  \"Tageszeit\": [\"Morgen\"],\n  \"Jahreszeit\": [\"Sommer\"],\n  \"Wetter\": [\"Sonnig\"],\n  \"Stimmung\": [\"Friedlich\"],\n  \"Lichtsituation\": [\"Hartes Licht\", \"Weiches Licht\"],\n  \"Perspektive\": [\"Normalperspektive\"],\n  \"Technik\": [\"Schwarzweiss\"]\n}\n```",
       "keywords": [
         "Menschen",
         "Sitzbank",
@@ -151,21 +150,20 @@
         "Morgen",
         "Sommer",
         "Sonnig",
-        "Melancholisch",
-        "Einsam",
+        "Friedlich",
         "Hartes Licht",
         "Weiches Licht",
         "Normalperspektive",
         "Schwarzweiss"
       ],
-      "keyword_count": 15,
+      "keyword_count": 14,
       "timings": {
-        "total_duration_ms": 13423.8,
-        "load_duration_ms": 309.1,
+        "total_duration_ms": 945524.7,
+        "load_duration_ms": 326.1,
         "prompt_eval_count": 608,
-        "prompt_eval_ms": 1243.3,
-        "eval_count": 142,
-        "eval_ms": 6172.9
+        "prompt_eval_ms": 165194.6,
+        "eval_count": 136,
+        "eval_ms": 60096.1
       },
       "score": {
         "has_Mann": false,
@@ -173,14 +171,14 @@
         "not_Regen": true,
         "perspective=Normalperspektive": true,
         "technik_Schwarzweiss": true,
-        "total_keywords": 15,
+        "total_keywords": 14,
         "score": 4,
         "max_score": 5
       }
     },
     "05_forest_autumn.jpg": {
-      "elapsed_sec": 13.25,
-      "raw_response": "```json\n{\n  \"Objekte\": [\"Bäume\", \"Weg\"],\n  \"Szene\": [\"Morgen\", \"Natur\"],\n  \"Umgebung\": [\"Wald\", \"Nacht\"],\n  \"Tageszeit\": \"Morgen\",\n  \"Jahreszeit\": \"Herbst\",\n  \"Wetter\": \"Sonnig\",\n  \"Stimmung\": [\"Friedlich\", \"Majestätisch\"],\n  \"Lichtsituation\": [\"Gegenlicht\", \"Weiches Licht\"],\n  \"Perspektive\": \"Normalperspektive\",\n  \"Technik\": [\"Naturlicht\"]\n}\n```",
+      "elapsed_sec": 957.49,
+      "raw_response": "```json\n{\n  \"Objekte\": [\"Bäume\", \"Weg\"],\n  \"Szene\": [\"Morgen\", \"Natur\"],\n  \"Umgebung\": [\"Wald\", \"Nacht\"],\n  \"Tageszeit\": [\"Morgen\", \"Nacht\"],\n  \"Jahreszeit\": [\"Herbst\", \"Winter\"],\n  \"Wetter\": [\"Sonnig\", \"Nebel\"],\n  \"Stimmung\": [\"Mystisch\", \"Einsam\"],\n  \"Lichtsituation\": [\"Gegenlicht\", \"Weiches Licht\"],\n  \"Perspektive\": [\"Draufsicht\", \"Normalperspektive\"],\n  \"Technik\": [\"Naturlicht\", \"Langzeitbelichtung\"]\n}\n```",
       "keywords": [
         "Bäume",
         "Weg",
@@ -189,29 +187,34 @@
         "Wald",
         "Nacht",
         "Morgen",
+        "Nacht",
         "Herbst",
+        "Winter",
         "Sonnig",
-        "Friedlich",
-        "Majestätisch",
+        "Nebel",
+        "Mystisch",
+        "Einsam",
         "Gegenlicht",
         "Weiches Licht",
+        "Draufsicht",
         "Normalperspektive",
-        "Naturlicht"
+        "Naturlicht",
+        "Langzeitbelichtung"
       ],
-      "keyword_count": 15,
+      "keyword_count": 20,
       "timings": {
-        "total_duration_ms": 13248.3,
-        "load_duration_ms": 334.1,
+        "total_duration_ms": 957479.1,
+        "load_duration_ms": 652.9,
         "prompt_eval_count": 608,
-        "prompt_eval_ms": 1241.9,
-        "eval_count": 136,
-        "eval_ms": 5912.8
+        "prompt_eval_ms": 164487.8,
+        "eval_count": 159,
+        "eval_ms": 70403.8
       },
       "score": {
         "has_Wald": true,
         "has_Herbst": true,
         "perspective=Normalperspektive": true,
-        "total_keywords": 15,
+        "total_keywords": 20,
         "score": 3,
         "max_score": 3
       }

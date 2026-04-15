@@ -2,6 +2,19 @@
 
 ---
 
+> ## 🔄 UPDATE 2026-04-15 — GPU-Nachtest mit drei zusaetzlichen Modellen
+>
+> **Stellen, die im LinkedIn-Artikel aktualisiert werden muessen, sind mit `🔄 UPDATE`-Bloecken markiert. Eine Kurzfassung aller Aenderungen steht in Kapitel 7 am Ende.**
+>
+> Seit dem urspruenglichen Benchmark (12.04.2026, CPU-only) wurde:
+> 1. das Thermo-Problem der Nvidia P40 geloest → GPU wieder nutzbar
+> 2. der komplette 9-Modelle-Benchmark auf GPU wiederholt
+> 3. drei neue Modelle dazugenommen: `gemma3:27b`, `llava:34b` (34B, Yi-Basis), `gemma4:26b`, `gemma4:31b-it-q4_K_M`
+>
+> **Kernbefund bleibt:** LLaVA 13B ist weiterhin die klare Empfehlung. Kein groesseres Modell schlaegt die 13B-Baseline — weder in Qualitaet noch im Preis-Leistungs-Verhaeltnis.
+
+---
+
 ## 0. Management Summary
 
 Wir haben neun lokal ausfuehrbare Vision-Modelle (1,4 bis 13 Milliarden Parameter) daraufhin verglichen, wie gut sie Fotos mit deutschen Schlagwoertern in zehn fotografischen Kategorien versehen koennen — von Lichtsituation ueber Perspektive bis zur fotografischen Technik. Der Benchmark lief auf einer CPU-only VM (12 vCPUs, 14,5 GB RAM, kein GPU) mit identischem Prompt und fuenf kuratierten Testbildern.
@@ -9,6 +22,9 @@ Wir haben neun lokal ausfuehrbare Vision-Modelle (1,4 bis 13 Milliarden Paramete
 **Ergebnis:** Drei Modelle teilen sich den Qualitaets-Spitzenplatz (68 % Score): **LLaVA 13B**, **Llama 3.2 Vision** (11B) und **MiniCPM-V** (8B). LLaVA 13B ist dabei 2-3x schneller als die anderen beiden und antwortet zuverlaessig auf Deutsch. Es ist damit die klare Empfehlung fuer den Produktionseinsatz.
 
 Auf einer dedizierten GPU (Nvidia P40, 24 GB VRAM) sind mit LLaVA 13B **5-10 Bilder pro Minute** erreichbar — ausreichend fuer die Batch-Verschlagwortung einer grossen Fotobibliothek. Auf CPU-only sind es ~8 Bilder pro Stunde — nur fuer interaktive Einzelbild-Nutzung akzeptabel.
+
+> 🔄 **UPDATE — LinkedIn-Text hier praezisieren:**
+> GPU-Nachmessung bestaetigt die Erwartung: **LLaVA 13B schafft auf der P40 tatsaechlich 15,8 s/Bild** (ca. 4 Bilder/Min), also ~28× schneller als auf CPU (440 s). Zusaetzlich getestete groessere Modelle (`llava:34b`, `gemma3:27b`, `gemma4:26b`, `gemma4:31b-it-q4_K_M`) bringen **keine Qualitaetsverbesserung** — im Gegenteil: `llava:34b` ist deutlich schlechter (50 % Score), die Gemma/Llama-Alternativen gleichwertig oder schwaecher und dabei 1,5× bis 9× langsamer. Die 13B-Baseline ist nach wie vor der optimale Sweet Spot.
 
 ---
 
@@ -99,6 +115,15 @@ Der Prompt nutzt eine **Chain-of-Thought-Strategie**: er fordert das Modell auf,
 | **Temperature** | 0.1 (niedrig fuer reproduzierbare Ergebnisse) |
 | **Timeout** | 1800 s pro Request |
 
+> 🔄 **UPDATE — LinkedIn: zweite Setup-Zeile fuer GPU-Nachtest ergaenzen:**
+>
+> | Parameter (GPU-Run 2026-04-15) | Wert |
+> |---|---|
+> | **Hardware** | identisch (KVM-VM, 12 vCPUs, 14,5 GB RAM) |
+> | **GPU** | **Nvidia Tesla P40, 24 GB VRAM, 250 W Power-Cap** |
+> | **Ollama** | v0.12, GPU-Modus, `OLLAMA_MAX_LOADED_MODELS=1` |
+> | **Prompt / Temperature / Timeout** | identisch zum CPU-Run |
+
 ### Getestete Modelle
 
 | Modell | Parameter | Groesse | Herkunft |
@@ -169,6 +194,28 @@ Score = Anzahl bestandener Checks / Anzahl Checks pro Bild. Der Score misst nich
 | LLaVA-Llama3 | 8B | 527 s | 4/17 | 24 % | Englisch | Falsche Sprache, Timeout |
 | BakLLaVA | 7B | 247 s | 4/22 | 18 % | Gemischt | Schnell, aber unbrauchbar |
 | Moondream | 1.4B | — | — | — | — | Prompt zu komplex, Timeout |
+
+> 🔄 **UPDATE — LinkedIn: diese erweiterte Tabelle mit CPU+GPU-Zeiten uebernehmen:**
+>
+> | Modell | Params | CPU Ø Zeit | **GPU Ø Zeit** | Speedup | Score (CPU / GPU) | Empfehlung |
+> |---|---|---|---|---|---|---|
+> | **LLaVA 13B** | 13B | 440 s | **15,8 s** | **~28×** | 68 % / **77 %** | ⭐ **Produktions-Baseline** |
+> | Gemma 4 31B (Q4) | 31B | — (neu getestet) | 146,7 s | — | — / 77 % | gleicher Score wie 13B, 9× langsamer |
+> | Gemma 3 27B | 27B | — (neu getestet) | 24,5 s | — | — / 73 % | schlechter als 13B, 1,5× langsamer |
+> | Llama 3.2 Vision | 11B | 937 s | 19,3 s | ~49× | 68 % / 68 % | unveraendert |
+> | MiniCPM-V | 8B | 1300 s | 11,2 s | ~116× | 68 % / 64 % | schneller auf GPU, leicht schlechter |
+> | Gemma 3 4B | 4B | 372 s | 7,4 s | ~50× | 50 % / 64 % | bestes Low-End-Modell |
+> | LLaVA 7B | 7B | 287 s | 9,1 s | ~32× | 55 % / 55 % | unveraendert |
+> | LLaVA-Phi3 | 3,8B | 279 s | 9,4 s | ~30× | 55 % / 50 % | leicht schwaecher auf GPU |
+> | Gemma 4 26B | 26B | — (neu getestet) | 255 s\* | — / 64 % | \*Outlier bei Bild 4 (17 Min Deadlock) |
+> | **LLaVA 34B (Yi)** | 34B | — (neu getestet) | 69,9 s | — / **45 %** | ❌ schlechter als 13B, 3× langsamer |
+> | LLaVA-Llama3 | 8B | 527 s | 60,2 s | ~9× | 24 % / 14 % | weiter unbrauchbar |
+> | BakLLaVA | 7B | 247 s | 8,1 s | ~30× | 18 % / 18 % | weiter unbrauchbar |
+>
+> **Kernaussagen fuer den LinkedIn-Artikel:**
+> 1. Ranking aendert sich unter GPU NICHT — LLaVA 13B bleibt fuehrend, jetzt sogar allein (Llama 3.2 V. und MiniCPM-V sind zurueckgefallen)
+> 2. Groessere Modelle (27B-34B) sind durchweg Enttaeuschungen: `llava:34b` deutlich schlechter, Gemma-Varianten gleichwertig bei hoeherem Compute-Aufwand
+> 3. Die Speedup-Spanne (9× bis 116×) zeigt: GPU-Nutzung ist bei allen Modellen Pflicht, nicht nur bei den grossen
 
 ### Qualitaet vs. Geschwindigkeit
 
@@ -256,12 +303,51 @@ Der Benchmark zeigt unmissverstaendlich: **CPU-only Inferenz ist fuer Batch-Vers
 
 Eine dedizierte GPU — selbst eine aeltere wie die Nvidia P40 (gebraucht ab ~150 EUR) — verwandelt das System von einem Spielzeug in ein Produktionswerkzeug.
 
+> 🔄 **UPDATE — LinkedIn: gemessene GPU-Zahlen in die Szenario-Tabelle uebernehmen:**
+>
+> | Szenario | LLaVA 13B | Durchsatz | 100.000 Bilder |
+> |---|---|---|---|
+> | CPU-only (12 vCPUs) | 440 s/Bild | ~8 Bilder/Std | ~1,4 Jahre |
+> | **GPU (Nvidia P40, gemessen)** | **15,8 s/Bild** | **~228 Bilder/Std** | **~18 Tage** |
+>
+> Die Praxis liegt etwas unter den vorher geschaetzten 7-14 Tagen, aber **Groessenordnung stimmt** — GPU macht den Produktionseinsatz ueberhaupt erst moeglich.
+
 ### Offene Punkte
 
 1. **Lichtsituation und Perspektive** bleiben schwach — auch die besten Modelle differenzieren hier kaum. Naechster Schritt: Few-Shot-Beispiele im Prompt oder aufgabenspezifisches Fine-Tuning.
 2. **Postprocessing fuer englische Modelle:** Ein EN→DE Normalizer wuerde Llama 3.2 Vision und MiniCPM-V sofort nutzbar machen — potentiell mit hoeherer Qualitaet als LLaVA 13B auf einigen Bildtypen.
 3. **GPU-Benchmark:** Dieser Benchmark lief ausschliesslich auf CPU. Die absoluten Zeiten sind fuer die Modellwahl relevant (Ranking bleibt gleich), aber die Praxis-Performance auf GPU steht noch aus.
 
+> 🔄 **UPDATE — LinkedIn: Punkt 3 streichen, Punkt 2 Status-Update:**
+> - **Punkt 3 erledigt** — GPU-Benchmark ist nachgeholt (siehe Kapitel 7). Ranking aendert sich nicht, die 13B-Empfehlung wird bestaetigt.
+> - **Punkt 2 teilweise umgesetzt** — EN→DE Normalizer ist im Backend implementiert (`keyword_normalizer.py`), greift bereits.
+> - Neu als Punkt 3: **Konsistenz-Vetos** (z.B. „Bedeckt + Hartes Licht" gleichzeitig unmoeglich) wurden im Backend ergaenzt, um typische Halluzinationen zu unterdruecken.
+
 ---
 
-*Benchmark durchgefuehrt am 12.04.2026 auf einer Debian VM (KVM, 12 vCPUs, 14,5 GB RAM, CPU-only). Alle Modelle via Ollama, alle Testbilder von Wikimedia Commons unter CC-Lizenzen. Vollstaendige Rohdaten: `docs/benchmark/results/`. Benchmark-Script: `docs/benchmark/run_benchmark.py`.*
+## 7. 🔄 UPDATE 2026-04-15: GPU-Nachtest — Zusammenfassung
+
+Nachdem das Thermo-Problem der Tesla P40 geloest war, wurde der komplette Benchmark auf GPU wiederholt und drei neue groessere Modelle getestet:
+
+### Top-3 Ranking (GPU)
+
+| Rang | Modell | Score | Ø Zeit/Bild |
+|---|---|---|---|
+| 🥇 | **LLaVA 13B** | 77 % (3,4/4) | **15,8 s** |
+| 🥈 | Gemma 4 31B (Q4) | 77 % (3,4/4) | 146,7 s ← 9× langsamer bei gleichem Score |
+| 🥉 | Gemma 3 27B | 73 % (3,2/4) | 24,5 s |
+
+### Die wichtigsten Erkenntnisse
+
+1. **Das Ranking aendert sich nicht** — LLaVA 13B bleibt fuehrend, jetzt sogar ohne ex-aequo-Partner: Llama 3.2 Vision und MiniCPM-V sind auf Rang 4/5 abgerutscht, ihre Scores sind unter GPU leicht schlechter (moeglicherweise Temperature-Varianz).
+2. **Groesser ist nicht besser.** `llava:34b` (Yi-Basis) schneidet mit 45 % Score schlechter ab als `llava:13b` (77 %) und ist 3× langsamer. Vermutlich leidet das Yi-34B-Training unter der deutschen Ausgabequalitaet. Die Gemma-4-Varianten (26B, 31B) sind gleichwertig oder schwaecher als LLaVA 13B bei deutlich hoeherem Compute-Aufwand.
+3. **GPU-Speedup ist dramatisch und verlaesslich.** 28× schneller bei LLaVA 13B, bis zu 116× bei MiniCPM-V. Ohne GPU ist Produktionsbetrieb nicht denkbar.
+4. **Aktive Kuehlung fuer die P40 zahlt sich aus.** Power-Limit wurde auf 250 W erhoeht (vorher 125 W Thermo-Schutz), GPU-Clock-Locks aufgehoben — volle Leistung ohne Throttling waehrend des gesamten Benchmarks (Max-Temp 61 °C).
+
+### Produktionsempfehlung (bestaetigt)
+
+**LLaVA 13B auf Nvidia P40 (24 GB, 250 W) bleibt die Referenz.** Keine der getesteten Alternativen — weder in 27B-34B-Groessen noch in der neuen Gemma-4-Generation — rechtfertigt den Umstieg. Der Sweet Spot aus Qualitaet, Geschwindigkeit, Sprachkonsistenz und VRAM-Bedarf stimmt.
+
+---
+
+*Ursprungs-Benchmark durchgefuehrt am 12.04.2026, GPU-Nachtest am 15.04.2026. Beide auf derselben Debian VM (KVM, 12 vCPUs, 14,5 GB RAM, Tesla P40). Alle Modelle via Ollama, alle Testbilder von Wikimedia Commons unter CC-Lizenzen. Vollstaendige Rohdaten: `docs/benchmark/results/` (GPU) und `docs/benchmark/results/cpu-baseline/` (CPU). Benchmark-Script: `docs/benchmark/run_benchmark.py`.*

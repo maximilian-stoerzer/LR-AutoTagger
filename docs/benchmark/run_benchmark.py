@@ -38,6 +38,11 @@ import urllib.request
 OLLAMA_BASE = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 TIMEOUT = int(os.getenv("BENCHMARK_TIMEOUT", "1800"))
 
+# Hysteresis thresholds — env-overridable for easy tuning without edits.
+GPU_TEMP_HOT = int(os.getenv("BENCHMARK_GPU_TEMP_HOT", "85"))
+GPU_TEMP_COOL = int(os.getenv("BENCHMARK_GPU_TEMP_COOL", "75"))
+GPU_POLL_INTERVAL = int(os.getenv("BENCHMARK_GPU_POLL_SEC", "10"))
+
 MODELS = [
     "moondream",       # 1.4B — included for completeness; expect timeouts
     "llava-phi3",      # 3.8B
@@ -48,7 +53,12 @@ MODELS = [
     "minicpm-v",       # 8B
     "llama3.2-vision", # 11B
     "llava:13b",       # 13B
+    "gemma3:27b",      # 27B — GPU-only
+    "llava:34b",       # 34B (Yi-34B base) — GPU-only
 ]
+
+if (_models_override := os.getenv("BENCHMARK_MODELS", "").strip()):
+    MODELS = [m.strip() for m in _models_override.split(",") if m.strip()]
 
 # Models to skip entirely (checkpoint kept but no new inference).
 # Moondream can't handle the V2 CoT prompt — generates garbage or
@@ -157,12 +167,20 @@ def system_info() -> dict:
         ).split(":", 1)[1].strip()
     except Exception:
         cpu_model = platform.processor() or "unknown"
+    try:
+        gpu_name = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=name", "--format=csv,noheader"],
+            text=True, timeout=5, stderr=subprocess.DEVNULL,
+        ).strip().splitlines()[0] or None
+    except (subprocess.SubprocessError, FileNotFoundError, IndexError):
+        gpu_name = None
     return {
         "hostname": platform.node(),
         "os": platform.platform(),
         "cpu_model": cpu_model,
         "cpu_count": cpus,
         "ram_gb": mem_gb,
+        "gpu": gpu_name,
         "python": platform.python_version(),
         "ollama_base_url": OLLAMA_BASE,
         "timeout_s": TIMEOUT,
@@ -242,7 +260,48 @@ def score_result(keywords: list[str], image_name: str) -> dict:
     return checks
 
 
+def get_gpu_temp() -> int | None:
+    """Return current GPU temperature in °C, or None if nvidia-smi isn't
+    available (CPU-only host)."""
+    try:
+        out = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=temperature.gpu", "--format=csv,noheader,nounits"],
+            text=True,
+            timeout=5,
+            stderr=subprocess.DEVNULL,
+        )
+        return int(out.strip().split()[0])
+    except (subprocess.SubprocessError, FileNotFoundError, ValueError, IndexError):
+        return None
+
+
+def wait_for_cooldown() -> None:
+    """Block until GPU temperature drops below GPU_TEMP_COOL, if currently
+    above GPU_TEMP_HOT.  No-op on hosts without nvidia-smi."""
+    temp = get_gpu_temp()
+    if temp is None or temp < GPU_TEMP_HOT:
+        return
+    print(f"\n  ⏸  GPU at {temp}°C (>{GPU_TEMP_HOT}°C) — waiting for cooldown to {GPU_TEMP_COOL}°C ...",
+          flush=True)
+    waited = 0
+    next_log = 60
+    while True:
+        time.sleep(GPU_POLL_INTERVAL)
+        waited += GPU_POLL_INTERVAL
+        temp = get_gpu_temp()
+        if temp is None:
+            print(f"  ▶  nvidia-smi unavailable after {waited}s — resuming.", flush=True)
+            return
+        if temp <= GPU_TEMP_COOL:
+            print(f"  ▶  GPU at {temp}°C after {waited}s — resuming.", flush=True)
+            return
+        if waited >= next_log:
+            print(f"    still {temp}°C after {waited}s ...", flush=True)
+            next_log += 60
+
+
 def call_ollama(model: str, image_bytes: bytes) -> dict:
+    wait_for_cooldown()
     b64 = base64.b64encode(image_bytes).decode()
     payload = {
         "model": model,
@@ -419,7 +478,8 @@ def main():
         "",
         f"**Datum:** {sysinfo['timestamp_utc'][:10]}",
         f"**System:** {sysinfo['cpu_count']} vCPUs ({sysinfo['cpu_model']}), "
-        f"{sysinfo['ram_gb']} GB RAM, CPU-only (keine GPU)",
+        f"{sysinfo['ram_gb']} GB RAM, "
+        f"GPU: {sysinfo.get('gpu') or 'keine (CPU-only)'}",
         f"**Prompt:** V2 mit Chain-of-Thought (siehe `backend/app/pipeline/ollama_client.py`)",
         f"**Timeout:** {TIMEOUT}s pro Request",
         f"**Bilder:** {len(images)} Wikimedia-Commons-Testbilder "
@@ -438,6 +498,8 @@ def main():
         "moondream": "1.4B", "llava-phi3": "3.8B", "gemma3:4b": "4B",
         "llava:7b": "7B", "bakllava": "7B", "llava-llama3": "8B",
         "minicpm-v": "8B", "llama3.2-vision": "11B", "llava:13b": "13B",
+        "gemma3:27b": "27B", "gemma4:26b": "26B",
+        "llava:34b": "34B", "gemma4:31b-it-q4_K_M": "31B",
     }
     for model in MODELS:
         row = [f"`{model}`", param_map.get(model, "?")]
