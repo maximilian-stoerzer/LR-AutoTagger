@@ -38,6 +38,11 @@ import urllib.request
 OLLAMA_BASE = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 TIMEOUT = int(os.getenv("BENCHMARK_TIMEOUT", "1800"))
 
+# Hysteresis thresholds — env-overridable for easy tuning without edits.
+GPU_TEMP_HOT = int(os.getenv("BENCHMARK_GPU_TEMP_HOT", "85"))
+GPU_TEMP_COOL = int(os.getenv("BENCHMARK_GPU_TEMP_COOL", "75"))
+GPU_POLL_INTERVAL = int(os.getenv("BENCHMARK_GPU_POLL_SEC", "10"))
+
 MODELS = [
     "moondream",       # 1.4B — included for completeness; expect timeouts
     "llava-phi3",      # 3.8B
@@ -242,7 +247,48 @@ def score_result(keywords: list[str], image_name: str) -> dict:
     return checks
 
 
+def get_gpu_temp() -> int | None:
+    """Return current GPU temperature in °C, or None if nvidia-smi isn't
+    available (CPU-only host)."""
+    try:
+        out = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=temperature.gpu", "--format=csv,noheader,nounits"],
+            text=True,
+            timeout=5,
+            stderr=subprocess.DEVNULL,
+        )
+        return int(out.strip().split()[0])
+    except (subprocess.SubprocessError, FileNotFoundError, ValueError, IndexError):
+        return None
+
+
+def wait_for_cooldown() -> None:
+    """Block until GPU temperature drops below GPU_TEMP_COOL, if currently
+    above GPU_TEMP_HOT.  No-op on hosts without nvidia-smi."""
+    temp = get_gpu_temp()
+    if temp is None or temp < GPU_TEMP_HOT:
+        return
+    print(f"\n  ⏸  GPU at {temp}°C (>{GPU_TEMP_HOT}°C) — waiting for cooldown to {GPU_TEMP_COOL}°C ...",
+          flush=True)
+    waited = 0
+    next_log = 60
+    while True:
+        time.sleep(GPU_POLL_INTERVAL)
+        waited += GPU_POLL_INTERVAL
+        temp = get_gpu_temp()
+        if temp is None:
+            print(f"  ▶  nvidia-smi unavailable after {waited}s — resuming.", flush=True)
+            return
+        if temp <= GPU_TEMP_COOL:
+            print(f"  ▶  GPU at {temp}°C after {waited}s — resuming.", flush=True)
+            return
+        if waited >= next_log:
+            print(f"    still {temp}°C after {waited}s ...", flush=True)
+            next_log += 60
+
+
 def call_ollama(model: str, image_bytes: bytes) -> dict:
+    wait_for_cooldown()
     b64 = base64.b64encode(image_bytes).decode()
     payload = {
         "model": model,
