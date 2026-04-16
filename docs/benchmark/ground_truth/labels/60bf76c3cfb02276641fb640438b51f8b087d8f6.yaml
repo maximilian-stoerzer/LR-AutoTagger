@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Inner_City_Parish_Church%2C_Bratislava%2C_2016_Szekszard%2C_Hungary.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Deckenfresko", "Stuck", "Kanzel", "Gewoelbe", "Saeulen"]
+  szene: ["Kircheninnenraum", "Barockarchitektur"]
+  umgebung: ["Innenraum", "Kirche"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Majestaetisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Mischlicht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Innenraum der Innenstadtpfarrkirche Bratislava, Blick zur barocken Deckenmalerei."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/86/Bridge-1280191%2C_Dingle_Peninsula%2C_Co._Kerry%2C_Ireland.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Strassenlaternen", "Verkehrsschild", "Bruecke", "Haeuser", "Strassenmarkierung"]
+  szene: ["Strasse", "Bruecke"]
+  umgebung: ["Land", "Wohngebiet"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Lebhaft"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Bruecke auf Dingle Peninsula (Irland); ungewoehnlich satter blauer Himmel."
 
 gpt:
   _model: "gpt-5"

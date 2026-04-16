@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/5e/High_Line_%2848808499%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Schiene", "Gras", "Buerogebaeude", "Gelaender"]
+  szene: ["Brachflaeche", "Stadtansicht"]
+  umgebung: ["Stadt", "Brachflaeche"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Einsam", "Nostalgisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Sehr niedrige Kameraposition entlang einer rostigen Schiene auf der High Line vor New Yorker Bueroblock."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/2c/Multisport_Court.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Basketballkorb", "Basketball", "Spieler", "Korbnetz"]
+  szene: ["Basketballspiel", "Wurf"]
+  umgebung: ["Sportplatz", "Freiluft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Lebhaft", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Zwei Spieler beim Korbleger; Aufnahme vom Boden direkt unterhalb des Korbs gegen die Sonne."
 
 gpt:
   _model: "gpt-5"

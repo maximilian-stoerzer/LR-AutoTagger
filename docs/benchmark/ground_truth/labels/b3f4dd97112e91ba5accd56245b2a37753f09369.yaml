@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Handelundwandel_2014-03_Berlin-Friedrichsfelde_1404-1284-120.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Skulptur", "Metallbaender", "Himmel"]
+  szene: ["Kunstinstallation", "Detailansicht"]
+  umgebung: ["Freiluft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Lebhaft", "Majestaetisch"]
+  lichtsituation: ["Hartes Licht", "Oberlicht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Verflochtene blaue Stahlbaender mit Strassenmarkierungen ('Handel und Wandel', Berlin-Friedrichsfelde)."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/de/Ada_Bridge_pylon_%28Sava_river%2C_Belgrade%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Brueckenpylon", "Tragseile", "Leuchte"]
+  szene: ["Architekturaufnahme", "Schraegseilbruecke"]
+  umgebung: ["Bruecke"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Majestaetisch", "Dramatisch"]
+  lichtsituation: ["Hartes Licht", "Hell-Dunkel"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss"]
+  notes: "Pylon der Ada-Bruecke (Belgrad) als Schwarzweiss-Untersicht mit symmetrisch ausstrahlenden Tragseilen."
 
 gpt:
   _model: "gpt-5"

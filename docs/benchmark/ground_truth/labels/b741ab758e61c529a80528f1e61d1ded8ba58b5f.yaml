@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/23/Berdorf_%28LU%29%2C_Werschrummschloeff_--_2015_--_6242.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baum", "Felsen", "Baumkrone", "Moos"]
+  szene: ["Felsenschlucht", "Waldinneres"]
+  umgebung: ["Wald", "Felsen"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: null
+  stimmung: ["Mystisch", "Majestaetisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Buche wachst aus Felsspalte heraus; Werschrummschloeff-Schlucht (Berdorf, Luxemburg)."
 
 gpt:
   _model: "gpt-5"

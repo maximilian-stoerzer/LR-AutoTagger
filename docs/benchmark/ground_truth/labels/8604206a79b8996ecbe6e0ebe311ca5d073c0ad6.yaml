@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Lahaina_Noon_is_today_in_Honolulu%2C_when_the_sun_is_directly_overhead._Missed_the_exact_solar_noon_by_a_few_minutes_but_it%27s_close_enough._%2814091599530%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Strassenlaterne", "Stromleitungen", "Wolken", "Sonne", "Baumzweige"]
+  szene: ["Lahaina-Noon", "Sonnenstand"]
+  umgebung: ["Stadt", "Tropen"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Oberlicht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Lahaina Noon in Honolulu — Sonne fast direkt im Zenit ueber einer Strassenlaterne ohne Schatten."
 
 gpt:
   _model: "gpt-5"

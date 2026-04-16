@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/98/2014_Hannover_Mattes_%2813%29.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kuppel", "Oberlicht", "Streben", "Gewoelbe"]
+  szene: ["Architekturaufnahme", "Innenraum"]
+  umgebung: ["Innenraum", "Gebaeude"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Majestaetisch", "Mystisch"]
+  lichtsituation: ["Oberlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Blick in eine Kuppel mit sternfoermigen Streben und zentralem Oberlicht (Hannover)."
 
 gpt:
   _model: "gpt-5"
