@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Gewitter_%C3%BCber_Hannover_Waldheim_4.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blitz", "Wolken", "Baeume", "Gebaeude"]
+  szene: ["Gewitter", "Stadthimmel"]
+  umgebung: ["Stadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Silhouette", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Langzeitbelichtung"]
+  notes: "Gewitter ueber Hannover-Waldheim; horizontaler Wolken-zu-Wolken-Blitz."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blitz", "Wolken", "Bäume", "Gebäude", "Himmel"]
+  szene: ["Blitz am Nachthimmel", "Unwetter"]
+  umgebung: ["Stadt", "Wohnhaus"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter", "Bedeckt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Silhouette", "Low-Key", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Langzeitbelichtung"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

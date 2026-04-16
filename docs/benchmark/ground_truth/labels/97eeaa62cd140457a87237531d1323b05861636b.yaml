@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/76/Flickr_-_The_U.S._Army_-_Afghan_lightning.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Militaerfahrzeug", "Blitz", "Gebaeude", "Pfuetze", "Berge"]
+  szene: ["Militaerbasis", "Gewitter"]
+  umgebung: ["Wueste", "Gebirge"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich", "Einsam"]
+  lichtsituation: ["Mischlicht", "Kunstlicht", "Hartes Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Humvee in afghanischer Militaerbasis; entfernter Blitz und Sonnenuntergangslicht im Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Militaerfahrzeug", "Blitz", "Gebaeude", "Pfuetze", "Berge"]
+  szene: ["Militaerbasis", "Gewitter"]
+  umgebung: ["Gebirge", "Steiniger Boden"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Gegenlicht", "Mischlicht", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

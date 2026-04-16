@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Lightning_strikes_illuminate_the_stormy_cloud_tops_%28iss073e0566536%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolken", "Blitz"]
+  szene: ["Gewitter", "Wolkenformation"]
+  umgebung: ["Himmel"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Mystisch", "Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Low-Key", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Aufnahme von der ISS (iss073e0566536): Blitz beleuchtet Cumulonimbus-Wolkenoberseite von oben."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wolken", "Blitz"]
+  szene: ["Nachthimmel", "Gewitter"]
+  umgebung: ["Himmel"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Low-Key", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

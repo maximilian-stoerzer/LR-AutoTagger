@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e9/GER_%E2%80%94_BY_%E2%80%94_Regierungsbezirk_Oberbayern_%E2%80%94_Landkreis_Traunstein_%E2%80%94_Gemeinde_Bergen_%E2%80%94_Hochfelln_%28Kapelle%2C_sog._Tabor-Kapelle_%C2%B7_erste_Glocke%2C_denkmalgesch%C3%BCtzt_BY_D-1-89-113-84%29_%E2%80%94_Mattes_2022-05-22.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Glocke", "Steinmauer"]
+  szene: ["Detailaufnahme", "Wandobjekt"]
+  umgebung: ["Mauer", "Kapelle"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Nostalgisch", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Denkmalgeschuetzte zerborstene Glocke der Tabor-Kapelle am Hochfelln, in Steinmauer eingelassen — kein Gewitter erkennbar; Wikimedia-Kategorie unpassend."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Glocke", "Steinmauer"]
+  szene: ["Nahaufnahme", "Detail"]
+  umgebung: ["Steinwand"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Zerborstene Glocke als Wandrelief; Text am Rand teilweise lesbar."
 
 ground_truth: null    # filled after dissens arbitration

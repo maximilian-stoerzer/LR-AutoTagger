@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/00/LightningOverEdson.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Blitze", "Wolken", "Baeume", "Strommast"]
+  szene: ["Gewitter", "Nachthimmel"]
+  umgebung: ["Land", "Wald"]
+  tageszeit: "Nacht"
+  jahreszeit: "Sommer"
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Mehrere parallele Blitze ueber Edson (Kanada); Wald-Silhouette am Horizont."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blitz", "Wolken", "Baeume", "Strommast"]
+  szene: ["Gewitterhimmel", "Nachthimmel"]
+  umgebung: ["Wald", "Laendlich"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Langzeitbelichtung"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

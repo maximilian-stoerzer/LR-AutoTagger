@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/79/32221-Dresden-1999-Vollbild_mit_Blitz-Br%C3%BCck_%26_Sohn_Kunstverlag.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blitz", "Fluss", "Boote", "Kirchtuerme", "Schriftzug"]
+  szene: ["Stadtansicht", "Postkarte"]
+  umgebung: ["Stadt", "Flussufer"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Gewitter"]
+  stimmung: ["Dramatisch", "Nostalgisch"]
+  lichtsituation: ["Mischlicht", "Kunstlicht", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Reproduktion einer Brueck&Sohn-Postkarte 'Viele Gruesse aus Dresden' (1999) mit Blitz ueber der Elbe."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blitz", "Fluss", "Boote", "Bruecke", "Kirchtuerme"]
+  szene: ["Stadtansicht", "Gewitterhimmel"]
+  umgebung: ["Flussufer", "Stadt"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Mischlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Postkartenmotiv mit Schriftzug"
 
 ground_truth: null    # filled after dissens arbitration

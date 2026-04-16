@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/2c/Lightning_Strikes_the_Hill%2C_Trogir_%285975203561%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Yacht", "Segelboot", "Blitz", "Kirchturm", "Altstadt"]
+  szene: ["Hafenansicht", "Altstadt im Gewitter"]
+  umgebung: ["Hafen", "Kuestenstadt"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Gewitter", "Bedeckt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Trogir (Kroatien): Blitz ueber Altstadt mit Kirchturm; Yacht und Segelschiff am Anleger."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Yacht", "Segelboot", "Blitz", "Kirchturm", "Menschen"]
+  szene: ["Hafenansicht", "Altstadt"]
+  umgebung: ["Kuestenstadt", "Wasser"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Gewitter", "Bedeckt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Blitzschlag am dunklen Gewitterhimmel ueber dem Hafen"
 
 ground_truth: null    # filled after dissens arbitration

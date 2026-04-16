@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/60/Lightning_Boston_%280164%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Segelboote", "Blitz", "Bruecke", "Gebaeude", "Wasser"]
+  szene: ["Hafenansicht", "Gewitter"]
+  umgebung: ["Hafen", "Stadt"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Gewitter", "Bedeckt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Boston Harbor: einzelner Blitz rechts ueber Skyline; vorne ankernde Yachten."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Segelboote", "Blitz", "Bruecke", "Gebaeude", "Ufer"]
+  szene: ["Hafenansicht", "Gewitter"]
+  umgebung: ["Wasser", "Stadt"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Gewitter", "Bedeckt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Deutlicher Blitzschlag ueber dem Hafen sichtbar"
 
 ground_truth: null    # filled after dissens arbitration

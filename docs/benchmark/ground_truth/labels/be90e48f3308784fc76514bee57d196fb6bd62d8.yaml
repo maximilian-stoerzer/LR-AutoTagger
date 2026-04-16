@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/44/Lightning_over_Manly_%286021709816%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Strand", "Meer", "Wolken", "Blitz", "Wellen"]
+  szene: ["Strand", "Gewitter ueber Meer"]
+  umgebung: ["Strand", "Kueste"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt", "Gewitter"]
+  stimmung: ["Dramatisch", "Bedrohlich", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Manly Beach (Sydney): einzelner ferner Blitz am Horizont ueber dem Meer trotz teilweise sonniger Strandszene."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strand", "Meer", "Wolken", "Blitz", "Wellen"]
+  szene: ["Gewitter ueber dem Meer"]
+  umgebung: ["Kuestenlandschaft"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt", "Gewitter"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Einzelner Blitz ueber dem Meer"
 
 ground_truth: null    # filled after dissens arbitration

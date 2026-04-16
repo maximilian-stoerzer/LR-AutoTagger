@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/76/Flash_Night_%28108507521%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blitze", "Wolken", "Huegel", "Wald"]
+  szene: ["Gewitter", "Nachthimmel"]
+  umgebung: ["Land", "Huegellandschaft"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich", "Mystisch"]
+  lichtsituation: ["Hell-Dunkel", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Komplexes Blitz-Geaeste in lila Himmel; Huegellandschaft als Silhouette."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blitz", "Wolken", "Huegel"]
+  szene: ["Gewitterhimmel", "Blitzschlag"]
+  umgebung: ["Landschaft", "Hügelland"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Hell-Dunkel", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
