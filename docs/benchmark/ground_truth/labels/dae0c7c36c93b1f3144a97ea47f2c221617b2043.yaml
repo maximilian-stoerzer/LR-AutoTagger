@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Gore_Range_magic_hour.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Berge", "Schnee", "Baeume", "Haeuser", "Zaun"]
+  szene: ["Berglandschaft", "Skiort"]
+  umgebung: ["Gebirge", "Wohngebiet"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Winter"
+  wetter: null
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Gore Range zur magic hour; rosafarbenes Restlicht auf den schneebedeckten Gipfeln."
 
 gpt:
   _model: "gpt-5"

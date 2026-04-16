@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/fd/The_shortest_day_4_%285280644738%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Schnee", "Lichterkette", "Gartenmoebel", "Baeume", "Blumentoepfe"]
+  szene: ["Garten", "Terrasse"]
+  umgebung: ["Garten", "Freiluft"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Winter"
+  wetter: ["Schnee"]
+  stimmung: ["Friedlich", "Romantisch", "Vertraeumt"]
+  lichtsituation: ["Mischlicht", "Kunstlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Verschneiter Garten zur blauen Stunde; warmer Lichterkettenschein neben kaltblauem Himmel."
 
 gpt:
   _model: "gpt-5"

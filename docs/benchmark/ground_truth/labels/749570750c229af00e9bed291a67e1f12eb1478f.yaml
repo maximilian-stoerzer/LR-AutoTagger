@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/fe/Leehasacamera_-_Sunset_over_the_clouds_%28by%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolken", "Mond", "Sterne", "Horizont"]
+  szene: ["Wolkenmeer", "Daemmerung"]
+  umgebung: ["Himmel"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Friedlich", "Vertraeumt", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Aufnahme aus dem Flugzeug ueber dem Wolkenmeer; Mondsichel und Sterne, oranger Horizontstreifen."
 
 gpt:
   _model: "gpt-5"

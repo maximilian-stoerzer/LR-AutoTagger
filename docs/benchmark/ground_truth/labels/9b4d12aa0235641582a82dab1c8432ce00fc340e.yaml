@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Evening_-_300319.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolke", "Himmel"]
+  szene: ["Wolkenstudie", "Himmel"]
+  umgebung: ["Himmel"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Minimalistische Wolkenstudie; einzelne rosa angeleuchtete Wolke vor blauem Daemmerungshimmel."
 
 gpt:
   _model: "gpt-5"

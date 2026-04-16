@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Macabebe_Caduang_Tete_%28Pampanga_Province%3B_2023-08-08%29_E911a_31.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Haus", "Palme", "Baeume", "Wasser", "Vogel"]
+  szene: ["Ueberschwemmung", "Landschaft"]
+  umgebung: ["Land", "Ueberschwemmungsgebiet"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Melancholisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Ueberschwemmtes philippinisches Dorf in der Daemmerung; Haeuser stehen im Wasser."
 
 gpt:
   _model: "gpt-5"

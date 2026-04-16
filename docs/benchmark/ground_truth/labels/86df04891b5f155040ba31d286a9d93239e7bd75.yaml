@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8b/P%C3%B4r-do-Sol_%281897%29_-_Ant%C3%B3nio_C%C3%A2ndido_da_Cunha.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mond", "Pfad", "See", "Huegel", "Wiese"]
+  szene: ["Landschaft", "Daemmerung"]
+  umgebung: ["Land", "Ufer"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Friedlich", "Melancholisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Oelgemaelde von Antonio Candido da Cunha (1897), keine Photographie — Wikimedia-Kategorie passt formal, aber Bild ist Malerei."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/66/The_Blue_Hour_%2863301687%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Hafen", "Bruecke", "Gebaeude", "Yacht", "Wasser"]
+  szene: ["Hafenansicht", "Stadtansicht"]
+  umgebung: ["Hafen", "Stadt"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Mischlicht", "Kunstlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Hafen Barcelona zur blauen Stunde; warme Lichtspiegelungen im Wasser unter bewoelktem Himmel."
 
 gpt:
   _model: "gpt-5"

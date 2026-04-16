@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Ethiopia_-_Lake_Assale.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Felsen", "Salzsee", "Spiegelung", "Wolken", "Himmel"]
+  szene: ["Wuestensee", "Salzpfanne"]
+  umgebung: ["Wueste", "Salzsee"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Mystisch", "Majestaetisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Lake Assale (Aethiopien) zur blauen Stunde; Felsen mit Spiegelung im flachen Salzwasser, violetter Himmel."
 
 gpt:
   _model: "gpt-5"
