@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1d/GER_%E2%80%94_BY_%E2%80%94_OBB_%E2%80%94_Lkr._MB_%E2%80%94_Wendelsteinzahnradbahn_%28Bergstation_Zugang%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Ticketschalter", "Anzeigetafel", "Computer", "Desinfektionsspender"]
+  szene: ["Bahnhofsschalter", "Innenraum"]
+  umgebung: ["Bahnhof", "Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: null
   stimmung: null
-  lichtsituation: null
-  perspektive: null
+  lichtsituation: ["Kunstlicht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Ticketschalter Bergstation Wendelsteinzahnradbahn; kein erkennbarer Gegenlicht-Effekt — Wikimedia-Kategorie wirkt unpassend."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e1/HK_Central_IFC_Mall_shop_Melvita_nature_at_heart_Dec-2012.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Personen", "Regale", "Produkte", "Schriftzug", "Leuchtdecke"]
+  szene: ["Geschaeftsinnenraum", "Kosmetikladen"]
+  umgebung: ["Innenraum", "Einkaufszentrum"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: null
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Kunstlicht", "Mischlicht", "Oberlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Melvita-Kosmetikshop in Hong Kong IFC Mall mit Leuchtdecke (Himmelmotiv) und gruener Logo-Hinterleuchtung — kein klassisches Gegenlicht."
 
 gpt:
   _model: "gpt-5"

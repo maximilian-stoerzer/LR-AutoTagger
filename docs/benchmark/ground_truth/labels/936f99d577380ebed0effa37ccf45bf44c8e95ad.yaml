@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/25/Contre_Jour_%28123715787%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Rose", "Bluete", "Blaetter"]
+  szene: ["Blumenportraet", "Nahaufnahme"]
+  umgebung: ["Garten", "Natur"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Romantisch", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Kantenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: "Rosa Rose im warmen Gegenlicht mit dunklem Bokeh-Hintergrund; Lichtdurchbruch laesst Blueten transluzent leuchten."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Fifteen_restaurant_flat_white_coffee_George_Street_Stroud_Gloucestershire_England_01.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Tasse", "Untertasse", "Loeffel", "Zuckertueten", "Speisekarte"]
+  szene: ["Cafetisch", "Heissgetraenk"]
+  umgebung: ["Innenraum", "Cafe"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Mischlicht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Flat-White-Kaffee auf Holztisch im Cafe — kein erkennbarer Gegenlicht-Effekt; Wikimedia-Kategorie unpassend."
 
 gpt:
   _model: "gpt-5"

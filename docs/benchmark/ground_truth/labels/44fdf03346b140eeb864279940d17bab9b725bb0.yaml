@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Backlight4.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Schnee", "Aeste", "Boden"]
+  szene: ["Wald", "Winterlandschaft"]
+  umgebung: ["Wald", "Natur"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig", "Schnee"]
+  stimmung: ["Friedlich", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Niedrig stehende Sonne durch Nadelwald, schneebedeckter Boden im Vordergrund."
 
 gpt:
   _model: "gpt-5"

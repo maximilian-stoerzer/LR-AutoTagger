@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3b/In_Gossamer_Light_We_Wander.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Bluetenstand", "Stengel", "Spinnweben"]
+  szene: ["Makroaufnahme", "Naturdetail"]
+  umgebung: ["Natur", "Freiluft"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: null
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Kantenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: "Wilder Mohrruebenbluetenstand (Daucus carota) im Gegenlicht; feine Spinnweben zwischen den Strahlen."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Montreal_Olympic_Stadium_tower_with_cables_for_retractable_roof.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Turm", "Tragseile", "Stadion", "Dach"]
+  szene: ["Architekturaufnahme", "Stadionturm"]
+  umgebung: ["Stadt", "Stadion"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Olympiastadion-Turm Montreal mit Tragseilen; Sonne knapp hinter dem Turm erzeugt starkes Gegenlicht."
 
 gpt:
   _model: "gpt-5"

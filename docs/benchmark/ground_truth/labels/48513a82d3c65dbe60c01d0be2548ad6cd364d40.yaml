@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Backlit_Planters_-_Vancouver_%282650818225%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blumentoepfe", "Pflanzen", "Pflastersteine", "Fensterfront"]
+  szene: ["Terrasse", "Eingangsbereich"]
+  umgebung: ["Stadt", "Freiluft"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Kunstlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Innen beleuchtete uebergrosse Plastik-Blumenkuebel als Lichtquellen — Hinterleuchtung, kein klassisches Gegenlicht."
 
 gpt:
   _model: "gpt-5"
