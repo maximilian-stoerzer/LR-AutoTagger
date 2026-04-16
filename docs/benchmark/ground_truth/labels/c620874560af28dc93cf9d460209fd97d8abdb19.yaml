@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/45/-%D0%A1%D0%BD%D0%B5%D0%B6%D0%B8%D0%BD%D0%BA%D0%B8.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Schneeflocken", "Strickgewebe"]
+  szene: ["Makroaufnahme", "Detailaufnahme"]
+  umgebung: ["Freiluft"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Schnee"]
+  stimmung: ["Friedlich", "Mystisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Low-Key", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: "Mehrere Schneekristalle auf dunkler Strickmuetze; sehr geringe Schaerfentiefe."
 
 gpt:
   _model: "gpt-5"

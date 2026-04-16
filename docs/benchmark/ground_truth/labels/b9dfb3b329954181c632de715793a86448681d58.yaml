@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/65/Frozen_%28140204393%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Stein", "Wasser", "Wassertropfen", "Moos", "Blatt"]
+  szene: ["Brunnen", "Detailaufnahme"]
+  umgebung: ["Garten", "Freiluft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Steinerner Brunnen mit ueberlaufendem Wasser; nasser Sandstein, leichte Hintergrundunschaerfe."
 
 gpt:
   _model: "gpt-5"

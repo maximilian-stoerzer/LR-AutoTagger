@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/9f/20241223_tazza_di_bokeh_PD104669.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Tasse", "Lichterkette"]
+  szene: ["Stillleben", "Konzeptaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Vertraeumt", "Romantisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: "Vertikale Bokeh-Lichter wirken, als ob sie wie Dampf aus der Tasse aufsteigen."
 
 gpt:
   _model: "gpt-5"

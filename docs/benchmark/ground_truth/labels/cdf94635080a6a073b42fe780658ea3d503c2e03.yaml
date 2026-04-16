@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/93/Colors_%28493882799%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Wassertropfen", "Bluete", "Blumen", "Stiel"]
+  szene: ["Makroaufnahme", "Blumenportraet"]
+  umgebung: ["Garten", "Freiluft"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: ["Regen"]
+  stimmung: ["Friedlich", "Vertraeumt", "Romantisch"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: "Akelei-Bluete mit zwei haengenden Wassertropfen, die das gruene Bokeh-Umfeld spiegeln."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/da/A_pont_t%C3%A9rbeli_%C3%A1br%C3%A1zol%C3%A1sa_-az%C3%A9rt_mert_pont_ott_van._-_panoramio.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Erdklumpen", "Moos"]
+  szene: ["Makroaufnahme", "Detailaufnahme"]
+  umgebung: ["Boden", "Freiluft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: "Kleiner Erd- oder Tropfenklumpen auf moosbedecktem Boden; extreme Schaerfentiefe-Reduktion."
 
 gpt:
   _model: "gpt-5"

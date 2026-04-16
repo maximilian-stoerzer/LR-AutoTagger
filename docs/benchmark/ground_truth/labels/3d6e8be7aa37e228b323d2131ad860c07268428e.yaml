@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/73/Glaskuppel_im_Justizpalast.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Glaskuppel", "Kuppelfenster", "Decke"]
+  szene: ["Architekturaufnahme", "Detailaufnahme"]
+  umgebung: ["Innenraum", "Gebaeude"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Majestaetisch"]
+  lichtsituation: ["Oberlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Glaskuppel im Justizpalast Muenchen, Blick nach oben — Wikimedia-Kategorie 'frosch' meint hier Froschperspektive."
 
 gpt:
   _model: "gpt-5"

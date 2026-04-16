@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Free_Delicious_Raindrops_on_Rainscreen_Depth_of_Field_creative_commons_%282386993643%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Insektenschutzgitter", "Wassertropfen"]
+  szene: ["Detailaufnahme", "Abstrakt"]
+  umgebung: ["Freiluft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Regen"]
+  stimmung: ["Melancholisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss", "Bokeh", "Makro"]
+  notes: "Regentropfen auf Insektenschutzgitter; Schwarzweiss mit weicher Tiefenunschaerfe links und rechts."
 
 gpt:
   _model: "gpt-5"

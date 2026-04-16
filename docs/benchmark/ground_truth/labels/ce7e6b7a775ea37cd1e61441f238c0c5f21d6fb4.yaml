@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/95/Detail_-_Flickr_-_D_Jabi.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kirchenbaenke", "Holzverzierungen", "Holzkapitelle"]
+  szene: ["Detailaufnahme", "Kircheninnenraum"]
+  umgebung: ["Innenraum", "Kirche"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Nostalgisch", "Friedlich", "Majestaetisch"]
+  lichtsituation: ["Diffuses Licht", "Mischlicht", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Bokeh"]
+  notes: "Reihe von Kirchenbankenden mit warmem Licht im Hintergrund; geringe Schaerfentiefe."
 
 gpt:
   _model: "gpt-5"

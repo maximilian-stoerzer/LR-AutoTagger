@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/08/Candolleomyces_candolleanus_Aberystwyth_Low.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Pilze", "Gras", "Boden", "Gebaeude"]
+  szene: ["Pilzgruppe", "Detailaufnahme"]
+  umgebung: ["Wiese", "Siedlung"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Bokeh"]
+  notes: "Pilzgruppe (Candolleomyces) am Boden; aus Froschperspektive aufgenommen — Wikimedia-Kategorie 'frosch' meint hier Froschperspektive, nicht das Tier."
 
 gpt:
   _model: "gpt-5"
