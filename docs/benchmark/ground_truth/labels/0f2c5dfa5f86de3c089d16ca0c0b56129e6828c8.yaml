@@ -1,0 +1,44 @@
+# Ground-truth labels for 0f2c5dfa5f86de3c089d16ca0c0b56129e6828c8.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/b/b0/Krokus2.jpg
+# Category (Commons-proxy): fruehling
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "0f2c5dfa5f86de3c089d16ca0c0b56129e6828c8"
+category_proxy: "fruehling"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Krokus2.jpg"
+
+claude:
+  objekte: ["Krokusse", "Wiese", "Berge", "Baeume", "Schnee"]
+  szene: ["Bergwiese", "Alpenlandschaft"]
+  umgebung: ["Natur", "Gebirge"]
+  tageszeit: "Mittag"
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Froehlich", "Lebhaft", "Friedlich"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: null
+  notes: "Krokusbluete auf Alpwiese mit schneebedeckten Gipfeln und Nadelbaeumen; klassische Fruehlings-Hochgebirgsszene."
+
+gpt: null             # filled by GPT-5 API pass (later)
+
+ground_truth: null    # filled after dissens arbitration

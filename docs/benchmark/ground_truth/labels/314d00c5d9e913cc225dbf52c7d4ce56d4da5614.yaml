@@ -1,0 +1,56 @@
+# Ground-truth labels for 314d00c5d9e913cc225dbf52c7d4ce56d4da5614.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/6/62/Millen%C3%A1ris_Park._Metal_structure_-_16-20%2C_Kisr%C3%B3kus_street%2C_Millen%C3%A1ris%2C_Budapest_District_II.JPG
+# Category (Commons-proxy): frosch
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "314d00c5d9e913cc225dbf52c7d4ce56d4da5614"
+category_proxy: "frosch"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/6/62/Millen%C3%A1ris_Park._Metal_structure_-_16-20%2C_Kisr%C3%B3kus_street%2C_Millen%C3%A1ris%2C_Budapest_District_II.JPG"
+
+claude:
+  objekte: ["Achterbahn", "Metallkonstruktion", "Schienen", "Wolken", "Himmel"]
+  szene: ["Freizeitpark"]
+  umgebung: ["Draussen"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Majestaetisch", "Dramatisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Froschperspektive"
+  technik: null
+  notes: "Extreme Untersicht auf Achterbahn-Loop-Konstruktion gegen Wolkenhimmel; geometrische Linien und Strebenstruktur."
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Stahlkonstruktion", "Gitter", "Wolken", "Himmel"]
+  szene: ["Architekturdetail", "Blick nach oben"]
+  umgebung: ["Städtisch", "Außenaufnahme"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Diffuses Licht", "Silhouette"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
+
+ground_truth: null    # filled after dissens arbitration

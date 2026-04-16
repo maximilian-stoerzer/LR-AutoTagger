@@ -1,0 +1,56 @@
+# Ground-truth labels for 311924f60d7306435d42e6423d5f35736544e755.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/4/4a/Faux-bokeh-final.png
+# Category (Commons-proxy): bokeh
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "311924f60d7306435d42e6423d5f35736544e755"
+category_proxy: "bokeh"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Faux-bokeh-final.png"
+
+claude:
+  objekte: ["Person", "Rampe", "Mauern", "Gebaeude"]
+  szene: ["Strasse", "Staedtisch"]
+  umgebung: ["Draussen", "Staedtisch"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Einsam"]
+  lichtsituation: ["Hartes Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Bokeh"]
+  notes: "Analoger Film-Look mit extremem Bokeh; Fluchtpunkt-Perspektive der Rampe, einzelne Person entfernt; Staubkoerner und Kratzer des Films sichtbar."
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Anzug", "Rose"]
+  szene: ["Portraet"]
+  umgebung: ["Draussen", "Gruenes Laub"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Romantisch", "Friedlich"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: "Subjekt nur teilweise im Bild; starker Bokeh-Hintergrund."
+
+ground_truth: null    # filled after dissens arbitration

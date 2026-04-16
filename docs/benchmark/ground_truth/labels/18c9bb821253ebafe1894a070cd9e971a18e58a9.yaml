@@ -1,0 +1,56 @@
+# Ground-truth labels for 18c9bb821253ebafe1894a070cd9e971a18e58a9.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/8/8c/Greater_Anglia_Tottenham_Hale_to_Liverpool_Street_looking_out_window_08.jpg
+# Category (Commons-proxy): bewegungsunschaerfe
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "18c9bb821253ebafe1894a070cd9e971a18e58a9"
+category_proxy: "bewegungsunschaerfe"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Greater_Anglia_Tottenham_Hale_to_Liverpool_Street_looking_out_window_08.jpg"
+
+claude:
+  objekte: ["Bahnsteig", "Menschen", "Gebaeude", "Zug", "Gleise"]
+  szene: ["Bahnhof"]
+  umgebung: ["Draussen", "Staedtisch"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: null
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Blick durch Zugfenster auf Bahnsteig waehrend der Fahrt; leichte Bewegungsunschaerfe plus Fensterreflexionen."
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Zug", "Menschen", "Bahnsteig", "Gleise", "Backsteingebaeude"]
+  szene: ["Bahnhof", "Warten"]
+  umgebung: ["Stadt", "Bahninfrastruktur"]
+  tageszeit: "Nachmittag"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Durch verschmutztes Zugfenster aufgenommen; Reflexionen und Bewegungsunschaerfe sichtbar."
+
+ground_truth: null    # filled after dissens arbitration

@@ -34,3 +34,6 @@ Thumbs.db
 # Build & release artifacts
 build/
 release/
+
+# Ground-truth benchmark images (174 MB, reproducible via fetch_wikimedia.py)
+docs/benchmark/ground_truth/images/

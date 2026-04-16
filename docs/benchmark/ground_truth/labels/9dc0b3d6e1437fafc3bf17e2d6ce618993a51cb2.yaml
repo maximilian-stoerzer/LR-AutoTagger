@@ -1,0 +1,56 @@
+# Ground-truth labels for 9dc0b3d6e1437fafc3bf17e2d6ce618993a51cb2.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/f/fd/The_shortest_day_4_%285280644738%29.jpg
+# Category (Commons-proxy): blaue_stunde
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "9dc0b3d6e1437fafc3bf17e2d6ce618993a51cb2"
+category_proxy: "blaue_stunde"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/f/fd/The_shortest_day_4_%285280644738%29.jpg"
+
+claude:
+  objekte: null       # list[str] or null
+  szene: null
+  umgebung: null
+  tageszeit: null     # single value
+  jahreszeit: null
+  wetter: null        # list[str]
+  stimmung: null
+  lichtsituation: null
+  perspektive: null
+  technik: null
+  notes: null         # free text, only if something atypical
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Schnee", "Gartenmoebel", "Blumentoepfe", "Lichterkette"]
+  szene: ["Garten", "Terrasse"]
+  umgebung: ["Schneebedeckte Landschaft"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Winter"
+  wetter: ["Schnee"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Low-Key", "Mischlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
+
+ground_truth: null    # filled after dissens arbitration

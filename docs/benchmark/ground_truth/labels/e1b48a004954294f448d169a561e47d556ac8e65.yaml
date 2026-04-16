@@ -1,0 +1,56 @@
+# Ground-truth labels for e1b48a004954294f448d169a561e47d556ac8e65.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/6/66/The_Blue_Hour_%2863301687%29.jpeg
+# Category (Commons-proxy): blaue_stunde
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "e1b48a004954294f448d169a561e47d556ac8e65"
+category_proxy: "blaue_stunde"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/6/66/The_Blue_Hour_%2863301687%29.jpeg"
+
+claude:
+  objekte: null       # list[str] or null
+  szene: null
+  umgebung: null
+  tageszeit: null     # single value
+  jahreszeit: null
+  wetter: null        # list[str]
+  stimmung: null
+  lichtsituation: null
+  perspektive: null
+  technik: null
+  notes: null         # free text, only if something atypical
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bruecke", "Wasser", "Gebaeude", "Yacht", "Kran"]
+  szene: ["Hafen", "Stadtansicht"]
+  umgebung: ["Stadthafen", "Ufer"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Mischlicht", "Low-Key", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
+
+ground_truth: null    # filled after dissens arbitration

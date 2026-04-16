@@ -1,0 +1,44 @@
+# Ground-truth labels for 0c3f9827debd42de5bef66ffd9e67425047a8fd8.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/5/57/Galunggung.jpg
+# Category (Commons-proxy): gewitter
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "0c3f9827debd42de5bef66ffd9e67425047a8fd8"
+category_proxy: "gewitter"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/5/57/Galunggung.jpg"
+
+claude:
+  objekte: ["Vulkan", "Blitze", "Lava", "Rauch", "Himmel"]
+  szene: ["Vulkanausbruch", "Landschaft"]
+  umgebung: ["Draussen", "Natur"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter"]
+  stimmung: ["Dramatisch", "Bedrohlich", "Mystisch"]
+  lichtsituation: ["Lichtstrahlen", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Nachtaufnahme eines Vulkan-Ausbruchs mit gluehender Lava und 'dirty thunderstorm'-Blitzen im Rauch; intensive Rot-Orange-Atmosphaere."
+
+gpt: null             # filled by GPT-5 API pass (later)
+
+ground_truth: null    # filled after dissens arbitration

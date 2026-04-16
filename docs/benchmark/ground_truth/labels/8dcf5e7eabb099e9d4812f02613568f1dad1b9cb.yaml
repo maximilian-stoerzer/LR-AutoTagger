@@ -1,0 +1,44 @@
+# Ground-truth labels for 8dcf5e7eabb099e9d4812f02613568f1dad1b9cb.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/5/53/137848_a_morning_in_florentine_PikiWiki_Israel.jpg
+# Category (Commons-proxy): strasse
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "8dcf5e7eabb099e9d4812f02613568f1dad1b9cb"
+category_proxy: "strasse"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/5/53/137848_a_morning_in_florentine_PikiWiki_Israel.jpg"
+
+claude:
+  objekte: null       # list[str] or null
+  szene: null
+  umgebung: null
+  tageszeit: null     # single value
+  jahreszeit: null
+  wetter: null        # list[str]
+  stimmung: null
+  lichtsituation: null
+  perspektive: null
+  technik: null
+  notes: null         # free text, only if something atypical
+
+gpt: null             # filled by GPT-5 API pass (later)
+
+ground_truth: null    # filled after dissens arbitration

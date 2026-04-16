@@ -1,0 +1,44 @@
+# Ground-truth labels for c42ab276f9150112e147d9274b953b19744a8807.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/a/ad/Akota_-_Dandiya_bazar_bridge_during_sunrise_at_Vadodara_3.jpg
+# Category (Commons-proxy): sonnenaufgang
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "c42ab276f9150112e147d9274b953b19744a8807"
+category_proxy: "sonnenaufgang"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Akota_-_Dandiya_bazar_bridge_during_sunrise_at_Vadodara_3.jpg"
+
+claude:
+  objekte: null       # list[str] or null
+  szene: null
+  umgebung: null
+  tageszeit: null     # single value
+  jahreszeit: null
+  wetter: null        # list[str]
+  stimmung: null
+  lichtsituation: null
+  perspektive: null
+  technik: null
+  notes: null         # free text, only if something atypical
+
+gpt: null             # filled by GPT-5 API pass (later)
+
+ground_truth: null    # filled after dissens arbitration

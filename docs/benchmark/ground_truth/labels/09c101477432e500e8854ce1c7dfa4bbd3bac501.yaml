@@ -1,0 +1,56 @@
+# Ground-truth labels for 09c101477432e500e8854ce1c7dfa4bbd3bac501.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/4/45/Atmosphere_-_Flickr_-_%E3%81%91%E3%82%93%E3%81%9F%E3%81%BE-KENTAMA.jpg
+# Category (Commons-proxy): bokeh
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "09c101477432e500e8854ce1c7dfa4bbd3bac501"
+category_proxy: "bokeh"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/4/45/Atmosphere_-_Flickr_-_%E3%81%91%E3%82%93%E3%81%9F%E3%81%BE-KENTAMA.jpg"
+
+claude:
+  objekte: ["Gras", "Pflanzen", "Himmel"]
+  szene: ["Natur"]
+  umgebung: ["Draussen", "Natur"]
+  tageszeit: null
+  jahreszeit: ["Sommer"]
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: "Extrem unscharfes Gras/Laub mit durchscheinendem Himmel; offene Blende, praegnantes Bokeh, keine klaren Motive."
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gras", "Himmel", "Wolken"]
+  szene: ["Wiese", "Natur"]
+  umgebung: ["Wiese"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Natuerliches Licht", "Weiches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Bokeh"]
+  notes: "Stark unscharfes, abstraktes Bild; Blick aus sehr niedriger Position durch Grashalme."
+
+ground_truth: null    # filled after dissens arbitration

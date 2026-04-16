@@ -1,0 +1,56 @@
+# Ground-truth labels for 20ba3bd92788aa9282b1fdcb2b6688bd201de42a.jpg
+# Image source: https://upload.wikimedia.org/wikipedia/commons/c/c4/Burgtor_stadtausw%C3%A4rts%2C_L%C3%BCbeck%2C_Burgtorbr%C3%BCcke_-_panoramio.jpg
+# Category (Commons-proxy): bewegungsunschaerfe
+#
+# Each oracle fills in its own section. Fields marked REQUIRED are
+# mandatory; leave as `null` when none applies.
+#
+# - single_choice (pick ONE from whitelist):
+#     tageszeit: Morgengrauen | Morgen | Vormittag | Mittag | Nachmittag | Abend | Daemmerung | Nacht
+#     jahreszeit: Fruehling | Sommer | Herbst | Winter
+#     perspektive: Froschperspektive | Vogelperspektive | Draufsicht | Aufsicht | Untersicht | Schraegsicht | Normalperspektive
+#
+# - multi_label (0..N from whitelist):
+#     wetter: Sonnig, Bewoelkt, Bedeckt, Regen, Schnee, Nebel, Gewitter, Wind, Sturm, Dunst
+#     stimmung: Dramatisch, Melancholisch, Mystisch, Bedrohlich, Einsam, Vertraeumt,
+#               Nostalgisch, Majestaetisch, Romantisch, Lebhaft, Froehlich, Friedlich
+#     lichtsituation: Gegenlicht, Seitenlicht, Hartes Licht, Weiches Licht, Diffuses Licht,
+#                     Hell-Dunkel, Silhouette, Lichtstrahlen, High-Key, Low-Key,
+#                     Kantenlicht, Oberlicht, Mischlicht, Kunstlicht, Natuerliches Licht, Frontlicht
+#     technik: Schwarzweiss, Makro, Bokeh, Langzeitbelichtung, Bewegungsunschaerfe, Infrarot
+#
+# - free_text (max counts from prompt):
+#     objekte (<=5), szene (<=2), umgebung (<=2)
+
+image_sha1: "20ba3bd92788aa9282b1fdcb2b6688bd201de42a"
+category_proxy: "bewegungsunschaerfe"
+source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c4/Burgtor_stadtausw%C3%A4rts%2C_L%C3%BCbeck%2C_Burgtorbr%C3%BCcke_-_panoramio.jpg"
+
+claude:
+  objekte: ["Radfahrer", "Stadtmauer", "Bogen", "Strasse"]
+  szene: ["Altstadt", "Strasse"]
+  umgebung: ["Draussen", "Staedtisch"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: null
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Radfahrer durchfaehrt Ziegelstein-Torbogen einer Stadtmauer; gezielte Bewegungsunschaerfe auf der Person."
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Radfahrer", "Fahrrad", "Backsteinbogen", "Verkehrsschild", "Treppe"]
+  szene: ["Stadtszene", "Durchgang"]
+  umgebung: ["Backsteinarchitektur", "Strasse"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: null
+
+ground_truth: null    # filled after dissens arbitration
