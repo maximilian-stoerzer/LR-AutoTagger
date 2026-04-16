@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Bath_St_James%27s_Parade_-_First_36804_%28YT67XJX%29_Odd_Down_park_and_ride.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Doppeldeckerbus", "Bushaltestelle", "Personen", "Strassenlaterne", "Verkehrsschild"]
+  szene: ["Stadtverkehr", "Bushaltestelle"]
+  umgebung: ["Stadt", "Strasse"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Kunstlicht", "Mischlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe", "Langzeitbelichtung"]
+  notes: "Doppeldeckerbus an Haltestelle bei Nacht; Passanten als Bewegungsstreifen, Bus selbst scharf."
 
 gpt:
   _model: "gpt-5"

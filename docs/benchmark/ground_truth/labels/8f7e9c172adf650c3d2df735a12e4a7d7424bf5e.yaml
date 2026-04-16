@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/78/Colorful_world.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Kind", "Schaukel", "Baeume"]
+  szene: ["Spielplatz", "Schaukeln"]
+  umgebung: ["Park", "Freiluft"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: null
+  stimmung: ["Lebhaft", "Froehlich"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Mitzieher: Kind auf Schaukel scharf, gruener Hintergrund stark verwischt."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b4/2010041702_Fussgaengerunterfuehrung_Neustaedter_Markt_2010.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Leuchtstoffroehren", "Graffiti", "Tunnel", "Decke"]
+  szene: ["Fussgaengerunterfuehrung"]
+  umgebung: ["Innenraum", "Tunnel"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Bedrohlich", "Mystisch"]
+  lichtsituation: ["Kunstlicht", "Lichtstrahlen", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe", "Langzeitbelichtung"]
+  notes: "Starke Bewegungsunschaerfe durch Kameraschwenk; Deckenleuchten zu Streifen verzogen."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Contra_dance_in_Asheville%2C_North_Carolina_long_exposure.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Tanzende", "Deckenventilatoren", "Lichterketten", "Haengelampen", "Backsteinwand"]
+  szene: ["Tanzveranstaltung", "Tanzhalle"]
+  umgebung: ["Innenraum", "Halle"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Lebhaft", "Romantisch"]
+  lichtsituation: ["Kunstlicht", "Mischlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Contra-Dance-Veranstaltung; Tanzende stark verwischt, Saalstruktur scharf."
 
 gpt:
   _model: "gpt-5"

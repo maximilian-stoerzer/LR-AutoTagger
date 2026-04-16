@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/17/2023.06.10_Capital_Pride_Parade%2C_Washington%2C_DC_USA_161_156298_%2852980835366%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Motorrad", "Regenbogenfahnen", "Personen", "Helm", "Gebaeude"]
+  szene: ["Parade", "Strassenfest"]
+  umgebung: ["Stadt", "Strasse"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Lebhaft", "Froehlich"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Capital Pride Parade; Mitzieher mit scharfem Motorrad und verwischtem Hintergrund."
 
 gpt:
   _model: "gpt-5"

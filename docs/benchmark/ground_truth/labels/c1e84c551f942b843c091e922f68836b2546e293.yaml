@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/07/BG_in_T%C3%BCbingen_zur_blauen_Stunde_mit_fahrendem_Aufzug.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Buerogebaeude", "Glasfassade", "Aufzug", "Wegleuchten"]
+  szene: ["Architekturansicht", "Buerokomplex"]
+  umgebung: ["Stadt", "Hofbereich"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Majestaetisch", "Friedlich"]
+  lichtsituation: ["Mischlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "BG Tuebingen zur blauen Stunde mit fahrendem Aufzug; Bewegungsunschaerfe nur dezent im Aufzugschacht."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Class_144s_approaching_Hebden_Bridge_station_-_geograph.org.uk_-_3419774.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Zug", "Stellwerk", "Bahnsignal", "Gleise", "Baeume"]
+  szene: ["Bahnstrecke", "Winterlandschaft"]
+  umgebung: ["Land", "Bahnstrecke"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Schnee", "Bedeckt"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Zug nahe Hebden Bridge im Schnee — keine erkennbare Bewegungsunschaerfe; Wikimedia-Kategorisierung evtl. ungenau."
 
 gpt:
   _model: "gpt-5"

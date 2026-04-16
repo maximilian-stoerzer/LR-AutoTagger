@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c1/Blue_Hour_%28180032429%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Haeuser", "Strassenlaternen", "Strand", "Wasser", "Huegel"]
+  szene: ["Kuestendorf", "Nachtaufnahme"]
+  umgebung: ["Kueste", "Dorf"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Romantisch", "Friedlich", "Vertraeumt"]
+  lichtsituation: ["Mischlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Kuestendorf zur blauen Stunde; Spiegelung der warmen Lampen im ruhigen Wasser."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Bercy_village_2.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Lichterketten", "Personen", "Baeume", "Geschaefte"]
+  szene: ["Weihnachtsmarkt", "Fussgaengerzone"]
+  umgebung: ["Stadt", "Strasse"]
+  tageszeit: "Nacht"
+  jahreszeit: "Herbst"
+  wetter: null
+  stimmung: ["Lebhaft", "Romantisch"]
+  lichtsituation: ["Kunstlicht", "Mischlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe", "Langzeitbelichtung"]
+  notes: "Beleuchtete Fussgaengerzone bei Nacht; Passanten als Bewegungsstreifen."
 
 gpt:
   _model: "gpt-5"

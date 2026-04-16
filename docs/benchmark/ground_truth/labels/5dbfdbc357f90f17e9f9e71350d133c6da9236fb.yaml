@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Blue_Hour_%28205450781%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["See", "Berge", "Sterne", "Wald", "Felsen"]
+  szene: ["Seenlandschaft", "Nachtaufnahme"]
+  umgebung: ["See", "Natur"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Mystisch", "Friedlich", "Einsam"]
+  lichtsituation: ["Low-Key", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Sternenklare Nacht ueber Bergsee; Bergsilhouetten reflektiert im glatten Wasser."
 
 gpt:
   _model: "gpt-5"

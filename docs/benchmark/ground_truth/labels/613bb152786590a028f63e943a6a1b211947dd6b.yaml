@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/aa/Chuva_em_Lisboa_%28120FAITH_3582%29_%2837533398261%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Strassenlaterne", "Regenschirme", "Personen", "Ampel", "Gebaeude"]
+  szene: ["Stadtverkehr", "Regenstimmung"]
+  umgebung: ["Stadt", "Strasse"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Regen", "Dunst"]
+  stimmung: ["Melancholisch", "Mystisch"]
+  lichtsituation: ["Mischlicht", "Diffuses Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Lissabon im Regen zur blauen Stunde; Passanten als unscharfe Silhouetten."
 
 gpt:
   _model: "gpt-5"

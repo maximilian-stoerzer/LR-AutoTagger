@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/08/Servi%C3%A8res_%C3%A0_L_Heure_Bleue_%2861096564%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["See", "Treibholz", "Wald", "Stein", "Himmel"]
+  szene: ["Seenlandschaft", "Daemmerung"]
+  umgebung: ["See", "Natur"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Friedlich", "Vertraeumt", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "See zur blauen Stunde; rosa Himmelsschimmer ueber dem Wald, glattes Wasser."
 
 gpt:
   _model: "gpt-5"

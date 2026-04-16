@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Cottingham_Station_at_dawn_-_panoramio.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Bahnsteig", "Zug", "Treppe", "Bahnhofsschilder", "Zaun"]
+  szene: ["Bahnhof", "Zugeinfahrt"]
+  umgebung: ["Bahnstrecke", "Vorort"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Herbst"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Melancholisch", "Lebhaft"]
+  lichtsituation: ["Mischlicht", "Diffuses Licht", "Kunstlicht"]
+  perspektive: "Aufsicht"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Langzeitbelichtung am Bahnsteig; Zug zu Streifen verwischt, Stationsbauten scharf."
 
 gpt:
   _model: "gpt-5"

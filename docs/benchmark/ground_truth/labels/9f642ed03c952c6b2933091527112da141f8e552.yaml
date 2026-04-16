@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/db/Greater_Anglia_Tottenham_Hale_to_Liverpool_Street_looking_out_window_33.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Eisenbahnbruecke", "Backsteinmauer", "Graffiti", "Gleise"]
+  szene: ["Bahnstrecke", "Stadtansicht"]
+  umgebung: ["Stadt", "Bahnstrecke"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: ["Sonnig"]
   stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Aus fahrendem Zug aufgenommen; Vordergrund-Gleise zu Streifen verwischt."
 
 gpt:
   _model: "gpt-5"

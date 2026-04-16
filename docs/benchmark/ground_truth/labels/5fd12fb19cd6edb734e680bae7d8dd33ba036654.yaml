@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d2/Arch_of_Santa_Catalina_%283746541364%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Bogen", "Uhrenturm", "Strassenlaterne", "Auto", "Vulkan"]
+  szene: ["Stadtansicht", "Architektur"]
+  umgebung: ["Stadt", "Altstadt"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Romantisch", "Majestaetisch"]
+  lichtsituation: ["Mischlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Arco de Santa Catalina in Antigua Guatemala zur blauen Stunde; Vulkan im Hintergrund."
 
 gpt:
   _model: "gpt-5"

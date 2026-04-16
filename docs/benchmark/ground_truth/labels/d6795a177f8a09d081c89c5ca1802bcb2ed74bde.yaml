@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/aa/AmericanDream002_%285002744166%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Bauernhaus", "Baeume", "Wiese", "Himmel"]
+  szene: ["Landschaft", "Vorbeifahrt"]
+  umgebung: ["Land", "Wiese"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Mitzieher aus fahrendem Fahrzeug; Bauernhaus relativ scharf, Vordergrund verwischt."
 
 gpt:
   _model: "gpt-5"

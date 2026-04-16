@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/54/Antonivka_-_Zarichne_railway_-_forest_view_from_train_%281%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Birken", "Herbstlaub", "Wald"]
+  szene: ["Wald", "Vorbeifahrt"]
+  umgebung: ["Wald", "Land"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: null
+  stimmung: ["Vertraeumt", "Mystisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Aus fahrendem Zug aufgenommen; horizontaler Mitzieher durch Birkenwald."
 
 gpt:
   _model: "gpt-5"

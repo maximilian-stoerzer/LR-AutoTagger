@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/64/Coesfeld%2C_Harle%2C_Windenergieanlage_--_2024_--_4387.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Windkraftanlage", "Rotorblaetter", "Himmel"]
+  szene: ["Energieerzeugung", "Windrad"]
+  umgebung: ["Freiluft"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig", "Wind"]
+  stimmung: ["Majestaetisch", "Friedlich"]
+  lichtsituation: ["Seitenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Drehende Rotorblaetter mit deutlicher Bewegungsunschaerfe vor Abendhimmel."
 
 gpt:
   _model: "gpt-5"

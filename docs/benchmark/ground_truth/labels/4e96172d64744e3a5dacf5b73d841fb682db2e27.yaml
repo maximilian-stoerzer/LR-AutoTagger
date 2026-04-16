@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Baby%2C_cute_baby.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kleinkind", "Bett", "Bettwaesche"]
+  szene: ["Portraet", "Schlafzimmer"]
+  umgebung: ["Innenraum"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Kunstlicht", "Weiches Licht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Nahportraet eines Kleinkinds bei warmem Kunstlicht; leichte Bewegungsunschaerfe durch Eigenbewegung."
 
 gpt:
   _model: "gpt-5"

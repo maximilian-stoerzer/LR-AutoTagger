@@ -27,17 +27,17 @@ category_proxy: "bewegungsunschaerfe"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Couple_walking_along_the_beach.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Personen", "Strand", "Welle", "Sand"]
+  szene: ["Strandspaziergang"]
+  umgebung: ["Strand", "Meer"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Dunst"]
+  stimmung: ["Vertraeumt", "Friedlich", "Einsam"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: ["Schwarzweiss", "Bewegungsunschaerfe"]
+  notes: "Minimalistische High-Key-Aufnahme; zwei Personen am Strand mit leichter Bewegungsunschaerfe."
 
 gpt:
   _model: "gpt-5"
