@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Gueterzug in skandinavischer Fjord-/Flusslandschaft mit schneebedeckten Berggipfeln; warmes spaetes Tageslicht."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gueterzug", "Schienen", "Fluss", "Berge", "Wald"]
+  szene: ["Gueterzug im Gebirge", "Entlang eines Flusses"]
+  umgebung: ["Gebirgslandschaft", "Flusstal"]
+  tageszeit: "Abend"
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Seitenlicht", "Natuerliches Licht", "Hartes Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

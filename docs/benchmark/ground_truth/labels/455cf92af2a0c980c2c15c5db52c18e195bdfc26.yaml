@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Bluehende Streuobstwiese mit weidenden Schafen und Laemmern; typisches Fruehlingsmotiv. Wasserzeichen unten links."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Schafe", "Lämmer", "Obstbäume", "Wiese", "Wolken"]
+  szene: ["Weide", "Streuobstwiese"]
+  umgebung: ["Landschaft", "Wald"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

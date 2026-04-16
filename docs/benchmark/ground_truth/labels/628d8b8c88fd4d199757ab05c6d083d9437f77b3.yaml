@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: null         # free text, only if something atypical
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Schiene", "Gras", "Gebaeude", "Bruecke", "Gelaender"]
+  szene: ["Industriegebiet", "Brachflaeche"]
+  umgebung: ["Staedtisch", "Hinterhof"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Einsam", "Nostalgisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Bokeh"]
+  notes: "Sehr niedrige Kameraposition entlang einer rostigen Schiene mit starker Vordergrundbetonung."
 
 ground_truth: null    # filled after dissens arbitration

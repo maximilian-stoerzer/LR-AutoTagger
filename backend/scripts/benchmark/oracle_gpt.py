@@ -36,11 +36,7 @@ except ImportError:
     print("pip install openai", file=sys.stderr)
     sys.exit(1)
 
-
-GT_ROOT = pathlib.Path("docs/benchmark/ground_truth")
-IMAGES_ROOT = GT_ROOT / "images"
-LABELS_ROOT = GT_ROOT / "labels"
-MANIFEST_PATH = GT_ROOT / "manifest.jsonl"
+from _common import IMAGES_ROOT, LABELS_ROOT, load_manifest  # noqa: E402
 
 SYSTEM_PROMPT = """\
 Du bist ein Oracle zur Erzeugung von Ground-Truth-Labels fuer einen Foto-Benchmark.
@@ -90,14 +86,6 @@ def load_env_key() -> str:
                 return line.split("=", 1)[1].strip()
     print("ERROR: OPENAI_API_KEY not set in env or .env", file=sys.stderr)
     sys.exit(1)
-
-
-def load_manifest() -> list[dict]:
-    entries = []
-    for line in MANIFEST_PATH.read_text().splitlines():
-        if line.strip():
-            entries.append(json.loads(line))
-    return entries
 
 
 def has_gpt_filled(yaml_path: pathlib.Path) -> bool:

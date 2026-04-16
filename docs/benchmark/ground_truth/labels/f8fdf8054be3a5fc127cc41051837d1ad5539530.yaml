@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: null         # free text, only if something atypical
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Zaun", "Schnee", "Eis", "Gebaeude", "Wasser"]
+  szene: ["Winterlandschaft", "Kuestenlandschaft"]
+  umgebung: ["Kueste", "Ufer"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Einsam", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Ungewoehnliches Bauwerk mit zwei Kuppeln auf Stelzen an vereister Kueste."
 
 ground_truth: null    # filled after dissens arbitration

@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: null         # free text, only if something atypical
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Tasse", "Untertasse", "Loeffel", "Zuckertueten", "Speisekarte"]
+  szene: ["Cafe-Tisch", "Heissgetraenk"]
+  umgebung: ["Innenraum", "Cafe"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Mischlicht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

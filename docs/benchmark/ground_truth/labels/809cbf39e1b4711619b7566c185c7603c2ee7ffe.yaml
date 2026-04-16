@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Historisches Steindorf (wirkt griechisch/Mani) aus erhoehter Position; gelbe Fruehlingsblueher im Vordergrund, Berge im Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Haeuser", "Tuerme", "Kirche", "Steinmauern", "Wege"]
+  szene: ["Dorf", "Landschaft"]
+  umgebung: ["Berge", "Olivenhaine"]
+  tageszeit: "Mittag"
+  jahreszeit: "Fruehling"
+  wetter: ["Bewoelkt", "Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

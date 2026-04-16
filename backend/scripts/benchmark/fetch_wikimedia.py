@@ -24,6 +24,7 @@ import json
 import logging
 import pathlib
 import random
+import re
 import sys
 import time
 import urllib.parse
@@ -184,7 +185,6 @@ def extract_author(info: dict) -> str:
     meta = info.get("extmetadata", {})
     raw = (meta.get("Artist", {}) or {}).get("value", "") or "unknown"
     # Commons often wraps Artist in <a> or <span> — strip tags crudely.
-    import re
     cleaned = re.sub(r"<[^>]+>", "", raw).strip()
     return cleaned or "unknown"
 

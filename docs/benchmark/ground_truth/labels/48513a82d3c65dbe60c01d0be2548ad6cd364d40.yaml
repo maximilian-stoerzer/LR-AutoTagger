@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: null         # free text, only if something atypical
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blumentoepfe", "Pflanzen", "Pflastersteine", "Fensterfront", "Sessel"]
+  szene: ["Aussenbereich", "Eingangsbereich"]
+  umgebung: ["Stadt", "Gebaeude"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Mystisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Uebergrosse, beleuchtete Blumentoepfe dienen als Lichtquellen."
 
 ground_truth: null    # filled after dissens arbitration

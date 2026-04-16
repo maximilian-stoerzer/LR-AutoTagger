@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Krokusbluete auf Alpwiese mit schneebedeckten Gipfeln und Nadelbaeumen; klassische Fruehlings-Hochgebirgsszene."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Krokusse", "Berge", "Baeume", "Schnee", "Wolken"]
+  szene: ["Bergwiese", "Fruehlingslandschaft"]
+  umgebung: ["Hochgebirge", "Wald"]
+  tageszeit: "Vormittag"
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

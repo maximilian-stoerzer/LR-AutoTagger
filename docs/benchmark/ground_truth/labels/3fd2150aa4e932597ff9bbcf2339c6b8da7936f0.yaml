@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: null         # free text, only if something atypical
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Basketballkorb", "Basketball", "Basketballspieler"]
+  szene: ["Basketballspiel", "Wurf"]
+  umgebung: ["Himmel", "Aussenplatz"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Lebhaft", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

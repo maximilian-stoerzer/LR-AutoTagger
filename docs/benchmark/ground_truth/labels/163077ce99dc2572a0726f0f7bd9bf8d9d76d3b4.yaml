@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Laubwald mit durchfallenden Sonnenstrahlen durch Dunst; violett-rote Farbatmosphaere, herbstliche Stimmung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Aeste", "Lichtstrahlen", "Unterholz", "Blaetter"]
+  szene: ["Wald", "Sonnenstrahlen"]
+  umgebung: ["Natur", "Laubwald"]
+  tageszeit: "Morgen"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Mystisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -39,6 +39,18 @@ claude:
   technik: ["Langzeitbelichtung"]
   notes: "Spektakulaere verzweigte Blitze ueber einer beleuchteten Altstadt bei Nacht; sichtbare Blitzstruktur impliziert Langzeitbelichtung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blitze", "Gebaeude", "Kirche", "Sendemast", "Stadt"]
+  szene: ["Gewitter ueber Stadt", "Nachtaufnahme"]
+  umgebung: ["Stadtlandschaft", "Nachthimmel"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Low-Key", "Hell-Dunkel", "Mischlicht"]
+  perspektive: "Untersicht"
+  technik: ["Langzeitbelichtung"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: null         # free text, only if something atypical
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Sonne", "Rauch", "Schornstein", "Schilf"]
+  szene: ["Gefrorener See", "Winterlandschaft"]
+  umgebung: ["Ufer", "Huegellandschaft"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

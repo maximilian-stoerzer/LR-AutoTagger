@@ -14,14 +14,10 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import json
 import pathlib
 import sys
 
-GT_ROOT = pathlib.Path("docs/benchmark/ground_truth")
-IMAGES_ROOT = GT_ROOT / "images"
-LABELS_ROOT = GT_ROOT / "labels"
-MANIFEST_PATH = GT_ROOT / "manifest.jsonl"
+from _common import LABELS_ROOT, load_manifest
 
 
 TEMPLATE = """\
@@ -72,16 +68,6 @@ ground_truth: null    # filled after dissens arbitration
 """
 
 
-def load_manifest() -> list[dict]:
-    if not MANIFEST_PATH.exists():
-        return []
-    entries = []
-    for line in MANIFEST_PATH.read_text().splitlines():
-        if line.strip():
-            entries.append(json.loads(line))
-    return entries
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--category", help="only this category slug")
@@ -100,7 +86,7 @@ def main() -> int:
     for entry in manifest:
         if args.category and entry["category"] != args.category:
             continue
-        if args.limit and created >= args.limit:
+        if args.limit is not None and created >= args.limit:
             break
         sha1 = entry["sha1"]
         label_path = LABELS_ROOT / f"{sha1}.yaml"

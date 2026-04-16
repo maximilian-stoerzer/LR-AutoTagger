@@ -39,6 +39,18 @@ claude:
   technik: ["Langzeitbelichtung"]
   notes: "Nachtaufnahme eines Vulkan-Ausbruchs mit gluehender Lava und 'dirty thunderstorm'-Blitzen im Rauch; intensive Rot-Orange-Atmosphaere."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Vulkan", "Blitz", "Lava", "Aschewolke", "Baeume"]
+  szene: ["Vulkanausbruch", "Gewitter"]
+  umgebung: ["Gebirge", "Wald"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter", "Dunst"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Low-Key"]
+  perspektive: "Untersicht"
+  technik: ["Langzeitbelichtung"]
+  notes: "Vulkanisches Gewitter mit Lavaeruption"
 
 ground_truth: null    # filled after dissens arbitration

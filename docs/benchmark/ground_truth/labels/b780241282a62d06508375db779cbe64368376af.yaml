@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: null         # free text, only if something atypical
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Skulptur", "Gebaeude", "Fenster", "Ueberwachungskamera", "Wolken"]
+  szene: ["Stadtraum", "Innenhof"]
+  umgebung: ["Urban", "Architektur"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: "Grosse kreisfoermige Skulptur schwebt zwischen Gebaeuden und ist an Seilen aufgehangen."
 
 ground_truth: null    # filled after dissens arbitration

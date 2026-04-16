@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: null         # free text, only if something atypical
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Menschen", "Regale", "Produkte", "Schilder", "Weihnachtsdekoration"]
+  szene: ["Geschaeftsinnenraum", "Kosmetikladen"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: []
+  stimmung: ["Lebhaft", "Froehlich"]
+  lichtsituation: ["Kunstlicht", "Diffuses Licht", "Oberlicht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: "Leuchtdecke mit Himmelmotiv"
 
 ground_truth: null    # filled after dissens arbitration

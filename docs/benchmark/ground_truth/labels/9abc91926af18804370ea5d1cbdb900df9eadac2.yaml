@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: null         # free text, only if something atypical
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Turm", "Seile", "Gebaeude", "Dach", "Fenster"]
+  szene: ["Architektur", "Detailansicht"]
+  umgebung: ["Himmel", "Stadion"]
+  tageszeit: "Mittag"
+  jahreszeit: "null"
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: "Sonne direkt hinter dem Bauwerk erzeugt starken Gegenlichteffekt."
 
 ground_truth: null    # filled after dissens arbitration
