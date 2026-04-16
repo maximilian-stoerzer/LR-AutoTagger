@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8e/The_Big_Buddha_%28Hong_Kong%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Buddha-Statue", "Lotusplattform", "Balustrade"]
+  szene: ["Denkmal", "Religioese Aufnahme"]
+  umgebung: ["Tempelanlage"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Nebel"]
+  stimmung: ["Mystisch", "Majestaetisch", "Vertraeumt"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Tian-Tan-Buddha (Big Buddha, Hong Kong) im dichten Nebel; nahezu freigestellt vor weissem Himmel."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Buddha-Statue", "Lotusplattform", "Balustrade"]
+  szene: ["Denkmal", "Religioeses Motiv"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Nebel"]
+  stimmung: ["Mystisch", "Majestaetisch"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: "Starker Nebel sorgt fuer extrem helle, fast freigestellte Darstellung."
 
 ground_truth: null    # filled after dissens arbitration

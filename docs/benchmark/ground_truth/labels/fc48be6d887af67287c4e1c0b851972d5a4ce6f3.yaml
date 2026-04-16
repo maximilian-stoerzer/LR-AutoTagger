@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/17/Eggshell.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Eierschale", "Schalenfragmente"]
+  szene: ["Stillleben", "Studioaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Vertraeumt"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Weiches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Aufgebrochene weisse Eierschale auf weissem Hintergrund; minimalistisches High-Key-Stillleben."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Eierschale", "Eierschalenfragmente"]
+  szene: ["Stillleben", "Studioaufnahme"]
+  umgebung: ["Weisser Hintergrund", "Glatte Oberflaeche"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["High-Key", "Diffuses Licht", "Weiches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

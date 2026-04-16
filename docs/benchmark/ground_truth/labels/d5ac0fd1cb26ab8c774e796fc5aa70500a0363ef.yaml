@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/96/Fanal_%28Madeira%2C_Portugal%29%2C_Lorbeerwald_--_2025_--_1534_%28high_key%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baum", "Wiese"]
+  szene: ["Einsamer Baum im Nebel", "Naturaufnahme"]
+  umgebung: ["Land", "Hochebene"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Nebel"]
+  stimmung: ["Einsam", "Mystisch", "Vertraeumt"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Knorriger alter Stinklorbeer auf Madeira (Fanal) im dichten Wolkenwald-Nebel."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baum", "Wiese"]
+  szene: ["Einzelner Baum im Nebel"]
+  umgebung: ["Huegelige Wiese", "Nebel"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Nebel"]
+  stimmung: ["Einsam", "Mystisch"]
+  lichtsituation: ["Diffuses Licht", "High-Key", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

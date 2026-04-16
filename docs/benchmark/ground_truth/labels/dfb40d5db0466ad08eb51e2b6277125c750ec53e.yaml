@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/01/Timo_Kohlenberg_and_Chelle_Athersmith_High_Key_Image.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mann", "Frau", "Tanktops", "Jeans", "Turnschuhe"]
+  szene: ["Modeportraet", "Studioaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Friedlich", "Lebhaft"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Frontlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Doppelportraet eines Paares vor weissem Studio-Hintergrund; klassische High-Key-Mode-Aufnahme."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mann", "Frau", "Jeans", "Turnschuhe", "Tanktop"]
+  szene: ["Studioaufnahme", "Mode"]
+  umgebung: ["Studio", "weisser Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

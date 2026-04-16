@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Papierflieger_--_2021_--_7215_%28bw%2C_high_key%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Papierflieger"]
+  szene: ["Stillleben", "Studioaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Vertraeumt"]
+  lichtsituation: ["High-Key", "Hartes Licht", "Seitenlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: "Schwarzweiss-Stillleben eines Papierfliegers mit deutlichem Schlagschatten auf weisser Flaeche."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Papierflieger"]
+  szene: ["Stillleben", "Studioaufnahme"]
+  umgebung: ["weisser Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Seitenlicht", "Hartes Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

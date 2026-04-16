@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/5d/BoatInfrared.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Boot", "Baeume", "Seerosen", "Wolken", "Gebaeude"]
+  szene: ["Park", "Seenlandschaft"]
+  umgebung: ["Park", "Stadt"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Mystisch"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Infrarot-Aufnahme mit Falschfarben (lila Himmel, gelb-gruene Vegetation); rotes Boot am Park-See."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Boot", "Baeume", "Seerosen", "Wolken", "Gebaeude"]
+  szene: ["See", "Parklandschaft"]
+  umgebung: ["Park", "Stadt"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Natuerliches Licht", "Hartes Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Infrarot"]
+  notes: "Infrarot-Aufnahme mit unnatuerlichen Farben"
 
 ground_truth: null    # filled after dissens arbitration

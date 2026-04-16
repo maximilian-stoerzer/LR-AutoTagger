@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/ee/3234595hkb.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frauen", "Gesichter", "Ohrring", "Haare"]
+  szene: ["Doppelportraet", "Studioaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Vertraeumt", "Romantisch", "Friedlich"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Frontlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Doppelportraet zweier Frauen (dunkles und blondes Haar) vor ueberbelichtetem weissen Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Frauen", "Ohrring"]
+  szene: ["Portraet", "Studioaufnahme"]
+  umgebung: ["Weisser Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

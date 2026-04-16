@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/59/Darkness_lightness.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frau", "Gesicht", "Klebeband", "Haare"]
+  szene: ["Portraet", "Konzeptaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Dramatisch", "Melancholisch", "Mystisch"]
+  lichtsituation: ["High-Key", "Hell-Dunkel", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Schwarzweiss-Konzeptportraet mit schwarzem X-Klebeband ueber den Augen; ueberbelichteter Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gesicht", "Auge", "Klebeband", "Haare"]
+  szene: ["Portraet", "Nahaufnahme"]
+  umgebung: ["Studio", "weisser Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Melancholisch"]
+  lichtsituation: ["High-Key", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Portraet mit schwarzem Klebebandkreuz ueber einem Auge, starkes High-Key."
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8f/2023-06-04_16-57-57_Dom_St._Peter%2C_Worms.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baum", "Kathedrale", "Tuerme", "Person"]
+  szene: ["Architekturaufnahme", "Domplatz"]
+  umgebung: ["Stadt", "Innenstadt"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Majestaetisch", "Mystisch", "Friedlich"]
+  lichtsituation: ["Hartes Licht", "Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Wormser Dom St. Peter als Aerochrome-Falschfarben-Infrarot mit gelb-orange Belaubung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baum", "Kathedrale", "Fenster", "Person", "Fahne"]
+  szene: ["Architektur", "Aussenansicht"]
+  umgebung: ["Stadt", "Park"]
+  tageszeit: "Nachmittag"
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Hartes Licht", "Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Infrarot"]
+  notes: "Infrarotaufnahme; helle Belaubung und dunkler Himmel durch Falschfarben."
 
 ground_truth: null    # filled after dissens arbitration
