@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/95/Blurry_Lights_Abstract.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Asphalt", "Lichter"]
+  szene: ["Strasse", "Abstrakt"]
+  umgebung: ["Stadt", "Strasse"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Vertraeumt", "Mystisch", "Melancholisch"]
+  lichtsituation: ["Mischlicht", "Diffuses Licht", "Kunstlicht"]
+  perspektive: "Froschperspektive"
+  technik: ["Bokeh"]
+  notes: "Geringer Schaerfentiefe-Effekt; Asphaltkoerner im Vordergrund, Stadtlichter als Bokeh-Kreise im Hintergrund."
 
 gpt:
   _model: "gpt-5"

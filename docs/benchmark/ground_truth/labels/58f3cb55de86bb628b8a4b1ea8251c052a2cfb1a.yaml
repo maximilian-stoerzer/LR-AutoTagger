@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/90/Christmas_Ball_Ornament.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Christbaumkugel", "Tannenzweige", "Lichterkette", "Kerzen"]
+  szene: ["Weihnachtsdekoration", "Detailaufnahme"]
+  umgebung: ["Innenraum", "Weihnachtsbaum"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: null
+  stimmung: ["Romantisch", "Vertraeumt", "Friedlich"]
+  lichtsituation: ["Kunstlicht", "Weiches Licht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh", "Makro"]
+  notes: "Silberne Christbaumkugel mit warmen Bokeh-Lichtern im Hintergrund."
 
 gpt:
   _model: "gpt-5"

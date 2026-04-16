@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/33/Beautiful_Flower_covered_in_an_artistic_Bokeh_%2854028221085%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Glockenblume", "Tautropfen", "Stiel", "Gras"]
+  szene: ["Makroaufnahme", "Blumenportraet"]
+  umgebung: ["Wiese", "Natur"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich", "Romantisch"]
+  lichtsituation: ["Gegenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: "Glockenblume mit Tautropfen vor stark wirbelndem (swirly) Bokeh in Gelb-Orange-Toenen."
 
 gpt:
   _model: "gpt-5"

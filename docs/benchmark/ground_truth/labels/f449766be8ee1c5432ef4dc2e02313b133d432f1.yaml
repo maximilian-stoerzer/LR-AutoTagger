@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b3/MV_Monte_Alegre_sunrise_040917.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Containerschiff", "Container", "Meer", "Horizont", "Himmel"]
+  szene: ["Schifffahrt", "Sonnenaufgang"]
+  umgebung: ["Hochsee"]
+  tageszeit: "Morgengrauen"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Friedlich", "Einsam", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Containerschiff MV Monte Alegre auf hoher See zum Sonnenaufgang."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/37/Drip_%282537244227%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wassertropfen", "Metallstange", "Sand"]
+  szene: ["Minimalistische Aufnahme", "Detailaufnahme"]
+  umgebung: ["Strand", "Freiluft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Regen"]
+  stimmung: ["Melancholisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Low-Key", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Bokeh", "Makro"]
+  notes: "Wassertropfen unter horizontaler Stange am sandigen Strand; minimalistische Schwarzweiss-Komposition."
 
 gpt:
   _model: "gpt-5"

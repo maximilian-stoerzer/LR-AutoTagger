@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Abstract_form_of_sun.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Gras", "Sonne", "Straeucher", "Himmel"]
+  szene: ["Wiese", "Sonnenuntergang"]
+  umgebung: ["Freiluft", "Wiese"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Bokeh"]
+  notes: "Tiefer Blickwinkel durchs Gras gegen die untergehende Sonne; Bokeh-Strahlen vor dem Gras."
 
 gpt:
   _model: "gpt-5"

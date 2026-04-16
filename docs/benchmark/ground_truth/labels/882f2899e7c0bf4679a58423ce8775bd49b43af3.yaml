@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Aaron_Burden_2016-03-06_%28Unsplash%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Schneeflocke", "Eiskristall", "Schnee", "Tannenzweige"]
+  szene: ["Makroaufnahme", "Detailaufnahme"]
+  umgebung: ["Natur", "Freiluft"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Schnee"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: "Einzelne Schneeflocke in perfekter Symmetrie auf Schnee mit gruenem Bokeh-Hintergrund."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Esattopposto_-_parte_III_-_Flickr_-_Un_ragazzo_chiamato_Bi.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["CDs", "HiFi-Anlage", "Verstaerker", "LED-Lichter"]
+  szene: ["Stillleben", "Innenaufnahme"]
+  umgebung: ["Innenraum", "Wohnzimmer"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Nostalgisch", "Vertraeumt"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Mischlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: "Beck-Odelay- und Paolo-Conte-CDs auf Denon-Verstaerker mit roten Kontrolllichtern als Bokeh."
 
 gpt:
   _model: "gpt-5"

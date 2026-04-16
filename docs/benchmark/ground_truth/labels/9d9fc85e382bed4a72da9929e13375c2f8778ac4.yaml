@@ -27,17 +27,17 @@ category_proxy: "bokeh"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Evening_view_%2810927104626%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blatt", "Sonne"]
+  szene: ["Detailaufnahme", "Sonnenuntergang"]
+  umgebung: ["Freiluft", "Natur"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich", "Romantisch"]
+  lichtsituation: ["Gegenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: "Pflanzenblatt scharf vor stark unscharfer Daemmerungssonne als Bokeh."
 
 gpt:
   _model: "gpt-5"

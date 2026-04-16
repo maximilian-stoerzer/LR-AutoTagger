@@ -27,17 +27,17 @@ category_proxy: "blaue_stunde"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/da/Sunset_over_Lake_of_the_Woods_from_Camp_Stephens_%28YMCA-YWCA%29_02.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["See", "Blaetter", "Wolken", "Horizont"]
+  szene: ["Seenlandschaft", "Daemmerung"]
+  umgebung: ["See", "Ufer"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Mystisch", "Friedlich", "Einsam"]
+  lichtsituation: ["Silhouette", "Low-Key", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Lake of the Woods zur blauen Stunde; Ufervegetation als Silhouette, Restlicht am Horizont."
 
 gpt:
   _model: "gpt-5"
