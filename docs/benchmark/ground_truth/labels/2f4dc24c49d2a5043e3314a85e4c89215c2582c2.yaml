@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/14/Bliss_camp%27s_Dancing_Woman_in_IR_%2813885801330%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Statue", "Palmen", "Wolken", "Stadtsilhouette", "Bruecke"]
+  szene: ["Skulpturpark", "Stadtpanorama"]
+  umgebung: ["Park", "Hafen"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch", "Mystisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss", "Infrarot"]
+  notes: "'Bliss Dance'-Skulptur (Treasure Island, San Francisco) als IR-Schwarzweiss; Skyline und Bay Bridge im Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Statue", "Palmen", "Wolken", "Stadtsilhouette", "Bruecke"]
+  szene: ["Stadtpanorama", "Park"]
+  umgebung: ["Wiese", "Ufer"]
+  tageszeit: "Nachmittag"
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss", "Infrarot"]
+  notes: "Infrarotlook mit sehr heller Vegetation; riesige Statue dominiert die Szene."
 
 ground_truth: null    # filled after dissens arbitration

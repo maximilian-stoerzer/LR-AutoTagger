@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/6b/2023-05-31_18-23-27_Liebfrauenkirche_Worms.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kirche", "Tuerme", "Baeume"]
+  szene: ["Architekturaufnahme", "Kirchenfassade"]
+  umgebung: ["Stadt", "Innenstadt"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch", "Mystisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Hell-Dunkel"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss", "Infrarot"]
+  notes: "Liebfrauenkirche Worms als IR-Schwarzweiss; gotische Tuerme vor pechschwarzem Himmel mit hellen Baumkronen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kirche", "Tuerme", "Baum", "Auto", "Laterne"]
+  szene: ["Architektur", "Aussenansicht"]
+  umgebung: ["Strasse", "Baeume"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch", "Mystisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Infrarot"]
+  notes: "Infrarotaufnahme mit sehr hellem Laub und dunklem Himmel"
 
 ground_truth: null    # filled after dissens arbitration

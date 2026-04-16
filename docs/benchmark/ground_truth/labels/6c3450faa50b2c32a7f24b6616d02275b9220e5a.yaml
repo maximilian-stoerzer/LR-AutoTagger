@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/08/2PARA_Gold_48.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Soldat", "Maschinengewehr", "Munitionsgurt", "Nachtsichtgeraet", "Sandsaecke"]
+  szene: ["Wachposten", "Militaerstellung"]
+  umgebung: ["Bunker"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Bedrohlich", "Dramatisch", "Einsam"]
+  lichtsituation: ["Hartes Licht", "Frontlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Britischer 2-PARA-Soldat (Operation Gold) am MG mit Nachtsichtgeraet — typische blitzhellte Nacht-Reportageaufnahme; Wikimedia-Kategorie 'infrarot' technisch unpassend."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Soldat", "Maschinengewehr", "Munitionsgurt", "Nachtsichtgeraet", "Sandsaecke"]
+  szene: ["Wachposten", "Militaerposten"]
+  umgebung: ["Bunker", "Tarnnetz"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Bedrohlich", "Dramatisch"]
+  lichtsituation: ["Hartes Licht", "Kunstlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

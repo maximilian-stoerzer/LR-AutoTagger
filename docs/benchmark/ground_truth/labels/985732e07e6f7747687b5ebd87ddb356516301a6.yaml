@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/17/Age_of_palm.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baeume", "Palme", "Autos", "Gebaeude"]
+  szene: ["Stadtansicht", "Parkplatz"]
+  umgebung: ["Stadt", "Vorort"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Falschfarben-IR mit goldgelbem Himmel und nahezu weiss leuchtenden Baumkronen vor Vorstadt-Geschaeften."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bäume", "Palme", "Autos", "Gebäude", "Himmel"]
+  szene: ["Parkplatz", "Stadtansicht"]
+  umgebung: ["Städtisch", "Vorort"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Infrarot"]
+  notes: "Falschfarben-Infrarotaufnahme mit goldgelbem Himmel und sehr hellen Blättern."
 
 ground_truth: null    # filled after dissens arbitration

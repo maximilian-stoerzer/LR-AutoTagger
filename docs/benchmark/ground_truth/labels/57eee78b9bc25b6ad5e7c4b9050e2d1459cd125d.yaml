@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a1/Abike1.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Fahrrad", "Bank", "Decke", "Tasche", "Baeume"]
+  szene: ["Park", "Rastplatz"]
+  umgebung: ["Park", "Wald"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Melancholisch", "Vertraeumt", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Infrarot"]
+  notes: "IR-Schwarzweiss-Aufnahme: bepacktes Fahrrad an Picknicktisch unter Baeumen mit weiss leuchtendem Laub."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Fahrrad", "Bank", "Decke", "Tasche", "Baeume"]
+  szene: ["Park", "Rastplatz"]
+  umgebung: ["Wald", "Grasflaeche"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Melancholisch", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: ["Schwarzweiss", "Infrarot"]
+  notes: "Infrarot-Schwarzweissaufnahme mit weiss erscheinendem Laub"
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/48/Bleachers_%284608136480%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Tribuene", "Baeume", "Abfalleimer", "Zaun", "Wolken"]
+  szene: ["Park", "Sportplatz"]
+  umgebung: ["Park", "Sportplatz"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Vertraeumt", "Einsam"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Aerochrome-IR-Aufnahme: rosa Baumkronen vor blauem Himmel hinter leerer Tribuene."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Tribüne", "Bäume", "Abfalleimer", "Zaun", "Wolken"]
+  szene: ["Park", "Sportplatz"]
+  umgebung: ["Wiese", "Schotter"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig", "Wind"]
+  stimmung: ["Mystisch", "Einsam"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot", "Langzeitbelichtung"]
+  notes: "Infrarotaufnahme mit falschen Farben (Vegetation rot, dunkler Himmel)."
 
 ground_truth: null    # filled after dissens arbitration

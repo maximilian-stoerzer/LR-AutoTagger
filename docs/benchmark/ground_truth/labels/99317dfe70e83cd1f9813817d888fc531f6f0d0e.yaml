@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8d/2023-06-29_09-45-12_Heiliger_Sand.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Grabsteine", "Baeume", "Wiese", "Wolken"]
+  szene: ["Friedhof", "Architekturaufnahme"]
+  umgebung: ["Friedhof"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Melancholisch", "Mystisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Infrarot"]
+  notes: "Heiliger Sand (Wormser juedischer Friedhof) als IR-Schwarzweiss; helles Laub vor dunklem Himmel ueber alten Grabsteinen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Grabsteine", "Baeume", "Gras", "Wolken"]
+  szene: ["Friedhof"]
+  umgebung: ["Park", "Wiese"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Melancholisch", "Mystisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Infrarotaufnahme mit weiss erscheinendem Laub."
 
 ground_truth: null    # filled after dissens arbitration

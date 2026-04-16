@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/95/Aweirdness_%2850600666076%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baum", "Wiese", "Wolken", "Huegel"]
+  szene: ["Solitaerbaum", "Naturaufnahme"]
+  umgebung: ["Land", "Huegellandschaft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Majestaetisch", "Einsam"]
+  lichtsituation: ["Hartes Licht", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Infrarot"]
+  notes: "Schwarzweiss-Infrarot-Aufnahme: heller Solitaerbaum vor extrem dunklem Himmel."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baum", "Gras", "Wolken", "Huegel"]
+  szene: ["Landschaft", "Solitaerbaum"]
+  umgebung: ["Wiese", "Huegellandschaft"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

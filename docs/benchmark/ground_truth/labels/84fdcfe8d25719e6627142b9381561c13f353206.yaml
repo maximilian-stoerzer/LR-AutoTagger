@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/58/34.8_degrees_Celsius.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "Haende", "Mauszeiger", "Temperaturwerte"]
+  szene: ["Waermebild", "Bildschirmaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Thermal-IR-Aufnahme eines Kindes auf Bildschirm; Falschfarben mit roter Kopf-Region (34.8 °C) und blauem Hintergrund (umgebung)."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Haende", "Mauszeiger", "Zahlen"]
+  szene: ["Waermebild", "Bildschirm"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: []
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Waermebildaufnahme mit eingeblendetem Mauszeiger und Temperaturwerten."
 
 ground_truth: null    # filled after dissens arbitration

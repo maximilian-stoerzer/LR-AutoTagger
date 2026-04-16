@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/28/2023-06-14_11-52-56_Kloster_Lorsch.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Klosterkirche", "Baeume", "Bank", "Wolken", "Treppe"]
+  szene: ["Klosteranlage", "Architekturaufnahme"]
+  umgebung: ["Land", "Klosterhof"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Mystisch", "Majestaetisch", "Friedlich"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Kloster Lorsch als Aerochrome-IR; goldgelbe Baumkronen vor dramatischem Himmel."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gebaeude", "Baeume", "Bank", "Wolken"]
+  szene: ["Kirchhof"]
+  umgebung: ["Laendlich"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Mystisch", "Friedlich"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Infrarot"]
+  notes: "Infrarotaufnahme mit hellen Blaettern und dunklem Himmel."
 
 ground_truth: null    # filled after dissens arbitration
