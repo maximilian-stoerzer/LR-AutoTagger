@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/84/CFA_Raymond_Mondon.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["See", "Baeume", "Straeucher", "Gebaeude"]
+  szene: ["Seenlandschaft", "Park"]
+  umgebung: ["Park", "Stadt"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "CFA-Sportstaette Raymond Mondon (Metz) im Herbst; goldene Buschvegetation am Seeufer."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["See", "Baeume", "Straeucher", "Gebaeude", "Himmel"]
+  szene: ["Landschaft", "Seeufer"]
+  umgebung: ["Park", "Gewaesser"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Froehlich"]
+  lichtsituation: ["Natuerliches Licht", "Hartes Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

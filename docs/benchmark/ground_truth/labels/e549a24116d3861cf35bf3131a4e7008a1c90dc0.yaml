@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/48/Nanty_glo_p%28a_-_panoramio.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blitz", "Strasse", "Baeume", "Verkehrsschild"]
+  szene: ["Gewitter", "Strassenszene"]
+  umgebung: ["Land", "Strasse"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Gewitter", "Regen", "Bedeckt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Schnappschuss aus dem Auto in Nanty Glo (Pennsylvania); markanter Erdblitz, nasses Strassenbild."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blitz", "Straße", "Bäume", "Hügel"]
+  szene: ["Gewitter", "Landschaft"]
+  umgebung: ["Landstraße", "offene Landschaft"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Gewitter", "Regen", "Bedeckt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

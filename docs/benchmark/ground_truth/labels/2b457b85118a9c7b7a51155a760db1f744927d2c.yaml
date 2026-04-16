@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Autumn_Leaves_13.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Kuehe", "Baeume", "Wiese", "Schuppen"]
+  szene: ["Weidelandschaft", "Herbstwald"]
+  umgebung: ["Land", "Weide"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Nostalgisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Hereford-Rinder grasen vor flammend bunter Herbstwaldkulisse."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kuehe", "Baeume", "Wiese", "Schuppen"]
+  szene: ["Weidelandschaft", "Herbstwald"]
+  umgebung: ["Laendlich", "Huegellandschaft"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

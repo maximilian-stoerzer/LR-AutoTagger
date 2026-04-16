@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Campodonico_%28Chiavari%29-cappella_san_bernardo-targa.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Gedenktafel", "Inschrift", "Mauer", "Risse"]
+  szene: ["Detailaufnahme", "Architekturdetail"]
+  umgebung: ["Mauer", "Kapelle"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Frontlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Marmor-Gedenktafel an der Cappella San Bernardo (Campodonico/Chiavari) — Inschrift erinnert an Brand 1528 nach Blitzschlag, aber Bild zeigt nur die Tafel, kein Gewitter."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gedenktafel", "Inschrift", "Mauer", "Risse"]
+  szene: ["Nahaufnahme", "Architekturdetail"]
+  umgebung: ["Aussenwand", "Putz"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Diffuses Licht", "Frontlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Driftless_Area_-_panoramio_-_Corey_Coyle_%288%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Baeume", "Gras", "Himmel", "Huegel", "Wildblumen"]
+  szene: ["Aussichtspunkt", "Weite Landschaft"]
+  umgebung: ["Land", "Huegellandschaft"]
+  tageszeit: "Mittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Lebhaft"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Driftless-Area-Aussicht (Wisconsin) mit Wildblumen im verwischten Vordergrund — vermutlich aus dem fahrenden Auto aufgenommen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Gras", "Himmel", "Huegel"]
+  szene: ["Landschaft", "Ausblick"]
+  umgebung: ["Wald", "Tal"]
+  tageszeit: "Mittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Hartes Licht", "Oberlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Vordergrund mit Bewegungsunschaerfe; klarer blauer Himmel."
 
 ground_truth: null    # filled after dissens arbitration

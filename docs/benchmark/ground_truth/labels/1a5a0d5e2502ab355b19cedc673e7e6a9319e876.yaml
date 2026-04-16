@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/42/Cerro_Manquim%C3%A1vida_con_nativo_y_euca.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Wald", "Berg"]
+  szene: ["Berglandschaft", "Herbstwald"]
+  umgebung: ["Berg", "Wald"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bedeckt", "Dunst"]
+  stimmung: ["Melancholisch", "Mystisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Cerro Manquimavida (Chile) im Herbst; Mischung aus eingebuergertem Eukalyptus und Laubbaeumen, dunstige Atmosphaere."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Wald", "Huegel"]
+  szene: ["Waldlandschaft", "Berglandschaft"]
+  umgebung: ["Natur", "Berge"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

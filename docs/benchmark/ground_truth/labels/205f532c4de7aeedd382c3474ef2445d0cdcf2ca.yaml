@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Boggy_tundra_in_fall_colors_near_Lovozero_lake_Murmansk_Russia.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Tuempel", "Graeser", "Moos", "Baeume", "Berge"]
+  szene: ["Tundra", "Moorlandschaft"]
+  umgebung: ["Tundra", "Moor"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich", "Einsam", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Sumpfige Tundra in Herbstfarben nahe Lovozero (Murmansk); roetliche Heidelbeerstraeucher, Bergkette dahinter."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Tümpel", "Gräser", "Moos", "Bäume", "Berge"]
+  szene: ["Moorlandschaft", "Herbstlandschaft"]
+  umgebung: ["Nadelwald", "Bergkette im Hintergrund"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bedeckt", "Dunst"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Autumn_Street.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Strasse", "Baeume", "Laub", "Strassenlaterne", "Auto"]
+  szene: ["Allee", "Strassenszene"]
+  umgebung: ["Stadt", "Wohngebiet"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Nostalgisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Allee mit goldenem Herbstlaub am spaeten Nachmittag; ruhige Vorstadtstrasse."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strasse", "Baeume", "Laub", "Laternenmast", "Auto"]
+  szene: ["Allee", "Strassenszene"]
+  umgebung: ["Wohngebiet", "Stadtrand"]
+  tageszeit: "Abend"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Nostalgisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

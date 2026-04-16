@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d8/CSIRO_ScienceImage_1378_Autumn_Colours_of_the_Lapland_Forests.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Felsen", "Birken", "Wald"]
+  szene: ["Aussichtspunkt", "Herbstlandschaft"]
+  umgebung: ["Wald", "Tundra"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Bedeckt", "Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Lapplandwald im Herbst; Aussicht ueber Felsen und gelbe Birken bis zum dunstigen Horizont."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Felsen", "Straeucher", "See"]
+  szene: ["Waldlandschaft", "Aussicht"]
+  umgebung: ["Wald", "Huegelland"]
+  tageszeit: "Abend"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
