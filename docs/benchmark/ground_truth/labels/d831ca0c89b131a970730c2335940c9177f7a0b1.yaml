@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/85/Fall_Colors_%2815449383875%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Strasse", "Baeume", "Herbstlaub", "Huegel", "Himmel"]
+  szene: ["Aussichtspunkt", "Herbstwald"]
+  umgebung: ["Land", "Huegellandschaft"]
+  tageszeit: "Mittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Lebhaft"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Bergstrasse mit Aussicht auf flammend bunten Herbstwald; klassische Indian-Summer-Stimmung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strasse", "Baeume", "Himmel", "Huegel", "Herbstlaub"]
+  szene: ["Landschaft", "Herbstwald"]
+  umgebung: ["Wald", "Huegelland"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Lebhaft"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

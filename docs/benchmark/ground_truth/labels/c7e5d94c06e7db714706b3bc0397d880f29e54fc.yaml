@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Chivruay_Valley_in_fall_colors_near_Saydozero_Lake_Murmansk_Oblast_Russia.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Berge", "Tal", "Baeume", "Heidelbeerstraeucher", "Wolken"]
+  szene: ["Bergtal", "Herbstlandschaft"]
+  umgebung: ["Gebirge", "Tundra"]
+  tageszeit: "Abend"
+  jahreszeit: "Herbst"
+  wetter: ["Bewoelkt", "Dunst"]
+  stimmung: ["Friedlich", "Majestaetisch", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Chivruay-Tal nahe Saydozero (Kola-Halbinsel) im Herbst; rote Heidelbeerteppiche, gelbe Birken im Tal."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Berge", "Tal", "Baeume", "Straeucher", "Wolken"]
+  szene: ["Gebirgslandschaft", "Herbstlandschaft"]
+  umgebung: ["Bergtal", "Hang"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bewoelkt", "Dunst"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

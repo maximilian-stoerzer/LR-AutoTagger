@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/78/Farm_near_DeForest_-_panoramio_-_Corey_Coyle.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Scheune", "Silos", "Bauernhaus", "Getreidefeld", "Strommasten"]
+  szene: ["Bauernhof", "Landschaft"]
+  umgebung: ["Land", "Ackerland"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bedeckt", "Wind"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Bauernhof bei DeForest (Wisconsin) mit Silos, reifem Getreidefeld und tiefen Wolken — typisch fuer Spaetherbst im Mittleren Westen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Scheune", "Silos", "Bauernhaus", "Getreidefeld", "Straße"]
+  szene: ["Bauernhof", "Landschaft"]
+  umgebung: ["Ackerland", "Landstraße"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

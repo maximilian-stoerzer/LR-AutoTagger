@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/72/Autumn_tundra_mosaic_Kola_Peninsula_Murmansk_Russia.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Birken", "Nadelbaeume", "Heidelbeerstraeucher", "Heide"]
+  szene: ["Tundra", "Herbstlandschaft"]
+  umgebung: ["Tundra", "Wald"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Tundra-Mosaik auf der Kola-Halbinsel: rote Heidelbeerteppiche, gelbe Birken und vereinzelte Fichten."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Birken", "Nadelbaeume", "Straeucher", "Heide", "Wolken"]
+  szene: ["Herbstlandschaft", "Lichtung"]
+  umgebung: ["Heidelandschaft", "Wald"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Broadway_Bridge_over_the_South_Saskatchewan_River_in_Saskatoon_-c.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Bruecke", "Fluss", "Baeume", "Gebaeude"]
+  szene: ["Stadtansicht", "Flusslandschaft"]
+  umgebung: ["Stadt", "Flussufer"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Broadway Bridge ueber den South Saskatchewan River in Saskatoon; herbstgelbe Baeume am Ufer."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Brücke", "Fluss", "Bäume", "Gebäude"]
+  szene: ["Flusslandschaft", "Stadtlandschaft"]
+  umgebung: ["Flussufer", "Stadt"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: "Leichte Spiegelungen von Fensterglas im rechten Bildbereich."
 
 ground_truth: null    # filled after dissens arbitration

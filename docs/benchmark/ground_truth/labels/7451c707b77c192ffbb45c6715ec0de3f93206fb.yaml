@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/00/Brugge_Smedenvest_R02.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Wasser", "Spiegelung", "Ufer"]
+  szene: ["Herbstwald am Wasser", "Spiegelung"]
+  umgebung: ["Wald", "Ufer"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt", "Romantisch"]
+  lichtsituation: ["Seitenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Smedenvest-Graben in Bruegge mit perfekt gespiegeltem Herbstlaub im stillen Wasser."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Wasser", "Spiegelung", "Ufer", "Gebuesch"]
+  szene: ["Herbstlandschaft", "Wald am Wasser"]
+  umgebung: ["Natur", "Wald"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Seitenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

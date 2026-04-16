@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Autumn_scenery_002.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Weg", "Laub", "Platanen"]
+  szene: ["Parkweg", "Herbstwald"]
+  umgebung: ["Park", "Wald"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich", "Melancholisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Parkweg mit dichtem Laubteppich; gefleckte Platanenrinde im Vordergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bäume", "Weg", "Laub"]
+  szene: ["Waldweg"]
+  umgebung: ["Park"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

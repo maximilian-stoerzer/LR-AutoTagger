@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/80/Flickr_-_lo.tangelini_-_Triologia_de_Oto%C3%B1o.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Kopfweiden", "Wiese", "Acker"]
+  szene: ["Landwirtschaft", "Hecke"]
+  umgebung: ["Land", "Feld"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Drei farbige Streifen: gepfluegter Acker, junges Wintergetreide und Reihe rot-orangener Kopfweiden — eher Vorfruehling als Herbst; Wikimedia-Kategorie unpassend."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Acker", "Gras"]
+  szene: ["Landschaft", "Landwirtschaft"]
+  umgebung: ["Laendlich", "Feld"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

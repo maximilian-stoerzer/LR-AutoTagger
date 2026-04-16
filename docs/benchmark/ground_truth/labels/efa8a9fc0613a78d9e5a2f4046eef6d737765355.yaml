@@ -27,18 +27,30 @@ category_proxy: "herbst"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Fall_foliage_in_the_Ruby_Mountains%3B_Lamoille_Canyon..JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Strasse", "Berge", "Espen", "Felsen"]
+  szene: ["Berglandschaft", "Canyonstrasse"]
+  umgebung: ["Gebirge", "Tal"]
+  tageszeit: "Mittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Lamoille Canyon (Ruby Mountains, Nevada); gelbe Espen am Berghang gegen klaren blauen Himmel."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strasse", "Berge", "Baeume", "Felsen"]
+  szene: ["Landschaft", "Gebirge"]
+  umgebung: ["Bergregion", "Tal"]
+  tageszeit: "Mittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
