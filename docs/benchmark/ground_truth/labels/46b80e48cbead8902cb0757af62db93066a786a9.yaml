@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/57/Curve_in_white_marble_stairs_%28Unsplash%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Treppe", "Gelaender", "Marmorwand"]
+  szene: ["Architekturdetail", "Minimalistische Aufnahme"]
+  umgebung: ["Gebaeude"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Friedlich", "Vertraeumt", "Mystisch"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Weiches Licht"]
+  perspektive: "Schraegsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Geschwungene weisse Marmortreppe an Steinwand; sehr helle, fast ueberbelichtete Aesthetik."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Treppe", "Geländer", "Steinmauer"]
+  szene: ["Architektur", "Minimalistisch"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "High-Key"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Y%C5%AB_Kurosaki_New_Gekko_VG-XEOS_Bunka_170mm_%282026%29-104A7626.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kuechenmesser", "Holzgriff"]
+  szene: ["Produktaufnahme", "Stillleben"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: null
   stimmung: null
-  lichtsituation: null
-  perspektive: null
+  lichtsituation: ["High-Key", "Diffuses Licht", "Weiches Licht", "Kunstlicht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Yu Kurosaki Gekko VG-XEOS Bunka 170 mm — japanisches Kuechenmesser-Produktfoto auf weissem Studio-Untergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Küchenmesser"]
+  szene: ["Produktfotografie", "Freisteller"]
+  umgebung: ["Weisser Hintergrund", "Studio"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["High-Key", "Diffuses Licht", "Kunstlicht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

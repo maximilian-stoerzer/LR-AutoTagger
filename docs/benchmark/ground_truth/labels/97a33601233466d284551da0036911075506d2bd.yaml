@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/93/Paolo_Monti_-_Servizio_fotografico_%28Milano%2C_1961%29_-_BEIC_6340842.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frau", "Gesicht", "Haare"]
+  szene: ["Portraet", "Studioaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Nostalgisch", "Friedlich", "Romantisch"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Frontlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Modeportraet von Paolo Monti (Mailand 1961); klassisches Schwarzweiss-Studio mit High-Key-Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Frau", "Gesicht", "Haare", "Schultern"]
+  szene: ["Portraet", "Studioaufnahme"]
+  umgebung: ["Weisser Hintergrund", "Innenraum"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

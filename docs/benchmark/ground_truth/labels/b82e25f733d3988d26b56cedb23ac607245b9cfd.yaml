@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f8/IcyWhite2.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frau", "Aktportraet"]
+  szene: ["Aktportraet", "Studioaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Vertraeumt", "Romantisch", "Friedlich"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Schwarzweiss-Aktportraet mit ueberstrahltem weissen Hintergrund; Koerper umfasst Knie."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person"]
+  szene: ["Portraet"]
+  umgebung: ["Studio", "Weisser Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Diffuses Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

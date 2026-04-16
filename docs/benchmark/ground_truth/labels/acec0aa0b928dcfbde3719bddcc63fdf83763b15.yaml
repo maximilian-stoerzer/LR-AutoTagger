@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Exterior_detail_of_the_Briig_Boutique_Hotel%2C_Split%2C_Croatia_%28PPL1-Corrected%29_julesvernex2.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Fenster", "Fassade"]
+  szene: ["Architekturdetail", "Minimalistische Aufnahme"]
+  umgebung: ["Stadt", "Gebaeude"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["High-Key", "Hartes Licht", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Sechs eingelassene Fenster in der weissen Aussenfassade des Briig Boutique Hotel (Split, Kroatien)."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Fenster", "Fassade"]
+  szene: ["Fassadenansicht", "Architekturdetail"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Hartes Licht", "Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/40/A_Mood_of_Comeback_Home_%28Unsplash%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Flugzeugfluegel", "Flugzeugfenster", "Wolken"]
+  szene: ["Blick aus Flugzeugfenster", "Reise"]
+  umgebung: ["Flugzeug", "Himmel"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["High-Key", "Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Flugzeugfluegel durch Bullaugenfenster gegen helle Wolken; sehr ueberbelichtete Atmosphaere."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Flugzeugfluegel", "Flugzeugfenster", "Himmel", "Wolken"]
+  szene: ["Blick aus Flugzeugfenster", "Ueber den Wolken"]
+  umgebung: ["Flugzeugkabine"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "High-Key", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

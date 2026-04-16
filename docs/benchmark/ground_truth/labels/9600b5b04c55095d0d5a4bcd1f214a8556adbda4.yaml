@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Camilla_Rose_Henley_%286313353430%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frau", "Gesicht", "Bluse", "Augen"]
+  szene: ["Portraet", "Studioaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Frontlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Frauenportraet vor weissem Hintergrund; ueberbelichtetes Studio-Setup mit klassischem High-Key-Look."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Gesicht", "Augen", "Lippen"]
+  szene: ["Portraet", "Nahaufnahme"]
+  umgebung: ["Studio", "Weisser Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: "Starkes High-Key-Portraet mit ueberstrahlten Flaechen."
 
 ground_truth: null    # filled after dissens arbitration

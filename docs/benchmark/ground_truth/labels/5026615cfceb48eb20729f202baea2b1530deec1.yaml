@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Norderney%2C_Weststrand_--_2016_--_5157_--_3.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Holzpfaehle", "Meer", "Wellen", "Strand", "Algen"]
+  szene: ["Strand", "Kuestenlandschaft"]
+  umgebung: ["Strand", "Kueste"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bedeckt", "Dunst"]
+  stimmung: ["Melancholisch", "Friedlich", "Vertraeumt"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Norderney-Weststrand mit Reihe verwitterter Holzpfaehle; weisse Wolkendecke verschmilzt fast mit dem Sand."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Holzpfähle", "Meer", "Wellen", "Strand", "Algen"]
+  szene: ["Strand", "Kuestenlandschaft"]
+  umgebung: ["Himmel", "Meeresufer"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bedeckt", "Dunst"]
+  stimmung: ["Melancholisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

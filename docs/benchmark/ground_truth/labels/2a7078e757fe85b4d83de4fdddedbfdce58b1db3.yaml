@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c7/High_key_photography.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Plastikgabel", "Strohhalme"]
+  szene: ["Stillleben", "Minimalistisch"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Friedlich"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Weiches Licht"]
+  perspektive: "Draufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Weisse Plastikgabel diagonal auf weisser Lattenoberflaeche; klassisches High-Key-Stillleben."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gabel", "Strohhalme"]
+  szene: ["Stillleben", "Minimalistisch"]
+  umgebung: ["Studio", "Weisser Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["High-Key", "Diffuses Licht"]
+  perspektive: "Draufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

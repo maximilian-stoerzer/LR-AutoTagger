@@ -27,18 +27,30 @@ category_proxy: "high_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Cuxhaven%2C_Strand%2C_Buhne_--_2024_--_2373.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wasser", "Schilf", "Wellen"]
+  szene: ["Wattlandschaft", "Minimalistische Aufnahme"]
+  umgebung: ["Watt", "Kueste"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Nebel", "Bedeckt"]
+  stimmung: ["Melancholisch", "Mystisch", "Einsam"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Cuxhaven-Buhne im Nebel; drei Schilfinseln im flachen Wasser, Horizont fast unsichtbar."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wasser", "Schilf", "Wellen"]
+  szene: ["See", "Ufer"]
+  umgebung: ["Feuchtgebiet", "Uferzone"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Nebel", "Bedeckt"]
+  stimmung: ["Melancholisch", "Mystisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
