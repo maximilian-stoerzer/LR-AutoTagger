@@ -36,7 +36,7 @@ except ImportError:
     print("pip install openai", file=sys.stderr)
     sys.exit(1)
 
-from _common import IMAGES_ROOT, LABELS_ROOT, load_manifest  # noqa: E402
+from _common import IMAGES_ROOT, LABELS_ROOT, has_gpt_filled, load_manifest  # noqa: E402
 
 SYSTEM_PROMPT = """\
 Du bist ein Oracle zur Erzeugung von Ground-Truth-Labels fuer einen Foto-Benchmark.
@@ -86,18 +86,6 @@ def load_env_key() -> str:
                 return line.split("=", 1)[1].strip()
     print("ERROR: OPENAI_API_KEY not set in env or .env", file=sys.stderr)
     sys.exit(1)
-
-
-def has_gpt_filled(yaml_path: pathlib.Path) -> bool:
-    """Return True if the YAML already has a non-null gpt: section."""
-    text = yaml_path.read_text()
-    # `gpt: null  # comment` or `gpt: null` means unfilled. Anything else (block
-    # with _model/objekte etc.) counts as filled.
-    m = re.search(r"^gpt:\s*(.*?)(?:\s*#.*)?$", text, re.MULTILINE)
-    if not m:
-        return False
-    value = m.group(1).strip()
-    return value not in ("null", "")
 
 
 def encode_image(path: pathlib.Path) -> str:
