@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/38/Lightning_Madrid_2010-05-27.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blitz", "Wolken", "Huegel", "Vegetation"]
+  szene: ["Gewitter", "Landschaftsaufnahme"]
+  umgebung: ["Land", "Huegellandschaft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Gewitter", "Bedeckt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Blitz ueber Madrid (2010-05-27); ueber dem Bildmittelpunkt zeigt sich der Lichtkanal vor bedecktem Himmel."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blitz", "Wolken", "Huegel", "Vegetation"]
+  szene: ["Gewitter", "Landschaftsaufnahme"]
+  umgebung: ["Offene Landschaft"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Gewitter", "Bedeckt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

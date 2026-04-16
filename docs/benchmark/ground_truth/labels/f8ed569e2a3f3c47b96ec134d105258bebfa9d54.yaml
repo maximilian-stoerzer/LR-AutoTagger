@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b4/DW-5600E.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Armbanduhr", "Hand", "Display"]
+  szene: ["Produktaufnahme", "Detailaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: null
   stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  lichtsituation: ["Frontlicht", "Hartes Licht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: "Casio G-Shock DW-5600 mit aktivierter Hintergrundbeleuchtung; kein klassisches Gegenlicht — Wikimedia-Kategorie unpassend."
 
 gpt:
   _model: "gpt-5"

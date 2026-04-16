@@ -27,17 +27,17 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Mont_Dolent_summit.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Marienstatue", "Felsen", "Schnee", "Tafel"]
+  szene: ["Berggipfel", "Gipfelmadonna"]
+  umgebung: ["Gebirge", "Hochgebirge"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt", "Nebel"]
+  stimmung: ["Mystisch", "Majestaetisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Marienstatue auf dem Mont-Dolent-Gipfel; kein Gewitter erkennbar — Wikimedia-Kategorie unpassend."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Lined_Trees_%286301891638%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Herbstlaub", "Baumstaemme", "Boden"]
+  szene: ["Allee", "Wald"]
+  umgebung: ["Wald", "Land"]
+  tageszeit: "Abend"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich", "Romantisch"]
+  lichtsituation: ["Gegenlicht", "Kantenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Buchen-Allee im goldenen Herbstabendlicht; Sonne von hinten laesst Laub leuchten."
 
 gpt:
   _model: "gpt-5"

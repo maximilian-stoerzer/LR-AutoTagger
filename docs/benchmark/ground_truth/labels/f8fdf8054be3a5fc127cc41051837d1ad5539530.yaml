@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lindheimer_Observatory_Northwestern_Univ_40.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Schneezaun", "Eis", "Observatorium", "See", "Schnee"]
+  szene: ["Winterlandschaft", "Kuestenlandschaft"]
+  umgebung: ["Kueste", "Ufer"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Sonnig", "Schnee", "Dunst"]
+  stimmung: ["Einsam", "Friedlich", "Melancholisch"]
+  lichtsituation: ["Gegenlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Lindheimer-Observatorium der Northwestern University am vereisten Lake-Michigan-Ufer mit gestreiften Schneezaunen."
 
 gpt:
   _model: "gpt-5"

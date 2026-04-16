@@ -27,17 +27,17 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/46/Cerje_strela.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Blitz", "Festungsturm", "Huegel", "Wald"]
+  szene: ["Gewitter", "Landschaft"]
+  umgebung: ["Huegellandschaft", "Wald"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: ["Gewitter", "Sonnig"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Cerje-Denkmalturm (Slowenien) mit weit entferntem Blitz vor noch sonnigem Himmel."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Back_light_Tree.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Aeste", "Himmel"]
+  szene: ["Baumkronen", "Naturaufnahme"]
+  umgebung: ["Wald", "Natur"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Winter"
+  wetter: null
+  stimmung: ["Melancholisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Bild ist um 90 Grad gedreht aufgenommen; kahle Baeume gegen daemmerigen Himmel."
 
 gpt:
   _model: "gpt-5"

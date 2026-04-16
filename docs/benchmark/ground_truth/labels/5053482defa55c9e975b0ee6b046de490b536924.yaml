@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Lightning_in_Mahasamund_3.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blitz", "Gebaeude", "Baeume", "Stromleitungen"]
+  szene: ["Gewitter", "Wohngebiet"]
+  umgebung: ["Siedlung", "Land"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Gewitter", "Regen"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Silhouette", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Blitz ueber Mahasamund (Indien); Vordergrund mit nasser Strasse und Silhouetten von Haeusern und Baeumen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blitz", "Gebäude", "Bäume", "Pfützen", "Stromleitungen"]
+  szene: ["Gewitter", "Wohngebiet"]
+  umgebung: ["Siedlung", "Offenes Gelände"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter", "Regen"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Silhouette", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "gewitter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d2/Bodleian_Libraries%2C_Wallis%27s_elegant_and_instructive_game_-_exhibiting_wonders_of_nature_in_each_quarter_of_the_world.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Druckgrafik", "Vignetten", "Schriftzug", "Rahmen"]
+  szene: ["Brettspielboard", "Titelblatt"]
+  umgebung: ["Papier"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Draufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Reproduktion von 'Wallis's Wonders of Nature'-Spielbrett (Bodleian Libraries) — kein Foto, keine Gewitterszene."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Druckgrafik", "Illustrationen", "Text", "Rahmen", "Papier"]
+  szene: ["Collage von Naturansichten", "Titeltafel"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: []
+  perspektive: "Draufsicht"
+  technik: []
+  notes: "Historische Drucktafel mit vielen gerahmten Vignetten; keine einzelne Fotografie."
 
 ground_truth: null    # filled after dissens arbitration
