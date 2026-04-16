@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Frozen_grass_%2831969944802%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Gras", "Reif", "Sonne", "Himmel"]
+  szene: ["Winterlandschaft", "Naturaufnahme"]
+  umgebung: ["Wiese", "Freiluft"]
+  tageszeit: "Morgen"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig", "Schnee"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Kantenlicht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Eisbedeckte Graeser glitzern im morgendlichen Gegenlicht der Wintersonne."
 
 gpt:
   _model: "gpt-5"

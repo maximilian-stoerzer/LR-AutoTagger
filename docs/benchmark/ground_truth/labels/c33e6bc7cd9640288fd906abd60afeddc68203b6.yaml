@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/52/G%C3%B6ltzschtalbr%C3%BCcke_blick_nach_oben_0582.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Backsteinwaende", "Lichtschacht", "Deckenoeffnung"]
+  szene: ["Architekturaufnahme", "Lichtschacht"]
+  umgebung: ["Bauwerk", "Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Mystisch", "Majestaetisch"]
+  lichtsituation: ["Oberlicht", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Blick nach oben in einen Pfeiler der Goeltzschtalbruecke; rechteckiger Lichtschacht oben."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "fruehling"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/80/Sunset_in_Chac%C3%A1mero_Grande.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolken", "Berge", "Baeume", "Felsen", "Wiese"]
+  szene: ["Landschaft", "Sonnenuntergang"]
+  umgebung: ["Tal", "Hochebene"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Gegenlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Sonnenuntergang ueber Chacamero Grande (Mexiko); Wikimedia-Kategorie 'fruehling' nicht eindeutig erkennbar."
 
 gpt:
   _model: "gpt-5"

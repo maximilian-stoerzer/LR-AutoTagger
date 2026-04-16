@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Easton_tower.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Glaskuppel", "Streben", "Hochhaus", "Himmel"]
+  szene: ["Architekturaufnahme", "Innenraum"]
+  umgebung: ["Stadt", "Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Easton Tower (Bristol): Blick durch eine kreisrunde Glaskuppel auf einen Wolkenkratzer dahinter."
 
 gpt:
   _model: "gpt-5"

@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Brushed_316_Stainless_Steel_Lettering.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Buchstabe B"]
+  szene: ["Produktdarstellung", "Studioaufnahme"]
+  umgebung: ["Neutraler Hintergrund"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: null
   stimmung: null
-  lichtsituation: null
-  perspektive: null
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "3D-Render eines gebuersteten Edelstahl-'B' (kein Foto); kaum Gegenlicht-Effekt erkennbar."
 
 gpt:
   _model: "gpt-5"

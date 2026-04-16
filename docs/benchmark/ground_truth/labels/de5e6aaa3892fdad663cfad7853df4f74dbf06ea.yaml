@@ -27,17 +27,17 @@ category_proxy: "fruehling"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gustaf_Fj%C3%A6stad_-_V%C3%A5rflom_-_NG.M.04400_-_National_Museum_of_Art%2C_Architecture_and_Design.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Bach", "Ufer", "Gras", "Spiegelung", "Schnee"]
+  szene: ["Bachlauf", "Tauwetter"]
+  umgebung: ["Natur", "Ufer"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: ["Bedeckt"]
+  stimmung: ["Melancholisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Oelgemaelde 'Vaarflom' (Spring Flood) von Gustaf Fjaestad (Schweden), keine Photographie."
 
 gpt:
   _model: "gpt-5"

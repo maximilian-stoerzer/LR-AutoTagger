@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/83/Halo_by_Wolfgang_and_Heron%2C_N1_Retail_Plaza%2C_London_1100485.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Skulptur", "Gebaeude", "Ueberwachungskamera", "Wolken"]
+  szene: ["Kunstinstallation", "Stadtraum"]
+  umgebung: ["Stadt", "Innenhof"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "'Halo' von Wolfgang & Heron — Drahtring-Skulptur ueber Innenhof am N1 Retail Plaza London."
 
 gpt:
   _model: "gpt-5"

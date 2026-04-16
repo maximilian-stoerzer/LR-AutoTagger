@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/71/Inscription_Aquarium_%C3%A0_l%27aquarium_de_Monaco_%28novembre_2021%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Schriftzug", "Leuchtschrift", "Wand", "LED-Beleuchtung"]
+  szene: ["Beschilderung", "Innenraum"]
+  umgebung: ["Innenraum", "Aquarium"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Mystisch", "Lebhaft"]
+  lichtsituation: ["Kunstlicht", "Kantenlicht", "Low-Key"]
+  perspektive: "Schraegsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Aquarium-Schriftzug mit LED-Hinterleuchtung im Aquarium Monaco; eher Kantenlicht/Backlight als klassisches Gegenlicht."
 
 gpt:
   _model: "gpt-5"

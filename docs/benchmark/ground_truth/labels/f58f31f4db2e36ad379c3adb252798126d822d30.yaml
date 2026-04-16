@@ -27,17 +27,17 @@ category_proxy: "frosch"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b0/DahurianBirch.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Birke", "Zweige", "Himmel", "Wolken"]
+  szene: ["Baumkrone", "Naturaufnahme"]
+  umgebung: ["Freiluft", "Natur"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Melancholisch", "Friedlich"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Kahle Dahurische Birke vor blau-weisslichem Winterhimmel."
 
 gpt:
   _model: "gpt-5"

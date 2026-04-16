@@ -27,17 +27,17 @@ category_proxy: "gegenlicht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Jerry_%C3%A0_roulettes_en_mode_lumi%C3%A8re.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kanister", "Aufkleber"]
+  szene: ["Studioaufnahme", "Lichtinstallation"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Diffuses Licht"]
+  perspektive: "Schraegsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Innen beleuchteter weisser Plastikkanister auf Rollen vor schwarzem Hintergrund — eher Hinterleuchtung als klassisches Gegenlicht."
 
 gpt:
   _model: "gpt-5"
