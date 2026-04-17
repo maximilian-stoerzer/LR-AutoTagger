@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Guiding_light_%2815023968388%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Milchstrasse", "Felsen", "Person", "Sand", "Sterne"]
+  szene: ["Sternenhimmel", "Nachtlandschaft"]
+  umgebung: ["Strand", "Kueste"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Mystisch", "Majestaetisch", "Vertraeumt"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Milchstrasse ueber Felsformation am Strand; Person mit Lampe als Lichtquelle zwischen den Felsen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sterne", "Mensch", "Felsen", "Strand", "Lichtquelle"]
+  szene: ["Sternenhimmel", "Nachtlandschaft"]
+  umgebung: ["Kuestenlandschaft", "Strand"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Dunst"]
+  stimmung: ["Mystisch", "Majestaetisch"]
+  lichtsituation: ["Low-Key", "Silhouette", "Mischlicht"]
+  perspektive: "Untersicht"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Sichtbare Milchstraße und Lichtmalerei; Personen verwischt durch Langzeitbelichtung."
 
 ground_truth: null    # filled after dissens arbitration

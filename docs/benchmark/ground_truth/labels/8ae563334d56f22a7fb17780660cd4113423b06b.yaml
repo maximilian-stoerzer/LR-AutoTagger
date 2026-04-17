@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Electric_Shadow_%2895052403%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baeume", "Stromleitungen", "Strommast", "Wolken"]
+  szene: ["Daemmerung", "Silhouette"]
+  umgebung: ["Land", "Natur"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Melancholisch", "Friedlich"]
+  lichtsituation: ["Silhouette", "Natuerliches Licht", "Low-Key"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Baumsilhouetten und Stromleitungen gegen Abendhimmel; keine erkennbare Langzeitbelichtung — Wikimedia-Kategorie evtl. unpassend."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Stromleitungen", "Strommast", "Baeume", "Buesche", "Wolken"]
+  szene: ["Landschaft", "Freileitung"]
+  umgebung: ["Waldrand", "Himmel"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Melancholisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Diffuses Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

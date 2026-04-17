@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/6d/In_the_woods._-_Flickr_-_Holly_Norval.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Bach", "Wasserfall", "Felsen", "Laub"]
+  szene: ["Waldbach", "Naturdetail"]
+  umgebung: ["Wald", "Natur"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: null
+  stimmung: ["Friedlich", "Mystisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: ["Schwarzweiss", "Langzeitbelichtung"]
+  notes: "Waldbach mit seidigem Wasser durch Langzeitbelichtung; Schwarzweiss mit hohem Kontrast."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bach", "Wasserfall", "Felsen", "Blaetter", "Ast"]
+  szene: ["Kleiner Wasserfall", "Bachlauf"]
+  umgebung: ["Wald", "Schlucht"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: []
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: ["Schwarzweiss", "Langzeitbelichtung"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

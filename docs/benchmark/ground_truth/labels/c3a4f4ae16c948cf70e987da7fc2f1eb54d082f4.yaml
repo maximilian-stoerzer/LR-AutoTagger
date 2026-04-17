@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/45/Banoshree-Hatirjhil-Badda_U_Loop_-_Flickr_-_A._K._Azad.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Autobahn", "Lichtstreifen", "Bruecke", "Hochhaeuser"]
+  szene: ["Autobahnkreuz", "Nachtaufnahme"]
+  umgebung: ["Stadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Dramatisch", "Lebhaft"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Mischlicht"]
+  perspektive: "Vogelperspektive"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Banoshree-Hatirjhil-Badda U-Loop (Dhaka) von oben; S-foermige Lichtstreifen der Fahrzeuge."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strasse", "Bruecke", "Lichtspuren", "Laternen", "Haeuser"]
+  szene: ["Stadtverkehr", "Stadt bei Nacht"]
+  umgebung: ["Stadt", "Hochhaeuser"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Lebhaft", "Dramatisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key"]
+  perspektive: "Vogelperspektive"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

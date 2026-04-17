@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Lantern_%2892494021%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Loewen-Statue", "Strassenlaterne", "Gebaeude"]
+  szene: ["Nachtaufnahme", "Stadtszene"]
+  umgebung: ["Stadt", "Altstadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Nostalgisch", "Majestaetisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Weiches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Loewen-Statue und ornamentale Laterne bei Nacht — vermutlich Havanna oder suedeuropaeische Altstadt."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Löwenstatue", "Straßenlaterne", "Gebäude", "Fahnen", "Vogel"]
+  szene: ["Stadtszene", "Nachtaufnahme"]
+  umgebung: ["Altstadt", "Stadt"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Gegenlicht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

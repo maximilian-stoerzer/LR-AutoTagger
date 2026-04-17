@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Adventskranz_2025.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Miniaturhaus", "Tannenbaeume", "Kerzen", "Eule", "Reh"]
+  szene: ["Weihnachtsdekoration", "Stillleben"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: null
+  stimmung: ["Vertraeumt", "Romantisch", "Friedlich"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Weiches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Adventskranz-Stillleben mit Miniatur-Winterdorf auf Baumstammscheibe; Nebelschwaden im Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Miniaturhaus", "Kerzen", "Tannenbaeume", "Lichterkette", "Tannenzapfen"]
+  szene: ["Weihnachtsdekoration", "Stillleben"]
+  umgebung: ["Innenraum", "Studio"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Weiches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: "Inszeniertes Stillleben mit Miniaturlandschaft und kuenstlichem Rauch."
 
 ground_truth: null    # filled after dissens arbitration

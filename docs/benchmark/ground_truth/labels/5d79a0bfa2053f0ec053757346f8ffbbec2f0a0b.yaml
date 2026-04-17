@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Asylum_%28134325433%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Baeume", "Strassenlaternen", "Gebaeude", "Laub"]
+  szene: ["Nachtaufnahme", "Parkszene"]
+  umgebung: ["Park", "Stadt"]
+  tageszeit: "Nacht"
+  jahreszeit: "Herbst"
+  wetter: ["Nebel"]
+  stimmung: ["Mystisch", "Bedrohlich", "Melancholisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Mischlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Neblige Nachtszene mit orangefarbenen Strassenlaternen vor altem Gebaeude; kahle Eichen werfen gespenstische Schatten."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strassenlaternen", "Baeume", "Gebaeude", "Bank", "Treppe"]
+  szene: ["Park", "Gebaeude im Hintergrund"]
+  umgebung: ["Herbstlaub", "Baumbestand"]
+  tageszeit: "Nacht"
+  jahreszeit: "Herbst"
+  wetter: ["Nebel"]
+  stimmung: ["Mystisch", "Melancholisch"]
+  lichtsituation: ["Kunstlicht", "Gegenlicht", "Diffuses Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Katarina_Bangata_September_2025_01.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Passanten", "Hund", "Schaufenster", "Geschaeft"]
+  szene: ["Strassenszene", "Einkaufsstrasse"]
+  umgebung: ["Stadt", "Strasse"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: null
+  stimmung: ["Lebhaft", "Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Katarina Bangata (Stockholm): verwischte Passanten und Hund vor scharfem Schaufenster durch Langzeitbelichtung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Hund", "Schaufenster", "Fassade", "Eingangstuer"]
+  szene: ["Strassenszene", "Passanten"]
+  umgebung: ["Stadt", "Gehweg"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Lebhaft", "Friedlich"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Bewegungsunschaerfe"]
+  notes: "Verwischte Passanten durch lange Belichtungszeit, Hund und Halterin relativ scharf."
 
 ground_truth: null    # filled after dissens arbitration

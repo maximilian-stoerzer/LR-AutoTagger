@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/5f/FCC_course_%27Night_Photography%27%2C_outing_on_1_March_2018_%2838790529720%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Steine", "See", "Felsen", "Berge", "Lichter"]
+  szene: ["Seeufer", "Nachtlandschaft"]
+  umgebung: ["See", "Ufer"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Friedlich", "Mystisch", "Einsam"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Mischlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Seeufer bei Nacht mit Steinpyramide im Vordergrund; glattes Wasser und Lichtspiegelungen durch Langzeitbelichtung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Steine", "Wasser", "Lichter", "Reflexionen", "Baeume"]
+  szene: ["Ufer", "Nachtlandschaft"]
+  umgebung: ["See", "Haeuser"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Bedeckt", "Dunst"]
+  stimmung: ["Mystisch", "Einsam"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Kuenstliches blaues Licht beleuchtet einen Felsen am Ufer."
 
 ground_truth: null    # filled after dissens arbitration
