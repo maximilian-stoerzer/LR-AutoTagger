@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f1/2009040401_Florfliege_Seitenansicht_2009.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Florfliege", "Blatt", "Fluegel", "Fuehler"]
+  szene: ["Insektenportraet", "Makroaufnahme"]
+  umgebung: ["Natur"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Kunstlicht", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro"]
+  notes: "Gemeine Florfliege (Chrysoperla) in Seitenansicht auf gruenem Blatt."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Insekt", "Flügel", "Fühler", "Blatt"]
+  szene: ["Nahaufnahme", "Detail"]
+  umgebung: ["Pflanzenblatt", "Natur"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Hartes Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

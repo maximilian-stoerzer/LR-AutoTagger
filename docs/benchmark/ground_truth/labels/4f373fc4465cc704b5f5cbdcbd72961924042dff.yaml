@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/ee/2012072201_Raupenfliege_Gymnosoma_rotundatum_frontal_2012.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Schwebfliege", "Blueten", "Dolde"]
+  szene: ["Insektenportraet", "Makroaufnahme"]
+  umgebung: ["Natur", "Garten"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: null
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Natuerliches Licht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: "Raupenfliege (Gymnosoma rotundatum) frontal auf weisser Doldenblute mit rotem Facettenauge."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Fliege", "Bluete"]
+  szene: ["Makroaufnahme", "Nahaufnahme"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Frontlicht", "Hartes Licht", "Kunstlicht"]
+  perspektive: "Aufsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

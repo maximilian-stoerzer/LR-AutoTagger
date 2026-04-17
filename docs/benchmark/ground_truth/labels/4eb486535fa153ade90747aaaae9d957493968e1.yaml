@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/ea/%22%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82%22_%D0%BF%D0%B0%D1%83%D0%BA%D0%B0-%D0%B2%D0%BE%D0%BB%D0%BA%D0%B0.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Spinne", "Augen", "Chelizeren", "Haare"]
+  szene: ["Insektenportraet", "Extremmakro"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Low-Key", "Frontlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro"]
+  notes: "Wolfspinnen-Portraet als Extremmakro; mehrere Augen und goldene Borsten in extremer Vergroesserung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Spinne", "Augen", "Borsten", "Mundwerkzeuge"]
+  szene: ["Makroaufnahme", "Detailaufnahme"]
+  umgebung: ["Schwarzer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Low-Key", "Hartes Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

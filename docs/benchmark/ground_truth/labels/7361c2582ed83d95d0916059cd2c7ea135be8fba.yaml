@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/37/2020042607_Bluetenstand_Knoblauchsrauke.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Bluetenstand", "Blueten", "Knospen", "Blaetter"]
+  szene: ["Makroaufnahme", "Pflanzenstudie"]
+  umgebung: ["Natur"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: null
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro"]
+  notes: "Bluetenstand der Knoblauchsrauke (Alliaria petiolata) mit weissen Kreuzbluetenstaenden."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bluete", "Bluetenknospen", "Blaetter"]
+  szene: ["Nahaufnahme", "Makroaufnahme"]
+  umgebung: ["Natur"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

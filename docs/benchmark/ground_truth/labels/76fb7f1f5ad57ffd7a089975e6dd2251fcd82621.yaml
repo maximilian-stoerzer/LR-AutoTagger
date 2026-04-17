@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/ec/%22%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82%22_%D0%BF%D0%B0%D0%BB%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B0.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Gespenstschrecke", "Kopf", "Auge", "Beine"]
+  szene: ["Insektenportraet", "Extremmakro"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Seitenlicht", "Kunstlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro"]
+  notes: "Stabinsekt/Gespenstschrecke (Phasmatodea) Kopf-Makro mit Facettenauge und Mundwerkzeugen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Insekt"]
+  szene: ["Makroaufnahme"]
+  umgebung: ["Dunkler Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch"]
+  lichtsituation: ["Weiches Licht", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

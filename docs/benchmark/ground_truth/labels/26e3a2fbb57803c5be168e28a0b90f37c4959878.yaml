@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4b/2020042602_Bluete_Judasbaum_freigestellt_2020.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Bluete", "Bluetenblaetter", "Staubgefaesse"]
+  szene: ["Makroaufnahme", "Blumenportraet"]
+  umgebung: ["Natur"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: null
+  stimmung: ["Vertraeumt", "Friedlich", "Romantisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: "Rosa Judasbaum-Bluete (Cercis) freigestellt mit dunklem Bokeh-Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blüte", "Blütenblatt", "Zweig"]
+  szene: ["Nahaufnahme"]
+  umgebung: ["dunkler Hintergrund", "unscharfer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

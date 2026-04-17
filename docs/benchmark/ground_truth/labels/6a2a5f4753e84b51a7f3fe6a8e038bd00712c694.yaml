@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/af/2023070103_Rote_Schuppenmiere_%28Spergularia_rubra%29_Bokeh_2023.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Bluete", "Stiel", "Knospen"]
+  szene: ["Makroaufnahme", "Blumenportraet"]
+  umgebung: ["Natur"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: null
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: "Rote Schuppenmiere (Spergularia rubra) mit kreisfoermigem Spinnweb-Bokeh-Artefakt hinter der Bluete."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bluete", "Knospen", "Stengel"]
+  szene: ["Makroaufnahme", "Nahaufnahme einer Wildblume"]
+  umgebung: ["Natur", "Wiese"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Kantenlicht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: "Auffaelliger polygonaler Bokeh-Halo hinter der Bluete"
 
 ground_truth: null    # filled after dissens arbitration

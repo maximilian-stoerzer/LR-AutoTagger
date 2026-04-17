@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/63/2022072313_Certo_%28Certina%29_Bereitschaftstasche_2022.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kameratasche", "Leder", "Tragegurt"]
+  szene: ["Produktaufnahme", "Stillleben"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["High-Key", "Diffuses Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Certo/Certina-Bereitschaftstasche auf weissem Hintergrund — eher High-Key als Makro."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kamera", "Kameraetui", "Riemen"]
+  szene: ["Produktfotografie", "Studioaufnahme"]
+  umgebung: ["Weisser Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["High-Key", "Diffuses Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

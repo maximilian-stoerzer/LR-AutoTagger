@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Full_moon_%28Labuan%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mond", "Palmen", "Wolken"]
+  szene: ["Nachtaufnahme", "Tropische Szene"]
+  umgebung: ["Tropen", "Natur"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Mystisch", "Vertraeumt", "Romantisch"]
+  lichtsituation: ["Low-Key", "Gegenlicht", "Silhouette"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss"]
+  notes: "Vollmond hinter Palmensilhouetten auf Labuan (Malaysia); Schwarzweiss-Low-Key."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Palmen", "Mond", "Wolken"]
+  szene: ["Mondnacht", "Tropische Landschaft"]
+  umgebung: ["Tropen"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Mystisch", "Bedrohlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Low-Key"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
