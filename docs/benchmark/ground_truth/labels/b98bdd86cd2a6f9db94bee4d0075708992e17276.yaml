@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/ce/16001000424176-Scharinska_villan-Riksantikvarie%C3%A4mbetet.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Musiker", "Schlagzeugstock"]
+  szene: ["Konzert"]
+  umgebung: ["Buehne"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mann", "Schlagzeug", "Drumstick"]
+  szene: ["Konzert", "Buehne"]
+  umgebung: ["Innenraum", "Buehnenlicht"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Lebhaft", "Dramatisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Seitenlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Bokeh", "Bewegungsunschaerfe"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

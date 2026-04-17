@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/33/2023-12-11_Stadtkind_hannovermagazin_Interview_im_TAK%2C_Theater_am_K%C3%BCchengarten%2C_Katharina_Sterzer%2C_Gesch%C3%A4ftsf%C3%BChrerin_vom_B%C3%BCrgerverein_Freundeskreis_Hannover.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frau", "Buecherregal"]
+  szene: ["Portrait"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Froehlich"]
+  lichtsituation: ["Kunstlicht", "Frontlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Ohrringe", "Buecher", "Regal"]
+  szene: ["Portrait", "Innenraum"]
+  umgebung: ["Bibliothek", "Buecherregal"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Froehlich", "Friedlich"]
+  lichtsituation: ["Kunstlicht", "Frontlicht", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

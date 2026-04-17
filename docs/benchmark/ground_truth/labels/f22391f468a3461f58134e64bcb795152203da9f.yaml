@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/78/2023-07-02_historians_Rainer_Hoffschild_and_Robert_M._Beachy_%2811%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Maenner", "Buecherregal", "Lampe"]
+  szene: ["Portrait"]
+  umgebung: ["Wohnzimmer"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Froehlich"]
+  lichtsituation: ["Kunstlicht", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["zwei Personen", "Buecherregal", "Brille", "Lampe"]
+  szene: ["Innenraum", "Portraet"]
+  umgebung: ["Wohnzimmer", "Bibliothek"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Froehlich", "Friedlich"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

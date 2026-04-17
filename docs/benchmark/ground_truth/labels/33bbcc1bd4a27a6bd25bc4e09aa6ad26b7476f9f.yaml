@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4c/111-SC-7618_-_Gen_Peter_Traub_and_staff_at_headquarters_51st_Brigade-_Brig_Gen_Traub%2C_Captain_Wade%2C_Chief_of_Staff%3B_Lieut_AE_Gray%2C_Lieut_CE_Hart%2C_Lieut_Paul_Valle%2C_Chemin_Des_Dames%2C_France-.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Soldaten", "Dokument", "Fotografie"]
+  szene: ["Archivkarte"]
+  umgebung: ["Militaer"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Militaerische Archivkarte (Signal Corps, 1918) mit eingebettetem Foto"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Soldaten", "Uniformen", "Karte", "Papier", "Stempel"]
+  szene: ["Militaerbesprechung", "Archivseite"]
+  umgebung: ["Draussen", "Militaerlager"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historisches Foto auf Archivkarte mit maschinengeschriebenem Text und Stempel montiert."
 
 ground_truth: null    # filled after dissens arbitration

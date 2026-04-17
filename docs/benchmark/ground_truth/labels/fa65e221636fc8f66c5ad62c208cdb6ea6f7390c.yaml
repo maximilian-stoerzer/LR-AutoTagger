@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8f/2023-10-13_Diplom-Violinist_und_Musikp%C3%A4dagoge_Leonid_Bialski_vom_Freundeskreis_Hannover_im_Wilma_Wunder_02.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Mann"]
+  szene: ["Portrait"]
+  umgebung: ["Garten"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Sommer"
+  wetter: []
+  stimmung: ["Froehlich"]
+  lichtsituation: ["Natuerliches Licht", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mann", "Pullover"]
+  szene: ["Portraet", "Nahaufnahme"]
+  umgebung: ["Garten", "Draussen"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Froehlich", "Friedlich"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

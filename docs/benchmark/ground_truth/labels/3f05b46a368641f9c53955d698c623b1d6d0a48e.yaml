@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4e/-alimentazione-il-grano.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Menschen", "Getreide", "Garben"]
+  szene: ["Ernte"]
+  umgebung: ["Feld", "Huegel"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Natuerliches Licht", "Hartes Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme der Getreideernte"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Menschen", "Getreide", "Strohhaufen", "Hut", "Berge"]
+  szene: ["Erntearbeit", "Feldarbeit"]
+  umgebung: ["Feld", "Berge"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: "Historische, sepiafarbene Aufnahme"
 
 ground_truth: null    # filled after dissens arbitration

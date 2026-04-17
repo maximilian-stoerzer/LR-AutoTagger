@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/2e/A._George%2C_L._Destoucher%2C_R._Valletto_and_de_Broglie%2C_in_fro_Wellcome_V0028215.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Maenner", "Bank", "Gebaeude", "Hecke"]
+  szene: ["Gruppenportrait"]
+  umgebung: ["Garten"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Sommer"
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme (ca. 1920er-30er Jahre)"
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bank", "Fenster", "Hut", "Buesche", "Ziegelwand"]
+  szene: ["Gruppenfoto", "Posierte Aufnahme"]
+  umgebung: ["Garten", "Hausfassade"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: ["Bewoelkt"]
   stimmung: null
   lichtsituation: null
-  perspektive: null
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
-
-gpt: null             # filled by GPT-5 API pass (later)
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

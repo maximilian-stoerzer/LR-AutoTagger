@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/aa/35mm_caffenol_man.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Mann", "Auto", "Filmstreifen"]
+  szene: ["Portrait"]
+  umgebung: ["Huegel", "Natur"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Nostalgisch", "Vertraeumt"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Analogfilm 35mm mit sichtbaren Perforationslöchern"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Auto", "Hügel", "Bäume"]
+  szene: ["Porträt", "Mensch sitzt auf Auto"]
+  umgebung: ["Ländliche Umgebung", "Hügelige Landschaft"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: "Bild mit simuliertem Filmstreifen-Rand im Vintage-Look"
 
 ground_truth: null    # filled after dissens arbitration

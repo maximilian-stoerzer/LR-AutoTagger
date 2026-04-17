@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/94/2019_%EB%AF%B8%EC%8A%A4%EC%BD%94%EB%A6%AC%EC%95%84_%EA%B9%80%EB%8B%A8%EC%95%84.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frau", "Faecher", "Hanbok"]
+  szene: ["Portrait", "Modefotografie"]
+  umgebung: ["Studio"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Romantisch"]
+  lichtsituation: ["High-Key", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Koreanische traditionelle Kleidung (Hanbok)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Frau", "Faecher", "traditionelle Kleidung"]
+  szene: ["Portraet", "Studioaufnahme"]
+  umgebung: ["neutraler Hintergrund", "Innenraum"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Romantisch", "Vertraeumt"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
