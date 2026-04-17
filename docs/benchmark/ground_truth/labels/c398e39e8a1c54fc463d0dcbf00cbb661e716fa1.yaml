@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/bf/And_then_I_saw_this_zebra_..._%2839765760370%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Zebras", "Baeume", "Gras", "Zaun"]
+  szene: ["Tiergehege", "Zoo"]
+  umgebung: ["Zoo", "Freiluft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Zebras im Zoo als IR-Aufnahme; weiss leuchtende Baumkronen und Gras vor dunklem Himmel."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Zebra", "Baum", "Gras", "Zaun", "Gebaeude"]
+  szene: ["Weiden", "Tiergehege"]
+  umgebung: ["Zoo", "Natur"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Friedlich"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Infrarot"]
+  notes: "Infrarotaufnahme mit dunklem Himmel und sehr hellen Blaettern."
 
 ground_truth: null    # filled after dissens arbitration

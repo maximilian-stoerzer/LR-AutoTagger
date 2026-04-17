@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/142148_ramim_ridge_-_viewpoint_over_kiryat_shmona_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Haeuser", "Strassen", "Baeume", "Felder"]
+  szene: ["Stadtansicht", "Aussichtspunkt"]
+  umgebung: ["Stadt", "Huegellandschaft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Dunst", "Bedeckt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Aussichtspunkt Ramim Ridge ueber Kiryat Shmona (Israel); Stadt mit roten Daechern im dunstigen Tal."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Haeuser", "Strasse", "Baeume", "Felder", "Industrieanlagen"]
+  szene: ["Stadtansicht", "Weitblick"]
+  umgebung: ["Huegellandschaft", "Agrarflaechen"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Dunst", "Bedeckt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

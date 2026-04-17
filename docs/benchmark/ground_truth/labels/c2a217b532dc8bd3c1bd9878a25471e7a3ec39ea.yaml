@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Beyond_Human_Vision.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baeume", "Haeuser", "Zaun", "Rasen", "Auto"]
+  szene: ["Wohngebiet", "Vorortstrasse"]
+  umgebung: ["Vorort", "Wohngebiet"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Rot-Pink-IR-Aufnahme ('Beyond Human Vision'): leuchtend weisse Baumkronen vor dunkelrotem Himmel."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Haus", "Zaun", "Rasen", "Auto"]
+  szene: ["Wohngebiet", "Garten"]
+  umgebung: ["Vorort", "Wohnanlage"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Farbverfremdete Infrarotaufnahme mit hellen Blaettern und dunklem Himmel."
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/7b/20240406_173120-COLLAGE.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Autos", "Palme", "Wolken", "Baeume"]
+  szene: ["Bildbearbeitungs-Tutorial", "Parkplatz"]
+  umgebung: ["Stadt", "Vorort"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: ["Bewoelkt"]
   stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Screenshot einer Photoshop-Collage: zwei IR-Varianten desselben Parkplatz-Motivs mit Channel-Mixer-UI — kein eigenstaendiges Foto."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Autos", "Palme", "Wolken", "Strassenlaterne", "Strassenschild"]
+  szene: ["Parkplatz", "Bildschirmfoto"]
+  umgebung: ["Aussenbereich", "Stadtraum"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: []
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Screenshot einer Bildbearbeitungsoberflaeche mit zwei Infrarot-Fotos und Kanalmixer-Einstellungen"
 
 ground_truth: null    # filled after dissens arbitration

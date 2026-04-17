@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d1/142143_ramim_ridge_-_horse_riding_group_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Pferde", "Reiter", "Baeume", "Weg"]
+  szene: ["Ausritt", "Landweg"]
+  umgebung: ["Land", "Huegellandschaft"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Lebhaft"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Reitergruppe auf dem Ramim Ridge (Israel); Schwarzweiss-Aufnahme im Gegenlicht."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Pferde", "Reiter", "Baeume", "Zaun", "Schatten"]
+  szene: ["Ausritt", "Landweg"]
+  umgebung: ["Huegellandschaft", "Laendliche Gegend"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Lebhaft"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

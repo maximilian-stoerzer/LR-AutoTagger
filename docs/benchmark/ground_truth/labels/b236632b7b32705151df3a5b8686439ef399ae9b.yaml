@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/47/3D_point_cloud_statue_Pentti_Eskola_Ladimo_technology.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Gesicht", "Lichtpunkte"]
+  szene: ["Lichtprojektion", "Technologiedemo"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Infrarot"]
+  notes: "3D-Punktwolke (Ladimo-Technologie) projiziert auf Pentti-Eskola-Statue; magenta IR-Dots auf schwarzem Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gesicht", "Lichtpunkte"]
+  szene: ["Portraet", "Lichtprojektion"]
+  umgebung: ["Innenraum", "Dunkler Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: "Gesicht mit projiziertem Punktemuster im Dunkeln"
 
 ground_truth: null    # filled after dissens arbitration

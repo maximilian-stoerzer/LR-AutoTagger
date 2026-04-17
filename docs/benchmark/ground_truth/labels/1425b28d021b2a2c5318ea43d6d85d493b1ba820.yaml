@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e4/141895_lonely_farms_above_gaon_jordan_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Schafe", "Unterstand", "Plane", "Person", "Gehege"]
+  szene: ["Schaeferei", "Landwirtschaft"]
+  umgebung: ["Land", "Wueste"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Beduinen-Schafhaltung ueber dem Jordantal bei Gaon; Werbeplane als Dachplane umfunktioniert."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Schafe", "Zaun", "Plane", "Person", "Gehege"]
+  szene: ["Tierhaltung", "Landwirtschaft"]
+  umgebung: ["Huegellandschaft", "Plantagen"]
+  tageszeit: "Nachmittag"
+  jahreszeit: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: "Unterstand mit grosser Werbeplane als Dach"
 
 ground_truth: null    # filled after dissens arbitration

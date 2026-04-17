@@ -27,18 +27,30 @@ category_proxy: "infrarot"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/ef/Blatten_infrarood_1976%2C_bij_zonnig_weer.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Holzhuette", "Heu", "Felsen", "Baeume"]
+  szene: ["Berghang", "Alphuette"]
+  umgebung: ["Gebirge", "Alp"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Nostalgisch", "Dramatisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Blatten (Wallis, 1976) auf Kodak Ektachrome Infrarotfilm; orangerot leuchtende Nadelbaeume am Alpenhang."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Holzhütte", "Heu", "Felsen", "Bäume"]
+  szene: ["Berghang"]
+  umgebung: ["Wald", "Felslandschaft"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Infrarot"]
+  notes: "Falschfarben durch Infrarotfilm"
 
 ground_truth: null    # filled after dissens arbitration

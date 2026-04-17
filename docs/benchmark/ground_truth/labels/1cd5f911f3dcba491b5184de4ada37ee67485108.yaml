@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/7f/145458_ein_tirya_in_the_pekiin_river_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Steinsaeulen", "Pergola", "Wasserbecken", "Wildblumen", "Huegel"]
+  szene: ["Parkanlage", "Wasserstelle"]
+  umgebung: ["Land", "Huegel"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich", "Froehlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Ein Tirya-Quelle am Pekiin-Fluss (Galilaea, Israel); steinerne Brunnenanlage mit Wildblumenteppich."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Steinsaeulen", "Pergola", "Wasserbecken", "Felsen", "Blumen"]
+  szene: ["Parkanlage", "Wasserstelle"]
+  umgebung: ["Wiese", "Huegellandschaft"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich", "Froehlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
