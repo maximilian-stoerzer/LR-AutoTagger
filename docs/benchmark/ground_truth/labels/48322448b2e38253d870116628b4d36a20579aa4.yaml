@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/6e/How_to_Take_Lightning_Shots_-_Flickr_-_longhorndave.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blitze", "Wolken", "Baeume", "Haus"]
+  szene: ["Gewitter", "Nachthimmel"]
+  umgebung: ["Land", "Wohngebiet"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Hell-Dunkel", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung", "Schwarzweiss"]
+  notes: "Drei Erdblitze in einer SW-Langzeitbelichtung; Baumsilhouetten am Horizont."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blitz", "Wolken", "Baeume", "Haeuser"]
+  szene: ["Gewitterhimmel", "Landschaft bei Nacht"]
+  umgebung: ["Vorort"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Gewitter", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Silhouette", "Low-Key", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss", "Langzeitbelichtung"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

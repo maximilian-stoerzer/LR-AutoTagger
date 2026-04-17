@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/76/Bbq_at_night_%283629745853%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Feuer", "Feuerschale", "Flammen"]
+  szene: ["Lagerfeuer", "Nahaufnahme"]
+  umgebung: ["Freiluft"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Vertraeumt", "Mystisch"]
+  lichtsituation: ["Low-Key", "Hartes Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Feuer in einer Metallfeuerschale vor pechschwarzem Hintergrund; Flammendetails durch Langzeitbelichtung etwas verwischt."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Feuerschale", "Flammen", "Glut"]
+  szene: ["Feuerstelle", "Nachtaufnahme"]
+  umgebung: ["Dunkelheit"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Low-Key", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

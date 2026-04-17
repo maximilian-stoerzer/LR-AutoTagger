@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/2b/142138_ramim_ridge_-_hiking_group_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wanderer", "Kiefern", "Weg"]
+  szene: ["Wanderung", "Waldweg"]
+  umgebung: ["Wald", "Huegel"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "High-Key", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Wandergruppe auf dem Ramim Ridge (Israel); Schwarzweiss mit ueberbelichtetem Himmel."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Menschen", "Baeume", "Rucksaecke", "Weg", "Himmel"]
+  szene: ["Wanderung"]
+  umgebung: ["Wald", "Hang"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

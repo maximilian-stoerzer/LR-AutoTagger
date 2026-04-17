@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/98/IMGP4406_-_Flickr_-_mattbuck4950.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wasser", "Wellen", "Gischt"]
+  szene: ["Abstrakt", "Wellendetail"]
+  umgebung: ["Meer"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Vertraeumt", "Friedlich", "Mystisch"]
+  lichtsituation: ["Diffuses Licht", "High-Key", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Abstrakte Langzeitbelichtung einer brechenden Welle; Tuerkis- und Weisstoene verschmelzen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wasser"]
+  szene: ["Abstrakt", "Detailaufnahme"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

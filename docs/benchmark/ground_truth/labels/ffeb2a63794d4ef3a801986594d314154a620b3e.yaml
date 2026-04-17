@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/02/143738_nahal_ofakim_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Duene", "Baeume", "Baukraene", "Haeuser"]
+  szene: ["Stadtrandlandschaft", "Neubaugebiet"]
+  umgebung: ["Wueste", "Stadt"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Hartes Licht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Nahal Ofakim (Israel): Sandduene im Vordergrund mit Wohnblockneubauten und Baukraenen im Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sandduene", "Baeume", "Wildblumen", "Wohnhaeuser", "Baukraene"]
+  szene: ["Landschaft", "Stadtrand"]
+  umgebung: ["Duenenlandschaft", "Stadt"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Hartes Licht", "Oberlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Viele Baukraene und Haeuser im Dunst hinter einer sandigen Duenenlandschaft."
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/db/Kamehameha_%2894573139%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Person", "Taschenlampe", "Sterne", "See", "Baeume"]
+  szene: ["Nachtaufnahme", "Lichtstrahl"]
+  umgebung: ["Natur", "See"]
+  tageszeit: "Nacht"
+  jahreszeit: "Sommer"
+  wetter: null
+  stimmung: ["Mystisch", "Vertraeumt", "Dramatisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Person schiesst Taschenlampenstrahl ueber See; Sternenhimmel und Daemmerungsrest am Horizont."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Lichtstrahl", "Sterne", "Wolken", "See"]
+  szene: ["Nachtlandschaft", "Person mit Lichtstrahl"]
+  umgebung: ["Wiese", "Seeufer"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Kunstlicht", "Lichtstrahlen", "Low-Key"]
+  perspektive: "Froschperspektive"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Starker Weitwinkel/Fisheye; Lichtstrahl wirkt wie Energieschub."
 
 ground_truth: null    # filled after dissens arbitration

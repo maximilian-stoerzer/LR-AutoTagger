@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/08/141892_lonely_farms_above_gaon_jordan_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Esel", "Wellblechstall", "Heu", "Steinmauer", "Huegel"]
+  szene: ["Tierhaltung", "Landwirtschaft"]
+  umgebung: ["Land", "Wueste"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Weisser Esel vor Wellblech-Unterstand bei Gaon am Jordan (Israel)."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Esel", "Huette", "Schatten", "Steinmauer", "Seil"]
+  szene: ["Hof", "Tierhaltung"]
+  umgebung: ["Huegellandschaft", "Trockene Landschaft"]
+  tageszeit: "Nachmittag"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Einsam", "Friedlich"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: "Auffallender Schatten des Esels auf der Wellblechwand."
 
 ground_truth: null    # filled after dissens arbitration

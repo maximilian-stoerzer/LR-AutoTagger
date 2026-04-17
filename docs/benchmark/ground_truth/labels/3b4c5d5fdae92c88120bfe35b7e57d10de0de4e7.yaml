@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/66/Jaipur_street.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Gebaeude", "Strasse", "Strassenlaternen", "Motorraeder", "Minarett"]
+  szene: ["Strassenszene", "Nachtaufnahme"]
+  umgebung: ["Stadt", "Altstadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Lebhaft", "Majestaetisch"]
+  lichtsituation: ["Kunstlicht", "Mischlicht", "Low-Key"]
+  perspektive: "Aufsicht"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Naechtliche Strasse in Jaipur (Rajasthan) mit beleuchteter Fassade und Lichtstreifen der Fahrzeuge."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strasse", "Autos", "Roller", "Strassenlaternen", "Gebaeude"]
+  szene: ["Strassenverkehr", "Nachtaufnahme"]
+  umgebung: ["Stadt", "Einkaufsstrasse"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Kunstlicht", "Low-Key"]
+  perspektive: "Aufsicht"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
