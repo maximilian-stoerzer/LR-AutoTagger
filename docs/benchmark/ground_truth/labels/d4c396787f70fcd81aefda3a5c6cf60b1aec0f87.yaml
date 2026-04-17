@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/ae/%27Limit%27.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frauen", "Fluss", "Ufer", "Bruecke"]
+  szene: ["Flussufer"]
+  umgebung: ["Gewaesser", "Flachland"]
+  tageszeit: "Morgen"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Dunst"]
+  stimmung: ["Melancholisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "High-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Personen", "Bruecke", "Ufer", "Wasser", "Insel"]
+  szene: ["Zwei Personen am Ufer", "Blick ueber Fluss"]
+  umgebung: ["Fluss", "Sandufer"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Dunst"]
+  stimmung: ["Romantisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Diffuses Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

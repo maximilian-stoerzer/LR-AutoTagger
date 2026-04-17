@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/6a/14_Japanese_prisoners_on_22_March_1946_at_the_first_war_crimes_trial_in_Rangoon_were_charged_with_murder_of_637_civilians_in_the_village_of_Kalagon%2C_from-_Burma_War_Crimes_Trial_%28cropped%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Maenner", "Gelaender", "Nummern", "Uniformen"]
+  szene: ["Gerichtsverhandlung"]
+  umgebung: ["Gerichtssaal"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Dramatisch"]
+  lichtsituation: ["Natuerliches Licht", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme, Kriegsverbrechertribunal 1946"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Soldaten", "Uniformen", "Nummerntafeln", "Brillen", "Holzgeländer"]
+  szene: ["Gerichtssaal", "Anklagebank"]
+  umgebung: ["Innenraum", "Holzvertäfelung"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch"]
+  lichtsituation: ["Kunstlicht", "Frontlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

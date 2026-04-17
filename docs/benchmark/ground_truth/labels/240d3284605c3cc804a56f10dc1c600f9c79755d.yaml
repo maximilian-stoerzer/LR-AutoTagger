@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Fancy_Crave_2015-06-12_%28Unsplash_OmQyZhOXFe4%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Personen", "Felsen", "Himmel"]
+  szene: ["Aussichtspunkt"]
+  umgebung: ["Felslandschaft"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Personen", "Felsen", "Himmel", "Baeume"]
+  szene: ["Menschen auf Felsen", "Silhouette"]
+  umgebung: ["Felslandschaft", "Natur"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "null"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

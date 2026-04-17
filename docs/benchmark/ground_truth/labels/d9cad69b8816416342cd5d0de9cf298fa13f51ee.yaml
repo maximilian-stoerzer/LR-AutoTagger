@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a3/%28Small_Fungi_54_%2C_20230916-A6503198.JPG%29_-_Flickr_-_Tero_Karppinen.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Pilz", "Moos"]
+  szene: ["Waldboden"]
+  umgebung: ["Wald"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: []
+  stimmung: ["Vertraeumt"]
+  lichtsituation: ["Weiches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Schwarzweiss", "Makro", "Bokeh"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Pilz", "Moos"]
+  szene: ["Nahaufnahme", "Natur"]
+  umgebung: ["Wald", "Waldboden"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Einsam"]
+  lichtsituation: ["Gegenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Schwarzweiss", "Makro"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

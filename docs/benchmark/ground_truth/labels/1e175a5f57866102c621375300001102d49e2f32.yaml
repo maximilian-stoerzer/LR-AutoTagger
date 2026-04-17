@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Electronic_shadow_-_Flickr_-_fotografar.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "LED-Leinwand", "Laptop"]
+  szene: ["Buehne"]
+  umgebung: ["Buehne"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Laptop", "LED-Wand", "Pult", "Kabel"]
+  szene: ["Konzert", "Auftritt"]
+  umgebung: ["Buehne"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Lebhaft"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

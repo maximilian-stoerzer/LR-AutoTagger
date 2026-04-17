@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/05/..._through_a_lane_of_cabinet_members_by_honorary_pall_bearers._To_Arlington_Nat%27l_Cemetery._White_House%2C_Washington%2C_D.C._LCCN2016893471.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Sarg", "Maenner", "Blumen", "Treppe", "Gebaeude"]
+  szene: ["Trauerfeier"]
+  umgebung: ["Regierungsgebaeude"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Melancholisch"]
+  lichtsituation: ["Natuerliches Licht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme, Trauerzug am Weissen Haus"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sarg", "Traeger", "Blumenkranz", "Maenner", "Eingangstuer"]
+  szene: ["Beerdigung"]
+  umgebung: ["Treppe", "Fassade"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bedeckt"]
+  stimmung: ["Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
