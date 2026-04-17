@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/10/19990101Tsai.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mann", "Hocker"]
+  szene: ["Portrait"]
+  umgebung: ["Studio"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["High-Key", "Weiches Licht", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Hocker", "Pullover", "Hose", "Studiohintergrund"]
+  szene: ["Portraet", "Studioaufnahme"]
+  umgebung: ["Studio", "Neutraler Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Melancholisch"]
+  lichtsituation: ["Seitenlicht", "Weiches Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

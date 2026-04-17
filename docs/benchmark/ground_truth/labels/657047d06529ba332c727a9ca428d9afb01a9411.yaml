@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f6/A_child_with_stumps_for_its_limbs%2C_being_Wellcome_V0007410.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kinder", "Fotografien"]
+  szene: ["Dokumentation"]
+  umgebung: ["Studio"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische medizinische Dokumentationsfotos, Reproduktion von Drucken"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Fotografien", "Kinder", "Papier", "Bilderrahmen"]
+  szene: ["Stillleben", "Archivaufnahme"]
+  umgebung: ["Studio", "Innenraum"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Frontlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Abfotografierte Drucke alter Fotografien nebeneinander."
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/57/A.J._Casson_%28I0014639%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mann", "Anzug", "Krawatte"]
+  szene: ["Portrait"]
+  umgebung: ["Studio"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Seitenlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme (ca. 1930er Jahre)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mann", "Anzug", "Krawatte"]
+  szene: ["Portraet", "Studioaufnahme"]
+  umgebung: ["Studio", "dunkler Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Weiches Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

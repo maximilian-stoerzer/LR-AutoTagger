@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/70/500px_photo_%2852894830%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "Gesicht"]
+  szene: ["Portrait"]
+  umgebung: ["Draussen"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Melancholisch"]
+  lichtsituation: ["Natuerliches Licht", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Bokeh"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Ohrring", "Jacke", "Trageriemen", "Haar"]
+  szene: ["Portraet", "Nahaufnahme"]
+  umgebung: ["Aussenbereich", "unscharfer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Melancholisch"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

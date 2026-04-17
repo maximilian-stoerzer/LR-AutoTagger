@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c0/18.._anonymer_Fotograf_Portrait_Selly_Hein.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mann", "Schnurrbart"]
+  szene: ["Portrait"]
+  umgebung: ["Studio"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Frontlicht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme (frueher 1900er)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mann", "Gesicht", "Schnurrbart", "Anzug"]
+  szene: ["Portraet", "Studioaufnahme"]
+  umgebung: ["Studio", "Neutraler Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

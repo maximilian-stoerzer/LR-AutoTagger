@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/32/A._Heming%2C_photographer_%28I0001378%29.tif"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mann", "Brille", "Anzug", "Krawatte"]
+  szene: ["Portrait"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Seitenlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme (ca. 1920er-30er Jahre)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mann", "Brille", "Anzug", "Krawatte"]
+  szene: ["Portraet"]
+  umgebung: ["Innenraum", "unscharfer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Weiches Licht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/da/20210709-hans-huwer-portrait.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mann", "Brille", "Pinsel", "Tisch", "Kunstwerk"]
+  szene: ["Portrait", "Kuenstleratelier"]
+  umgebung: ["Atelier"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mann", "Brille", "Pinsel", "Tisch", "Regal"]
+  szene: ["Portraet", "Atelier"]
+  umgebung: ["Innenraum", "Arbeitsraum"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Nostalgisch"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

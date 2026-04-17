@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/9d/500px_photo_%2869508697%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mann", "Staffelei", "Gemaelde", "Pinsel", "Platz"]
+  szene: ["Strassenkuenstler"]
+  umgebung: ["Stadt", "Platz"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bedeckt"]
+  stimmung: ["Froehlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Maler", "Leinwand", "Pinsel", "Farbschalen", "Kirche"]
+  szene: ["Maler bei der Arbeit", "Stadtszene"]
+  umgebung: ["Stadtplatz", "Altstadt"]
+  tageszeit: "Nachmittag"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Froehlich"]
+  lichtsituation: ["Gegenlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

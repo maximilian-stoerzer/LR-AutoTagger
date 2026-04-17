@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3d/1884_G._Andersen_Pair_Portrait_Photographs_Couple.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Bilderrahmen", "Portraits", "Frau", "Mann"]
+  szene: ["Portraitfotografie"]
+  umgebung: ["Studio"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Zwei ovale gerahmte Portraitfotos aus dem 19. Jahrhundert (ca. 1884)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Ovalrahmen", "Portraets", "Fotografien", "Wand"]
+  szene: ["Innenraum"]
+  umgebung: ["Weisse Wand"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Alte ovale Bilderrahmen mit sichtbaren Beschaedigungen; sepia Portraets hinter Glas."
 
 ground_truth: null    # filled after dissens arbitration
