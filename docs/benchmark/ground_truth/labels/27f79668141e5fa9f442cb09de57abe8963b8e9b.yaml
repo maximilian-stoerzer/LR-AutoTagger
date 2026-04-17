@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/83/Low_key_photography2.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Weinflasche", "Gummibaelle"]
+  szene: ["Stillleben", "Produktaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Mystisch"]
+  lichtsituation: ["Low-Key", "Seitenlicht", "Kunstlicht"]
+  perspektive: "Draufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Dunkle Weinflasche auf schwarzem Hintergrund mit zwei orangenen Gummibaellen; klassisches Low-Key-Stillleben."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Zylinder", "Igelbälle"]
+  szene: ["Stillleben", "Produktfoto"]
+  umgebung: ["Studio", "Schwarzer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

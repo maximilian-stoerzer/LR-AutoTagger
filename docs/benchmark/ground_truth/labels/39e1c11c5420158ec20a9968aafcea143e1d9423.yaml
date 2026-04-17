@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Catedral_de_Encarnaci%C3%B3n.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kathedrale", "Tuerme", "Kreuz", "Fenster"]
+  szene: ["Kirchenfassade", "Nachtaufnahme"]
+  umgebung: ["Stadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Majestaetisch", "Mystisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Weiches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Catedral de Encarnacion (Paraguay) bei Nacht mit warmer Akzentbeleuchtung auf Tuerme und Fassade."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kirche", "Glockentuerme", "Kreuz", "Fenster", "Bogen"]
+  szene: ["beleuchtete Kirchenfassade", "Nachtaufnahme"]
+  umgebung: ["Nachthimmel"]
+  tageszeit: "Nacht"
+  jahreszeit: "null"
+  wetter: []
+  stimmung: ["Mystisch", "Majestaetisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Hartes Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

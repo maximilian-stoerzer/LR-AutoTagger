@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/08/Bucuresti%2C_Romania._Interior_cu_Papagal_si_Soare_%282%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Vogelkaefig", "Papagei", "Fenster", "Sonnenstrahlen"]
+  szene: ["Innenraum", "Lichteinfall"]
+  umgebung: ["Innenraum", "Wohnung"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Mystisch"]
+  lichtsituation: ["Lichtstrahlen", "Gegenlicht", "Hartes Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Papagei im Kaefig vor Fenster mit Sonnenstern; Bukarest, Huawei-P60-Watermark."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Vogelkaefig", "Vogel", "Fenster", "Glocke", "Futternapf"]
+  szene: ["Innenraum", "Sonnenlicht durchs Fenster"]
+  umgebung: ["Wohnzimmer", "Fensterbereich"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

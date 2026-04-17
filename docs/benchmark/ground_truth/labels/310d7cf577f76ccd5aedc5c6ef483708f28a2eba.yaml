@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Low-key_photograph_combined_mixed_with_red.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "Haende", "Mund"]
+  szene: ["Portraet", "Body-Art"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Dramatisch", "Bedrohlich", "Mystisch"]
+  lichtsituation: ["Low-Key", "Frontlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Body-Art-Portraet: schwarz bemaltes Gesicht/Koerper mit leuchtend roten Haenden vor schwarzem Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Haende", "Kopf", "Mund"]
+  szene: ["Portraet", "Bodypainting"]
+  umgebung: ["Schwarzer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Frontlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Körper und Gesicht schwarz bemalt, Hände leuchtend rot; ausdrucksstarker Schrei im Studio."
 
 ground_truth: null    # filled after dissens arbitration

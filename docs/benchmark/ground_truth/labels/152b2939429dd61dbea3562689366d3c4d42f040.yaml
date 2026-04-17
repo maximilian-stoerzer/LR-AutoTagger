@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Fonte_Monumental_da_Alameda_at_night_with_half_of_the_illumination_not_working%2C_Alameda_Dom_Afonso_Henriques%2C_Lisbon%2C_Portugal_julesvernex2-4.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Brunnen", "Statue", "Wasserkaskaden", "Figuren"]
+  szene: ["Monumentalbrunnen", "Nachtaufnahme"]
+  umgebung: ["Stadt", "Park"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Majestaetisch", "Mystisch", "Dramatisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Fonte Monumental da Alameda (Lissabon), Schwarzweiss-Version desselben Motivs wie 058d2a74."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Brunnen", "Statue", "Wasser", "Gebaeude", "Becken"]
+  szene: ["Nachtszene", "Architektur"]
+  umgebung: ["Stadt", "Platz"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

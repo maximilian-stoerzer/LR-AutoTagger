@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Bucuresti%2C_Romania._Soare_de_toamna._Octombrie_2024.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Sonne", "Blaetter", "Pergola", "Gelaender"]
+  szene: ["Balkon", "Sonnenstern"]
+  umgebung: ["Innenraum", "Balkon"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Lichtstrahlen", "Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Herbstsonne bricht durch Kastanienlaub am Balkon in Bukarest; Starburst-Sonnenstern mit Lens Flare."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Blaetter", "Baum", "Pfosten", "Balkon"]
+  szene: ["Sonnenlicht durch Baeume", "Blick vom Balkon"]
+  umgebung: ["Balkon", "Garten"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

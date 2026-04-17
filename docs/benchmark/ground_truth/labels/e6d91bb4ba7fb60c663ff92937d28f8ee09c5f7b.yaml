@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/20/Clouds_-_Dammam_%288609295437%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolken", "Himmel"]
+  szene: ["Wolkenstudie", "Lichtstrahlen"]
+  umgebung: ["Himmel"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch", "Mystisch"]
+  lichtsituation: ["Lichtstrahlen", "Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Crepuscular Rays hinter dramatischer Cumuluswolke ueber Dammam (Saudi-Arabien); goldener Farbton."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wolken", "Sonnenstrahlen", "Himmel"]
+  szene: ["Sonnenstrahlen durch Wolken", "dramatischer Himmel"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt", "Dunst"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Hell-Dunkel"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
