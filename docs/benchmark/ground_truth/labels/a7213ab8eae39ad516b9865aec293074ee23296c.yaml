@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/ee/143495_coral_from_eilat_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Seeigel", "Korallen", "Steine"]
+  szene: ["Unterwasser", "Aquarium"]
+  umgebung: ["Wasser", "Riffbecken"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Mystisch"]
+  lichtsituation: ["Diffuses Licht", "Kunstlicht"]
+  perspektive: "Draufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Schwarzer Seeigel in Aquarienbecken (Eilat, Israel); kein Landschaftsfoto — Wikimedia-Kategorie unpassend."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Seeigel", "Korallen", "Steine", "Gitter"]
+  szene: ["Unterwasser", "Aquarium"]
+  umgebung: ["Innenraum", "Riffbecken"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Bedrohlich"]
+  lichtsituation: ["Diffuses Licht", "Kunstlicht"]
+  perspektive: "Draufsicht"
+  technik: []
+  notes: "Durch Aquariumscheibe mit sichtbaren Reflexen fotografiert"
 
 ground_truth: null    # filled after dissens arbitration

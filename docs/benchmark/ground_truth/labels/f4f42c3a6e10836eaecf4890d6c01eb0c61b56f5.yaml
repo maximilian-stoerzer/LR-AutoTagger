@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/77/141897_a_look_at_the_jordanian_genius_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Fluss", "Stacheldrahtzaun", "Buesche", "Feldweg"]
+  szene: ["Flussufer", "Grenzlandschaft"]
+  umgebung: ["Land", "Fluss"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Einsam", "Friedlich"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: null
+  notes: "Blick auf den Jordan an der israelisch-jordanischen Grenze mit Stacheldrahtzaun am Ufer."
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Fluss", "Zaun", "Feldweg", "Buesche", "Baumstamm"]
+  szene: ["Flussufer", "Naturlandschaft"]
+  umgebung: ["Buschland", "Trockene Landschaft"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "null"
+  wetter: ["Sonnig", "Dunst"]
   stimmung: null
   lichtsituation: null
-  perspektive: null
+  perspektive: "Aufsicht"
   technik: null
-  notes: null         # free text, only if something atypical
-
-gpt: null             # filled by GPT-5 API pass (later)
+  notes: "Stacheldrahtzaun verläuft entlang des Ufers"
 
 ground_truth: null    # filled after dissens arbitration

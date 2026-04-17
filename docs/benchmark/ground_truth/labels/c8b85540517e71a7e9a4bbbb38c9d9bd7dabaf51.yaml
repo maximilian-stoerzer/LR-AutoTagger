@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/aa/0136_paysage_lune_nuages_oranges.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mond", "Wolken", "Felder", "Baeume"]
+  szene: ["Landschaft", "Mondaufgang"]
+  umgebung: ["Land", "Ebene"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Vertraeumt", "Romantisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Vollmond ueber flacher Agrarlandschaft mit rosa Wolkenschleiern in der Abenddaemmerung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mond", "Wolken", "Felder", "Baeume"]
+  szene: ["Landschaft", "Abendhimmel"]
+  umgebung: ["Ackerland", "Weite Ebene"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

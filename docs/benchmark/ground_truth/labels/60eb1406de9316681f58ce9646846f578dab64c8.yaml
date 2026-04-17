@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d1/145459_ein_tirya_in_the_pekiin_river_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Informationsschild", "Steine", "Gras"]
+  szene: ["Lehrpfad", "Informationstafel"]
+  umgebung: ["Naturpark", "Felsen"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: null
   stimmung: null
-  lichtsituation: null
-  perspektive: null
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Hebraeische Informationstafel zu Flora und Fauna am Pekiin-Fluss (Israel); kein eigentliches Landschaftsfoto."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Informationsschild", "Text", "Steine", "Gras", "Palmenstamm"]
+  szene: ["Lehrpfad", "Naturpark"]
+  umgebung: ["Felsen", "Wiese"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

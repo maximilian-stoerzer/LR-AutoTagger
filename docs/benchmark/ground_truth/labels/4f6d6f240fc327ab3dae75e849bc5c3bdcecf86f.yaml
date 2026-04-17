@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Avenue_des_Lumi%C3%A8res_quartier_Dix30.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Gebaeude", "Weg", "Baeume", "Strassenlaterne", "Blumenbeete"]
+  szene: ["Einkaufsviertel", "Stadtgarten"]
+  umgebung: ["Stadt", "Einkaufszentrum"]
+  tageszeit: "Abend"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Lebhaft"]
+  lichtsituation: ["Weiches Licht", "Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Avenue des Lumieres im Quartier Dix30 (Brossard, Quebec); begruentes Einkaufsviertel mit Staudenbepflanzung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gebäude", "Weg", "Bäume", "Straßenlaterne", "Pflanzen"]
+  szene: ["Straßenszene", "Stadtlandschaft"]
+  umgebung: ["Stadt", "Einkaufsviertel"]
+  tageszeit: "Abend"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Weiches Licht", "Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

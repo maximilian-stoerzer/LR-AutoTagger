@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/59/All%C3%A9_du_Baobab_02.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baobab-Baeume", "Sandweg", "Personen", "Auto", "Sonne"]
+  szene: ["Baobaballee", "Sonnenuntergang"]
+  umgebung: ["Savanne", "Land"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch", "Vertraeumt", "Romantisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Allee der Baobabs (Madagaskar) bei Sonnenuntergang; ikonische Silhouetten der Affenbrotbaeume."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baobab-Baeume", "Menschen", "Auto", "Sonne", "Sandweg"]
+  szene: ["Landschaft", "Sonnenuntergang"]
+  umgebung: ["Natur", "Offene Landschaft"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

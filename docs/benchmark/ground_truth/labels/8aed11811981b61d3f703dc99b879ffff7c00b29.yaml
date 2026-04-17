@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/51/142929_view_from_moshav_kadesh_barnea_-_an_abandoned_idf_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Personen", "Unterstand", "Flagge", "Wachturm", "Olivenbaum"]
+  szene: ["Versammlungsplatz", "Aussichtspunkt"]
+  umgebung: ["Wueste", "Land"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Ehemaliger IDF-Posten bei Moshav Kadesh Barnea (Israel) mit Strohdach-Pavillon, israelischer Flagge und Gruppe auf Baenken."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Menschen", "Unterstand", "Flagge", "Schaukel", "Turm"]
+  szene: ["Gruppe sitzt unter Unterstand", "Warten"]
+  umgebung: ["Trockene Landschaft", "Dorfplatz"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

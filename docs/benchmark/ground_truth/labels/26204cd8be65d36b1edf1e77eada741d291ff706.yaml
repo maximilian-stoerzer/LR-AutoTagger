@@ -27,18 +27,30 @@ category_proxy: "landschaft"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c5/A_bunch_of_trees.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Wiese", "Wolken", "Himmel", "Huegel"]
+  szene: ["Weideland", "Landschaft"]
+  umgebung: ["Land", "Natur"]
+  tageszeit: "Mittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Natuerliches Licht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bäume", "Wiese", "Wolken", "Himmel", "Hügel"]
+  szene: ["Landschaft", "Weideland"]
+  umgebung: ["laendlich", "Natur"]
+  tageszeit: "Mittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Natuerliches Licht", "Oberlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
