@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/17/A_photograph_of_a_building_and_the_sky_by_Diwagaran.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Tempel", "Kuppel", "Sonne", "Wolken"]
+  szene: ["Architektur"]
+  umgebung: ["Stadt"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Majestaetisch", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Wolken", "Tempelturm", "Satellitenschuessel"]
+  szene: ["Sonnenuntergang"]
+  umgebung: ["Dach", "Himmel"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Bewoelkt", "Dunst"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

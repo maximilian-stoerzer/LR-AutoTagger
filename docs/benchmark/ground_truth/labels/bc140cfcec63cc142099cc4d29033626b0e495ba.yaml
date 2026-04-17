@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/05/Dedicato_alla_figlia.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Gesichter", "Spiegel", "Koepfe"]
+  szene: ["Gemaelde"]
+  umgebung: ["Museum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Surrealistisches Gemaelde, kein Foto — Fehlkategorisierung in Wikimedia"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Spiegel", "Hand", "Torso", "Gewand", "Ziegelmauer"]
+  szene: ["Surrealistische Darstellung", "Portraetkomposition"]
+  umgebung: ["Abstrakter Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Frontlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Fotografie eines surrealen Gemaeldes mit doppeltem Profilrahmen und Figur mit Spiegel."
 
 ground_truth: null    # filled after dissens arbitration

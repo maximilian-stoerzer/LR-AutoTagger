@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/42/Al_porto.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "Mauer", "Meer", "Wolken"]
+  szene: ["Hafenmole"]
+  umgebung: ["Kueste", "Meer"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Einsam"]
+  lichtsituation: ["Silhouette", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Langzeitbelichtung"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Mole", "Wasser", "Wolken", "Himmel"]
+  szene: ["Kuestenlandschaft", "Hafen"]
+  umgebung: ["Meer", "Kueste"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt", "Wind"]
+  stimmung: ["Dramatisch", "Einsam"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Langzeitbelichtung"]
+  notes: "Langzeitbelichtung mit streifigen Wolken und Silhouette auf einer Mole."
 
 ground_truth: null    # filled after dissens arbitration

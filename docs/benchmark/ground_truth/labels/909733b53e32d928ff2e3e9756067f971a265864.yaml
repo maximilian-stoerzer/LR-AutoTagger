@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/94/-_panoramio_-_trukdotcom_%2865%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Reiterstatue", "Pferd", "Mond"]
+  szene: ["Denkmal"]
+  umgebung: ["Stadt"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Majestaetisch"]
+  lichtsituation: ["Silhouette", "Low-Key", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Reiterstatue", "Pferd", "Mond"]
+  szene: ["Silhouette einer Reiterstatue vor Himmel", "Halbmond sichtbar"]
+  umgebung: ["Himmel"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Majestaetisch"]
+  lichtsituation: ["Silhouette", "Gegenlicht", "Low-Key"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

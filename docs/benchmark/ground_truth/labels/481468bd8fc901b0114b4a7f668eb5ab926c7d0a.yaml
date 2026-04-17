@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/27/Camera_Silhouette.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kamera", "Stativ", "Display"]
+  szene: ["Stillleben"]
+  umgebung: ["Draussen"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Mystisch"]
+  lichtsituation: ["Silhouette", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kamera", "Stativ"]
+  szene: ["Innenraum", "Studio"]
+  umgebung: ["Dunkler Hintergrund", "Blauer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Silhouette", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Down_by_the_riverside_-_Flickr_-_AdaMacey.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kind", "Wasser", "Spiegelung", "Baumstamm"]
+  szene: ["Flussufer"]
+  umgebung: ["Gewaesser"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Baumstamm", "Angelschnur", "Wasser"]
+  szene: ["beim Angeln", "am Fluss"]
+  umgebung: ["Wasserflaeche", "Baeume"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

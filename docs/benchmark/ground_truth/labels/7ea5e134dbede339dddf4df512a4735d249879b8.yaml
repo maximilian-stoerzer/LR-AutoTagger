@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Apocalispe.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "Kette"]
+  szene: ["Portrait"]
+  umgebung: ["Studio"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Halskette", "Herz-Anhaenger"]
+  szene: ["Portraet", "Studioaufnahme"]
+  umgebung: ["violetter Hintergrund", "Farbverlauf"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Silhouette", "Gegenlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

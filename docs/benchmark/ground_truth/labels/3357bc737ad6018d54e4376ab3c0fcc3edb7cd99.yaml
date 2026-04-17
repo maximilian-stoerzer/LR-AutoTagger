@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/57/500px_photo_%28217969035%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "Koffer", "Boden", "Lampen"]
+  szene: ["Unterfuehrung"]
+  umgebung: ["Stadt"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: []
+  stimmung: ["Einsam", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Tasche", "Lichter", "Schatten"]
+  szene: ["Innenraum", "Flur"]
+  umgebung: ["Halle"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
   stimmung: null
   lichtsituation: null
-  perspektive: null
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
-
-gpt: null             # filled by GPT-5 API pass (later)
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

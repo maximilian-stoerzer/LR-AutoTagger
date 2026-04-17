@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Deer_Head_-_Cervusgender.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Hirschkopf", "Kreuz"]
+  szene: ["Grafik"]
+  umgebung: []
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: []
+  lichtsituation: []
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Digitale Pixelgrafik/Icon, kein Foto — Fehlkategorisierung in Wikimedia"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: []
+  szene: []
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: []
+  perspektive: null
+  technik: []
+  notes: "Grafische Silhouette auf weissem Hintergrund, kein erkennbares Foto-Motiv."
 
 ground_truth: null    # filled after dissens arbitration

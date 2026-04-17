@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Darkness_behind_bars_%28Unsplash%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "Seile", "Stuehle"]
+  szene: ["Portrait"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Einsam", "Melancholisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Stuhl", "Gitter"]
+  szene: ["Rueckenansicht", "Schattenriss"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Melancholisch"]
+  lichtsituation: ["Low-Key", "Silhouette", "Kantenlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Sehr dunkles Low-Key mit starkem Kantenlicht; Person hinter Gitter sichtbar."
 
 ground_truth: null    # filled after dissens arbitration
