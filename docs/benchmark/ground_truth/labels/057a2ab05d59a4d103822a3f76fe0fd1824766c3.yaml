@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a6/5737383273_-_Flickr_-_Canan_%C3%87engel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Rauch", "Lichtstrahlen", "Blaetter"]
+  szene: ["Waldszene", "Naturaufnahme"]
+  umgebung: ["Wald", "Natur"]
+  tageszeit: "Morgen"
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Mystisch", "Vertraeumt", "Friedlich"]
+  lichtsituation: ["Lichtstrahlen", "Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Sonnenstrahlen brechen durch Dunst/Rauch im Wald; typische Crepuscular-Ray-Szene."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baum", "Zweige", "Blaetter", "Sonne", "Lichtstrahlen"]
+  szene: ["Wald", "Sonnenstrahlen im Nebel"]
+  umgebung: ["Natur", "Laubwald"]
+  tageszeit: "Morgen"
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig", "Nebel"]
+  stimmung: ["Mystisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Diffuses Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

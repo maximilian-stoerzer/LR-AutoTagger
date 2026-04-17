@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Commute_-_Flickr_-_Travis_Isaacs.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Autobahn", "Strassenlaternen", "Fahrzeuge", "Himmel"]
+  szene: ["Autofahrt", "Nachtfahrt"]
+  umgebung: ["Strasse"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Dramatisch", "Vertraeumt"]
+  lichtsituation: ["Mischlicht", "Kunstlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Aus der Windschutzscheibe fotografiert: Strassenlaternen als Lichtstreifen, Fahrbahn verwischt."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Autobahn", "Autos", "Strassenmarkierungen", "Laternen"]
+  szene: ["Autofahrt", "Verkehr"]
+  umgebung: ["Daemmerungshimmel"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Lebhaft"]
+  lichtsituation: ["Mischlicht", "Kunstlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Aufnahme aus fahrendem Auto mit Langzeitbelichtung; starke Lichtspuren."
 
 ground_truth: null    # filled after dissens arbitration

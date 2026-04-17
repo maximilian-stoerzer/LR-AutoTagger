@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/57/Long_exposure_%28lap%29_06.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Lichtkreisel", "Lichtstreifen"]
+  szene: ["Abstrakt", "Lichtmalerei"]
+  umgebung: ["Innenraum"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Vertraeumt", "Lebhaft"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Rotierender LED-Kreisel als Langzeitbelichtung; konzentrische Farbringe in Gruen/Blau/Gelb/Rot."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["bunter Lichtring", "Lichtspuren", "Arm", "Hand"]
+  szene: ["Lichtmalerei", "Rotation"]
+  umgebung: ["Innenraum", "dunkler Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Lebhaft", "Mystisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Hell-Dunkel"]
+  perspektive: "Schraegsicht"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Langzeitbelichtung einer rotierenden Lichtquelle; Arm schemenhaft sichtbar."
 
 ground_truth: null    # filled after dissens arbitration

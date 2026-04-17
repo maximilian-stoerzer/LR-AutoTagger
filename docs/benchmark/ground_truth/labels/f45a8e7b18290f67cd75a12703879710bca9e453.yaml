@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Coonoor_Market_Closing_Ooty_%28124455395%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Blumengirlanden", "Personen", "Marktstand"]
+  szene: ["Blumenmarkt", "Marktszene"]
+  umgebung: ["Innenraum", "Markt"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Lebhaft", "Nostalgisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: "Coonoor-Blumenmarkt (Ooty, Indien) bei Ladenschluss; keine erkennbare Langzeitbelichtung."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blumengirlanden", "Menschen", "Verkaufsstand", "Leuchtroehren", "Tische"]
+  szene: ["Strassenmarkt", "Verkauf"]
+  umgebung: ["Gasse", "Ueberdachter Markt"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Lebhaft", "Friedlich"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Seitenlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

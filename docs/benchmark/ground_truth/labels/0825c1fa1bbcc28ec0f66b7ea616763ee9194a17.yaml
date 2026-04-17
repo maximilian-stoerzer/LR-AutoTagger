@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Crepuscular_Rays_%282020-58-4780%29.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Wolken", "Sonne", "Straeucher", "Himmel"]
+  szene: ["Sonnenuntergang", "Steppelandschaft"]
+  umgebung: ["Steppe", "Ebene"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Majestaetisch", "Dramatisch", "Vertraeumt"]
+  lichtsituation: ["Lichtstrahlen", "Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Strahlenkranz (Crepuscular Rays) hinter Cumuluswolken ueber weiter Hochebene."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wolken", "Sonnenstrahlen", "Horizont", "Buesche"]
+  szene: ["Sonnenuntergang"]
+  umgebung: ["Offene Landschaft", "Ebene"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

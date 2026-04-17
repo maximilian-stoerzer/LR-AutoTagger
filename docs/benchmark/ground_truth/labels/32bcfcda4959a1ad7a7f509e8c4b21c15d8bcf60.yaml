@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/06/A_Shaft_of_Heavenly_Glow.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Sonne", "Wolken"]
+  szene: ["Himmelsstudie", "Lichtstrahlen"]
+  umgebung: ["Himmel"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Majestaetisch", "Mystisch", "Dramatisch"]
+  lichtsituation: ["Lichtstrahlen", "Gegenlicht", "Diffuses Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Sonne bricht durch Wolkendecke; Cinemascope-Seitenverhaeltnis mit schwarzen Balken."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wolken", "Sonne", "Lichtstrahlen"]
+  szene: ["Himmel", "Sonnenstrahlen durch Wolken"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: "Breite schwarze Balken (Letterbox) oben und unten"
 
 ground_truth: null    # filled after dissens arbitration

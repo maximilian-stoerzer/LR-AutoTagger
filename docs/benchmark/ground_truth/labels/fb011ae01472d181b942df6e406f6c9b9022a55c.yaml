@@ -27,18 +27,30 @@ category_proxy: "langzeit"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Irrwischschloss_%2819183278875%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baeume", "Gebaeude", "Weg"]
+  szene: ["Park", "Schlosspark"]
+  umgebung: ["Park", "Natur"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Irrwischschloss: aetherische Aufnahme mit verwischten Baumkronen durch Langzeitbelichtung; Gebaeude durchschimmert hinter dichtem Laub."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baum", "Blaetter", "Haus", "Fensterlaeden", "Zweige"]
+  szene: ["Haus hinter Baeumen", "Wald"]
+  umgebung: ["Laubwald"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Infrarot"]
+  notes: "Infrarot-Anmutung mit sehr hellen Blaettern; Hausfassade teilweise verdeckt."
 
 ground_truth: null    # filled after dissens arbitration

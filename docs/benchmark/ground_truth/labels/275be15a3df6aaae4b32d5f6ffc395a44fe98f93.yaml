@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Amazing_blue_sky_1.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolken", "Himmel", "Stromleitung", "Strommast"]
+  szene: ["Himmelsstudie", "Lichtstrahlen"]
+  umgebung: ["Himmel"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Majestaetisch", "Dramatisch"]
+  lichtsituation: ["Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Untersicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Crepuscular Rays brechen hinter Cumuluswolken; Stromleitung diagonal durchs Bild."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wolken", "Sonnenstrahlen", "Stromleitung"]
+  szene: ["Himmel mit Wolken", "Sonnenstrahlen hinter Wolken"]
+  umgebung: []
+  tageszeit: "Nachmittag"
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

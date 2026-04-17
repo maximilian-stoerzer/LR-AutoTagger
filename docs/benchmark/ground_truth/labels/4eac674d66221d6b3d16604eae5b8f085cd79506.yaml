@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/91/Chara_Sands_before_it_rains_-_Kalarsky_District%2C_Zabaykalsky_Krai%2C_Siberia.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Sandduenen", "Berge", "Wolken", "Lichtstrahlen"]
+  szene: ["Wuestenlandschaft", "Bergpanorama"]
+  umgebung: ["Wueste", "Gebirge"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt", "Wind"]
+  stimmung: ["Majestaetisch", "Dramatisch", "Mystisch"]
+  lichtsituation: ["Lichtstrahlen", "Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Chara-Sands (Sibirien): goldene Sandduenen vor schneebedeckten Bergen mit Lichtstrahlen durch Wolken."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sandduene", "Berge", "Wolken", "Schnee", "Wald"]
+  szene: ["Wuestenlandschaft", "Gebirgslandschaft"]
+  umgebung: ["Natur", "Wildnis"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Bewoelkt", "Wind", "Dunst"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Seitenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: "Sandduenen vor schneebedeckten Bergen; starker Wind mit wehendem Sand und sichtbaren Lichtstrahlen."
 
 ground_truth: null    # filled after dissens arbitration

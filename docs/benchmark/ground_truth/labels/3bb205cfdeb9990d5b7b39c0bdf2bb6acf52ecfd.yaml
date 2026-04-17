@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/7f/A320_%2812660437763%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Flugzeug", "Wolken", "Himmel"]
+  szene: ["Flugzeugstart", "Himmelsstudie"]
+  umgebung: ["Himmel"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Lichtstrahlen"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "A320-Silhouette vor dramatischen Wolken mit Lichtstrahlen; Gegenlicht."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Flugzeug", "Wolken"]
+  szene: ["Landeanflug"]
+  umgebung: ["Wolkenhimmel"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Lichtstrahlen"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
