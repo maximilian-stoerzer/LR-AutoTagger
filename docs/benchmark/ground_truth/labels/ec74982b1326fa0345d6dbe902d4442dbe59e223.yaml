@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/5f/2011053001_Florfliegenlarve_2011.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Florfliegenlarve", "Samenkapseln", "Pflanzenstiel"]
+  szene: ["Insektenportraet", "Makroaufnahme"]
+  umgebung: ["Natur"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Kunstlicht", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro"]
+  notes: "Florfliegenlarve klettert zwischen gruenen Dolden-Samenkapseln; schwarzer Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Larve", "Insekt", "Samenkapseln", "Pflanze"]
+  szene: ["Makroaufnahme", "Natur"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch"]
+  lichtsituation: ["Kunstlicht", "Hartes Licht", "Low-Key"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

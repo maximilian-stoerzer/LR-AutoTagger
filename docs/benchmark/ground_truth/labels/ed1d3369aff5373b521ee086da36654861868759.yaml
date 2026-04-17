@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/fa/2022061113_Filmtransporthebel_Bildzaehlwerk_mit_Empfindlichkeitsmerkscheibe_Exa_500_2022.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kamera", "Filmtransporthebel", "Bildzaehlwerk"]
+  szene: ["Produktdetail", "Makroaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Seitenlicht", "Weiches Licht", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro"]
+  notes: "Ihagee Dresden Exa 500: Filmtransporthebel und Bildzaehlwerk mit Empfindlichkeitsmerkscheibe."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kamera", "Einstellrad", "Knopf", "Schriftzug", "Metall"]
+  szene: ["Detailaufnahme", "Studioaufnahme"]
+  umgebung: ["Innenraum", "Studiohintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Hartes Licht", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

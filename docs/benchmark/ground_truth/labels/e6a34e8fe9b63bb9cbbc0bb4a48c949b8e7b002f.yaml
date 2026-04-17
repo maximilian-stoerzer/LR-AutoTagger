@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/40/2019120306_Casio_ProTrek_PRW_60Y-1AER_function_display_2019.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Uhren-Zifferblatt", "Zeiger", "Funktionsanzeige"]
+  szene: ["Produktdetail", "Makroaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: null
   stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  lichtsituation: ["Seitenlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro"]
+  notes: "Casio Pro Trek PRW-60Y Funktionsanzeige (BARO, TEMP) in extremer Nahaufnahme."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Armbanduhr", "Zeiger", "Zifferblatt", "Skala", "Display"]
+  szene: ["Nahaufnahme", "Detail"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Kunstlicht", "Weiches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

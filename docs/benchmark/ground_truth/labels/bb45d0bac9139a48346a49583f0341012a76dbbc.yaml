@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/2f/-365_along_for_the_ride_%2823357331815%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Schneemann-Figur", "Hut", "Karotte"]
+  szene: ["Spielzeug", "Detailaufnahme"]
+  umgebung: ["Freiluft"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Froehlich", "Vertraeumt"]
+  lichtsituation: ["Seitenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bokeh"]
+  notes: "Bastelfigur auf Stock vor unscharfem Hintergrund; eher Bokeh als Makro."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Dekofigur", "Gartenstecker"]
+  szene: ["Nahaufnahme"]
+  umgebung: ["Hausfassade", "Himmel"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Froehlich"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

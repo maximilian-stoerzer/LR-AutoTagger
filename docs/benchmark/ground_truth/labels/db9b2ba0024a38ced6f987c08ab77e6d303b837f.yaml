@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/37/2018-08-01_17-14-38_%28C%29-2.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Bluete", "Knospe", "Staubgefaesse", "Bluetenblaetter"]
+  szene: ["Makroaufnahme", "Blumenportraet"]
+  umgebung: ["Natur"]
+  tageszeit: null
+  jahreszeit: "Sommer"
+  wetter: null
+  stimmung: ["Vertraeumt", "Romantisch"]
+  lichtsituation: ["Seitenlicht", "Kunstlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: "Rosa Sonnentau-/Drosera-Bluete mit Knospe vor schwarzem Hintergrund; Pollenkugelchen auf den Staengeln."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blume", "Bluete", "Knospe"]
+  szene: ["Makroaufnahme"]
+  umgebung: ["schwarzer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Kunstlicht", "Frontlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

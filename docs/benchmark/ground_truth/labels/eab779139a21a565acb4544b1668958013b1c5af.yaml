@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/59/2019112001_Bedienelemente_Pentax-KP_2019.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kamera", "Ausloeser", "Einstellraeder"]
+  szene: ["Produktdetail", "Makroaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro"]
+  notes: "Pentax KP Bedienelemente (Ausloeser, Modusrad, Belichtungskorrektur) in Makro-Detailansicht."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kamera", "Einstellrad", "Knopf"]
+  szene: ["Nahaufnahme", "Technikdetail"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Diffuses Licht", "Weiches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "makro"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a5/2020042601_Wiesen-Schaumkraut_%28Cardamine_pratensis%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Blueten", "Staubgefaesse", "Stiel"]
+  szene: ["Makroaufnahme", "Blumenportraet"]
+  umgebung: ["Natur", "Wiese"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: null
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro", "Bokeh"]
+  notes: "Wiesen-Schaumkraut (Cardamine pratensis) mit rosa-lila Bluetenstand, kleine Insekt rechts unten."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Blueten", "Insekt"]
+  szene: ["Nahaufnahme"]
+  umgebung: ["Natur"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: []
+  perspektive: "Schraegsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
