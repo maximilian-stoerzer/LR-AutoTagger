@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Front_of_a_vintage_watch%2C_1810200949%2C_ako.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Taschenuhr", "Zifferblatt", "Zeiger"]
+  szene: ["Stillleben", "Produktaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Nostalgisch", "Vertraeumt"]
+  lichtsituation: ["Low-Key", "Seitenlicht", "Kunstlicht"]
+  perspektive: "Schraegsicht"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Antike Taschenuhr mit roemischen Ziffern auf schwarzem reflektierendem Untergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Taschenuhr"]
+  szene: ["Stillleben"]
+  umgebung: ["Schwarzer Hintergrund", "Reflektierende Oberflaeche"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
+  perspektive: "Aufsicht"
+  technik: ["Makro"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

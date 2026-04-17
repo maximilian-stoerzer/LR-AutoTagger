@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Casio_Edifice_WR100M%2C_1811051918%2C_ako.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Armbanduhr", "Lederband", "Spiegelung"]
+  szene: ["Stillleben", "Produktaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Low-Key", "Seitenlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Casio Edifice WR100M auf schwarzem reflektierendem Untergrund; klassisches Low-Key-Produktfoto."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Armbanduhr", "Lederarmband", "Spiegelung"]
+  szene: ["Produktfotografie", "Studioaufnahme"]
+  umgebung: ["Schwarzer Hintergrund", "Reflektierende Oberflaeche"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Low-Key", "Kunstlicht", "Weiches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

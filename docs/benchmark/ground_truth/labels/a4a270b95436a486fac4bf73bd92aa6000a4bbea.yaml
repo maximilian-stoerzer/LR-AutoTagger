@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Low-key_image_of_cactus%2C_Jardim_Bot%C3%A2nico_Tropical%2C_Lisbon%2C_Portugal_julesvernex2.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kaktus", "Opuntie"]
+  szene: ["Pflanzenstudie", "Stillleben"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Mystisch", "Friedlich"]
+  lichtsituation: ["Low-Key", "Seitenlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Opuntia-Kaktus mit zwei Segmenten vor pechschwarzem Hintergrund; Jardim Botanico Tropical Lissabon."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kaktus"]
+  szene: ["Nahaufnahme"]
+  umgebung: ["Schwarzer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

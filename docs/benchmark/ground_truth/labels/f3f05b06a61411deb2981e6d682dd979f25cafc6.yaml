@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Gabriel_on_a_plane_to_Madrid%2C_Humberto_Delgado_Airport%2C_Lisbon%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kind", "Flugzeugfenster"]
+  szene: ["Flugzeugkabine", "Portraet"]
+  umgebung: ["Flugzeug", "Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Low-Key", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Kind-Silhouette am Flugzeugfenster; helles Fenster als einzige Lichtquelle in dunkler Kabine."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kind", "Flugzeugfenster", "Flugzeugsitz", "Flughafenterminal"]
+  szene: ["Im Flugzeug", "Am Flughafen"]
+  umgebung: ["Flugzeugkabine", "Rollfeld"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

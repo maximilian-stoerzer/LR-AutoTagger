@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f5/Focus_stack_of_a_shell%2C_1811080802%2C_ako.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Schneckenhaus", "Spiegelung"]
+  szene: ["Stillleben", "Produktaufnahme"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: null
+  stimmung: ["Vertraeumt", "Nostalgisch"]
+  lichtsituation: ["Low-Key", "Seitenlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Makro"]
+  notes: "Focus-Stack einer Meeresschnecke mit Spiegelung auf schwarzer Glasflaeche."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Muschel"]
+  szene: ["Stillleben", "Produktfotografie"]
+  umgebung: ["Studio", "Schwarzer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Seitenlicht", "Low-Key", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Makro"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

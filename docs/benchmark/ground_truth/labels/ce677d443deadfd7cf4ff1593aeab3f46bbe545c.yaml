@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/7f/Canon_EOS_5D_Mark_IV_%28Rear%29%2C_1803241121%2C_ako.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kamera", "Display", "Tasten"]
+  szene: ["Produktaufnahme", "Stillleben"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: null
   stimmung: null
-  lichtsituation: null
-  perspektive: null
+  lichtsituation: ["Low-Key", "Seitenlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Canon EOS 5D Mark IV Rueckseite auf schwarzem reflektierendem Untergrund; klassische Low-Key-Produktfotografie."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kamera", "Display", "Sucher", "Tasten"]
+  szene: ["Produktfotografie", "Studioaufnahme"]
+  umgebung: ["Schwarzer Hintergrund", "Reflektierende Oberflaeche"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Low-Key", "Kunstlicht", "Weiches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

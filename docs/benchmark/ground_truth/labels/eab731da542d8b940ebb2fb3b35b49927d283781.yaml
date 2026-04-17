@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Clinker_brick_detail_%28low-key%29%2C_Pasewalk%2C_2016-09-10.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Backsteinmauer", "Klinker", "Fugen"]
+  szene: ["Architekturdetail", "Textur"]
+  umgebung: ["Mauer"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: null
   stimmung: null
-  lichtsituation: null
-  perspektive: null
+  lichtsituation: ["Low-Key", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Klinkerstein-Detail (Pasewalk) in Low-Key; dunkle Backsteine mit hellen Fugen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Ziegelsteine", "Mauer"]
+  szene: ["Architekturdetail"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

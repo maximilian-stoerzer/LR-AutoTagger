@@ -27,18 +27,30 @@ category_proxy: "low_key"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/78/Ornette_Coleman_in_Ludwigshafen_%28fcm%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Musiker", "Mikrofone", "Buehne"]
+  szene: ["Konzert", "Portraet"]
+  umgebung: ["Buehne", "Innenraum"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Mystisch", "Vertraeumt", "Nostalgisch"]
+  lichtsituation: ["Low-Key", "Seitenlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Ornette Coleman Live in Ludwigshafen; Buehnenbeleuchtung mit blauem Lichtstreifen auf schwarzem Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mann", "Mikrofon", "Mikrofonstaender"]
+  szene: ["Konzert", "Buehnenauftritt"]
+  umgebung: ["Innenraum", "Buehne"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Vertraeumt"]
+  lichtsituation: ["Kantenlicht", "Low-Key", "Kunstlicht"]
+  perspektive: "Untersicht"
+  technik: ["Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
