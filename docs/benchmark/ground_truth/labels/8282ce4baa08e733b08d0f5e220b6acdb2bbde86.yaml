@@ -27,18 +27,30 @@ category_proxy: "nebel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8e/500px_photo_%28213150939%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Person", "Parkbank", "Baum"]
+  szene: ["Park"]
+  umgebung: ["Park", "Stadt"]
+  tageszeit: "Morgen"
+  jahreszeit: "Herbst"
+  wetter: ["Nebel"]
+  stimmung: ["Einsam", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baum", "Bank", "Person", "Tasche"]
+  szene: ["Person auf Parkbank", "nebelige Landschaft"]
+  umgebung: ["Park", "Wiese"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Nebel"]
+  stimmung: ["Melancholisch", "Einsam"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

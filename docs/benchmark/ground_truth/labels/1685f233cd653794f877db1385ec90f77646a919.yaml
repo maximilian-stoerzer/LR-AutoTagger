@@ -27,18 +27,30 @@ category_proxy: "nebel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/06/A_misty_day_in_nature_%2832896652040%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Birke", "Gebuesch", "Gras", "Maulwurfshuegel"]
+  szene: ["Landschaft"]
+  umgebung: ["Flachland", "Wiese"]
+  tageszeit: "Morgen"
+  jahreszeit: "Winter"
+  wetter: ["Nebel"]
+  stimmung: ["Melancholisch", "Einsam"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baum", "Straeucher", "Gras", "Erdhuegel"]
+  szene: ["Landschaft", "Wiese"]
+  umgebung: ["offene Landschaft", "laendlich"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Bedeckt", "Nebel"]
+  stimmung: ["Melancholisch", "Mystisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

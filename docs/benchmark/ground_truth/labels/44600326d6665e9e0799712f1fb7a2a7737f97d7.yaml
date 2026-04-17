@@ -27,18 +27,30 @@ category_proxy: "nebel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/82/-i---i-_%2850536253547%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Nadelbaeume", "Waldweg", "Gras"]
+  szene: ["Waldweg"]
+  umgebung: ["Nadelwald", "Bergwald"]
+  tageszeit: "Morgen"
+  jahreszeit: "Sommer"
+  wetter: ["Nebel"]
+  stimmung: ["Mystisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Bild um 90 Grad gedreht"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Weg", "Gras"]
+  szene: ["nebliger Wald", "Waldweg"]
+  umgebung: ["Wald", "Natur"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Nebel"]
+  stimmung: ["Mystisch", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

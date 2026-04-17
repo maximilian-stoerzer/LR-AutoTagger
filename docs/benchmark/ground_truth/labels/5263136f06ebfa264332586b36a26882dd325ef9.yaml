@@ -27,18 +27,30 @@ category_proxy: "nebel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/68/A_Blanket_of_Fog_%2830328477961%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Berge", "Nebelmeer", "Baum", "Gras"]
+  szene: ["Berglandschaft"]
+  umgebung: ["Gebirge", "Tal"]
+  tageszeit: "Morgen"
+  jahreszeit: "Herbst"
+  wetter: ["Nebel"]
+  stimmung: ["Majestaetisch", "Friedlich"]
+  lichtsituation: ["Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Inversionswetterlage mit Nebelmeer im Tal"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Berge", "Nebel", "Himmel", "Gras"]
+  szene: ["Landschaft", "Tal"]
+  umgebung: ["Gebirge", "Tal"]
+  tageszeit: "Morgen"
+  jahreszeit: null
+  wetter: ["Sonnig", "Nebel"]
+  stimmung: ["Mystisch", "Friedlich"]
+  lichtsituation: ["Seitenlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

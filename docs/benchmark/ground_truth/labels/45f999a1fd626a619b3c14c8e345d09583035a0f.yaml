@@ -27,18 +27,30 @@ category_proxy: "nebel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f2/A_mediod%C3%ADa._P%C3%A1ramo_Andino..jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Zaunpfaehle", "Gras", "Stacheldraht"]
+  szene: ["Hochebene"]
+  umgebung: ["Gebirge", "Paramo"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Nebel"]
+  stimmung: ["Einsam", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Andines Paramo-Hochland"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Zaun", "Gras", "Buesche"]
+  szene: ["Landschaft", "Huegellandschaft"]
+  umgebung: ["Feld", "Huegelland"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bedeckt", "Nebel"]
+  stimmung: ["Mystisch", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
