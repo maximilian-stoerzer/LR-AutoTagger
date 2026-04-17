@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/20/2007120401_Cityhochhaus_Leipzig_mit_Vordach_2007.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Hochhaus", "Vordach", "Fassade", "Lampen"]
+  szene: ["Architektur"]
+  umgebung: ["Stadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Majestaetisch", "Dramatisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Oberlicht"]
+  perspektive: "Froschperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Hochhaus", "Fenster", "Straßenlaternen", "Vordach", "Himmel"]
+  szene: ["Architektur", "Stadt bei Nacht"]
+  umgebung: ["Stadt", "Geschäftsviertel"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Kunstlicht", "Low-Key"]
+  perspektive: "Froschperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

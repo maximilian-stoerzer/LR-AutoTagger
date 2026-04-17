@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/41/20070927-9789-2B_-_Flickr_-_orangeacid.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Lichtspuren", "Tankstelle", "Strassenlaternen", "Strasse"]
+  szene: ["Strassenverkehr"]
+  umgebung: ["Vorort"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Lichtstrahlen"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strasse", "Lichtspuren", "Strassenlaternen", "Tankstelle", "Ampel"]
+  szene: ["Strassenverkehr bei Nacht", "Tankstelle an Hauptstrasse"]
+  umgebung: ["Stadt", "Strassenrand"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Lebhaft", "Dramatisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key"]
+  perspektive: "Schraegsicht"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Langzeitbelichtung mit ausgepraegten Lichtspuren und sternfoermigen Laternen."
 
 ground_truth: null    # filled after dissens arbitration

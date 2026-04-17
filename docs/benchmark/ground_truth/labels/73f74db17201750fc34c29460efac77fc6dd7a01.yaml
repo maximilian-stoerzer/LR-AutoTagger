@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d3/500px_photo_%2849282178%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Regenschirm", "Auto", "Person", "Strasse"]
+  szene: ["Strassenszene"]
+  umgebung: ["Stadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Regen"]
+  stimmung: ["Einsam", "Melancholisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Hell-Dunkel"]
+  perspektive: "Vogelperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Regenschirm", "Auto", "Strasse", "Fahrbahnmarkierung"]
+  szene: ["Strassenszene", "Passant im Regen"]
+  umgebung: ["Stadt", "Strasse"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Regen"]
+  stimmung: ["Melancholisch", "Einsam"]
+  lichtsituation: ["Low-Key", "Hell-Dunkel", "Kunstlicht"]
+  perspektive: "Aufsicht"
+  technik: ["Schwarzweiss"]
+  notes: "Durch Gitter oder Jalousie im Vordergrund fotografiert"
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/36/A_night_cloud_over_Honolulu%2C_Hawaii.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolke", "Sterne", "Hochhaeuser", "Stadtlichter"]
+  szene: ["Stadtpanorama", "Nachthimmel"]
+  umgebung: ["Grossstadt", "Kueste"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Majestaetisch", "Friedlich"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Mischlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Langzeitbelichtung"]
+  notes: "Flugzeugspur (rote Linie) rechts im Bild sichtbar"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wolke", "Sterne", "Gebaeude", "Hochhaeuser", "Lichtspur"]
+  szene: ["Skyline", "Stadt bei Nacht"]
+  umgebung: ["Stadt", "Himmel"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Lebhaft"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Hell-Dunkel"]
+  perspektive: "Aufsicht"
+  technik: ["Langzeitbelichtung"]
+  notes: "Lichtspur eines Flugzeugs am Himmel durch Langzeitbelichtung"
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/af/500px_photo_%2852157150%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Hochhaeuser", "Bruecke", "Fahrzeuge", "Lichter"]
+  szene: ["Stadtverkehr"]
+  umgebung: ["Grossstadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Lebhaft", "Dramatisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss", "Bewegungsunschaerfe"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Busse", "Gebaeude", "Ueberdachung", "Saeulen", "Lichtreklamen"]
+  szene: ["Busbahnhof", "Stadt bei Nacht"]
+  umgebung: ["Innenstadt", "Verkehr"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Melancholisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Silhouette"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss", "Bewegungsunschaerfe"]
+  notes: "Durch Fensterscheibe fotografiert; Reflexionen sichtbar."
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f3/2_Lighting_Trees_%26_Towers_in_Sacred_Heart_Cathedral_in_Canton%2C_China_%28LLS%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Lichterbaeume", "Wimpelkette", "Menschen", "Gebaeude"]
+  szene: ["Weihnachtsbeleuchtung", "Fest"]
+  umgebung: ["Platz", "Stadt"]
+  tageszeit: "Nacht"
+  jahreszeit: "Winter"
+  wetter: []
+  stimmung: ["Froehlich", "Lebhaft"]
+  lichtsituation: ["Kunstlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Bild um 90 Grad gedreht"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Lichterketten", "Menschen", "Wimpelketten", "Weihnachtsbaum", "Stern"]
+  szene: ["Strassenfest", "Feier"]
+  umgebung: ["Stadt", "Platz"]
+  tageszeit: "Nacht"
+  jahreszeit: "Winter"
+  wetter: []
+  stimmung: ["Lebhaft", "Froehlich"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

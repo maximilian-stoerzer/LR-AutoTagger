@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/26/500px_photo_%2855036204%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Bahnsteig", "Gleise", "Strassenlaternen", "Gebaeude"]
+  szene: ["Bahnhof"]
+  umgebung: ["Stadt", "Industriegebiet"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Einsam", "Melancholisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gleise", "Bahnsteig", "Strassenlaternen", "Gebaeude", "Bahnsignal"]
+  szene: ["Bahnhof", "leerer Bahnsteig"]
+  umgebung: ["Stadt", "Bahnhofsgelaende"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Einsam", "Melancholisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

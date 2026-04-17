@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/db/001_1967_07_01_Staedte_in_der_Daemmerung_und_im_Morgengrauen.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Leuchtreklame", "Menschen", "Autos", "Gebaeude"]
+  szene: ["Platz", "Stadtleben"]
+  umgebung: ["Grossstadt"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Regen"]
+  stimmung: ["Lebhaft", "Nostalgisch"]
+  lichtsituation: ["Kunstlicht", "Mischlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Historische Aufnahme (ca. 1960er Jahre), Piccadilly Circus London"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Leuchtreklamen", "Menschen", "Autos", "Ampel", "Gebaeude"]
+  szene: ["Strassenszene", "Kreuzung"]
+  umgebung: ["Innenstadt", "Platz"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Kunstlicht", "Mischlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
