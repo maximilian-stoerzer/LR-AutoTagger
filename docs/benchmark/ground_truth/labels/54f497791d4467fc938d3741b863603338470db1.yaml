@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/6f/A_moonlit_night_where_silence_feels_like_music.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mond", "Wolken"]
+  szene: ["Nachthimmel"]
+  umgebung: ["Himmel"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Low-Key", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mond", "Wolken"]
+  szene: ["Nachthimmel"]
+  umgebung: ["Himmel"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Mystisch", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Low-Key", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

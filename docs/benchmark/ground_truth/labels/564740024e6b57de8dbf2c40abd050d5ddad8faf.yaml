@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Across_the_Universe..._A_Wider_View_%288246508024%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Milchstrasse", "Sterne", "Gebaeude", "Schornstein", "Baum"]
+  szene: ["Sternenhimmel"]
+  umgebung: ["Laendlich"]
+  tageszeit: "Nacht"
+  jahreszeit: "Sommer"
+  wetter: []
+  stimmung: ["Majestaetisch", "Mystisch"]
+  lichtsituation: ["Low-Key", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Langzeitbelichtung"]
+  notes: "Panorama-Aufnahme der Milchstrasse"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Milchstraße", "Sterne", "Hausdach", "Schornstein", "Baum"]
+  szene: ["Sternenhimmel", "Nachtlandschaft"]
+  umgebung: []
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Majestaetisch"]
+  lichtsituation: ["Low-Key", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Langzeitbelichtung"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

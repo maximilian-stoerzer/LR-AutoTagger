@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e0/500px_photo_%2826110861%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Gebaeude", "Garagentor", "Strassenlaterne", "Schnee", "Treppe"]
+  szene: ["Strasse"]
+  umgebung: ["Wohngebiet"]
+  tageszeit: "Nacht"
+  jahreszeit: "Winter"
+  wetter: ["Schnee"]
+  stimmung: ["Einsam", "Mystisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Hell-Dunkel"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: "Analoge Filmaufnahme mit sichtbarem Filmkorn und Kratzern"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strassenlaterne", "Treppe", "Rolltor", "Fenster", "Schnee"]
+  szene: ["Industriegebaeude", "Strasse"]
+  umgebung: ["Gewerbegebiet", "Nachtstrasse"]
+  tageszeit: "Nacht"
+  jahreszeit: "Winter"
+  wetter: []
+  stimmung: ["Mystisch", "Einsam"]
+  lichtsituation: ["Kunstlicht", "Low-Key", "Gegenlicht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: "Stark gekippte Kameraneigung."
 
 ground_truth: null    # filled after dissens arbitration

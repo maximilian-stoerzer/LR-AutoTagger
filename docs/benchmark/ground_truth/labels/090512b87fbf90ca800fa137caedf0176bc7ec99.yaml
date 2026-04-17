@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3f/500px_photo_%2833755897%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Steg", "Gelaender", "Lampen", "Wasser", "Stadtsilhouette"]
+  szene: ["Uferpromenade"]
+  umgebung: ["Gewaesser", "Stadt"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Steg", "Wasser", "Geländer", "Lampen", "Stadtlichter"]
+  szene: ["Ufer", "Stadtansicht"]
+  umgebung: ["Gewässer", "Stadt"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Low-Key", "Kunstlicht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Abstract_streaks_of_a_building_at_night.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Lichtspuren"]
+  szene: ["Abstrakte Lichtmalerei"]
+  umgebung: ["Stadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
+  wetter: []
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
   perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Absichtliche Kamerabewegung waehrend Langzeitbelichtung (ICM)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Lichtspuren", "Lichter"]
+  szene: ["Abstrakte Lichtmalerei", "Stadtlichter bei Nacht"]
+  umgebung: ["Stadt", "Dunkelheit"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Low-Key", "Kunstlicht"]
+  perspektive: null
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Abstraktes Bild durch absichtliche Kamerabewegung bei Langzeitbelichtung."
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3e/A_soft_blur_streaks_across_the_foreground_as_dusk_settles_over_a_quiet_cityscape.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Hochspannungsmast", "Berge", "Stadtlichter"]
+  szene: ["Stadtpanorama"]
+  umgebung: ["Stadtrand", "Landschaft"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Natuerliches Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Unscharfe dunkle Form oben links, moeglicherweise Vogel oder Verschmutzung auf der Linse"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Hochspannungsmast", "Berge", "Stadtlichter"]
+  szene: ["Himmel bei Daemmerung", "Stadtlandschaft in der Ferne"]
+  umgebung: ["Stadtrand", "Landschaft"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Bewegungsunschaerfe"]
+  notes: "Unscharfe dunkle Form links im Bild deutet auf Bewegung/Vorbeifahrt hin."
 
 ground_truth: null    # filled after dissens arbitration

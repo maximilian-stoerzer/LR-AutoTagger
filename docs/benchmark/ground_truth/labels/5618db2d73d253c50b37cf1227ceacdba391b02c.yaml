@@ -27,18 +27,30 @@ category_proxy: "nacht"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/27/500px_photo_%2826110679%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Scheune", "Mond", "Baeume"]
+  szene: ["Bauernhof"]
+  umgebung: ["Huegellandschaft", "Laendlich"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Herbst"
+  wetter: []
+  stimmung: ["Friedlich", "Nostalgisch"]
+  lichtsituation: ["Natuerliches Licht", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Scheune", "Mond", "Fenster", "Tuer", "Eimer"]
+  szene: ["Bauernhof", "Daemmerung"]
+  umgebung: ["Huegellandschaft", "Baeume"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
