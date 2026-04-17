@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1a/061_366_-_H%C3%B6her%2C_schneller%2C_weiter_Higher%2C_faster%2C_further_%2825253895009%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Moschee", "Kuppeln", "Bogen", "Person", "Spiegelung"]
+  szene: ["Architektur"]
+  umgebung: ["Moschee"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch"]
+  lichtsituation: ["Hell-Dunkel", "Natuerliches Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Moschee", "Person", "Smartphone", "Kuppeln", "Bogen"]
+  szene: ["Architektur", "Besichtigung"]
+  umgebung: ["Innenhof", "Reflektierender Boden"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch", "Friedlich"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

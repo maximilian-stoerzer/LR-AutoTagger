@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/94/044_366_-_Spiegelungen_Reflections_%2825081471571%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Smartphone", "Gesicht", "Spiegelung", "Holztisch"]
+  szene: ["Selbstportrait"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
+  wetter: []
+  stimmung: ["Vertraeumt"]
+  lichtsituation: ["Seitenlicht", "Low-Key"]
+  perspektive: "Aufsicht"
+  technik: ["Schwarzweiss"]
+  notes: "Selbstportrait als Spiegelung im Smartphone-Display"
+
+gpt:
+  _model: "gpt-5"
+  objekte: ["Smartphone", "Reflexion", "Brille", "Gesicht", "Tisch"]
+  szene: ["Portraet", "Detailaufnahme"]
+  umgebung: ["Innenraum", "Holztisch"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
   stimmung: null
   lichtsituation: null
-  perspektive: null
+  perspektive: "Schraegsicht"
   technik: null
-  notes: null         # free text, only if something atypical
-
-gpt: null             # filled by GPT-5 API pass (later)
+  notes: "Gesicht als Reflexion im Smartphone-Display, auf dem Kopf stehend"
 
 ground_truth: null    # filled after dissens arbitration

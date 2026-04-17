@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/54/%28Parque_La_Carolina%2C_Quito_antique_plane%29.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Karussell", "Flugzeug", "Baum", "Kind"]
+  szene: ["Vergnuegungspark"]
+  umgebung: ["Park"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kinderkarussell", "Baum", "Flugzeug", "Schienen", "Zaun"]
+  szene: ["Vergnuegungspark", "Rummelplatz"]
+  umgebung: ["Park", "Wiese"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: ["Bedeckt"]
+  stimmung: ["Melancholisch", "Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Kinderkarussell vor einem grossen Flugzeug wirkt ungewoehnlich"
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/da/16001000432925-Sorsele-Riksantikvarie%C3%A4mbetet.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Kinder", "Tische", "Baenke", "Teller", "Becher"]
+  szene: ["Schulessen"]
+  umgebung: ["Kantine"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Froehlich", "Nostalgisch"]
+  lichtsituation: ["Natuerliches Licht", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme (ca. 1970er-80er Jahre)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Tisch", "Bank", "Tablett", "Becher", "Teller"]
+  szene: ["Schulkantine", "Kinder beim Essen"]
+  umgebung: ["Innenraum", "Speisesaal"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Lebhaft", "Friedlich"]
+  lichtsituation: ["Natuerliches Licht", "Seitenlicht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

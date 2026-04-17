@@ -27,18 +27,30 @@ category_proxy: "schwarzweiss"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3d/%22Beach_Beast%22_-_Flickr_-_Robbeld.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Strandbeest", "Segel", "Sand", "Meer"]
+  szene: ["Kunstinstallation"]
+  umgebung: ["Strand"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Wind"]
+  stimmung: ["Majestaetisch"]
+  lichtsituation: ["Natuerliches Licht", "Hell-Dunkel"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Kinetische Skulptur (Strandbeest, Theo Jansen)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Skulptur", "Segel", "Geruest", "Wellen"]
+  szene: ["Strand", "Kuestenlinie"]
+  umgebung: ["Meer", "Himmel"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Wind"]
+  stimmung: ["Dramatisch"]
+  lichtsituation: ["Hartes Licht", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Ungewoehnliche kinetische Strandskulptur mit Segeln in Schwarzweiss dargestellt."
 
 ground_truth: null    # filled after dissens arbitration
