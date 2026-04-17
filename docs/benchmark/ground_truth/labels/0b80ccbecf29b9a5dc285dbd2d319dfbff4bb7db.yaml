@@ -27,18 +27,30 @@ category_proxy: "portrait"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/89/02-Riemann-Was_fuer_eine_Insel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frau", "Tuerrahmen", "Backsteinmauer"]
+  szene: ["Portrait"]
+  umgebung: ["Hinterhof"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bedeckt"]
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme (ca. 1970er Jahre)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Tuer", "Ziegelwand", "Eingang", "Fussmatte"]
+  szene: ["Person kniet im Tuerrahmen"]
+  umgebung: ["Hauseingang", "Backsteinfassade"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Melancholisch", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Ungewoehnlich: Person kniet im Eingang statt zu stehen."
 
 ground_truth: null    # filled after dissens arbitration

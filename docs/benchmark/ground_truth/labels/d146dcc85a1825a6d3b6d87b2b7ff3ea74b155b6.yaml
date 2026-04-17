@@ -27,18 +27,30 @@ category_proxy: "nebel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/40/A_walk_in_the_mist_%2832930823605%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Person", "Weg", "Gelaender", "Baeume", "Teich"]
+  szene: ["Spaziergang"]
+  umgebung: ["Park", "Gewaesser"]
+  tageszeit: "Morgen"
+  jahreszeit: "Winter"
+  wetter: ["Nebel"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Weg", "Geländer", "Bäume", "Bank"]
+  szene: ["Spaziergang", "Parklandschaft"]
+  umgebung: ["Park", "Gewässer"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Bedeckt", "Nebel"]
+  stimmung: ["Melancholisch", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

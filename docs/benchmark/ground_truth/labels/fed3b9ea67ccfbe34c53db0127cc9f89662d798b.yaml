@@ -27,18 +27,30 @@ category_proxy: "nebel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Above_the_Fog_-_Flickr_-_Tiger_Lily.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Baeume", "Nebelmeer", "Huegel"]
+  szene: ["Berglandschaft"]
+  umgebung: ["Gebirge", "Wald"]
+  tageszeit: "Morgen"
+  jahreszeit: "Winter"
+  wetter: ["Nebel", "Bedeckt"]
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Diffuses Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Nebelbänke zwischen bewaldeten Hügelkuppen"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Nebel", "Huegel"]
+  szene: ["Waldlandschaft", "Nebelmeer"]
+  umgebung: ["Tal", "Wald"]
+  tageszeit: "Morgen"
+  jahreszeit: "Winter"
+  wetter: ["Nebel"]
+  stimmung: ["Mystisch", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

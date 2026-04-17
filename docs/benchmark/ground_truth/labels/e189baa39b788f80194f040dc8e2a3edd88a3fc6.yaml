@@ -27,18 +27,30 @@ category_proxy: "nebel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/0/06/500px_photo_%28239840831%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Baum", "Person", "Schnee", "Weg"]
+  szene: ["Winterlandschaft"]
+  umgebung: ["Flachland"]
+  tageszeit: "Morgen"
+  jahreszeit: "Winter"
+  wetter: ["Nebel", "Schnee"]
+  stimmung: ["Einsam", "Mystisch"]
+  lichtsituation: ["Diffuses Licht", "High-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baum", "Mensch", "Weg", "Schnee"]
+  szene: ["Winterlandschaft", "Spaziergang"]
+  umgebung: ["Feld", "Ufer"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Nebel", "Schnee"]
+  stimmung: ["Einsam", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
