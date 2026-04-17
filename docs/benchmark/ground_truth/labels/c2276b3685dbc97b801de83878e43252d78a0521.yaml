@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/94/Crepuscular_Rays_and_Cumulonimbus_Clouds_%28153537%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolken", "Cumulonimbus", "Erdoderflaeche"]
+  szene: ["Wolkenformation", "Orbitalaufnahme"]
+  umgebung: ["Himmel"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Majestaetisch", "Dramatisch", "Mystisch"]
+  lichtsituation: ["Lichtstrahlen", "Natuerliches Licht", "Hell-Dunkel"]
+  perspektive: "Vogelperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Crepuscular Rays und Cumulonimbus-Wolken von oben (ISS-Aufnahme); Wolkenschatten fallen als dunkle Streifen auf die Erdoberflaeche."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wolken", "Lichtstrahlen", "Schatten", "Dunst"]
+  szene: ["Wolkenformationen", "Luftaufnahme"]
+  umgebung: ["Himmel", "Atmosphaere"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt", "Dunst"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Low-Key"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: "Aufnahme aus sehr grosser Hoehe mit ausgepraegten Lichtstrahlen und langen Schlagschatten."
 
 ground_truth: null    # filled after dissens arbitration

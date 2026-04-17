@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/8f/Bucuresti%2C_Romania._Soarele_si_papagalii._Raze_solare_in_camera_%282%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Vogelkaefig", "Fenster", "Heizkoerper", "Sonnenstrahlen"]
+  szene: ["Innenraum", "Lichteinfall"]
+  umgebung: ["Innenraum", "Wohnung"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Sonnig"]
+  stimmung: ["Mystisch", "Vertraeumt"]
+  lichtsituation: ["Lichtstrahlen", "Gegenlicht", "Hartes Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Sonne bricht durch Fenster in dunklen Raum; Papageienkaefig rechts, Starburst-Sonnenstern, Huawei-P60-Watermark."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Vogelkaefig", "Vogel", "Fenster", "Heizkoerper", "Sonnenstrahlen"]
+  szene: ["Innenraum", "Wohnzimmer"]
+  umgebung: ["Wohnung"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: "Starke Linsenreflexe und Lichtstrahlen durch direktes Gegenlicht."
 
 ground_truth: null    # filled after dissens arbitration

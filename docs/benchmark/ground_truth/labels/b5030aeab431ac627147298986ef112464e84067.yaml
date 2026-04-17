@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Canadian_TV_visits_Paranal_%28canadian-tv-par-008%29.tiff"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Observatorium", "Personen", "Stativ", "Berge"]
+  szene: ["Observatorium", "Sonnenuntergang"]
+  umgebung: ["Wueste", "Hochebene"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Majestaetisch", "Mystisch", "Vertraeumt"]
+  lichtsituation: ["Silhouette", "Natuerliches Licht", "Lichtstrahlen"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "ESO-Paranal-Observatorium in der Atacama (Chile) bei Sonnenuntergang; Zodiacal-Lichtschein am Horizont."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Personen", "Stativ", "Kamera", "Pfuetzen"]
+  szene: ["Landschaft", "Fotografieren"]
+  umgebung: ["Ebene", "Berge"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Lichtstrahlen"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Krepuskularstrahlen am Horizont sichtbar"
 
 ground_truth: null    # filled after dissens arbitration

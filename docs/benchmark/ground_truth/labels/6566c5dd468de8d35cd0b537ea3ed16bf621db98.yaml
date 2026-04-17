@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Break_on_Through_%2849956476393%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Berg", "Wolken", "Baeume", "Schnee"]
+  szene: ["Berglandschaft", "Wolkenstimmung"]
+  umgebung: ["Gebirge", "Land"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Winter"
+  wetter: ["Bewoelkt", "Sonnig"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Lichtstrahlen", "Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Schneeberg mit dramatischen Cumuluswolken, durch die Lichtstrahlen brechen; Birkenwald im Vordergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Berge", "Schnee", "Wolken", "Baeume", "Wald"]
+  szene: ["Landschaft", "Gebirge"]
+  umgebung: ["Tal", "Schneelandschaft"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

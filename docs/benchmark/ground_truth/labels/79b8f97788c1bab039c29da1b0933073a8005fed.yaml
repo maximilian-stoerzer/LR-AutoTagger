@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/57/An_Autumn_Sunbeam_%2851713565985%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Parkbank", "Person", "Kinderwagen", "Laub"]
+  szene: ["Park", "Herbstszene"]
+  umgebung: ["Park", "Stadt"]
+  tageszeit: "Vormittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt", "Romantisch"]
+  lichtsituation: ["Lichtstrahlen", "Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Sonnenstrahlen brechen durch Baumkrone im Herbstpark; Person mit Kinderwagen als Silhouette."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Parkbank", "Fahrrad", "Laterne", "Baum", "Laub"]
+  szene: ["Parkszene", "Radfahrer"]
+  umgebung: ["Park", "Wiese"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Sonnenstrahl durch Baumkronen"
 
 ground_truth: null    # filled after dissens arbitration

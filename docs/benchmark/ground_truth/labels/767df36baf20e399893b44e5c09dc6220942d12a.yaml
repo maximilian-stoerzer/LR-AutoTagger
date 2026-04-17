@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Heavens_Above_The_Office_Park_-_Flickr_-_Peter_Kaminski.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolken", "Strassenlaternen", "Baeume", "Flagge"]
+  szene: ["Stadtsilhouette", "Lichtstrahlen"]
+  umgebung: ["Stadt", "Vorort"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Lichtstrahlen", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Crepuscular Rays ueber Gewerbegebiet mit US-Flagge und Laternensilhouetten."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strassenlaterne", "Baeume", "Fahnenmast", "Wolken", "Vogel"]
+  szene: ["Himmel", "Stadtlandschaft"]
+  umgebung: ["Stadt", "Parkplatz"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Silhouette"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

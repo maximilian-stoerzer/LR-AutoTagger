@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Dac_O_%28201653411%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  objekte: ["Baeume", "Sonne", "Weg", "Rasen"]
+  szene: ["Park", "Sonnenstern"]
+  umgebung: ["Park", "Stadt"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Gegenlicht-Sonnenstern zwischen Zedern im Park; sichtbare Lens-Flare-Kreise."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Baeume", "Weg", "Wiese", "Gebaeude"]
+  szene: ["Park"]
+  umgebung: ["Staedtische Umgebung"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Starkes Gegenlicht mit ausgepraegten Linsenflecken."
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/cc/EFFULGENCE_at_Safdarjungs_tomb.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Torbogen", "Treppe", "Lichtstrahlen"]
+  szene: ["Tempeleingang", "Lichteinfall"]
+  umgebung: ["Tempel", "Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: null
+  stimmung: ["Mystisch", "Majestaetisch", "Dramatisch"]
+  lichtsituation: ["Lichtstrahlen", "Gegenlicht", "Hartes Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Lichteinfall durch spitzbogiges Tor in Safdarjungs Grabmal (Delhi); radiale Strahlen mit rosa/rotem Farbton der Innenwaende."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Torbogen", "Sarkophag", "Person"]
+  szene: ["Innenraum", "Eingang"]
+  umgebung: ["Historische Architektur", "Steinboden"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Starker Lensflare mit intensiven Lichtstrahlen vom Eingang und deutlicher Überstrahlung."
 
 ground_truth: null    # filled after dissens arbitration

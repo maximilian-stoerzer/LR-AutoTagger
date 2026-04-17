@@ -27,18 +27,30 @@ category_proxy: "lichtstrahlen"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/74/Atardecer_por_Circasia_-_Flickr_-_Alejandro_Bayer.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Wolken", "Himmel"]
+  szene: ["Himmelsstudie", "Wolkenformation"]
+  umgebung: ["Himmel"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch", "Mystisch"]
+  lichtsituation: ["Lichtstrahlen", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
   technik: null
-  notes: null         # free text, only if something atypical
+  notes: "Lichtstrahlen brechen durch Wolkendecke bei Circasia (Kolumbien); dunkle Gewitterwolken und helle Durchbrueche."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wolken", "Sonnenstrahlen"]
+  szene: ["Himmel", "Wolkenformation"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Bedrohlich"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Hell-Dunkel"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
