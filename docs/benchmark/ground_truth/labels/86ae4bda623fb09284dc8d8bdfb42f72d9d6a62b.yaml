@@ -27,18 +27,30 @@ category_proxy: "sonnenuntergang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d4/500px_photo_%2850153418%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Skateboarder", "Rampe", "Sonne", "Pflastersteine"]
+  szene: ["Skateboarding"]
+  umgebung: ["Stadt"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Dramatisch", "Lebhaft"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Silhouette"]
+  perspektive: "Froschperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Skateboard", "Person", "Sonne", "Wolken", "Treppe"]
+  szene: ["Skaten", "Sonnenuntergang"]
+  umgebung: ["Aussenbereich", "Urban"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Dramatisch", "Lebhaft"]
+  lichtsituation: ["Gegenlicht", "Mischlicht", "Hartes Licht"]
+  perspektive: "Froschperspektive"
+  technik: []
+  notes: "Skate-Action mit starkem Blitzlicht gegen die untergehende Sonne; sehr kontrastreich."
 
 ground_truth: null    # filled after dissens arbitration

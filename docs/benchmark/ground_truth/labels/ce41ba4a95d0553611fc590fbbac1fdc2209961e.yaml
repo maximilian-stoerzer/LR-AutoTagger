@@ -27,18 +27,30 @@ category_proxy: "sonnenuntergang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/6e/500px_photo_%28105261881%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Sonne", "Wolken", "Horizont"]
+  szene: ["Landschaft"]
+  umgebung: ["Flachland"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Wolken", "Horizont", "Hügel", "Baumreihe"]
+  szene: ["Sonnenuntergang", "Landschaft"]
+  umgebung: ["Hügellandschaft", "Wald"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

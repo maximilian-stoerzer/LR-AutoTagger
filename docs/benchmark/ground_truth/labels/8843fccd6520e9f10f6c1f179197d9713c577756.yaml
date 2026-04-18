@@ -27,18 +27,30 @@ category_proxy: "sonnenuntergang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/36/500px_photo_%28248311755%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Gebaeude", "Baeume", "Schnee", "Sonne", "Wege"]
+  szene: ["Winterlandschaft"]
+  umgebung: ["Vorort"]
+  tageszeit: "Abend"
+  jahreszeit: "Winter"
+  wetter: ["Schnee"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Baeume", "Gebaeude", "Schnee", "Weg"]
+  szene: ["Sonnenuntergang", "Schulcampus"]
+  umgebung: ["Schulgebaeude", "Schneelandschaft"]
+  tageszeit: "Abend"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: "Deutliche Linsenreflexe im Bild"
 
 ground_truth: null    # filled after dissens arbitration

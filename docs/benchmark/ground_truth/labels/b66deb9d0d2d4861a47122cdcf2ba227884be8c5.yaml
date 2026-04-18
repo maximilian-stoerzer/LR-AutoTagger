@@ -27,18 +27,30 @@ category_proxy: "sonnenuntergang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/69/500px_photo_%28105271215%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Baeume", "Laterne", "Dach", "Kondensstreifen"]
+  szene: ["Abendrot"]
+  umgebung: ["Vorort"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Herbst"
+  wetter: []
+  stimmung: ["Friedlich", "Romantisch"]
+  lichtsituation: ["Natuerliches Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Strassenlaterne", "Haus", "Wolken", "Himmel"]
+  szene: ["Daemmerung"]
+  umgebung: ["Vorort"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Silhouette", "Lichtstrahlen", "Mischlicht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: "Kondensstreifen erzeugen Schattenstrahlen am Himmel; leuchtende Strassenlaterne im Bild"
 
 ground_truth: null    # filled after dissens arbitration

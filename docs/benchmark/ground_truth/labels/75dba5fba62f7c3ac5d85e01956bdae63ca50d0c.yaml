@@ -27,18 +27,30 @@ category_proxy: "sonnenuntergang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/68/412_DSP_Scenic_091_-_DPLA_-_eb24d1f25be30b926fb8d67dbceb5475.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Treibholz", "Strand", "Meer", "Mond", "Gras"]
+  szene: ["Kueste"]
+  umgebung: ["Strand", "Meer"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Natuerliches Licht", "Weiches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mond", "Meer", "Strand", "Treibholz", "Gras"]
+  szene: ["Kuestenlandschaft", "Daemmerungshimmel"]
+  umgebung: ["Kuestenlinie", "Offenes Meer"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt", "Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
