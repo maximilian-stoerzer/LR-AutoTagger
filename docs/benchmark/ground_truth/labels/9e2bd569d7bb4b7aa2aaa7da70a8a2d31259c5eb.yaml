@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Panorama ueber einen Anden-See (wirkt wie Nahuel Huapi) von erhoehter Position; voll besonnte Bergkette im Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["See", "Halbinsel", "Berge", "Waelder", "Gebaeude"]
+  szene: ["Landschaft", "Seeblick"]
+  umgebung: ["Gebirge", "Wald"]
+  tageszeit: "Mittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

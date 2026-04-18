@@ -39,6 +39,18 @@ claude:
   technik: ["Infrarot"]
   notes: "Scan-Vergleichsabbildung zweier 10-Euro-Banknoten: links IR-Aufnahme (zeigt Sicherheitsmerkmale), rechts sichtbares Licht."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Geldschein", "Euro", "Banknote", "Seriennummer"]
+  szene: ["Dokumentation", "Collage"]
+  umgebung: ["Innenraum", "neutraler Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Draufsicht"
+  technik: []
+  notes: "Collage mit Vorder- und Rückseite eines 10‑Euro‑Scheins; links vermutlich Infrarot-/UV-Aufnahmen."
 
 ground_truth: null    # filled after dissens arbitration

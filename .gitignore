@@ -37,3 +37,5 @@ release/
 
 # Ground-truth benchmark images (174 MB, reproducible via fetch_wikimedia.py)
 docs/benchmark/ground_truth/images/
+docs/benchmark/results/extended/*.json
+docs/benchmark/results/extended/run.log

@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Historisches Studioportrait zweier Frauen in schwaebischer Volkstracht (Betzingen), handkoloriert; Beschriftung unten."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Frauen", "Tracht", "Schuerze", "Haube", "Stiefel"]
+  szene: ["Studioaufnahme", "Portraet"]
+  umgebung: ["Innenraum", "Neutraler Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht", "Frontlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Gueterzug mit bunten Containern durch herbstliche Feldlandschaft im goldenen Stundenlicht."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gueterzug", "Container", "Gleise", "Felder", "Scheunen"]
+  szene: ["Guetertransport", "Landschaft"]
+  umgebung: ["Ackerland", "Laendliche Gegend"]
+  tageszeit: "Abend"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Seitenlicht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

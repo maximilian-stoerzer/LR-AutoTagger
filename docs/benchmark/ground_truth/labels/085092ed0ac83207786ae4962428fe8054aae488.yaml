@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Blick aus Flugzeugfenster bei Sonnenaufgang; Fluegel in Silhouette, warmer Horizontstreifen ueber dichter Wolkendecke."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Flugzeugflügel", "Triebwerk", "Wolken", "Himmel"]
+  szene: ["Blick aus Flugzeugfenster", "Dämmerung am Horizont"]
+  umgebung: ["Über den Wolken", "Himmel"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bedeckt"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

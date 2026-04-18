@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Sonnenstrahlen (crepuscular rays) brechen durch Wolkenbedeckung; kahler Baum unten in Silhouette."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baum", "Wolken", "Himmel", "Sonnenstrahlen"]
+  szene: ["Himmel mit Wolken", "Sonnenstrahlen"]
+  umgebung: ["Natur", "Landschaft"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Melancholisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Lichtstrahlen"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

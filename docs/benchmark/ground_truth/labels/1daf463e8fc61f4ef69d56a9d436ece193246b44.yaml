@@ -39,6 +39,18 @@ claude:
   technik: ["Langzeitbelichtung", "Schwarzweiss"]
   notes: "SW-Landschaft am Wasserfall; milchiges glattes Wasser klar durch Langzeitbelichtung; tiefer Kamerastandpunkt nah am Wasser."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wasserfall", "Fluss", "Felsen", "Baeume", "Klippe"]
+  szene: ["Landschaft", "Flusslandschaft"]
+  umgebung: ["Wald", "Schlucht"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bedeckt", "Dunst"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss", "Langzeitbelichtung"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

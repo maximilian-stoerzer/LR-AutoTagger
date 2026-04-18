@@ -39,6 +39,18 @@ claude:
   technik: ["Schwarzweiss"]
   notes: "Minimalistische SW-Architekturstudie mit starken grafischen Linien; High-Key-Anmutung durch helle Steinflaechen."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gebaeude", "Fenster", "Rampe"]
+  szene: ["Architektur", "Fassade"]
+  umgebung: ["Aussenbereich"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Hartes Licht", "High-Key", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

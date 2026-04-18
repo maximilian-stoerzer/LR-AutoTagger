@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Kind als Silhouette vor Flugzeugfenster mit heller Aussenansicht; klassische Low-Key-Silhouette durch Helligkeitskontrast."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Flugzeugfenster", "Kind", "Sitz", "Meer", "Inseln"]
+  szene: ["im Flugzeug", "Blick nach draußen"]
+  umgebung: ["Flugzeugkabine", "Küstenlandschaft"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -39,6 +39,18 @@ claude:
   technik: ["Makro", "Bokeh"]
   notes: "Makro einer einzelnen blauen Bluete (Gedenkemein oder aehnlich) mit extremem Bokeh im Hintergrund."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bluete", "Pflanze"]
+  szene: ["Nahaufnahme", "Natur"]
+  umgebung: ["Gruener Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Draufsicht"
+  technik: ["Makro", "Bokeh"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

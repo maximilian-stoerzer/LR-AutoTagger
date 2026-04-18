@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Street-Photography in enger Altstadtgasse (hebraeische Beschilderung, wirkt nach Safed); Musiker mit Gitarre in vorderster Position."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Personen", "Gitarre", "Hut", "Sonnenbrille", "Steinmauer"]
+  szene: ["Strassenmusik", "Spaziergang"]
+  umgebung: ["Altstadt", "Gasse"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Lebhaft", "Froehlich"]
+  lichtsituation: ["Hartes Licht", "Oberlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Stark ueberbelichtete Bereiche im Sonnenlicht."
 
 ground_truth: null    # filled after dissens arbitration

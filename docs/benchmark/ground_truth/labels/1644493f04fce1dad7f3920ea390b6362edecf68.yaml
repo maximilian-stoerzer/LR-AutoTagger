@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Zwei Fotografen als Silhouetten vor Daemmerungshimmel mit kleinem Haus dazwischen; klassisches Gegenlicht-Setup."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Haus", "Stuhl", "Busch", "Strommast"]
+  szene: ["Landschaft bei Sonnenuntergang", "Menschen im Freien"]
+  umgebung: ["Laendliche Umgebung", "Feld"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

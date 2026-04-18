@@ -39,6 +39,18 @@ claude:
   technik: ["Infrarot"]
   notes: "Infrarot-Falschfarbenaufnahme (roetliche Vegetation) eines Alpenpanoramas mit See; Sonne hinter Wolken als Gegenlichtquelle."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Berge", "See", "Baeume", "Wolken", "Sonne"]
+  szene: ["Landschaft", "Panorama"]
+  umgebung: ["Gebirge", "Tal"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Bewoelkt", "Dunst"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: ["Infrarot"]
+  notes: "Infrarot-Farblook verfaelscht natuerliche Farben"
 
 ground_truth: null    # filled after dissens arbitration

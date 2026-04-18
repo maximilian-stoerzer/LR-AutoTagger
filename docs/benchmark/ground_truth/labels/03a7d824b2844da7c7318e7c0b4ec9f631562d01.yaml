@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Extrem dichter Nebel reduziert Sicht auf wenige Meter; Datums-Overlay 17/06/2019 16:14 rechts unten im Bild."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Haus", "Dach", "Zaun"]
+  szene: ["Wohngebiet"]
+  umgebung: []
+  tageszeit: "Nachmittag"
+  jahreszeit: null
+  wetter: ["Nebel"]
+  stimmung: ["Mystisch", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

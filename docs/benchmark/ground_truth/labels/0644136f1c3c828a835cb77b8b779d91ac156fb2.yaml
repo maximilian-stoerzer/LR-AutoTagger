@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Verschneite Plattenbau-Wohnviertel aus der Vogelperspektive (hoher Standort); Bildrand leicht durch Fensterrahmen begrenzt."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gebaeude", "Autos", "Schnee", "Bauschutt", "Strasse"]
+  szene: ["Stadtansicht", "Abriss"]
+  umgebung: ["Stadt", "Wohngebiet"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Bedeckt", "Dunst", "Schnee"]
+  stimmung: ["Melancholisch", "Einsam"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: "Teilweise eingestuerztes oder abgerissenes Gebaeude sichtbar."
 
 ground_truth: null    # filled after dissens arbitration

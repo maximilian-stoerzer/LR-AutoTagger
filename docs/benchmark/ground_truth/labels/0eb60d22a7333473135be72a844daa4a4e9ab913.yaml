@@ -39,6 +39,18 @@ claude:
   technik: ["Schwarzweiss"]
   notes: "Historisches SW-Foto: gestapelte Granathuelsen/Torpedos in langer Holzhalle, zentrale Fluchtpunkt-Perspektive."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bomben", "Stapel", "Schienen", "Wagen"]
+  szene: ["Lagerhalle", "Munitionslager"]
+  umgebung: ["Innenraum", "Holzhalle"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Bedrohlich", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

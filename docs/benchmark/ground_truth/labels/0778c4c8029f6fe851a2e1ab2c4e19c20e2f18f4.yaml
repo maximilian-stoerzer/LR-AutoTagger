@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Leeres Werbetafel-Geruest bei Daemmerung; Mond sichtbar, deutlicher Lensflare/Lichtreflex rechts."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Werbetafel", "Strassenlaterne", "Baeume"]
+  szene: ["Daemmerung im Freien"]
+  umgebung: ["Stadtrand"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Melancholisch", "Einsam"]
+  lichtsituation: ["Silhouette", "Gegenlicht", "Mischlicht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

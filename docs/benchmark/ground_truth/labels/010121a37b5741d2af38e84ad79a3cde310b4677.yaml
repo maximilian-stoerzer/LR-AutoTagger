@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Gelb-gruene Koralle auf rotem Untergrund an einem Marktstand, von oben fotografiert; Commons-Kategorie Landscapes war offenbar irrefuehrend."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Koralle", "Aquarium", "Gitter"]
+  szene: ["Aquariumaufnahme", "Koralle von oben"]
+  umgebung: ["Innenraum", "Aquarium"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Oberlicht", "Kunstlicht"]
+  perspektive: "Draufsicht"
+  technik: ["Makro"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -39,6 +39,18 @@ claude:
   technik: null
   notes: "Tropischer Sonnenuntergang mit schwach leuchtender Sonne durch Wolkendecke; Palmen und Funkturm im Vordergrund als Silhouetten."
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Wolken", "Baeume", "Sendemast"]
+  szene: ["Sonnenuntergang", "Landschaft"]
+  umgebung: ["Stadtrand", "Gruenflaeche"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Bewoelkt", "Dunst"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
