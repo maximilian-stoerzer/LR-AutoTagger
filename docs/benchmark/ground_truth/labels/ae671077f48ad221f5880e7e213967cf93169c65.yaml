@@ -27,18 +27,30 @@ category_proxy: "strasse"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/56/141840_tel_aviv_-_allenby_street_on_a_rainy_day_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "Pfuetze", "Spiegelung", "Buergersteig"]
+  szene: ["Strassenszene"]
+  umgebung: ["Stadt"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Regen"]
+  stimmung: ["Melancholisch"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Personen", "Pfuetze", "Spiegelung", "Zebrastreifen", "Autos"]
+  szene: ["Strassenszene", "Fussgaenger im Regen"]
+  umgebung: ["Stadt", "Gehweg"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Regen", "Bedeckt"]
+  stimmung: ["Melancholisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Froschperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

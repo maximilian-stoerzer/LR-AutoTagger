@@ -27,18 +27,30 @@ category_proxy: "strasse"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/8/83/137838_a_morning_in_florentine_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Stuehle", "Theke", "Hocker", "Ventilator"]
+  szene: ["Bar"]
+  umgebung: ["Innenraum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Einsam"]
+  lichtsituation: ["Natuerliches Licht", "Seitenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Geschlossene Bar mit hochgestellten Stuehlen"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Stuehle", "Hocker", "Ventilator", "Fenster", "Tisch"]
+  szene: ["Aussenbereich eines Cafes", "Geschlossenes Lokal"]
+  umgebung: ["Strassenfront", "Fassade"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Melancholisch", "Einsam"]
+  lichtsituation: ["Hartes Licht", "Hell-Dunkel", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

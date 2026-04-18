@@ -27,18 +27,30 @@ category_proxy: "strasse"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/47/141841_tel_aviv_-_allenby_street_on_a_rainy_day_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Aufblasbare Figur", "Regenschirm", "Menschen", "Laden"]
+  szene: ["Strassenszene"]
+  umgebung: ["Stadt"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Winter"
+  wetter: ["Regen"]
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Regenschirm", "aufblasbare Lebkuchenfigur", "Motorroller", "Auto", "Blumen"]
+  szene: ["Einkaufsstrasse", "Menschen bei Regen"]
+  umgebung: ["Stadt", "Gehweg mit Laeden"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Regen", "Bedeckt"]
+  stimmung: ["Lebhaft", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Grosse aufblasbare Lebkuchenfigur vor dem Laden"
 
 ground_truth: null    # filled after dissens arbitration

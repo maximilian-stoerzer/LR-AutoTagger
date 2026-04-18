@@ -27,18 +27,30 @@ category_proxy: "strasse"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/51/116847_rishon_lezion_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Maenner", "Gehstock", "Haeuser", "Stromleitungen"]
+  szene: ["Strassenszene"]
+  umgebung: ["Kleinstadt"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Menschen", "Gehstock", "Stromleitungen", "Haeuser", "Wolken"]
+  szene: ["Strasse", "Gehweg"]
+  umgebung: ["Stadt", "Wohngebiet"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich", "Nostalgisch"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

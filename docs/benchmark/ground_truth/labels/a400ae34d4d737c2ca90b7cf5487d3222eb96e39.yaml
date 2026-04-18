@@ -27,18 +27,30 @@ category_proxy: "strasse"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/25/113807_messiahs_donkey_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Esel", "Mann", "Steinmauer", "Bank", "Poller"]
+  szene: ["Strassenszene"]
+  umgebung: ["Altstadt"]
+  tageszeit: "Mittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Natuerliches Licht", "Hartes Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Esel", "Mann", "Bank", "Muelleimer", "Steinmauer"]
+  szene: ["Gasse", "Altstadt"]
+  umgebung: ["Steinmauer", "Pflasterweg"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Nostalgisch"]
+  lichtsituation: ["Hartes Licht", "Oberlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Esel in städtischer Gasse"
 
 ground_truth: null    # filled after dissens arbitration

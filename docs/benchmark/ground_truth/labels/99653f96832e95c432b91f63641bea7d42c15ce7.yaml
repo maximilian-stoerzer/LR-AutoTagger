@@ -27,18 +27,30 @@ category_proxy: "strasse"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/51/117814_jerusalem-the_old_city-elderly_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Frau", "Tasche", "Mauer"]
+  szene: ["Strassenszene"]
+  umgebung: ["Altstadt"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Einsam"]
+  lichtsituation: ["Natuerliches Licht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Einkaufstuete", "Brille", "Umhaengetasche", "Steinwand"]
+  szene: ["Gasse", "Strassenszene"]
+  umgebung: ["Altstadt", "Gepflasterte Strasse"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

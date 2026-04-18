@@ -27,18 +27,30 @@ category_proxy: "strasse"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1e/117459_karkur_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mann", "Haeuser", "Palmblaetter"]
+  szene: ["Strassenszene"]
+  umgebung: ["Kleinstadt"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Natuerliches Licht", "Hartes Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Aufnahme"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mann", "Holzzaun", "Haus", "Strasse", "Pflanzen"]
+  szene: ["Strassenszene", "Portraet"]
+  umgebung: ["Dorf", "Hof"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Nostalgisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

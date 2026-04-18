@@ -27,18 +27,30 @@ category_proxy: "strasse"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/be/127190_ein_bokek_-_wandering_the_coastal_promenade_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mann", "Rucksack", "Gelaender"]
+  szene: ["Strassenszene"]
+  umgebung: ["Stadt"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bedeckt"]
+  stimmung: ["Einsam"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Tasche", "Zaun", "Gehweg", "Kapuzenjacke"]
+  szene: ["Strasse", "Fussgaenger"]
+  umgebung: ["Stadt", "Aussenbereich"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bedeckt"]
+  stimmung: ["Einsam", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: "Bild ist stark geneigt."
 
 ground_truth: null    # filled after dissens arbitration
