@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d1/Air_Canada_A-320_Ottawa_Jan_2015_4101.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Flugzeug", "Sonne", "Rollfeld", "Gepaeckwagen"]
+  szene: ["Flughafen"]
+  umgebung: ["Flughafen"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Flugzeug", "Leitwerk", "Sonne", "Servicefahrzeug", "Rollfeld"]
+  szene: ["Flughafen", "Sonnenuntergang"]
+  umgebung: ["Himmel", "Wald"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

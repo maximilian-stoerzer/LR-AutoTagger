@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d4/6_AM_in_Al_Forsan.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Strasse", "Bus", "Laternen", "Gebaeude", "Kreisverkehr"]
+  szene: ["Strassenszene"]
+  umgebung: ["Stadt"]
+  tageszeit: "Morgengrauen"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Dramatisch"]
+  lichtsituation: ["Natuerliches Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Strassenlaternen", "Bus", "Gebaeude", "Palmen", "Strasse"]
+  szene: ["Kreisel", "Stadt bei Daemmerung"]
+  umgebung: ["Vorstadt", "Stadtraum"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Friedlich"]
+  lichtsituation: ["Mischlicht", "Silhouette", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

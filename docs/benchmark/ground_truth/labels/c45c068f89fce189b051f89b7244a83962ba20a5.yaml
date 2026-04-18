@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/6/67/Adriel_Kloppenburg_2015-04-15_%28Unsplash_UYtyy-K1nS8%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Mond", "Himmel", "Berge"]
+  szene: ["Landschaft"]
+  umgebung: ["Flachland"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Mond", "Horizont", "Bergkette"]
+  szene: ["Daemmerung", "Himmel ueber Landschaft"]
+  umgebung: ["Landschaft", "Gebirge"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Silhouette", "Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

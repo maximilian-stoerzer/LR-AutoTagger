@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Akota_-_Dandiya_bazar_bridge_during_sunrise_at_Vadodara_3.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Personen", "Laternen", "Sonne"]
+  szene: ["Promenade"]
+  umgebung: ["Stadt"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Dunst"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Strassenlaternen", "Menschen", "Fahrzeug", "Mauer"]
+  szene: ["Sonnenuntergang", "Strassenszene"]
+  umgebung: ["Strasse", "Promenade"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Melancholisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

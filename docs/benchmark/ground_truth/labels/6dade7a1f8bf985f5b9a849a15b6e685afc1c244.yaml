@@ -27,18 +27,30 @@ category_proxy: "sonnenuntergang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f7/A_serene_highway_stretches_under_a_muted_sky%2C_with_the_sun%27s_bright_halo_directly_behind_a_communication_tower%2C_flanked_by_palm_trees.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Strasse", "Funkmast", "Palmen", "Sonne", "Leitplanke"]
+  szene: ["Landstrasse"]
+  umgebung: ["Flachland"]
+  tageszeit: "Abend"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Dunst"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Sendemast", "Palmen", "Straße", "Straßenschild"]
+  szene: ["Straßenszene", "Landschaft"]
+  umgebung: ["Laendliche Gegend", "Straßenrand"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "sonnenuntergang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3b/A_couple_shares_an_intimate_moment_on_top_of_a_vintage_car%2C_basking_in_the_warm_light_of_a_sunset.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Paar", "Auto", "Baeume"]
+  szene: ["Portrait"]
+  umgebung: ["Laendlich"]
+  tageszeit: "Abend"
+  jahreszeit: "Herbst"
+  wetter: []
+  stimmung: ["Romantisch", "Nostalgisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Auto", "Personen", "Sonne", "Baeume"]
+  szene: ["Sitzen auf Autodach", "Gegenlichtaufnahme"]
+  umgebung: ["Laendliche Umgebung", "Offenes Gelaende"]
+  tageszeit: "Abend"
+  jahreszeit: "Herbst"
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Romantisch", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

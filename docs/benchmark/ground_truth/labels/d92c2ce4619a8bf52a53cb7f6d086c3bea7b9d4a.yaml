@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/af/A_%27Painting%27_by_Sunrise_at_Sikunir.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baeume", "Weg", "Berge", "Person", "Wolken"]
+  szene: ["Wanderung"]
+  umgebung: ["Bergwald"]
+  tageszeit: "Morgen"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Majestaetisch", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bäume", "Wanderer", "Berg", "Wolken", "Pfad"]
+  szene: ["Wanderung", "Waldlandschaft"]
+  umgebung: ["Wald", "Gebirge"]
+  tageszeit: "Morgen"
+  jahreszeit: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
