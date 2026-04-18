@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Albada_The_Sunrises_%28114205947%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Tragflaeche", "Triebwerk", "Mond", "Himmel"]
+  szene: ["Flugzeugfenster"]
+  umgebung: ["Himmel"]
+  tageszeit: "Morgengrauen"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Majestaetisch", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Flugzeugfluegel", "Triebwerk", "Mond", "Wolken"]
+  szene: ["Blick aus Flugzeugfenster", "Himmel bei Daemmerung"]
+  umgebung: ["Ueber den Wolken"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Weiches Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

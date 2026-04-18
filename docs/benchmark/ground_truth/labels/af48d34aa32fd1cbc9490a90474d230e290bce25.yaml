@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/de/Airplanes_at_sunrise.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Flugzeuge", "Rollfeld", "Laternen"]
+  szene: ["Flughafen"]
+  umgebung: ["Flughafen"]
+  tageszeit: "Morgengrauen"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Flugzeug", "Flugzeugfluegel", "Rollfeld", "Lichtmasten", "Terminalgebaeude"]
+  szene: ["Flughafen", "Vorfeld"]
+  umgebung: ["Himmel", "Sonnenuntergang"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

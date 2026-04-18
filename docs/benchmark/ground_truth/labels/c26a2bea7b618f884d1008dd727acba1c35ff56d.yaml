@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b6/118_Sunrise_in_the_Kalahari_Desert_of_Namibia_Photo_by_Giles_Laurent.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Sand", "Duene", "Akazien", "Sonne", "Totholz"]
+  szene: ["Wuestenlandschaft"]
+  umgebung: ["Wueste", "Savanne"]
+  tageszeit: "Morgen"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Majestaetisch", "Dramatisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Kalahari-Wueste, Namibia"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Wolken", "Sandduene", "Buesche", "Baeume"]
+  szene: ["Wuestenlandschaft", "Sonnenuntergang"]
+  umgebung: ["Wueste", "Savanne"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Sonnig", "Bewoelkt"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b5/1989-11-16_Blick_nach_Ostberlin_a.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Fernsehturm", "Hochhaeuser", "Schornstein", "Wolken"]
+  szene: ["Stadtpanorama"]
+  umgebung: ["Grossstadt"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Silhouette", "Natuerliches Licht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Blick auf Ost-Berlin (1989)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Turm", "Schornsteine", "Gebaeude", "Lichter", "Wolken"]
+  szene: ["Stadtsilhouette", "Sonnenuntergang"]
+  umgebung: ["Stadt", "Industriegebiet"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

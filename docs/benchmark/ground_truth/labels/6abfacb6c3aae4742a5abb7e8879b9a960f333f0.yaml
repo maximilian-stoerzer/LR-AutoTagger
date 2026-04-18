@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/46/Along_the_River_Bank_%2827060635551%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Baeume", "See", "Spiegelung"]
+  szene: ["Seelandschaft"]
+  umgebung: ["Gewaesser", "Wald"]
+  tageszeit: "Morgengrauen"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Silhouette", "Natuerliches Licht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "See", "Himmel", "Spiegelung"]
+  szene: ["Daemmerung", "Landschaft"]
+  umgebung: ["Wald", "Seeufer"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Silhouette", "Gegenlicht", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

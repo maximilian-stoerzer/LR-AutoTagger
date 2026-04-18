@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/12/A_Frosty_Morning_%2849704479738%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Teich", "Enten", "Schnee", "Dampf", "Berge"]
+  szene: ["Winterlandschaft"]
+  umgebung: ["Flachland", "Gewaesser"]
+  tageszeit: "Morgen"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Gegenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wasser", "Enten", "Schnee", "Berge", "Schilf"]
+  szene: ["Landschaft", "Teich"]
+  umgebung: ["Gebirge", "Feuchtgebiet"]
+  tageszeit: "Morgen"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Aufsteigender Dampf ueber dem Wasser bei Frost."
 
 ground_truth: null    # filled after dissens arbitration

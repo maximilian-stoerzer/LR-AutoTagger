@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d5/202508_%E6%B8%85%E6%99%A8%E6%99%82%E4%B8%AD%E5%A3%A2%E5%8D%80%E9%BE%8D%E6%9D%B1%E8%B7%AF%E7%9A%84%E8%A1%97%E6%99%AF.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Schilder", "Stromleitungen", "Motorrad", "Gebaeude"]
+  szene: ["Strasse"]
+  umgebung: ["Stadt"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Gegenlicht", "Mischlicht", "Kunstlicht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Taiwanesische Strassenszene"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Stromleitungen", "Motorroller", "Leuchtreklame", "Strassenschilder", "Strassenlaterne"]
+  szene: ["Strasse", "Stadtszene"]
+  umgebung: ["Stadt", "Geschaefte"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Vertraeumt", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Mischlicht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
