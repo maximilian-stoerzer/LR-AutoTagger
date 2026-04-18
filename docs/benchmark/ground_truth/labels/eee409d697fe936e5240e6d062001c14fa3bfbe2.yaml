@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Bernstorffsgade_birdseye_view_2015.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Busse", "Strasse", "Gebaeude", "Kran"]
+  szene: ["Stadtansicht"]
+  umgebung: ["Grossstadt"]
+  tageszeit: "Mittag"
+  jahreszeit: "Sommer"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Lebhaft"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Bus", "Auto", "Fussgaenger", "Kran", "Fahrrad"]
+  szene: ["Stadtverkehr", "Bushaltestelle"]
+  umgebung: ["Stadt", "Strasse"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig"]
+  stimmung: ["Lebhaft", "Froehlich"]
+  lichtsituation: ["Hartes Licht", "Natuerliches Licht", "Oberlicht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

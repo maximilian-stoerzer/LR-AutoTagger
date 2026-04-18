@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/99/Birds_eye_view_of_grazing_horses.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Pferde", "Haus", "Steinmauern", "Felder", "Baeume"]
+  szene: ["Bauernhof"]
+  umgebung: ["Laendlich"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Pferde", "Stall", "Steinmauern", "Felder", "Baeume"]
+  szene: ["Landschaft", "Bauernhof"]
+  umgebung: ["Felder", "Huegellandschaft"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
