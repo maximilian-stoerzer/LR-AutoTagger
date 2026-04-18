@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e2/500px_photo_%2881592847%29.jpeg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Baeume", "Haus", "Weg", "Wiese"]
+  szene: ["Landschaft"]
+  umgebung: ["Huegellandschaft", "Laendlich"]
+  tageszeit: "Morgen"
+  jahreszeit: "Sommer"
+  wetter: []
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Sonne", "Baeume", "Haus", "Weg", "Wiese"]
+  szene: ["Laendliche Landschaft", "Sonnenaufgang"]
+  umgebung: ["Huegellandschaft", "Waldrand"]
+  tageszeit: "Morgen"
+  jahreszeit: "Sommer"
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

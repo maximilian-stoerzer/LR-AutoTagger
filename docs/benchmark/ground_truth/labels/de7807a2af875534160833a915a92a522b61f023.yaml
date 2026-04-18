@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Brothers_in_Contrast_-_Flickr_-_Momentchensammler.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Personen", "Treppe", "Gelaender"]
+  szene: ["Unterfuehrung"]
+  umgebung: ["Stadt"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Einsam", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Low-Key"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Menschen", "Treppe", "Gelaender"]
+  szene: ["Unterfuehrung", "U-Bahn-Eingang"]
+  umgebung: ["Urban", "Innenraum"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch", "Mystisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Low-Key"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss"]
+  notes: "Starke Silhouette mit viel Negativraum; Figuren unkenntlich."
 
 ground_truth: null    # filled after dissens arbitration

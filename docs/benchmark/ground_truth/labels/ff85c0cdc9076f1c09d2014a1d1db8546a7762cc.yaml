@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Deer_Head_-_Doegender.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Hirschkopf"]
+  szene: ["Grafik"]
+  umgebung: []
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: []
+  lichtsituation: []
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Digitale Pixelgrafik/Icon, kein Foto — Fehlkategorisierung in Wikimedia"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Stierkopf"]
+  szene: ["Illustration"]
+  umgebung: []
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: []
+  perspektive: null
+  technik: []
+  notes: "Grafische Vektorillustration statt Fotografie"
 
 ground_truth: null    # filled after dissens arbitration

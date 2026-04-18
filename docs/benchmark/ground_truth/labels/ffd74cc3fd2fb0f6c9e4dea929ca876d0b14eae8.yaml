@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/3d/A_silhouette_of_a_dog_sitting_on_top_of_a_metal_sheet_roof_in_the_evening..jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Hund", "Dach", "Baum", "Kabel"]
+  szene: ["Tierfotografie"]
+  umgebung: ["Laendlich"]
+  tageszeit: "Daemmerung"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Einsam", "Friedlich"]
+  lichtsituation: ["Gegenlicht", "Silhouette"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Hund", "Dach", "Stromleitung", "Baum"]
+  szene: ["Hund auf Dach", "Himmel bei Daemmerung"]
+  umgebung: ["Aussenbereich", "Himmel"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Einsam"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Untersicht"
+  technik: []
+  notes: "Silhouette eines Hundes auf einem Dach gegen den Daemmerungshimmel"
 
 ground_truth: null    # filled after dissens arbitration

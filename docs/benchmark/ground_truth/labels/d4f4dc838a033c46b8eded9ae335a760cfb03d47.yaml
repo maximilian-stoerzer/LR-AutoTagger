@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/2/24/32847062510_-_Flickr_-_Thomas_Leuthard.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Fahrradfahrer", "BMX", "Huegel", "Sonne"]
+  szene: ["Sport"]
+  umgebung: ["Dirtpark"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Dramatisch", "Lebhaft"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Lichtstrahlen"]
+  perspektive: "Froschperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Fahrrad", "Radfahrer", "Sonne", "Hügel", "Schatten"]
+  szene: ["Fahrradstunt", "Sprung"]
+  umgebung: ["Pumptrack", "Himmel"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Dramatisch", "Lebhaft"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Lichtstrahlen"]
+  perspektive: "Untersicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

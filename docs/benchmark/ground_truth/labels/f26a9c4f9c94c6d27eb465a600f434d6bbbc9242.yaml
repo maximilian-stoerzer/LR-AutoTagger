@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/95/Bellows_Falls_Old_Mill_Structure_-_panoramio.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Gebaeude", "Fenster", "Silhouetten-Kunst", "Baeume"]
+  szene: ["Architektur"]
+  umgebung: ["Kleinstadt"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Sommer"
+  wetter: ["Bedeckt"]
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Silhouetten-Kunstinstallation in Fenstern eines alten Backsteingebaeudes"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Backsteinfassade", "Fenster", "Wandmalerei", "Bahnsignal", "Stromleitungen"]
+  szene: ["Hausfassade", "Bahnuebergang"]
+  umgebung: ["Bewuchs", "Strasse"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bedeckt"]
+  stimmung: ["Nostalgisch", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Fenster sind mit schwarzen Silhouetten bemalt."
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Alba_a_colori_sul_crinale_del_Pratomagno_-_Colorful_sunrise_on_the_Pratomagno_ridge.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Berge", "Wolken", "Wiese", "Gras"]
+  szene: ["Berglandschaft"]
+  umgebung: ["Gebirge", "Wiese"]
+  tageszeit: "Abend"
+  jahreszeit: "Sommer"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Lichtstrahlen", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Wolken", "Berge", "Wiese"]
+  szene: ["Landschaft", "Sonnenuntergang"]
+  umgebung: ["Laendliche Gegend", "Gebirge"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

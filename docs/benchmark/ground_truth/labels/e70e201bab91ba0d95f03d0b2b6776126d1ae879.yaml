@@ -27,18 +27,30 @@ category_proxy: "silhouette"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Grifone_araldico_nero.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Greif", "Wappen"]
+  szene: ["Grafik"]
+  umgebung: []
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: []
+  lichtsituation: []
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Heraldische Vektorgrafik, kein Foto — Fehlkategorisierung in Wikimedia"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Greif"]
+  szene: ["Wappen", "Symbol"]
+  umgebung: ["schwarzer Hintergrund"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Mystisch", "Majestaetisch"]
+  lichtsituation: ["Silhouette", "Low-Key"]
+  perspektive: null
+  technik: []
+  notes: "Grafik/Illustration, kein Foto; leuchtender Rand um Silhouette"
 
 ground_truth: null    # filled after dissens arbitration

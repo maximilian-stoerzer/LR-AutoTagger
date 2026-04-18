@@ -27,18 +27,30 @@ category_proxy: "sonnenaufgang"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/38/2012-03-26_Nordlandfahrt_Sonnenaufgang_vor_G%C3%B6teborg_077.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Fenster", "Reling", "Meer", "Himmel", "Scheibenwischer"]
+  szene: ["Schiffsbruecke"]
+  umgebung: ["Meer"]
+  tageszeit: "Morgengrauen"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Romantisch"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Schiff", "Fenster", "Scheibenwischer", "Reling", "Meer"]
+  szene: ["Blick aus Schiffsbruecke", "Meer bei Daemmerung"]
+  umgebung: ["Innenraum", "Offenes Meer"]
+  tageszeit: "Daemmerung"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
