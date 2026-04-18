@@ -27,18 +27,30 @@ category_proxy: "strasse"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/56/141883_tel_aviv_-_florentine_neighborhood_PikiWiki_Israel.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Schaufenster", "Mannequins", "Anzuege", "Graffiti"]
+  szene: ["Strassenszene"]
+  umgebung: ["Stadt"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Kunstlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Schaufenster", "Schaufensterpuppen", "Anzuege", "Hemd", "Graffiti"]
+  szene: ["Modegeschaeft", "Strassenszene"]
+  umgebung: ["Stadt", "Fassade"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Mischlicht", "Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Kontrast zwischen Streetart an der Tuer und eleganter Herrenmode im Schaufenster"
 
 ground_truth: null    # filled after dissens arbitration

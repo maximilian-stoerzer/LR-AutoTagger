@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Birds-eye_view%2C_of_the_camp_of_the_%22army_of_occupation%22_near_Corpus_Christi%2C_Texas%2C_as_in_October_1845_%28from_the_north%29_commanded_by_Genl._Taylor_-_drawn_by_D.P._Whiting%2C_Capt._7th_Inf._%3B_on_LCCN2003656328.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Zelte", "Soldaten", "Kueste", "Schiffe"]
+  szene: ["Militaerlager"]
+  umgebung: ["Kueste"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Vogelperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Lithografie (1845), kein Foto"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Zelte", "Soldaten", "Schiffe", "Fahnen"]
+  szene: ["Militaerlager", "Kuestenlandschaft"]
+  umgebung: ["Meer", "Strand"]
+  tageszeit: null
+  jahreszeit: "Herbst"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Majestaetisch"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht", "Lichtstrahlen"]
+  perspektive: "Vogelperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Lithografie, keine Fotografie."
 
 ground_truth: null    # filled after dissens arbitration

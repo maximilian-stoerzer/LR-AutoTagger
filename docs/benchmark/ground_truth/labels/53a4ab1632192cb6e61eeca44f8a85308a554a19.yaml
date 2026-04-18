@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/5/52/Bird%27s-eye_view_of_the_ELT_%28DJI_0007%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Teleskop", "Baustelle", "Kran", "Kuppel"]
+  szene: ["Baustelle"]
+  umgebung: ["Wueste", "Gebirge"]
+  tageszeit: "Nachmittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch"]
+  lichtsituation: ["Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: "Drohnenaufnahme der ELT-Teleskop-Baustelle"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Kran", "Kuppel", "Strasse", "Baumaschinen", "Baucontainer"]
+  szene: ["Baustelle"]
+  umgebung: ["Wueste", "Huegel"]
+  tageszeit: "Abend"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Majestaetisch", "Lebhaft"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

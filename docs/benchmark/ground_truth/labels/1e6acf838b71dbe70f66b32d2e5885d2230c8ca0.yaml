@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Aranos_bird_eye_view.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Siedlung", "Haeuser", "Strassen", "Wueste"]
+  szene: ["Luftaufnahme"]
+  umgebung: ["Wueste", "Kleinstadt"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Einsam"]
+  lichtsituation: ["Natuerliches Licht", "Hartes Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Haeuser", "Strassen", "Kirche", "Baeume"]
+  szene: ["Luftaufnahme", "Kleinstadt"]
+  umgebung: ["Wueste", "Buschland"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Einsam", "Friedlich"]
+  lichtsituation: ["Hartes Licht", "Oberlicht", "Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

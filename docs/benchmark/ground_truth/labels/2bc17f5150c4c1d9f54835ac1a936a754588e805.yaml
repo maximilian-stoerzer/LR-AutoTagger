@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Dach_Bahnhofplatz_Zurich_Z%C3%BCrich.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Person", "Kuppel", "Bahnhof", "Strasse", "Autos"]
+  szene: ["Stadtpanorama"]
+  umgebung: ["Grossstadt"]
+  tageszeit: "Nacht"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Majestaetisch"]
+  lichtsituation: ["Kunstlicht", "Low-Key"]
+  perspektive: "Aufsicht"
+  technik: ["Langzeitbelichtung"]
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Person", "Kuppel", "Autos", "Strasse", "Gebaeude"]
+  szene: ["Stadtansicht", "Nachtaufnahme"]
+  umgebung: ["Dach", "Innenstadt"]
+  tageszeit: "Nacht"
+  jahreszeit: null
+  wetter: ["Bewoelkt"]
+  stimmung: ["Dramatisch", "Lebhaft"]
+  lichtsituation: ["Kunstlicht", "Mischlicht"]
+  perspektive: "Vogelperspektive"
+  technik: ["Langzeitbelichtung", "Bewegungsunschaerfe"]
+  notes: "Person steht auf einer Kuppel in grosser Hoehe."
 
 ground_truth: null    # filled after dissens arbitration

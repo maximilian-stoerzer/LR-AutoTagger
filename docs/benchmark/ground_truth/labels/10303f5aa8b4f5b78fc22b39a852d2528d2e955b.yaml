@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/76/Bezuidenhoutseweg_30%2C_The_Hague.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Gebaeude", "Strassen", "Daecher", "Baeume"]
+  szene: ["Stadtansicht"]
+  umgebung: ["Stadt"]
+  tageszeit: "Mittag"
+  jahreszeit: "Winter"
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: "Luftaufnahme"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gebaeude", "Strasse", "Autos", "Baeume", "Innenhof"]
+  szene: ["Stadtansicht", "Luftaufnahme"]
+  umgebung: ["Stadt", "Park"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Seitenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: "Zentrales Gebaeude wirkt teilweise digital visualisiert/ueberarbeitet."
 
 ground_truth: null    # filled after dissens arbitration

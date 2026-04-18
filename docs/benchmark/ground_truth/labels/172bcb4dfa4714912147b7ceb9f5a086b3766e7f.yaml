@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/44/Bird%27s-eye_view_of_the_village..png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Dorf", "Felder", "Haeuser", "Strassen"]
+  szene: ["Luftaufnahme"]
+  umgebung: ["Laendlich"]
+  tageszeit: "Mittag"
+  jahreszeit: "Fruehling"
+  wetter: []
+  stimmung: []
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: "Aufnahme aus Kleinflugzeug"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Haeuser", "Felder", "Pfuetzen", "Strommasten", "Baeume"]
+  szene: ["Luftaufnahme", "Dorfansicht"]
+  umgebung: ["Ackerland", "Laendlich"]
+  tageszeit: null
+  jahreszeit: "Fruehling"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: "Stark geneigte Aufnahme aus einem Fluggeraet, Cockpitrahmen am rechten Bildrand sichtbar."
 
 ground_truth: null    # filled after dissens arbitration

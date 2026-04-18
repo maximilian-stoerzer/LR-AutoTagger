@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Aurusberg_2018.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Berge", "Wueste"]
+  szene: ["Berglandschaft"]
+  umgebung: ["Wueste", "Gebirge"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: ["Einsam", "Majestaetisch"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: "Luftaufnahme, Kategorie 'vogel' = Vogelperspektive, nicht Voegel"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Berge", "Wueste", "Felsen", "Himmel", "Ebene"]
+  szene: ["Landschaftspanorama", "Gebirgszug in Wueste"]
+  umgebung: ["Wueste", "Gebirge"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Einsam", "Majestaetisch"]
+  lichtsituation: ["Hartes Licht", "Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
