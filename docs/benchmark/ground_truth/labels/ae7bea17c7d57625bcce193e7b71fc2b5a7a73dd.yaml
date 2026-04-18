@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/c/c1/Bahnhof_Rehoboth_Luftaufnahme_2018.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Gleise", "Bahnhof", "Haeuser", "Baeume"]
+  szene: ["Luftaufnahme"]
+  umgebung: ["Kleinstadt"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Sonnig"]
+  stimmung: []
+  lichtsituation: ["Natuerliches Licht", "Hartes Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gleise", "Bahnhof", "Zug", "Haeuser", "Baeume"]
+  szene: ["Eisenbahnstation", "Dorf"]
+  umgebung: ["Laendliche Gegend", "Trockene Landschaft"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Natuerliches Licht", "Oberlicht", "Hartes Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/45/Extended_Runway_Walvis_Bay_Airport_%282017%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Landebahn", "Flughafen", "Wueste"]
+  szene: ["Luftaufnahme"]
+  umgebung: ["Wueste", "Flughafen"]
+  tageszeit: "Mittag"
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: ["Dunst"]
+  stimmung: ["Einsam"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Landebahn", "Gebaeude", "Huegel", "Zaun"]
+  szene: ["Wueste", "Flugplatz"]
+  umgebung: ["Sand", "Weite Ebene"]
+  tageszeit: "Mittag"
+  jahreszeit: null
+  wetter: ["Sonnig", "Dunst"]
+  stimmung: ["Einsam", "Friedlich"]
+  lichtsituation: ["Natuerliches Licht", "Hartes Licht", "Oberlicht"]
+  perspektive: "Vogelperspektive"
+  technik: []
+  notes: "Aufnahme aus einem Flugzeug; Fensterrahmen oben links im Bild sichtbar."
 
 ground_truth: null    # filled after dissens arbitration

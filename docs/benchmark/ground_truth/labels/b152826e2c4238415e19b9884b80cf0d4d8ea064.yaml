@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Bird%27s-eye_view_of_Seattle%2C_1879_%28MOHAI_13220%29.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Stadt", "Hafen", "Schiffe", "Haeuser"]
+  szene: ["Stadtansicht"]
+  umgebung: ["Kueste", "Stadt"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Vogelperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Zeichnung/Stich von Seattle 1879, kein Foto"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Schiffe", "Segelschiff", "Dampfschiff", "Haeuser", "Steg"]
+  szene: ["Hafenstadt", "Stadtansicht"]
+  umgebung: ["Bucht", "Waelder"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: ["Bewoelkt", "Dunst"]
+  stimmung: ["Nostalgisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Vogelperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Stadtansicht als Zeichnung/Lithografie, kein Foto."
 
 ground_truth: null    # filled after dissens arbitration

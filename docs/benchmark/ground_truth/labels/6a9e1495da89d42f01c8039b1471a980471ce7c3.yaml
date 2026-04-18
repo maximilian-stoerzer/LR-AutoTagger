@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/a/a5/2914_-_Hall_in_Tirol_-_M%C3%BCnzmuseum.JPG"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Treppe", "Gelaender", "Turm", "Fenster"]
+  szene: ["Architektur"]
+  umgebung: ["Innenraum", "Museum"]
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Mystisch"]
+  lichtsituation: ["Natuerliches Licht", "Oberlicht"]
+  perspektive: "Aufsicht"
+  technik: []
+  notes: "Blick in einen Treppenturm von oben"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Treppe", "Geländer", "Mauerwerk", "Plattform"]
+  szene: ["Treppenhaus", "Innenraum"]
+  umgebung: ["Innenarchitektur", "Steinmauerwerk"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: ["Dramatisch"]
+  lichtsituation: ["Oberlicht", "Natuerliches Licht"]
+  perspektive: "Draufsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

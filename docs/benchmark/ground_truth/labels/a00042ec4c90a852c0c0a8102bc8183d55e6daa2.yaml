@@ -27,18 +27,30 @@ category_proxy: "vogel"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/42/Bastiments_v1_%28Gregg_1972_p94%29_-_Maulnes-en-Tonnerrois_lateral_bird%27s-eye_view.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
+  objekte: ["Schloss", "Garten", "Mauer", "Turm"]
+  szene: ["Architekturzeichnung"]
+  umgebung: []
+  tageszeit: null
   jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  wetter: []
+  stimmung: ["Nostalgisch"]
+  lichtsituation: []
+  perspektive: "Vogelperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historischer Kupferstich (16. Jh.), kein Foto"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gebäude", "Garten", "Mauer", "Brücke", "Turm"]
+  szene: ["Architektonische Zeichnung", "Bauplan"]
+  umgebung: ["Schlossanlage", "Gartenhof"]
+  tageszeit: null
+  jahreszeit: null
+  wetter: []
+  stimmung: []
+  lichtsituation: []
+  perspektive: "Vogelperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische architektonische Zeichnung/Gravur, keine Fotografie."
 
 ground_truth: null    # filled after dissens arbitration
