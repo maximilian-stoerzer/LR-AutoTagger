@@ -27,18 +27,30 @@ category_proxy: "winter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/9/95/Aert_van_der_Neer_-_Skaters_on_a_Canal%2C_Karlsruhe.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Schlittschuhlaeufer", "Kanal", "Haeuser", "Wolken"]
+  szene: ["Winterlandschaft"]
+  umgebung: ["Dorf", "Gewaesser"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Winter"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Nostalgisch", "Friedlich"]
+  lichtsituation: ["Diffuses Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: "Niederlaendisches Wintergemaelde (Aert van der Neer, 17. Jh.), kein Foto"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Menschen", "Schlittschuhlaeufer", "Haeuser", "Baeume", "Kirchturm"]
+  szene: ["Eislaufen auf zugefrorenem Fluss", "Dorflandschaft"]
+  umgebung: ["Kanal", "Dorf"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Winter"
+  wetter: ["Bewoelkt"]
+  stimmung: ["Friedlich", "Nostalgisch"]
+  lichtsituation: ["Weiches Licht", "Diffuses Licht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

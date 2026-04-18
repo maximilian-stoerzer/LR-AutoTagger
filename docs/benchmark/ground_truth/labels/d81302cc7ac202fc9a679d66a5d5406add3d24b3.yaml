@@ -27,18 +27,30 @@ category_proxy: "winter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Geese-1.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Gaense", "Schnee", "Teich", "Baeume"]
+  szene: ["Winterlandschaft"]
+  umgebung: ["Park", "Gewaesser"]
+  tageszeit: "Nachmittag"
+  jahreszeit: "Winter"
+  wetter: ["Schnee"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Gegenlicht", "Natuerliches Licht", "Silhouette"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Gaense", "Schnee", "Eis", "Sonne", "Baeume"]
+  szene: ["Winterlandschaft", "Tiere am See"]
+  umgebung: ["See", "Wald"]
+  tageszeit: "Abend"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Einsam"]
+  lichtsituation: ["Gegenlicht", "Silhouette", "Hartes Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "winter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Hierden_-_Kasteel_de_Essenburgh_%26_Surroundings_09.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Bach", "Baeume", "Gelaender", "Gebaeude"]
+  szene: ["Schlosspark"]
+  umgebung: ["Park", "Wald"]
+  tageszeit: "Mittag"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Bach", "Brueckengelaender", "Haus"]
+  szene: ["Wald", "Bachlauf"]
+  umgebung: ["Laubwald", "Laendlich"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Sonnig"]
+  stimmung: ["Friedlich", "Vertraeumt"]
+  lichtsituation: ["Gegenlicht", "Hartes Licht", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

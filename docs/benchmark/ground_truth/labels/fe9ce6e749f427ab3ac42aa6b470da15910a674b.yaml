@@ -27,18 +27,30 @@ category_proxy: "winter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Gustave_MarissiauxCrepusculedhiver1908.jpg"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Baeume", "Weg", "Nebel"]
+  szene: ["Waldweg"]
+  umgebung: ["Wald"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Winter"
+  wetter: ["Nebel"]
+  stimmung: ["Mystisch", "Melancholisch"]
+  lichtsituation: ["Diffuses Licht", "Gegenlicht"]
+  perspektive: "Normalperspektive"
+  technik: ["Schwarzweiss"]
+  notes: "Historische Fotokunst (Gustave Marissiaux, 1908)"
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Baeume", "Weg", "Aeste"]
+  szene: ["Waldlandschaft"]
+  umgebung: ["Huegellandschaft", "Tal"]
+  tageszeit: "Daemmerung"
+  jahreszeit: "Herbst"
+  wetter: ["Nebel", "Dunst"]
+  stimmung: ["Melancholisch", "Mystisch"]
+  lichtsituation: ["Diffuses Licht", "Silhouette", "Natuerliches Licht"]
+  perspektive: "Schraegsicht"
+  technik: ["Schwarzweiss"]
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration

@@ -27,18 +27,30 @@ category_proxy: "winter"
 source_url: "https://upload.wikimedia.org/wikipedia/commons/3/36/Dwight_D._Eisenhower_NFH_entrance_sign_15_September_2021.png"
 
 claude:
-  objekte: null       # list[str] or null
-  szene: null
-  umgebung: null
-  tageszeit: null     # single value
-  jahreszeit: null
-  wetter: null        # list[str]
-  stimmung: null
-  lichtsituation: null
-  perspektive: null
-  technik: null
-  notes: null         # free text, only if something atypical
+  objekte: ["Schild", "Schnee", "Nadelbaeume", "Bruecke"]
+  szene: ["Eingangsbereich"]
+  umgebung: ["Wald"]
+  tageszeit: "Mittag"
+  jahreszeit: "Winter"
+  wetter: ["Sonnig", "Schnee"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
-gpt: null             # filled by GPT-5 API pass (later)
+gpt:
+  _model: "gpt-5"
+  objekte: ["Schild", "Holzpfosten", "Eiszapfen", "Bruecke"]
+  szene: ["Eingangsschild", "Winterlandschaft"]
+  umgebung: ["Wald", "Schneelandschaft"]
+  tageszeit: null
+  jahreszeit: "Winter"
+  wetter: ["Sonnig", "Schnee"]
+  stimmung: ["Friedlich"]
+  lichtsituation: ["Hartes Licht", "Seitenlicht", "Natuerliches Licht"]
+  perspektive: "Normalperspektive"
+  technik: []
+  notes: null
 
 ground_truth: null    # filled after dissens arbitration
