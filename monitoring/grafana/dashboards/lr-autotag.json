@@ -21,14 +21,6 @@
   "liveNow": false,
   "panels": [
     {
-      "collapsed": false,
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 0},
-      "id": 100,
-      "panels": [],
-      "title": "Pipeline-Durchsatz",
-      "type": "row"
-    },
-    {
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "fieldConfig": {
         "defaults": {
@@ -38,8 +30,8 @@
           "unit": "short"
         }
       },
-      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 1},
-      "id": 101,
+      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 0},
+      "id": 11,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -48,13 +40,8 @@
         "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.0",
       "targets": [
-        {
-          "expr": "sum(lr_batch_jobs_active{state=\"running\"})",
-          "legendFormat": "running",
-          "refId": "A"
-        }
+        {"expr": "sum(lr_batch_jobs_active{state=\"running\"})", "legendFormat": "running", "refId": "A"}
       ],
       "title": "Batch-Jobs (running)",
       "type": "stat"
@@ -75,8 +62,8 @@
           "unit": "short"
         }
       },
-      "gridPos": {"h": 4, "w": 6, "x": 6, "y": 1},
-      "id": 102,
+      "gridPos": {"h": 4, "w": 6, "x": 6, "y": 0},
+      "id": 12,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -85,13 +72,8 @@
         "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.0",
       "targets": [
-        {
-          "expr": "sum(lr_batch_chunks_active{state=\"pending\"})",
-          "legendFormat": "pending",
-          "refId": "A"
-        }
+        {"expr": "sum(lr_batch_chunks_active{state=\"pending\"})", "legendFormat": "pending", "refId": "A"}
       ],
       "title": "Chunks in Queue (pending)",
       "type": "stat"
@@ -105,8 +87,8 @@
           "unit": "short"
         }
       },
-      "gridPos": {"h": 4, "w": 6, "x": 12, "y": 1},
-      "id": 103,
+      "gridPos": {"h": 4, "w": 6, "x": 12, "y": 0},
+      "id": 13,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -115,13 +97,8 @@
         "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.0",
       "targets": [
-        {
-          "expr": "sum(lr_batch_chunks_active{state=\"processing\"})",
-          "legendFormat": "processing",
-          "refId": "A"
-        }
+        {"expr": "sum(lr_batch_chunks_active{state=\"processing\"})", "legendFormat": "processing", "refId": "A"}
       ],
       "title": "Chunks (processing)",
       "type": "stat"
@@ -142,8 +119,8 @@
           "unit": "percentunit"
         }
       },
-      "gridPos": {"h": 4, "w": 6, "x": 18, "y": 1},
-      "id": 104,
+      "gridPos": {"h": 4, "w": 6, "x": 18, "y": 0},
+      "id": 14,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -152,7 +129,6 @@
         "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
         "textMode": "auto"
       },
-      "pluginVersion": "10.0.0",
       "targets": [
         {
           "expr": "sum(rate(lr_batch_chunks_failed_total[30m])) / clamp_min(sum(rate(lr_batch_chunks_completed_total[30m])) + sum(rate(lr_batch_chunks_failed_total[30m])), 1)",
@@ -170,40 +146,27 @@
           "color": {"mode": "palette-classic"},
           "custom": {
             "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 20,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
             "lineInterpolation": "smooth",
             "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
             "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {"group": "A", "mode": "none"},
-            "thresholdsStyle": {"mode": "off"}
+            "spanNulls": true,
+            "stacking": {"group": "A", "mode": "none"}
           },
           "unit": "short"
         }
       },
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 5},
-      "id": 110,
+      "gridPos": {"h": 8, "w": 6, "x": 0, "y": 4},
+      "id": 21,
       "options": {
-        "legend": {"calcs": ["mean", "max"], "displayMode": "table", "placement": "bottom", "showLegend": true},
+        "legend": {"calcs": ["mean", "max"], "displayMode": "list", "placement": "bottom", "showLegend": true},
         "tooltip": {"mode": "multi", "sort": "desc"}
       },
       "targets": [
-        {
-          "expr": "sum by (state) (lr_batch_chunks_active)",
-          "legendFormat": "{{state}}",
-          "refId": "A"
-        }
+        {"expr": "sum by (state) (lr_batch_chunks_active)", "legendFormat": "{{state}}", "refId": "A"}
       ],
-      "title": "Chunks nach Status (Zeitverlauf)",
+      "title": "Chunks nach Status",
       "type": "timeseries"
     },
     {
@@ -212,112 +175,56 @@
         "defaults": {
           "color": {"mode": "palette-classic"},
           "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "keywords",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
             "lineInterpolation": "linear",
             "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
             "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {"group": "A", "mode": "none"},
-            "thresholdsStyle": {"mode": "off"}
+            "spanNulls": true
           },
           "unit": "short"
         }
       },
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 5},
-      "id": 111,
+      "gridPos": {"h": 8, "w": 6, "x": 6, "y": 4},
+      "id": 22,
       "options": {
         "legend": {"calcs": [], "displayMode": "list", "placement": "bottom", "showLegend": true},
         "tooltip": {"mode": "multi", "sort": "none"}
       },
       "targets": [
-        {
-          "expr": "histogram_quantile(0.5, sum(rate(lr_keywords_per_image_bucket[15m])) by (le))",
-          "legendFormat": "p50",
-          "refId": "A"
-        },
-        {
-          "expr": "histogram_quantile(0.95, sum(rate(lr_keywords_per_image_bucket[15m])) by (le))",
-          "legendFormat": "p95",
-          "refId": "B"
-        },
-        {
-          "expr": "sum(rate(lr_keywords_per_image_sum[15m])) / clamp_min(sum(rate(lr_keywords_per_image_count[15m])), 0.001)",
-          "legendFormat": "avg",
-          "refId": "C"
-        }
+        {"expr": "histogram_quantile(0.5, sum(rate(lr_keywords_per_image_bucket[15m])) by (le))", "legendFormat": "p50", "refId": "A"},
+        {"expr": "histogram_quantile(0.95, sum(rate(lr_keywords_per_image_bucket[15m])) by (le))", "legendFormat": "p95", "refId": "B"},
+        {"expr": "sum(rate(lr_keywords_per_image_sum[15m])) / clamp_min(sum(rate(lr_keywords_per_image_count[15m])), 0.001)", "legendFormat": "avg", "refId": "C"}
       ],
       "title": "Keywords pro Bild",
       "type": "timeseries"
     },
     {
-      "collapsed": false,
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 13},
-      "id": 200,
-      "panels": [],
-      "title": "Vision-Modell (Ollama)",
-      "type": "row"
-    },
-    {
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "fieldConfig": {
         "defaults": {
           "color": {"mode": "palette-classic"},
           "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "seconds",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
-            "lineInterpolation": "linear",
             "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
             "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {"group": "A", "mode": "none"},
-            "thresholdsStyle": {"mode": "off"}
+            "spanNulls": true
           },
           "unit": "s"
         }
       },
-      "gridPos": {"h": 8, "w": 16, "x": 0, "y": 14},
-      "id": 210,
+      "gridPos": {"h": 8, "w": 6, "x": 12, "y": 4},
+      "id": 23,
       "options": {
-        "legend": {"calcs": ["mean", "max"], "displayMode": "table", "placement": "bottom", "showLegend": true},
+        "legend": {"calcs": ["mean", "max"], "displayMode": "list", "placement": "bottom", "showLegend": true},
         "tooltip": {"mode": "multi", "sort": "desc"}
       },
       "targets": [
-        {
-          "expr": "histogram_quantile(0.50, sum(rate(lr_ollama_inference_duration_seconds_bucket[5m])) by (le, model))",
-          "legendFormat": "{{model}} p50",
-          "refId": "A"
-        },
-        {
-          "expr": "histogram_quantile(0.95, sum(rate(lr_ollama_inference_duration_seconds_bucket[5m])) by (le, model))",
-          "legendFormat": "{{model}} p95",
-          "refId": "B"
-        },
-        {
-          "expr": "histogram_quantile(0.99, sum(rate(lr_ollama_inference_duration_seconds_bucket[5m])) by (le, model))",
-          "legendFormat": "{{model}} p99",
-          "refId": "C"
-        }
+        {"expr": "histogram_quantile(0.50, sum(rate(lr_ollama_inference_duration_seconds_bucket[5m])) by (le, model))", "legendFormat": "{{model}} p50", "refId": "A"},
+        {"expr": "histogram_quantile(0.95, sum(rate(lr_ollama_inference_duration_seconds_bucket[5m])) by (le, model))", "legendFormat": "{{model}} p95", "refId": "B"}
       ],
-      "title": "Inferenzdauer pro Modell (p50 / p95 / p99)",
+      "title": "Ollama Inferenz (p50 / p95)",
       "type": "timeseries"
     },
     {
@@ -326,39 +233,24 @@
         "defaults": {
           "color": {"mode": "palette-classic"},
           "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "req/s",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 30,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
-            "lineInterpolation": "linear",
             "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
             "showPoints": "never",
             "spanNulls": true,
-            "stacking": {"group": "A", "mode": "normal"},
-            "thresholdsStyle": {"mode": "off"}
+            "stacking": {"group": "A", "mode": "normal"}
           },
           "unit": "reqps"
         }
       },
-      "gridPos": {"h": 8, "w": 8, "x": 16, "y": 14},
-      "id": 211,
+      "gridPos": {"h": 8, "w": 6, "x": 18, "y": 4},
+      "id": 24,
       "options": {
-        "legend": {"calcs": ["mean", "sum"], "displayMode": "table", "placement": "bottom", "showLegend": true},
+        "legend": {"calcs": ["mean"], "displayMode": "list", "placement": "bottom", "showLegend": true},
         "tooltip": {"mode": "multi", "sort": "desc"}
       },
       "targets": [
-        {
-          "expr": "sum by (status) (rate(lr_ollama_requests_total[5m]))",
-          "legendFormat": "{{status}}",
-          "refId": "A"
-        }
+        {"expr": "sum by (status) (rate(lr_ollama_requests_total[5m]))", "legendFormat": "{{status}}", "refId": "A"}
       ],
       "title": "Ollama Requests nach Ausgang",
       "type": "timeseries"
@@ -369,46 +261,25 @@
         "defaults": {
           "color": {"mode": "palette-classic"},
           "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "seconds",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
-            "lineInterpolation": "linear",
             "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
             "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {"group": "A", "mode": "none"},
-            "thresholdsStyle": {"mode": "off"}
+            "spanNulls": true
           },
           "unit": "s"
         }
       },
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 22},
-      "id": 220,
+      "gridPos": {"h": 8, "w": 6, "x": 0, "y": 12},
+      "id": 31,
       "options": {
         "legend": {"calcs": ["mean"], "displayMode": "list", "placement": "bottom", "showLegend": true},
         "tooltip": {"mode": "multi", "sort": "desc"}
       },
       "targets": [
-        {
-          "expr": "histogram_quantile(0.50, sum(rate(lr_pipeline_stage_duration_seconds_bucket[15m])) by (le, stage))",
-          "legendFormat": "{{stage}} p50",
-          "refId": "A"
-        },
-        {
-          "expr": "histogram_quantile(0.95, sum(rate(lr_pipeline_stage_duration_seconds_bucket[15m])) by (le, stage))",
-          "legendFormat": "{{stage}} p95",
-          "refId": "B"
-        }
+        {"expr": "histogram_quantile(0.95, sum(rate(lr_pipeline_stage_duration_seconds_bucket[15m])) by (le, stage))", "legendFormat": "{{stage}} p95", "refId": "A"}
       ],
-      "title": "Pipeline-Stage Dauer (p50 / p95)",
+      "title": "Pipeline-Stage Dauer (p95)",
       "type": "timeseries"
     },
     {
@@ -417,99 +288,25 @@
         "defaults": {
           "color": {"mode": "palette-classic"},
           "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "bars",
-            "fillOpacity": 80,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {"group": "A", "mode": "none"},
-            "thresholdsStyle": {"mode": "off"}
-          },
-          "unit": "short"
-        }
-      },
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 22},
-      "id": 221,
-      "options": {
-        "legend": {"calcs": [], "displayMode": "list", "placement": "bottom", "showLegend": true},
-        "tooltip": {"mode": "multi", "sort": "desc"}
-      },
-      "targets": [
-        {
-          "expr": "increase(lr_ollama_inference_duration_seconds_bucket[1h]) - ignoring(le) group_right() (increase(lr_ollama_inference_duration_seconds_bucket[1h]) offset 1h * 0)",
-          "hide": true,
-          "legendFormat": "ignored",
-          "refId": "hidden"
-        },
-        {
-          "expr": "sum by (le) (increase(lr_ollama_inference_duration_seconds_bucket[1h]))",
-          "format": "heatmap",
-          "legendFormat": "{{le}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Inferenz-Verteilung (letzte Stunde)",
-      "type": "heatmap"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 30},
-      "id": 300,
-      "panels": [],
-      "title": "API-Endpoints",
-      "type": "row"
-    },
-    {
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "fieldConfig": {
-        "defaults": {
-          "color": {"mode": "palette-classic"},
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "req/s",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
-            "lineInterpolation": "linear",
             "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
             "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {"group": "A", "mode": "none"},
-            "thresholdsStyle": {"mode": "off"}
+            "spanNulls": true
           },
           "unit": "reqps"
         }
       },
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 31},
-      "id": 310,
+      "gridPos": {"h": 8, "w": 6, "x": 6, "y": 12},
+      "id": 32,
       "options": {
-        "legend": {"calcs": ["mean"], "displayMode": "table", "placement": "bottom", "showLegend": true},
+        "legend": {"calcs": ["mean"], "displayMode": "list", "placement": "bottom", "showLegend": true},
         "tooltip": {"mode": "multi", "sort": "desc"}
       },
       "targets": [
-        {
-          "expr": "sum by (handler) (rate(http_requests_total{job=\"lr-autotag\"}[5m]))",
-          "legendFormat": "{{handler}}",
-          "refId": "A"
-        }
+        {"expr": "sum by (handler) (rate(http_requests_total{job=\"lr-autotag\"}[5m]))", "legendFormat": "{{handler}}", "refId": "A"}
       ],
-      "title": "Requests/s pro Endpoint",
+      "title": "API Requests pro Endpoint",
       "type": "timeseries"
     },
     {
@@ -518,223 +315,32 @@
         "defaults": {
           "color": {"mode": "palette-classic"},
           "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "seconds",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
-            "lineInterpolation": "linear",
             "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
             "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {"group": "A", "mode": "none"},
-            "thresholdsStyle": {"mode": "off"}
+            "spanNulls": true
           },
           "unit": "s"
         }
       },
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 31},
-      "id": 311,
-      "options": {
-        "legend": {"calcs": ["mean", "max"], "displayMode": "table", "placement": "bottom", "showLegend": true},
-        "tooltip": {"mode": "multi", "sort": "desc"}
-      },
-      "targets": [
-        {
-          "expr": "histogram_quantile(0.95, sum by (le, handler) (rate(http_request_duration_seconds_bucket{job=\"lr-autotag\"}[5m])))",
-          "legendFormat": "{{handler}} p95",
-          "refId": "A"
-        }
-      ],
-      "title": "Latenz p95 pro Endpoint",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "fieldConfig": {
-        "defaults": {
-          "color": {"mode": "palette-classic"},
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "req/s",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 40,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {"group": "A", "mode": "normal"},
-            "thresholdsStyle": {"mode": "off"}
-          },
-          "unit": "reqps"
-        }
-      },
-      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 39},
-      "id": 320,
-      "options": {
-        "legend": {"calcs": ["mean", "sum"], "displayMode": "table", "placement": "bottom", "showLegend": true},
-        "tooltip": {"mode": "multi", "sort": "desc"}
-      },
-      "targets": [
-        {
-          "expr": "sum by (status) (rate(http_requests_total{job=\"lr-autotag\"}[5m]))",
-          "legendFormat": "{{status}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Status-Code-Verteilung",
-      "type": "timeseries"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 47},
-      "id": 400,
-      "panels": [],
-      "title": "Externe Services",
-      "type": "row"
-    },
-    {
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "fieldConfig": {
-        "defaults": {
-          "color": {"mode": "palette-classic"},
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "req/s",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 30,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {"group": "A", "mode": "normal"},
-            "thresholdsStyle": {"mode": "off"}
-          },
-          "unit": "reqps"
-        }
-      },
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 48},
-      "id": 410,
-      "options": {
-        "legend": {"calcs": ["mean", "sum"], "displayMode": "table", "placement": "bottom", "showLegend": true},
-        "tooltip": {"mode": "multi", "sort": "desc"}
-      },
-      "targets": [
-        {
-          "expr": "sum by (status) (rate(lr_nominatim_requests_total[5m]))",
-          "legendFormat": "{{status}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Nominatim: Requests nach Ausgang",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "fieldConfig": {
-        "defaults": {
-          "color": {"mode": "palette-classic"},
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "seconds",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {"legend": false, "tooltip": false, "viz": false},
-            "lineInterpolation": "linear",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {"type": "linear"},
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {"group": "A", "mode": "none"},
-            "thresholdsStyle": {"mode": "off"}
-          },
-          "unit": "s"
-        }
-      },
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 48},
-      "id": 411,
+      "gridPos": {"h": 8, "w": 6, "x": 12, "y": 12},
+      "id": 33,
       "options": {
         "legend": {"calcs": ["mean", "max"], "displayMode": "list", "placement": "bottom", "showLegend": true},
         "tooltip": {"mode": "multi", "sort": "desc"}
       },
       "targets": [
-        {
-          "expr": "histogram_quantile(0.50, sum(rate(lr_nominatim_duration_seconds_bucket[15m])) by (le))",
-          "legendFormat": "p50",
-          "refId": "A"
-        },
-        {
-          "expr": "histogram_quantile(0.95, sum(rate(lr_nominatim_duration_seconds_bucket[15m])) by (le))",
-          "legendFormat": "p95",
-          "refId": "B"
-        }
+        {"expr": "histogram_quantile(0.95, sum by (le, handler) (rate(http_request_duration_seconds_bucket{job=\"lr-autotag\"}[5m])))", "legendFormat": "{{handler}} p95", "refId": "A"}
       ],
-      "title": "Nominatim: Latenz (p50 / p95)",
+      "title": "API Latenz p95",
       "type": "timeseries"
-    },
-    {
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "fieldConfig": {
-        "defaults": {
-          "color": {"mode": "thresholds"},
-          "mappings": [
-            {"options": {"0": {"text": "DOWN", "color": "red"}}, "type": "value"},
-            {"options": {"1": {"text": "UP", "color": "green"}}, "type": "value"}
-          ],
-          "thresholds": {"mode": "absolute", "steps": [{"color": "red", "value": null}, {"color": "green", "value": 1}]}
-        }
-      },
-      "gridPos": {"h": 4, "w": 12, "x": 0, "y": 56},
-      "id": 420,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
-        "textMode": "value_and_name"
-      },
-      "pluginVersion": "10.0.0",
-      "targets": [
-        {
-          "expr": "up{job=\"lr-autotag\"}",
-          "legendFormat": "LR-AutoTag API",
-          "refId": "A"
-        }
-      ],
-      "title": "Service-Health",
-      "type": "stat"
     },
     {
       "datasource": {"type": "loki", "uid": "loki"},
       "fieldConfig": {"defaults": {}, "overrides": []},
-      "gridPos": {"h": 10, "w": 24, "x": 0, "y": 60},
-      "id": 430,
+      "gridPos": {"h": 8, "w": 6, "x": 18, "y": 12},
+      "id": 34,
       "options": {
         "dedupStrategy": "none",
         "enableLogDetails": true,
@@ -752,7 +358,7 @@
           "refId": "A"
         }
       ],
-      "title": "Log: Errors & Exceptions (lr-autotag.service)",
+      "title": "Log: Errors & Exceptions",
       "type": "logs"
     }
   ],
