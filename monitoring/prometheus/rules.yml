@@ -1,0 +1,86 @@
+groups:
+  - name: lr-autotag-pipeline
+    interval: 30s
+    rules:
+      # Queue-Deadlock — pending chunks but Ollama idle
+      - alert: LRAutoTagQueueDeadlock
+        expr: |
+          (sum(lr_batch_chunks_active{state="pending"}) > 0)
+          and on()
+          (sum(rate(lr_ollama_inference_duration_seconds_count[5m])) == 0)
+        for: 5m
+        labels:
+          severity: critical
+          app: lr-autotag
+        annotations:
+          summary: "LR-AutoTag queue stuck: chunks pending, Ollama idle"
+          description: "Chunks waiting but no Ollama inference calls in 5 minutes. Check Ollama reachability and backend logs."
+
+      # Batch running but no progress for 30 min
+      - alert: LRAutoTagStalledBatch
+        expr: |
+          (sum(lr_batch_jobs_active{state="running"}) > 0)
+          and on()
+          (sum(increase(lr_batch_chunks_completed_total[30m])) == 0)
+        for: 5m
+        labels:
+          severity: critical
+          app: lr-autotag
+        annotations:
+          summary: "LR-AutoTag batch running but no progress for 30 minutes"
+          description: "A batch job is in state=running but no chunks completed in the last 30 min."
+
+      # Service unreachable
+      - alert: LRAutoTagServiceDown
+        expr: up{job="lr-autotag"} == 0
+        for: 2m
+        labels:
+          severity: critical
+          app: lr-autotag
+        annotations:
+          summary: "LR-AutoTag backend unreachable"
+          description: "Prometheus cannot scrape /metrics on host.docker.internal:8001 for 2 minutes."
+
+      # Chunk failure rate > 15% over last 30min
+      - alert: LRAutoTagChunkFailures
+        expr: |
+          (
+            sum(increase(lr_batch_chunks_failed_total[30m]))
+            /
+            clamp_min(sum(increase(lr_batch_chunks_completed_total[30m])) + sum(increase(lr_batch_chunks_failed_total[30m])), 1)
+          ) > 0.15
+        for: 10m
+        labels:
+          severity: warning
+          app: lr-autotag
+        annotations:
+          summary: "LR-AutoTag chunk failure rate > 15% over last 30 min"
+          description: "Current: {{ $value | humanizePercentage }}. Prompt/model issue likely."
+
+      # Nominatim degraded
+      - alert: LRAutoTagNominatimDegraded
+        expr: |
+          (
+            sum(increase(lr_nominatim_requests_total{status="error"}[10m]))
+            /
+            clamp_min(sum(increase(lr_nominatim_requests_total[10m])), 1)
+          ) > 0.5
+        for: 10m
+        labels:
+          severity: warning
+          app: lr-autotag
+        annotations:
+          summary: "Nominatim reverse geocoding degraded (>50% errors)"
+          description: "Geo keywords will be missing. Check Nominatim availability or rate limiting."
+
+      # Ollama p95 latency > 60s
+      - alert: LRAutoTagOllamaLatencyHigh
+        expr: |
+          histogram_quantile(0.95, sum(rate(lr_ollama_inference_duration_seconds_bucket[15m])) by (le, model)) > 60
+        for: 15m
+        labels:
+          severity: warning
+          app: lr-autotag
+        annotations:
+          summary: "Ollama inference p95 > 60s for model {{ $labels.model }}"
+          description: "GPU thermal throttling, contention with SMA, or broken model weights."

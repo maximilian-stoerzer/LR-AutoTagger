@@ -39,6 +39,8 @@ def mock_repo():
     repo.update_batch_job_status = AsyncMock()
     repo.mark_chunk_image_done = AsyncMock()
     repo.has_pending_chunks = AsyncMock(return_value=False)
+    repo.count_batch_jobs_by_state = AsyncMock(return_value={})
+    repo.count_chunks_by_state = AsyncMock(return_value={})
     return repo
 
 

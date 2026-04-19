@@ -234,6 +234,63 @@ Vollstaendige Whitelist-Inhalte: siehe `docs/tech.md` Abschnitt 3.5.1.
 
 ---
 
+## Monitoring & Alerting
+
+Zentrale Monitoring-Infrastruktur liegt in `/home/maximilian/monitoring/`
+(Prometheus + Alertmanager + Grafana + Loki + Promtail + Exporters). Sie ist
+shared zwischen allen Apps auf dem Server; jede App liefert nur noch ihre
+Targets/Regeln/Dashboards als Fragment bei.
+
+### Beitrag dieses Repos
+
+Alle LR-AutoTag-spezifischen Artefakte leben unter `monitoring/`:
+- `monitoring/prometheus/targets.yml` — Scrape-Target (FastAPI `/metrics`)
+- `monitoring/prometheus/rules.yml` — PromQL-Alerts (QueueDeadlock, StalledBatch,
+  ServiceDown, ChunkFailures, NominatimDegraded, OllamaLatencyHigh)
+- `monitoring/loki/rules.yml` — LogQL-Alert fuer `ERROR|EXCEPTION|TRACEBACK`
+  in `lr-autotag.service` (Schwelle 0 in 30 min)
+- `monitoring/grafana/dashboards/lr-autotag.json` — Dashboard mit 4 Rows:
+  Pipeline-Durchsatz, Vision-Modell, API-Endpoints, Externe Services + Loki-Panel
+
+Diese Dateien werden per Bind-Mount vom zentralen Stack eingelesen — ein
+Restart des zentralen Stacks ist **nicht** noetig, Prometheus laedt `rules.yml`
+automatisch nach, Grafana pollt Dashboards alle 30s.
+
+### Custom-Metriken (Prefix `lr_`)
+
+Definiert in `app/monitoring.py`, exponiert ueber `/metrics` (unauthentifiziert,
+gleiche Ausnahme wie `/api/v1/health`):
+
+| Metric | Typ | Labels | Zweck |
+|---|---|---|---|
+| `lr_ollama_inference_duration_seconds` | Histogram | `model` | Wallclock pro `/api/generate` |
+| `lr_ollama_requests_total` | Counter | `model`, `status` | success / error / timeout |
+| `lr_batch_jobs_active` | Gauge | `state` | Batch-Jobs nach Status |
+| `lr_batch_chunks_active` | Gauge | `state` | Chunks nach Status |
+| `lr_batch_chunks_completed_total` / `_failed_total` | Counter | — | Terminale Uebergaenge |
+| `lr_pipeline_stage_duration_seconds` | Histogram | `stage` | `preprocess` / `geocode` / `vision` / `combine` |
+| `lr_keywords_per_image` | Histogram | — | Endergebnis-Groesse pro Bild |
+| `lr_nominatim_requests_total` / `_duration_seconds` | Counter / Histogram | `status` | Reverse Geocoding |
+
+Gauges werden alle 15 s im Hintergrund aus der DB aufgefrischt
+(`refresh_batch_gauges` in `app/main.py`), damit Scrapes auch dann korrekte
+Werte liefern, wenn keine Zustandsaenderung stattfand.
+
+**Regel:** Neue fachliche Metriken bekommen immer den `lr_`-Prefix, werden in
+`app/monitoring.py` deklariert und in `tests/system/test_metrics.py` per
+Name verifiziert. Keine Custom-Metriken in Modulen streuen.
+
+### Alerting
+
+Alertmanager-Route schickt **critical**- und **warning**-Labels an Telegram
+(Bot-Token + Chat-ID in `/home/maximilian/monitoring/.env`, Verzeichnis ist
+nicht im Git). Inhibit-Regeln unterdruecken Folgefeuer, wenn der Service
+bereits als down gemeldet ist. Alert-Thematiken: fachliche Zahlen zuerst
+(Queue voll aber GPU idle, Chunk-Failure-Rate, Latenzen), Utilisation nur bei
+Disk/DB-Tablespace.
+
+---
+
 ## Nichtfunktionale Anforderungen
 
 | Anforderung | Zielwert |

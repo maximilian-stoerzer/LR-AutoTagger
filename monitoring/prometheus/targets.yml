@@ -1,0 +1,8 @@
+# LR-AutoTag Prometheus targets — bind-mounted into the central Prometheus
+# at /etc/prometheus/targets.d/lr-autotag.yml. Job name: lr-autotag,
+# metrics_path defaults to /metrics.
+- targets:
+    - host.docker.internal:8001
+  labels:
+    instance: lr-autotag-api
+    component: backend

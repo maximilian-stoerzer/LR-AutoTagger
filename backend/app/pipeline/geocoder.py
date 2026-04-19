@@ -5,6 +5,7 @@ import time
 import httpx
 
 from app.config import settings
+from app.monitoring import nominatim_duration, nominatim_requests_total
 
 logger = logging.getLogger(__name__)
 
@@ -26,6 +27,7 @@ class Geocoder:
         """
         await self._throttle()
 
+        t0 = time.monotonic()
         try:
             async with httpx.AsyncClient() as client:
                 resp = await client.get(
@@ -42,13 +44,18 @@ class Geocoder:
                 )
                 resp.raise_for_status()
         except Exception:
+            nominatim_duration.observe(time.monotonic() - t0)
+            nominatim_requests_total.labels(status="error").inc()
             logger.exception("Reverse geocoding failed for lat=%s, lon=%s", lat, lon)
             return None
 
+        nominatim_duration.observe(time.monotonic() - t0)
         data = resp.json()
         if "error" in data:
+            nominatim_requests_total.labels(status="error").inc()
             logger.warning("Nominatim error: %s", data["error"])
             return None
+        nominatim_requests_total.labels(status="success").inc()
 
         address = data.get("address", {})
 

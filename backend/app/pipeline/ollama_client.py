@@ -7,6 +7,7 @@ import re
 import httpx
 
 from app.config import settings
+from app.monitoring import track_ollama
 
 logger = logging.getLogger(__name__)
 
@@ -87,8 +88,9 @@ class OllamaClient:
         b64_image = base64.b64encode(image_data).decode("utf-8")
         prompt = prompt or VISION_PROMPT.format(max_keywords=settings.max_keywords)
 
+        chosen_model = model or self.model
         payload = {
-            "model": model or self.model,
+            "model": chosen_model,
             "prompt": prompt,
             "images": [b64_image],
             "stream": False,
@@ -96,7 +98,7 @@ class OllamaClient:
         }
 
         sem = _get_semaphore()
-        async with sem:
+        async with sem, track_ollama(chosen_model):
             async with httpx.AsyncClient() as client:
                 resp = await client.post(
                     f"{self.base_url}/api/generate",

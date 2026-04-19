@@ -11,6 +11,7 @@ from app.pipeline import (
     prompt_builder,
     sun_calculator,
 )
+from app.monitoring import keywords_per_image, track_stage
 from app.pipeline.geocoder import Geocoder
 from app.pipeline.image_processor import resize_for_analysis
 from app.pipeline.ollama_client import OllamaClient
@@ -59,8 +60,9 @@ class KeywordPipeline:
 
         # ── Phase 1: deterministic analysis (before Ollama) ──────────
 
-        exif = exif_extractor.extract(image_data)
-        pixels = pixel_analyzer.analyze(image_data)
+        with track_stage("preprocess"):
+            exif = exif_extractor.extract(image_data)
+            pixels = pixel_analyzer.analyze(image_data)
 
         # GPS fallback: parameter → EXIF.
         if gps_lat is None or gps_lon is None:
@@ -149,6 +151,8 @@ class KeywordPipeline:
                 location_name=location_name,
                 model_used=ollama_model or settings.ollama_model,
             )
+
+        keywords_per_image.observe(len(keywords))
 
         return {
             "image_id": image_id,

@@ -7,7 +7,7 @@ class Settings(BaseSettings):
 
     # Ollama
     ollama_base_url: str = "http://localhost:11434"
-    ollama_model: str = "llava:13b"
+    ollama_model: str = "gemma3:27b"
     ollama_max_concurrent: int = 2
     ollama_timeout: int = 180
 

@@ -203,14 +203,21 @@ class Repository:
             return {"id": chunk_id, "image_ids": row[1], "attempt": row[2] + 1}
 
     async def complete_chunk(self, chunk_id: str):
+        # Imported lazily so unit tests of the repository can still import
+        # without prometheus_client installed.
+        from app.monitoring import batch_chunks_completed_total
+
         async with self._pool.connection() as conn:
             await conn.execute(
                 "UPDATE chunks SET status = 'done', completed_at = now() WHERE id = %s",
                 (chunk_id,),
             )
             await conn.commit()
+        batch_chunks_completed_total.inc()
 
     async def fail_chunk(self, chunk_id: str, error: str, max_retries: int):
+        from app.monitoring import batch_chunks_failed_total
+
         async with self._pool.connection() as conn:
             row = await (await conn.execute("SELECT attempt FROM chunks WHERE id = %s", (chunk_id,))).fetchone()
             attempt = row[0] if row else 0
@@ -223,6 +230,24 @@ class Repository:
                 (new_status, error, chunk_id),
             )
             await conn.commit()
+        if new_status == "failed":
+            batch_chunks_failed_total.inc()
+
+    async def count_batch_jobs_by_state(self) -> dict[str, int]:
+        """Return counts of batch jobs keyed by status (pending/running/...)."""
+        async with self._pool.connection() as conn:
+            rows = await (
+                await conn.execute("SELECT status, COUNT(*) FROM batch_jobs GROUP BY status")
+            ).fetchall()
+        return {row[0]: row[1] for row in rows}
+
+    async def count_chunks_by_state(self) -> dict[str, int]:
+        """Return counts of chunks keyed by status (pending/processing/done/failed)."""
+        async with self._pool.connection() as conn:
+            rows = await (
+                await conn.execute("SELECT status, COUNT(*) FROM chunks GROUP BY status")
+            ).fetchall()
+        return {row[0]: row[1] for row in rows}
 
     async def has_pending_chunks(self, batch_id: str) -> bool:
         async with self._pool.connection() as conn:

@@ -5,7 +5,10 @@ from app.config import settings
 
 
 async def api_key_middleware(request: Request, call_next):
-    if request.url.path == "/api/v1/health":
+    # /api/v1/health and /metrics are unauthenticated — health is probed by
+    # the Lightroom plugin before it has the key, and /metrics is scraped by
+    # Prometheus (which lives behind the LAN firewall, not exposed publicly).
+    if request.url.path in ("/api/v1/health", "/metrics"):
         return await call_next(request)
 
     api_key = request.headers.get("X-API-Key")

@@ -1,0 +1,14 @@
+groups:
+  - name: lr-autotag-logs
+    rules:
+      # Any ERROR/EXCEPTION/TRACEBACK line in the service log over 30min → warning
+      - alert: LRAutoTagErrorLogs
+        expr: |
+          sum(count_over_time({unit="lr-autotag.service"} |~ "(?i)error|exception|traceback" [30m])) > 0
+        for: 0m
+        labels:
+          severity: warning
+          app: lr-autotag
+        annotations:
+          summary: "ERROR/EXCEPTION lines in lr-autotag log (last 30min)"
+          description: "{{ $value }} matching log lines. Check Grafana → Explore → Loki for details."
