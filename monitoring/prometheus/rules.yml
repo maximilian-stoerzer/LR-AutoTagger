@@ -16,19 +16,23 @@ groups:
           summary: "LR-AutoTag queue stuck: chunks pending, Ollama idle"
           description: "Chunks waiting but no Ollama inference calls in 5 minutes. Check Ollama reachability and backend logs."
 
-      # Batch running but no progress for 30 min
+      # Batch running but no successful Ollama inference for 15 min.
+      # Uses ollama success-rate (not chunk-completion) so the alert reflects
+      # actual pipeline activity rather than chunk boundaries — chunks of 50
+      # images at ~100s/image take ~80 min to complete, far longer than any
+      # reasonable stall window.
       - alert: LRAutoTagStalledBatch
         expr: |
           (sum(lr_batch_jobs_active{state="running"}) > 0)
           and on()
-          (sum(increase(lr_batch_chunks_completed_total[30m])) == 0)
+          (sum(rate(lr_ollama_requests_total{status="success"}[15m])) == 0)
         for: 5m
         labels:
           severity: critical
           app: lr-autotag
         annotations:
-          summary: "LR-AutoTag batch running but no progress for 30 minutes"
-          description: "A batch job is in state=running but no chunks completed in the last 30 min."
+          summary: "LR-AutoTag batch running but no successful inference for 15 minutes"
+          description: "A batch job is in state=running but the pipeline has produced no successful Ollama inference in the last 15 min."
 
       # Service unreachable
       - alert: LRAutoTagServiceDown
