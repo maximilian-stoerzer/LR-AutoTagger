@@ -166,6 +166,30 @@ async def batch_image(
     return result
 
 
+@router.post("/batch/skip")
+async def batch_skip(request: Request):
+    """Plugin marks an image as skipped (e.g. because LR already has
+    keywords on it locally). Takes it out of the queue without triggering
+    an inference.
+
+    Body: {"image_id": "..."}
+    """
+    body = await request.json()
+    image_id = body.get("image_id")
+    if not image_id:
+        return JSONResponse(status_code=400, content={"detail": "image_id is required"})
+
+    repo = _repo(request)
+    manager = JobManager(repo)
+    try:
+        await manager.mark_image_skipped(image_id)
+    except ValueError:
+        return JSONResponse(status_code=409, content={"detail": "No active batch job"})
+    except LookupError as e:
+        return JSONResponse(status_code=404, content={"detail": str(e)})
+    return {"status": "skipped", "image_id": image_id}
+
+
 @router.get("/batch/status")
 async def batch_status(request: Request):
     repo = _repo(request)

@@ -67,6 +67,23 @@ class JobManager:
             ValueError: if no active batch exists.
             LookupError: if image_id is not part of the active batch.
         """
+        await self._finalize_image(image_id, counter="processed")
+
+    async def mark_image_skipped(self, image_id: str) -> None:
+        """Mark an image as skipped (plugin decided not to upload it).
+
+        Same bookkeeping as mark_image_done but increments the `skipped`
+        counter instead of `processed`. Used when the LR plugin already
+        sees keywords on the image locally and wants to take it out of
+        the queue without triggering an Ollama inference.
+
+        Raises:
+            ValueError: if no active batch exists.
+            LookupError: if image_id is not part of the active batch.
+        """
+        await self._finalize_image(image_id, counter="skipped")
+
+    async def _finalize_image(self, image_id: str, *, counter: str) -> None:
         job = await self.repo.get_active_batch_job()
         if not job:
             raise ValueError("No active batch job")
@@ -76,7 +93,7 @@ class JobManager:
         if meta is None:
             raise LookupError(f"image_id {image_id!r} is not part of active batch {job['id']}")
 
-        await self.repo.increment_batch_progress(job["id"], processed=1)
+        await self.repo.increment_batch_progress(job["id"], **{counter: 1})
         await self.repo.mark_chunk_image_done(job["id"], image_id)
 
         # Check if batch is complete

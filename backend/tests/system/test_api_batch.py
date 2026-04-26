@@ -117,6 +117,58 @@ def test_batch_image_no_active_batch(client, auth_headers, sample_jpeg, mock_rep
     assert resp.status_code == 409
 
 
+# S-BAT-07d: skip a batch image → 200
+def test_batch_skip_ok(client, auth_headers, mock_repo):
+    mock_repo.get_active_batch_job.return_value = {"id": "job-1", "status": "running"}
+    mock_repo.get_batch_image_meta.return_value = {"gps_lat": None, "gps_lon": None}
+    mock_repo.has_pending_chunks.return_value = True
+
+    resp = client.post(
+        "/api/v1/batch/skip",
+        headers={**auth_headers, "Content-Type": "application/json"},
+        content=json.dumps({"image_id": "batch_img_1"}),
+    )
+    assert resp.status_code == 200
+    assert resp.json()["status"] == "skipped"
+    mock_repo.increment_batch_progress.assert_awaited_with("job-1", skipped=1)
+    mock_repo.mark_chunk_image_done.assert_awaited_with("job-1", "batch_img_1")
+
+
+# S-BAT-07e: skip image not in active batch → 404
+def test_batch_skip_unknown_id(client, auth_headers, mock_repo):
+    mock_repo.get_active_batch_job.return_value = {"id": "job-1", "status": "running"}
+    mock_repo.get_batch_image_meta.return_value = None
+
+    resp = client.post(
+        "/api/v1/batch/skip",
+        headers={**auth_headers, "Content-Type": "application/json"},
+        content=json.dumps({"image_id": "not_in_batch"}),
+    )
+    assert resp.status_code == 404
+
+
+# S-BAT-07f: skip without active batch → 409
+def test_batch_skip_no_active_batch(client, auth_headers, mock_repo):
+    mock_repo.get_active_batch_job.return_value = None
+
+    resp = client.post(
+        "/api/v1/batch/skip",
+        headers={**auth_headers, "Content-Type": "application/json"},
+        content=json.dumps({"image_id": "whatever"}),
+    )
+    assert resp.status_code == 409
+
+
+# S-BAT-07g: skip with missing image_id → 400
+def test_batch_skip_missing_image_id(client, auth_headers):
+    resp = client.post(
+        "/api/v1/batch/skip",
+        headers={**auth_headers, "Content-Type": "application/json"},
+        content=json.dumps({}),
+    )
+    assert resp.status_code == 400
+
+
 # S-BAT-08
 def test_batch_pause_resume(client, auth_headers, mock_repo):
     mock_repo.get_active_batch_job.return_value = {"id": "job-1", "status": "running"}
